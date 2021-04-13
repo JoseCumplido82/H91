@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityBorrarEmpleado">
+
+    <ImageView
+        android:id="@+id/img_logo16"
+        android:layout_width="223dp"
+        android:layout_height="176dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_borrarEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/borrar_empleado2"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo16"
+        app:layout_constraintStart_toStartOf="@+id/img_logo16"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo16" />
+
+    <TextView
+        android:id="@+id/txt_borrarEmpleadotext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/selecciona_el_empleado_que_deseas_eliminar"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/txt_borrarEmpleado"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/txt_borrarEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/txt_borrarEmpleado" />
+
+    <Button
+        android:id="@+id/bt_eliminarEmpleado"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/eliminar"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/sp_empleadoEliminar"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/sp_empleadoEliminar"
+        app:layout_constraintTop_toBottomOf="@+id/sp_empleadoEliminar" />
+
+    <Button
+        android:id="@+id/bt_volver17"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/volver"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/bt_eliminarEmpleado"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_eliminarEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/bt_eliminarEmpleado" />
+
+    <Spinner
+        android:id="@+id/sp_empleadoEliminar"
+        android:layout_width="352dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_borrarEmpleadotext"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="@+id/txt_borrarEmpleadotext"
+        app:layout_constraintTop_toBottomOf="@+id/txt_borrarEmpleadotext" />
+</androidx.constraintlayout.widget.ConstraintLayout>

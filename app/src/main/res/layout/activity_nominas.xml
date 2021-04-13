@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityNominas">
+
+    <ImageView
+        android:id="@+id/img_logo3"
+        android:layout_width="223dp"
+        android:layout_height="176dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_Nominas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/nominas"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo3"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/img_logo3"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo3" />
+
+
+    <ImageButton
+        android:id="@+id/ib_obtener_fecha"
+        android:layout_width="48dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="84dp"
+        android:src="@drawable/calendario"
+        app:layout_constraintEnd_toEndOf="@+id/txt_selecciona"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_selecciona"
+        app:layout_constraintTop_toBottomOf="@+id/txt_selecciona"
+        tools:ignore="ContentDescription" />
+
+    <EditText
+        android:id="@+id/et_mostrar_fecha_picker"
+        android:layout_width="226dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="84dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/formato_fecha"
+        android:inputType="date"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txt_selecciona"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txt_selecciona"
+        app:layout_constraintTop_toBottomOf="@+id/txt_selecciona"
+        tools:ignore="UnknownId" />
+
+    <TextView
+        android:id="@+id/txt_selecciona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/seleccione_la_n_mina_que_desea_ver"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/txt_Nominas"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/txt_Nominas"
+        app:layout_constraintTop_toBottomOf="@+id/txt_Nominas" />
+
+    <Button
+        android:id="@+id/bt_volver6"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="140dp"
+        android:text="@string/volver"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/et_mostrar_fecha_picker"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="@+id/et_mostrar_fecha_picker"
+        app:layout_constraintTop_toBottomOf="@+id/et_mostrar_fecha_picker" />
+
+    <Button
+        android:id="@+id/bt_verNomina"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/iconodescarga"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/et_mostrar_fecha_picker"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/ib_obtener_fecha"
+        app:layout_constraintTop_toBottomOf="@+id/et_mostrar_fecha_picker" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

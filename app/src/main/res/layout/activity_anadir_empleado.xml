@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityAnadirEmpleado">
+
+    <ImageView
+        android:id="@+id/img_logo15"
+        android:layout_width="224dp"
+        android:layout_height="157dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_añadirEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/a_adir_empleado2"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo15"
+        app:layout_constraintStart_toStartOf="@+id/img_logo15"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo15" />
+
+    <EditText
+        android:id="@+id/edt_dni"
+        android:layout_width="284dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/introduce_dni"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/txt_añadirEmpleado"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="@+id/txt_añadirEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/txt_añadirEmpleado" />
+
+    <Spinner
+        android:id="@+id/sp_departamento"
+        android:layout_width="284dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/selecciona_departamento"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/edt_fechaFinContrato"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="@+id/edt_fechaFinContrato"
+        app:layout_constraintTop_toBottomOf="@+id/edt_fechaFinContrato" />
+
+    <EditText
+        android:id="@+id/edt_fechaIncorporacion"
+        android:layout_width="284dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:clickable="true"
+        android:ems="10"
+        android:focusable="true"
+        android:gravity="center"
+        android:hint="@string/introduce_fecha_de_incorporacion"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/edt_dni"
+        app:layout_constraintStart_toStartOf="@+id/edt_dni"
+        app:layout_constraintTop_toBottomOf="@+id/edt_dni" />
+
+    <EditText
+        android:id="@+id/edt_fechaFinContrato"
+        android:layout_width="284dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:clickable="true"
+        android:ems="10"
+        android:focusable="true"
+        android:gravity="center"
+        android:hint="@string/introduce_fecha_fin_de_contrato"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/edt_fechaIncorporacion"
+        app:layout_constraintStart_toStartOf="@+id/edt_fechaIncorporacion"
+        app:layout_constraintTop_toBottomOf="@+id/edt_fechaIncorporacion" />
+
+    <Button
+        android:id="@+id/bt_crearEmpleado"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="insertarEmpleado"
+        android:text="@string/crear"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_departamento" />
+
+    <Button
+        android:id="@+id/bt_cancelarEmpleado"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="restablecerCampos"
+        android:text="@string/cancelar"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_departamento" />
+
+    <Button
+        android:id="@+id/bt_volver16"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="84dp"
+        android:text="@string/volver"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/bt_cancelarEmpleado"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/bt_crearEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/sp_departamento" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

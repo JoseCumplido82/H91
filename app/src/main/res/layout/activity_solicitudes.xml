@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivitySolicitudes">
+
+    <ImageView
+        android:id="@+id/img_logo5"
+        android:layout_width="223dp"
+        android:layout_height="176dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_solicitudes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:gravity="center"
+        android:text="@string/solicitudes"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo5"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/img_logo"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo5" />
+
+    <Button
+        android:id="@+id/bt_vacaciones"
+        android:layout_width="206dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/vacaciones"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/txt_solicitudes"
+        app:layout_constraintStart_toStartOf="@+id/txt_solicitudes"
+        app:layout_constraintTop_toBottomOf="@+id/txt_solicitudes" />
+
+    <Button
+        android:id="@+id/bt_ausencias"
+        android:layout_width="206dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/ausencias"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_vacaciones"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_vacaciones"
+        app:layout_constraintTop_toBottomOf="@+id/bt_vacaciones" />
+
+    <Button
+        android:id="@+id/bt_osolicitudes"
+        android:layout_width="206dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/otras_solicitudes"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_ausencias"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_ausencias"
+        app:layout_constraintTop_toBottomOf="@+id/bt_ausencias" />
+
+    <Button
+        android:id="@+id/bt_volver7"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="120dp"
+        android:text="@string/volver"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/bt_osolicitudes"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="@+id/bt_osolicitudes"
+        app:layout_constraintTop_toBottomOf="@+id/bt_osolicitudes" />
+
+    <Button
+        android:id="@+id/bt_misSolicitudes"
+        android:layout_width="206dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/mis_solicitudes2"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_osolicitudes"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_osolicitudes"
+        app:layout_constraintTop_toBottomOf="@+id/bt_osolicitudes" />
+</androidx.constraintlayout.widget.ConstraintLayout>

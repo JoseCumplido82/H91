@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityAusencias">
+
+    <EditText
+        android:id="@+id/et_mostrar_fecha_picker3"
+        android:layout_width="226dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/formato_fecha"
+        android:inputType="date"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txt_seleccionadia"
+        app:layout_constraintTop_toBottomOf="@+id/txt_seleccionadia"
+        tools:ignore="UnknownId" />
+
+    <ImageButton
+        android:id="@+id/ib_obtener_fecha3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/calendario"
+        app:layout_constraintEnd_toStartOf="@+id/et_mostrar_fecha_picker3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_seleccionadia"
+        app:layout_constraintTop_toBottomOf="@+id/txt_seleccionadia"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/img_logo6"
+        android:layout_width="223dp"
+        android:layout_height="176dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_ausencias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/ausencias3"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo6"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/img_logo6"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo6" />
+
+    <TextView
+        android:id="@+id/txt_seleccionadia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/selecciona_fecha_y_hora_de_ausencia"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/txt_ausencias"
+        app:layout_constraintStart_toStartOf="@+id/txt_ausencias"
+        app:layout_constraintTop_toBottomOf="@+id/txt_ausencias" />
+
+    <EditText
+        android:id="@+id/et_mostrar_hora_picker2"
+        android:layout_width="226dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/formato_hora"
+        android:inputType="time"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/et_mostrar_fecha_picker3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_mostrar_fecha_picker3"
+        app:layout_constraintTop_toBottomOf="@+id/et_mostrar_fecha_picker3" />
+
+    <ImageButton
+        android:id="@+id/ib_obtener_hora"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/reloj"
+        app:layout_constraintEnd_toStartOf="@+id/et_mostrar_fecha_picker3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ib_obtener_fecha3"
+        app:layout_constraintTop_toBottomOf="@+id/ib_obtener_fecha3"
+        tools:ignore="ContentDescription" />
+
+    <Button
+        android:id="@+id/bt_solicitar"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/solicitar"
+        android:onClick="SolicitarAusencia"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/et_mostrar_hora_picker2"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="@+id/ib_obtener_hora"
+        app:layout_constraintTop_toBottomOf="@+id/et_mostrar_hora_picker2" />
+
+    <Button
+        android:id="@+id/bt_volver9"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/volver"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/bt_solicitar"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="@+id/bt_solicitar"
+        app:layout_constraintTop_toBottomOf="@+id/bt_solicitar" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

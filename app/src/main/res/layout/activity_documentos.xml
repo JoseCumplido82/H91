@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityDocumentos">
+
+    <ImageView
+        android:id="@+id/img_logo8"
+        android:layout_width="223dp"
+        android:layout_height="176dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_documentos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/documentos"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo8"
+        app:layout_constraintStart_toStartOf="@+id/img_logo8"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo8" />
+
+    <Button
+        android:id="@+id/bt_informacion"
+        android:layout_width="206dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/informacion"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/txt_documentos"
+        app:layout_constraintStart_toStartOf="@+id/txt_documentos"
+        app:layout_constraintTop_toBottomOf="@+id/txt_documentos" />
+
+    <Button
+        android:id="@+id/bt_plantillas"
+        android:layout_width="206dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/plantillas"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_informacion"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/bt_informacion"
+        app:layout_constraintTop_toBottomOf="@+id/bt_informacion" />
+
+    <Button
+        android:id="@+id/bt_docusubidos"
+        android:layout_width="206dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/documentos_subidos"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_plantillas"
+        app:layout_constraintStart_toStartOf="@+id/bt_plantillas"
+        app:layout_constraintTop_toBottomOf="@+id/bt_plantillas" />
+
+    <Button
+        android:id="@+id/bt_volver01"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="96dp"
+        android:text="@string/volver"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/bt_docusubidos"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/bt_docusubidos"
+        app:layout_constraintTop_toBottomOf="@+id/bt_docusubidos" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

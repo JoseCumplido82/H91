@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityMensajeNotificaciones">
+
+    <EditText
+        android:id="@+id/edt_observacionesMensaje3"
+        android:layout_width="348dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/indique_el_mensaje_de_la_notificacion"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_mensajeNotificacion"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/txt_mensajeNotificacion"
+        app:layout_constraintTop_toBottomOf="@+id/txt_mensajeNotificacion" />
+
+    <TextView
+        android:id="@+id/txt_mensajeNotificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/mensaje_notificacion2"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/edt_asuntoSolicitud2"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/edt_asuntoSolicitud2"
+        app:layout_constraintTop_toBottomOf="@+id/edt_asuntoSolicitud2" />
+
+    <EditText
+        android:id="@+id/edt_asuntoSolicitud2"
+        android:layout_width="348dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/indique_el_asunto_de_la_notifiacion"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_asunto2"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/txt_asunto2"
+        app:layout_constraintTop_toBottomOf="@+id/txt_asunto2" />
+
+    <ImageView
+        android:id="@+id/img_logo20"
+        android:layout_width="223dp"
+        android:layout_height="176dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_mensajeNotificaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/mensaje_notificacion"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo20"
+        app:layout_constraintStart_toStartOf="@+id/img_logo20"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo20" />
+
+    <TextView
+        android:id="@+id/txt_asunto2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/asunto"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/txt_mensajeNotificaciones"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/txt_mensajeNotificaciones"
+        app:layout_constraintTop_toBottomOf="@+id/txt_mensajeNotificaciones" />
+
+    <Button
+        android:id="@+id/bt_enviarNotificacion"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/enviar"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toStartOf="@+id/bt_cancelarNotificacion"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_observacionesMensaje3"
+        app:layout_constraintTop_toBottomOf="@+id/edt_observacionesMensaje3" />
+
+    <Button
+        android:id="@+id/bt_cancelarNotificacion"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:onClick="restablecerCampos"
+        android:text="@string/cancelar"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/edt_observacionesMensaje3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_observacionesMensaje3" />
+
+    <Button
+        android:id="@+id/bt_volverNotificacion"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="124dp"
+        android:text="@string/volver11"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toStartOf="@+id/bt_cancelarNotificacion"
+        app:layout_constraintHorizontal_bias="0.426"
+        app:layout_constraintStart_toEndOf="@+id/bt_enviarNotificacion"
+        app:layout_constraintTop_toBottomOf="@+id/edt_observacionesMensaje3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

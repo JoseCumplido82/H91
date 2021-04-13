@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityVerEmpleados">
+
+    <ImageView
+        android:id="@+id/img_logo14"
+        android:layout_width="223dp"
+        android:layout_height="176dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_verEmpleados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/lista_de_empleados"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo14"
+        app:layout_constraintStart_toStartOf="@+id/img_logo14"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo14" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_empleados"
+        android:layout_width="364dp"
+        android:layout_height="266dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_verEmpleados"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="@+id/txt_verEmpleados"
+        app:layout_constraintTop_toBottomOf="@+id/txt_verEmpleados" />
+
+    <Button
+        android:id="@+id/bt_volver15"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="120dp"
+        android:text="@string/volver"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/rv_empleados"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/rv_empleados"
+        app:layout_constraintTop_toBottomOf="@+id/rv_empleados" />
+
+    <ImageView
+        android:id="@+id/img_update"
+        android:layout_width="107dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="20dp"
+        android:onClick="refrescarEmpleados"
+        app:layout_constraintEnd_toEndOf="@+id/rv_empleados"
+        app:layout_constraintStart_toStartOf="@+id/rv_empleados"
+        app:layout_constraintTop_toBottomOf="@+id/rv_empleados"
+        app:srcCompat="@drawable/update"
+        android:contentDescription="@string/todo10" />
+</androidx.constraintlayout.widget.ConstraintLayout>

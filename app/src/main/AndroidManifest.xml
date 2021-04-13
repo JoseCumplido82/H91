@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.h91">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.H91">
+        <activity android:name=".ActivityMensajeNotificaciones"></activity>
+        <activity android:name=".NuevoEmpleadoActivity" />
+        <activity android:name=".MostrarDetalleEmpleadoActivity" />
+        <activity android:name=".ActivityMensajeNotificacion" />
+        <activity android:name=".ActivityCrearNotificacion" />
+        <activity android:name=".ActivityPlanificacionTiempo" />
+        <activity android:name=".ActivityBorrarEmpleado" />
+        <activity android:name=".ActivityAnadirEmpleado" />
+        <activity android:name=".ActivityVerEmpleados" />
+        <activity android:name=".ActivityGestionPlantilla" />
+        <activity android:name=".ActivityRRHH" />
+        <activity android:name=".ActivityMisSolicitudes" />
+        <activity android:name=".MostrarDetalleDocumentosActivity" />
+        <activity android:name=".ActivityDocumentosSubidos" />
+        <activity android:name=".ActivityInformacion" />
+        <activity android:name=".ActivityDocumentos" />
+        <activity android:name=".ActivityOtrasSolicitudes" />
+        <activity android:name=".ActivityAusencias" />
+        <activity android:name=".ActivityVacaciones" />
+        <activity android:name=".ActivitySolicitudes" />
+        <activity android:name=".ActivityNominas" />
+        <activity android:name=".ActivityNotificaciones" />
+        <activity android:name=".PanelEmpleado" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

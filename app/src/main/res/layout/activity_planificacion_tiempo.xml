@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityPlanificacionTiempo">
+
+    <ImageView
+        android:id="@+id/img_logo17"
+        android:layout_width="223dp"
+        android:layout_height="176dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_PlanificacionTiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/planificacion_de_tiempo2"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo17"
+        app:layout_constraintStart_toStartOf="@+id/img_logo17"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo17" />
+
+    <Button
+        android:id="@+id/bt_verPlanificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/ir_a_planificacion_de_tiempo"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/txt_PlanificacionTiempo"
+        app:layout_constraintStart_toStartOf="@+id/txt_PlanificacionTiempo"
+        app:layout_constraintTop_toBottomOf="@+id/txt_PlanificacionTiempo" />
+
+    <Button
+        android:id="@+id/bt_volver18"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/volver"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/bt_verPlanificacion"
+        app:layout_constraintStart_toStartOf="@+id/bt_verPlanificacion"
+        app:layout_constraintTop_toBottomOf="@+id/bt_verPlanificacion" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
