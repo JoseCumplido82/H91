@@ -67,6 +67,11 @@ public class Empleado {
         this.nombre = nombre;
         this.apellido = apellido;
     }
+    public Empleado(int idDepartamento, String usuario, Date fecha_incorporacion) {
+        this.idDepartamento = idDepartamento;
+        this.usuario = usuario;
+        this.fecha_incorporacion = fecha_incorporacion;
+    }
 
     public Empleado(int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion,char sanciones, Date fecha_salida) {
         this.idDepartamento = idDepartamento;
@@ -213,8 +218,8 @@ public class Empleado {
         this.fecha_incorporacion = fecha_incorporacion;
     }
 
-    public Date getFecha_salida() {
-        return fecha_salida;
+    public java.sql.Date getFecha_salida() {
+        return (java.sql.Date)fecha_salida;
     }
 
     public void setFecha_salida(Date fecha_salida) {

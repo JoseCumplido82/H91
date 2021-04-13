@@ -1,14 +1,10 @@
 package com.example.h91;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,6 +17,7 @@ import com.example.h91.Clases.Empleado;
 import com.example.h91.controladores.DepartamentoController;
 import com.example.h91.controladores.EmpleadoController;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -95,26 +92,32 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                     mostrarToast("selecciona un departamento");
                     return;
                 }
-                Empleado e =null;
+                Empleado empleado =null;
                 try {
+
                     String dni = String.valueOf(edt_dni.getText());
                     String fechaIncorporacion =String.valueOf(edt_fechaIncorporacion.getText());
-                    String fechaSalida = String.valueOf(edt_fechaFinContrato.getText());
-                    DateFormat format= new SimpleDateFormat("MMMM d, yyyy");
-                    Date fechaIncorporacionDate = format.parse(fechaIncorporacion);
-                    Date fechaSalidaDate = format.parse(fechaSalida);
-                    e = new Empleado(dseleccionado.getId(), dni, fechaIncorporacionDate, fechaSalidaDate);
+                    //String fechaSalida = String.valueOf(edt_fechaFinContrato.getText());
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    Date fechaIncorporacionFormateada = new Date(sdf.parse(fechaIncorporacion).getTime());
+                    //Date fechaSalidaFormateada = new Date(sdf.parse(fechaSalida).getTime());
+
+
+                    empleado = new Empleado(dseleccionado.getIdResponsable(), dni, fechaIncorporacionFormateada);
+
                 }catch (Exception e1)
                 {
                     mostrarToast("error, revisa los datos introducidos");
                 }
                 //insertar empleado
-                boolean insertadoOK= EmpleadoController.InsertarEmpleado(e);
+                boolean insertadoOK= EmpleadoController.InsertarEmpleado(empleado);
                 if(insertadoOK)
                 {
                     mostrarToast("empleado insertado correctamente");
                     Intent intent = new Intent();
-                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, (Parcelable) e);
+                    //ERROR AQUI EN SERIALIZABLE NO FUNCIONA LA APP SI NO ESTA EN SERIALIZABLE, PARCELABLE O STRING.VALUEOF()
+                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, (Serializable) empleado);
                     setResult(RESULT_OK, intent);
                     finish();
                 }

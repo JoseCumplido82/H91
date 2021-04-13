@@ -66,21 +66,16 @@ public class EmpleadoDB {
         }
         //------------
         try{
-           String ordensql = "INSERT INTO empleado (idDepartamento, usuario, pass, nombre, apellido, domicilio, correo, telefono, fecha_incorporacion) VALUES (?,?,?,?,?,?,?,?,?);";
+           String ordensql = "INSERT INTO empleado (idDepartamento, usuario, fecha_incorporacion) VALUES (?, ?, ?);";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, empleado.getIdDepartamento());
             pst.setString(2, empleado.getUsuario());
-            pst.setString(3, empleado.getPass());
-            pst.setString(4, empleado.getNombre());
-            pst.setString(5, empleado.getApellido());
-            pst.setString(6, empleado.getDomicilio());
-            pst.setString(7, empleado.getCorreo());
-            pst.setString(8, empleado.getTelefono());
-            pst.setDate(9, empleado.getFecha_incorporacion());
+            pst.setDate(3, empleado.getFecha_incorporacion());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();
-            if(filasAfectadas > 0){
+            if(filasAfectadas > 0)
+            {
                 return true;
             }
             else{

@@ -29,7 +29,7 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity {
             txt_detalle_apellidoe.setText(e.getApellido());
             txt_detalle_departamentoe.setText("departamento" + e.getIdDepartamento());
 
-
+        //ERRORES NO SE MUESTRA ESTE ACTIVITY
         }
 
     }
