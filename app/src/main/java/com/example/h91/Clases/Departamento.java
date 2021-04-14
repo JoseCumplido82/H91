@@ -1,6 +1,11 @@
 package com.example.h91.Clases;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Departamento implements Serializable {
     //atributos
@@ -54,6 +59,20 @@ public class Departamento implements Serializable {
     }
 
 //
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Departamento)) return false;
+        Departamento that = (Departamento) o;
+        return id == that.id;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
 
     //to string

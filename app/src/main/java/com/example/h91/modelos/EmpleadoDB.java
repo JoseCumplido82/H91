@@ -40,6 +40,7 @@ public class EmpleadoDB {
                 String telefono = resultado.getString("telefono");
                 //posible error con date, cambiar la importacion de util a sql
                 Date fecha_incorporacion = resultado.getDate("fecha_incorporacion");
+
                 Date fecha_salida = resultado.getDate("fecha_salida");
                 //CORREGIR
                 Empleado empleado= new Empleado(id, idDepartamento, usuario, pass, nombre, apellido, domicilio, correo, telefono, fecha_incorporacion, fecha_salida);
@@ -66,13 +67,11 @@ public class EmpleadoDB {
         }
         //------------
         try{
-           String ordensql = "INSERT INTO `empleado`(`idDepartamento`, `usuario`, `pass`,`fecha_incorporacion`) VALUES (?, ?, ?, ?);";
-           String pass= "Madrid2021";
+           String ordensql = "INSERT INTO empleado (idDepartamento, usuario, fecha_incorporacion) VALUES (?, ?, ?);";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, empleado.getIdDepartamento());
             pst.setString(2, empleado.getUsuario());
-            pst.setString(3, pass);
-            pst.setDate(4, empleado.getFecha_incorporacion());
+            pst.setDate(3, empleado.getFecha_incorporacion());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();

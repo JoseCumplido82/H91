@@ -1,10 +1,8 @@
 package com.example.h91.Clases;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.h91.MostrarDetalleEmpleadoActivity;
 import com.example.h91.R;
-import java.io.ByteArrayOutputStream;
-import java.io.Serializable;
+
 
 import static com.example.h91.NuevoEmpleadoActivity.EXTRA_OBJETO_EMPLEADO;
 

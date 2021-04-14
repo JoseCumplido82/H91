@@ -1,7 +1,13 @@
 package com.example.h91.Clases;
 
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.example.h91.ActivityAnadirEmpleado;
+
 import java.io.Serializable;
 import java.sql.Date;
+//import java.util.Date;
 
 public class Empleado implements Serializable {
 
@@ -35,39 +41,28 @@ public class Empleado implements Serializable {
         this.fecha_salida = null;
     }
 
-    public Empleado(int id, int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion, Date fecha_salida) {
-        this.id = id;
-        this.idDepartamento = idDepartamento;
-        this.usuario = usuario;
-        this.pass = pass;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.domicilio = domicilio;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.fecha_incorporacion = fecha_incorporacion;
-        this.fecha_salida = null;
-    }
-
-    public Empleado(int id, int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion) {
-        this.id = id;
-        this.idDepartamento = idDepartamento;
-        this.usuario = usuario;
-        this.pass = pass;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.domicilio = domicilio;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.fecha_incorporacion = fecha_incorporacion;
+    public Empleado() {
+        this.id = 0;
+        this.idDepartamento = 0;
+        this.usuario = "";
+        this.pass = "";
+        this.nombre = "";
+        this.apellido = "";
+        this.domicilio = "";
+        this.correo = "";
+        this.telefono = "";
+        this.fecha_incorporacion = null;
+        this.sanciones=0;
         this.fecha_salida = null;
     }
 
     public Empleado(int idDepartamento, String usuario, Date fecha_incorporacion) {
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
+        this.pass="Madrid2021";
         this.fecha_incorporacion = fecha_incorporacion;
     }
+
 
     public Empleado(int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion,char sanciones, Date fecha_salida) {
         this.idDepartamento = idDepartamento;
@@ -83,7 +78,9 @@ public class Empleado implements Serializable {
         this.fecha_salida = null;
     }
 
-    public Empleado(String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion, Date fecha_salida) {
+    public Empleado(int id, int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion, Date fecha_salida) {
+        this.id=id;
+        this.idDepartamento = idDepartamento;
         this.usuario = usuario;
         this.pass = pass;
         this.nombre = nombre;
@@ -92,34 +89,7 @@ public class Empleado implements Serializable {
         this.correo = correo;
         this.telefono = telefono;
         this.fecha_incorporacion = fecha_incorporacion;
-        this.fecha_salida = null;
-    }
-    public Empleado(Date fecha_incorporacion) {
-        this.id = 0;
-        this.idDepartamento = 0;
-        this.usuario = "";
-        this.pass = "";
-        this.nombre = "";
-        this.apellido = "";
-        this.domicilio = "";
-        this.correo = "";
-        this.telefono = "";
-        this.fecha_incorporacion = fecha_incorporacion;
         this.sanciones=0;
-        this.fecha_salida = null;
-    }
-
-    public Empleado(int idDepartamento, String usuario, Date fecha_incorporacion, Date fecha_salida) {
-        this.id=0;
-        this.idDepartamento = idDepartamento;
-        this.usuario = usuario;
-        this.pass="";
-        this.nombre="";
-        this.apellido="";
-        this.domicilio="";
-        this.correo="";
-        this.telefono="";
-        this.fecha_incorporacion = fecha_incorporacion;
         this.fecha_salida = null;
     }
 
@@ -244,4 +214,5 @@ public class Empleado implements Serializable {
                 ", fecha_incorporacion=" + fecha_incorporacion +
                 '}';
     }
+
 }

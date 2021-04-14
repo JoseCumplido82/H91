@@ -48,6 +48,7 @@
         android:layout_width="160dp"
         android:layout_height="60dp"
         android:layout_marginTop="36dp"
+        android:onClick="borrarEmpleado"
         android:text="@string/eliminar"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/sp_empleadoEliminar"

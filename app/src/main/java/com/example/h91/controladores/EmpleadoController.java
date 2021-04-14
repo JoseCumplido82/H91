@@ -74,25 +74,26 @@ public class EmpleadoController {
         }
     }
 
-    public static boolean InsertarEmpleado(Empleado e){
-        FutureTask t = new FutureTask(new TareaInsertarEmpleado(e));
+    public static boolean InsertarEmpleado(Empleado em){
+        FutureTask t = new FutureTask(new TareaInsertarEmpleado(em));
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(t);
-        boolean insercionOK= false;
+        boolean insercionOK = false;
         try {
-            insercionOK = (boolean)t.get();
+            insercionOK = (boolean) t.get();
             es.shutdown();
             try {
-                if(!es.awaitTermination(800,TimeUnit.MILLISECONDS)){
+                if (!es.awaitTermination(800, TimeUnit.MILLISECONDS)) {
                     es.shutdownNow();
                 }
-            }catch (InterruptedException e1){
+            } catch (InterruptedException e) {
                 es.shutdownNow();
             }
-        }catch (ExecutionException e1){
-            e1.printStackTrace();
-        }catch (InterruptedException e1){
-            e1.printStackTrace();
+        } catch (
+                ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         finally {
             return insercionOK;

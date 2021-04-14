@@ -21,6 +21,8 @@ import com.example.h91.controladores.EmpleadoController;
 
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,6 +55,8 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                 sp_departamento.setAdapter(adapter);
             }
 
+
+
         }
         //boton cerrar añadir empleado
         Button bt_volver16 = (Button) findViewById(R.id.bt_volver16);
@@ -82,53 +86,44 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
 
     }
 
-
-
-    public void insertarEmpleado(View view){
-        AlertDialog.Builder alerta1= new AlertDialog.Builder(this);
-        alerta1.setTitle("quieres guardar el empleado");
+    public void insertarEmpleado(View view) {
+        AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
+        alerta1.setTitle("quieres guardar el empleado?");
         alerta1.setPositiveButton("si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(dseleccionado==null)
+                if(dseleccionado == null)
                 {
                     mostrarToast("selecciona un departamento");
                     return;
                 }
-                Empleado empleado=null;
-                try {
+                Empleado em = null;
+                try{
+                    String usuario= String.valueOf(edt_dni.getText().toString());
+                   // String fechaIncorporacion= String.valueOf(edt_fechaIncorporacion.getText());
+                    Date fechaIncorporacion2= (Date) edt_fechaIncorporacion.getText();
 
-                    String dni = String.valueOf(edt_dni.getText());
-                    String fechaIncorporacion =String.valueOf(edt_fechaIncorporacion.getText());
-                    //String fechaSalida = String.valueOf(edt_fechaFinContrato.getText());
+                    em = new Empleado(dseleccionado.getId(), usuario, (java.sql.Date) fechaIncorporacion2);
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    Date fechaIncorporacionFormateada = new Date(sdf.parse(fechaIncorporacion).getTime());
-                    //Date fechaSalidaFormateada = new Date(sdf.parse(fechaSalida).getTime());
-
-
-                    empleado = new Empleado(dseleccionado.getId(), dni, (java.sql.Date) fechaIncorporacionFormateada);
-
-                }catch (Exception e1)
+                }catch (Exception e)
                 {
                     mostrarToast("error, revisa los datos introducidos");
                 }
-                //insertar empleado
-                boolean insertadoOK= EmpleadoController.InsertarEmpleado(empleado);
+                //insertar Empleado
+                boolean insertadoOK = EmpleadoController.InsertarEmpleado(em);
                 if(insertadoOK)
                 {
                     mostrarToast("empleado insertado correctamente");
                     Intent intent = new Intent();
-                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, empleado);
+                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, em);
                     setResult(RESULT_OK, intent);
-                    finish();
-                    //no llega a crear el empleado el valor recogido por empleado.getidDepartamento siempre es nulo
-                    Log.i("empleado", "llega a crear el empleado");
+                    startActivity(intent);
+                    //finish();
+                    Log.i("recoge", "recoge" + " " + em);
                 }
                 else{
                     mostrarToast("no se pudo crear el empleado");
-                    Log.i("recoge", "recoge" + empleado + empleado.getUsuario()+ empleado.getFecha_incorporacion());
-                    Log.i("empleado", "no llega a crear el empleado");
+                    Log.i("recoge", "recoge" + " " + em);
                 }
             }
         });
