@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.h91.Clases.Empleado;
@@ -24,13 +25,16 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent != null)
         {
-            Empleado e = (Empleado) intent.getSerializableExtra(NuevoEmpleadoActivity.EXTRA_OBJETO_EMPLEADO);
-            txt_detalle_nombree.setText(e.getNombre());
-            txt_detalle_apellidoe.setText(e.getApellido());
-            txt_detalle_departamentoe.setText("departamento" + e.getIdDepartamento());
+            Empleado e = (Empleado) intent.getSerializableExtra(ActivityAnadirEmpleado.EXTRA_OBJETO_EMPLEADO);
 
+
+           // txt_detalle_nombree.setText(e.getNombre());
+           // txt_detalle_apellidoe.setText(e.getApellido());
+           // txt_detalle_departamentoe.setText("departamento" + e.getIdDepartamento());
+            Log.i("empleado", "no se muestran los empleados por " + e);
         //ERRORES NO SE MUESTRA ESTE ACTIVITY
         }
+
 
     }
 }

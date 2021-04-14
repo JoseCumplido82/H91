@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".NuevoEmpleadoActivity">
 
+    <EditText
+        android:id="@+id/edt_fechaIncorporacion3"
+        android:layout_width="284dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
+        android:autofillHints=""
+        android:clickable="true"
+        android:ems="10"
+        android:focusable="true"
+        android:gravity="center"
+        android:hint="@string/introduce_fecha_de_incorporacion"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/edt_nuevoe_nombre"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="@+id/edt_nuevoe_nombre"
+        app:layout_constraintTop_toBottomOf="@+id/edt_nuevoe_nombre" />
+
     <ImageView
         android:id="@+id/img_empleado"
         android:layout_width="220dp"
@@ -43,29 +60,15 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_nuevo_empleado"
         android:autofillHints="" />
 
-    <EditText
-        android:id="@+id/edt_nuevoe_apellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/apellidos"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/edt_nuevoe_nombre"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/edt_nuevoe_nombre"
-        app:layout_constraintTop_toBottomOf="@+id/edt_nuevoe_nombre"
-        android:autofillHints="" />
-
     <Spinner
         android:id="@+id/sp_nuevoe_departamento"
         android:layout_width="288dp"
         android:layout_height="57dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/edt_nuevoe_apellido"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="@+id/edt_nuevoe_apellido"
-        app:layout_constraintTop_toBottomOf="@+id/edt_nuevoe_apellido" />
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="@+id/edt_fechaIncorporacion3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_fechaIncorporacion3"
+        app:layout_constraintTop_toBottomOf="@+id/edt_fechaIncorporacion3" />
 
     <Button
         android:id="@+id/bt_guardare"

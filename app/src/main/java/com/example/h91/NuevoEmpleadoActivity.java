@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -22,7 +23,9 @@ import com.example.h91.controladores.DepartamentoController;
 import com.example.h91.controladores.EmpleadoController;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NuevoEmpleadoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -32,7 +35,7 @@ public class NuevoEmpleadoActivity extends AppCompatActivity implements AdapterV
     ArrayAdapter<Departamento> adapter=null;
     ArrayList<Departamento> departamentos= null;
     EditText edt_nuevoe_nombre=null;
-
+    EditText edt_fechaIncorporacion3=null;
     EditText edt_nuevoe_apellido=null;
 
 
@@ -41,8 +44,7 @@ public class NuevoEmpleadoActivity extends AppCompatActivity implements AdapterV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_empleado);
         edt_nuevoe_nombre = findViewById(R.id.edt_nuevoe_nombre);
-
-        edt_nuevoe_apellido = findViewById(R.id.edt_nuevoe_apellido);
+        edt_fechaIncorporacion3 = findViewById(R.id.edt_fechaIncorporacion3);
         sp_nuevoe_departamento = (Spinner)findViewById(R.id.sp_nuevoe_departamento);
         if(sp_nuevoe_departamento!=null){
             sp_nuevoe_departamento.setOnItemSelectedListener(this);
@@ -72,9 +74,17 @@ public class NuevoEmpleadoActivity extends AppCompatActivity implements AdapterV
                 }
                 Empleado empleado = null;
                 try {
-                    String nombre= String.valueOf(edt_nuevoe_nombre.getText());
-                    String apellido= String.valueOf(edt_nuevoe_apellido.getText());
-                    empleado = new Empleado(dseleccionado.getId(), nombre, apellido);
+
+                    String usuario = String.valueOf(edt_nuevoe_nombre.getText());
+                    String fechaIncorporacion =String.valueOf(edt_fechaIncorporacion3.getText());
+                    //String fechaSalida = String.valueOf(edt_fechaFinContrato.getText());
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    Date fechaIncorporacionFormateada = new Date(sdf.parse(fechaIncorporacion).getTime());
+                    //Date fechaSalidaFormateada = new Date(sdf.parse(fechaSalida).getTime());
+
+
+                    empleado = new Empleado(dseleccionado.getId(), usuario, (java.sql.Date) fechaIncorporacionFormateada);
 
                 }catch (Exception e)
                 {
@@ -87,11 +97,12 @@ public class NuevoEmpleadoActivity extends AppCompatActivity implements AdapterV
                     mostrarToast("medicamento insertado correctamente");
                     Intent intent = new Intent();
                     //fallo aqui
-                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, (Serializable) empleado);
+                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, (Parcelable) empleado);
                     setResult(RESULT_OK, intent);
                     finish();
                 }
                 else{
+                    Log.i("empleado", "no crea el empleado recoge " + empleado);
                     mostrarToast("no se pudo crear el empleado");
                 }
             }

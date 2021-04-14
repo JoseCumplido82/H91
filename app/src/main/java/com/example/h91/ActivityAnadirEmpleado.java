@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,15 +19,15 @@ import com.example.h91.Clases.Empleado;
 import com.example.h91.controladores.DepartamentoController;
 import com.example.h91.controladores.EmpleadoController;
 
+
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ActivityAnadirEmpleado extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    public static final String EXTRA_OBJETO_EMPLEADO= "empleado";
+    public static final String EXTRA_OBJETO_EMPLEADO= "empleados";
     Spinner sp_departamento=null;
     EditText edt_dni =null;
     Departamento dseleccionado=null;
@@ -88,11 +90,12 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
         alerta1.setPositiveButton("si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(dseleccionado==null){
+                if(dseleccionado==null)
+                {
                     mostrarToast("selecciona un departamento");
                     return;
                 }
-                Empleado empleado =null;
+                Empleado empleado=null;
                 try {
 
                     String dni = String.valueOf(edt_dni.getText());
@@ -104,7 +107,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                     //Date fechaSalidaFormateada = new Date(sdf.parse(fechaSalida).getTime());
 
 
-                    empleado = new Empleado(dseleccionado.getIdResponsable(), dni, fechaIncorporacionFormateada);
+                    empleado = new Empleado(dseleccionado.getId(), dni, (java.sql.Date) fechaIncorporacionFormateada);
 
                 }catch (Exception e1)
                 {
@@ -116,13 +119,16 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                 {
                     mostrarToast("empleado insertado correctamente");
                     Intent intent = new Intent();
-                    //ERROR AQUI EN SERIALIZABLE NO FUNCIONA LA APP SI NO ESTA EN SERIALIZABLE, PARCELABLE O STRING.VALUEOF()
-                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, (Serializable) empleado);
+                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, empleado);
                     setResult(RESULT_OK, intent);
                     finish();
+                    //no llega a crear el empleado el valor recogido por empleado.getidDepartamento siempre es nulo
+                    Log.i("empleado", "llega a crear el empleado");
                 }
                 else{
                     mostrarToast("no se pudo crear el empleado");
+                    Log.i("recoge", "recoge" + empleado + empleado.getUsuario()+ empleado.getFecha_incorporacion());
+                    Log.i("empleado", "no llega a crear el empleado");
                 }
             }
         });

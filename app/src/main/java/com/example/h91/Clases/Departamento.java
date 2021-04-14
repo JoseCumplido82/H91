@@ -14,12 +14,14 @@ public class Departamento implements Serializable {
         this.idResponsable = idResponsable;
         this.nombre = nombre;
     }
-
-    public Departamento(int idResponsable, String nombre) {
-        this.idResponsable = idResponsable;
+    public Departamento(int id, String nombre) {
+        this.id = id;
+        this.idResponsable=0;
         this.nombre = nombre;
     }
-
+    public Departamento(int id){
+        this.id=id;
+    }
     public Departamento() {
         this.id = 0;
         this.idResponsable = 0;
@@ -59,6 +61,6 @@ public class Departamento implements Serializable {
 
     @Override
     public String toString() {
-        return "Dpto. " + nombre ;
+        return "Dpto. " + nombre + " " +id;
     }
 }

@@ -16,7 +16,7 @@ public class listaEmpleadosAdapter extends RecyclerView.Adapter<EmpleadoViewHold
     private Context c;
     private ArrayList <Empleado> listaEmpleados;
     private LayoutInflater mInflater;
-
+    private Departamento departamento;
 
     public listaEmpleadosAdapter(Context c, ArrayList<Empleado> listaEmpleados) {
         this.c = c;
@@ -49,6 +49,7 @@ public class listaEmpleadosAdapter extends RecyclerView.Adapter<EmpleadoViewHold
     }
 
 
+
     @NonNull
     @Override
     public EmpleadoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -59,9 +60,10 @@ public class listaEmpleadosAdapter extends RecyclerView.Adapter<EmpleadoViewHold
     @Override
     public void onBindViewHolder(@NonNull EmpleadoViewHolder holder, int position) {
         Empleado empleadoActual = listaEmpleados.get(position);
-        holder.txt_nombreEmpleado4.setText("Nombre del empleado: " + empleadoActual.getNombre());
-        holder.txt_apellidosEmpleado.setText("Apellidos: " + empleadoActual.getApellido());
-        holder.txt_departamenoEmpleado.setText(String.valueOf("Departamento: " + empleadoActual.getIdDepartamento()));
+        //String nombreDepartamento= departamento.getNombre();
+        holder.txt_nombreEmpleado4.setText(empleadoActual.getNombre()); //nombre del empleado "Nombre del empleado: " +
+        holder.txt_apellidosEmpleado.setText(empleadoActual.getApellido()); //apellido del empleado  "Apellidos: " +
+        holder.txt_departamenoEmpleado.setText(("Dpto. " + empleadoActual.getIdDepartamento())); // departamento se muestra id pero tiene que mostrar el nombre del departamento
 
     }
     @Override

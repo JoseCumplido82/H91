@@ -41,9 +41,10 @@ public class EmpleadoViewHolder extends RecyclerView.ViewHolder implements View.
         Log.i("empleado","has seleccionado: " + empleado.toString());
         lcAdapter.notifyDataSetChanged();
         Intent intent = new Intent(lcAdapter.getC(), MostrarDetalleEmpleadoActivity.class);
-        Empleado e1 = new Empleado(empleado.getIdDepartamento(), empleado.getNombre(), empleado.getApellido());
+        Empleado e1 = new Empleado(empleado.getIdDepartamento(), empleado.getNombre());
+
         //fallo aqui
-        intent.putExtra(EXTRA_OBJETO_EMPLEADO, String.valueOf(e1));
+        intent.putExtra(EXTRA_OBJETO_EMPLEADO, e1);
         lcAdapter.getC().startActivity(intent);
     }
 }

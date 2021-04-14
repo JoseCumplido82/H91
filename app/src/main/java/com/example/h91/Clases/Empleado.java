@@ -1,8 +1,9 @@
 package com.example.h91.Clases;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
 
-public class Empleado {
+public class Empleado implements Serializable {
 
     //atributos
     private int id;
@@ -62,11 +63,6 @@ public class Empleado {
         this.fecha_salida = null;
     }
 
-    public Empleado(int idDepartamento, String nombre, String apellido) {
-        this.idDepartamento = idDepartamento;
-        this.nombre = nombre;
-        this.apellido = apellido;
-    }
     public Empleado(int idDepartamento, String usuario, Date fecha_incorporacion) {
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
@@ -125,6 +121,11 @@ public class Empleado {
         this.telefono="";
         this.fecha_incorporacion = fecha_incorporacion;
         this.fecha_salida = null;
+    }
+
+    public Empleado(int idDepartamento, String nombre) {
+        this.idDepartamento=idDepartamento;
+        this.nombre=nombre;
     }
 
     //getter y setter
@@ -210,16 +211,16 @@ public class Empleado {
         this.telefono = telefono;
     }
 
-    public java.sql.Date getFecha_incorporacion() {
-        return (java.sql.Date) fecha_incorporacion;
+    public Date getFecha_incorporacion() {
+        return  fecha_incorporacion;
     }
 
     public void setFecha_incorporacion(Date fecha_incorporacion) {
         this.fecha_incorporacion = fecha_incorporacion;
     }
 
-    public java.sql.Date getFecha_salida() {
-        return (java.sql.Date)fecha_salida;
+    public Date getFecha_salida() {
+        return fecha_salida;
     }
 
     public void setFecha_salida(Date fecha_salida) {
