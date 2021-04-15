@@ -33,7 +33,9 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     EditText etFecha;
     ImageButton ibObtenerFecha2;
     TextView edt_dias;
+    TextView txt_diasPedidos;
     Button bt_solicitar3;
+    TextView edt_diasSolicitados;
     private static int valorVacaciones=0;
 
     @Override
@@ -52,8 +54,8 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
         ibObtenerFecha2 = (ImageButton) findViewById(R.id.ib_obtener_fecha2);
         //Evento setOnClickListener - clic
         ibObtenerFecha2.setOnClickListener(this);
-
-
+        edt_diasSolicitados=(EditText)findViewById(R.id.edt_diasSolicitados);
+        txt_diasPedidos=(TextView)findViewById(R.id.txt_diasPedidos); 
         //boton cerrar notificaciones
         Button bt_volver8 = (Button) findViewById(R.id.bt_volver8);
         bt_volver8.setOnClickListener(new View.OnClickListener() {
@@ -68,10 +70,18 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
 
     public void solicitarVacaciones(View view) {
 
-            etFecha.getText().toString();
+         String fecha=   etFecha.getText().toString();
              mostrarToast("SOLICITUD ENVIADA");
             edt_dias.setText(String.valueOf(++valorVacaciones));
-            //Intent intent = new Intent(view.getContext(), ActivitySolicitudes.class);
+        txt_diasPedidos.setText(fecha+edt_diasSolicitados.getText().toString());
+            
+            Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, fecha);
+        sendIntent.setType("text/plain");
+
+            Intent shareIntent= Intent.createChooser(sendIntent, null);
+            startActivity(shareIntent);
             //startActivityForResult(intent,0);
             //finish();
 
@@ -108,6 +118,7 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
         }, anio, mes, dia);
         //Muestro el widget
         recogerFecha.show();
+        txt_diasPedidos.setText("fecha de vuelta de vacaciones el dia " + dia+edt_diasSolicitados.getText().toString());
 
     }
 

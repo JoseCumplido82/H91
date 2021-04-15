@@ -123,4 +123,5 @@
     <string name="indique_el_mensaje_de_la_notificacion">Indique el mensaje de la notificacion</string>
     <string name="indique_el_asunto_de_la_notifiacion">Indique el asunto de la notifiacion</string>
     <string name="todo10">TODO</string>
+    <string name="button23">Button</string>
 </resources>

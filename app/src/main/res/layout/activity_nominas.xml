@@ -78,11 +78,11 @@
         android:id="@+id/bt_volver6"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="132dp"
         android:text="@string/volver"
         app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="@+id/et_mostrar_fecha_picker"
-        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/et_mostrar_fecha_picker"
         app:layout_constraintTop_toBottomOf="@+id/et_mostrar_fecha_picker" />
 
@@ -90,12 +90,23 @@
         android:id="@+id/bt_verNomina"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="132dp"
         android:background="@drawable/iconodescarga"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/et_mostrar_fecha_picker"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/ib_obtener_fecha"
         app:layout_constraintTop_toBottomOf="@+id/et_mostrar_fecha_picker" />
+
+    <Button
+        android:id="@+id/bt_descargaprueba"
+        android:layout_width="94dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/iconodescarga"
+        android:onClick="descargaPrueba"
+        app:layout_constraintEnd_toEndOf="@+id/bt_volver6"
+        app:layout_constraintStart_toStartOf="@+id/bt_volver6"
+        app:layout_constraintTop_toBottomOf="@+id/bt_volver6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

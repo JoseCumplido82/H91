@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -156,9 +157,18 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
 
     public void SolicitarAusencia(View view) {
 
-        etFecha.getText().toString();
-        etHora.getText().toString();
+     String fecha=   etFecha.getText().toString();
+     String hora=   etHora.getText().toString();
+        String fechaYHora= hora + fecha;
         mostrarToast("HORA SOLICITADA " + etHora.getText().toString() + " DEL DIA " + etFecha.getText().toString());
+        Log.i("logmostrado", "Muestro la fecha y la hora " + etFecha + etHora);
+        Intent sendIntent= new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, fechaYHora);
+        sendIntent.setType("text/plain");
+        Intent shareintent= Intent.createChooser(sendIntent, null);
+        startActivity(shareintent);
+
         finish();
 
     }
