@@ -67,11 +67,12 @@ public class EmpleadoDB {
         }
         //------------
         try{
-           String ordensql = "INSERT INTO empleado (idDepartamento, usuario, fecha_incorporacion) VALUES (?, ?, ?);";
+           String ordensql = "INSERT INTO empleado (idDepartamento, usuario, pass, fecha_incorporacion) VALUES (?, ?, ?, ?);";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, empleado.getIdDepartamento());
             pst.setString(2, empleado.getUsuario());
-            pst.setDate(3, empleado.getFecha_incorporacion());
+            pst.setString(3, empleado.getPass());
+            pst.setDate(4, empleado.getFecha_incorporacion());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();

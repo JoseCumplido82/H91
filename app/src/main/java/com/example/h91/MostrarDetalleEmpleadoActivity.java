@@ -28,15 +28,14 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity {
         {
 
             Empleado empleado= (Empleado) intent.getSerializableExtra(ActivityAnadirEmpleado.EXTRA_OBJETO_EMPLEADO);
-
+            //txt_detalle_nombree.setText("el nombre es" );
+            //txt_detalle_apellidoe.setText("el apellido es: ");
+            //txt_detalle_departamentoe.setText("el departamento es: ");
 
             //RECIBE EL OBJETO EMPLEADO COMO NULL
-            String nombre= "";
-               nombre= empleado.getNombre();
-               txt_detalle_nombree.setText(nombre);
-           // txt_detalle_nombree.setText(e.getNombre());
-           // txt_detalle_apellidoe.setText(e.getApellido());
-           // txt_detalle_departamentoe.setText("departamento" + e.getIdDepartamento());
+            txt_detalle_nombree.setText(empleado.getNombre());
+            txt_detalle_apellidoe.setText(empleado.getApellido());
+            txt_detalle_departamentoe.setText("departamento" + empleado.getIdDepartamento());
             Log.i("empleado", "no se muestran los empleados por " + empleado);
         //ERRORES NO SE MUESTRA ESTE ACTIVITY
         }

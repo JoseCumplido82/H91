@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.h91.Clases.Departamento;
@@ -36,7 +37,10 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
     ArrayAdapter<Departamento> adapter=null;
     ArrayList<Departamento> departamentos=null;
     EditText edt_fechaIncorporacion=null;
-    EditText edt_fechaFinContrato=null;
+   // EditText edt_fechaFinContrato=null;
+    TextView txt_passEmpleado=null;
+    String pass= "Madrid2021*";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,8 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
 
         edt_dni =(EditText) findViewById(R.id.edt_dni);
         edt_fechaIncorporacion= (EditText) findViewById(R.id.edt_fechaIncorporacion);
-        edt_fechaFinContrato=(EditText)findViewById(R.id.edt_fechaFinContrato);
+        txt_passEmpleado = (TextView)findViewById(R.id.txt_passEmpleado);
+        //edt_fechaFinContrato=(EditText)findViewById(R.id.edt_fechaFinContrato);
         sp_departamento = (Spinner)findViewById(R.id.sp_departamento);
         if(sp_departamento!=null){
             sp_departamento.setOnItemSelectedListener(this);
@@ -80,7 +85,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
     public void restablecerCampos(View view){
         edt_dni.setText("");
         edt_fechaIncorporacion.setText("");
-        edt_fechaFinContrato.setText("");
+        //edt_fechaFinContrato.setText("");
         mostrarToast("Los campos se han reiniciado");
 
 
@@ -99,11 +104,10 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                 }
                 Empleado em = null;
                 try{
-                    String usuario= String.valueOf(edt_dni.getText().toString());
+                    String usuario= String.valueOf(edt_dni.getText());
                    // String fechaIncorporacion= String.valueOf(edt_fechaIncorporacion.getText());
                     Date fechaIncorporacion2= (Date) edt_fechaIncorporacion.getText();
-
-                    em = new Empleado(dseleccionado.getId(), usuario, (java.sql.Date) fechaIncorporacion2);
+                    em = new Empleado(dseleccionado.getId(), usuario, pass,(java.sql.Date) fechaIncorporacion2);
 
                 }catch (Exception e)
                 {
@@ -133,7 +137,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
             public void onClick(DialogInterface dialog, int which) {
                 edt_dni.setText("");
                 edt_fechaIncorporacion.setText("");
-                edt_fechaFinContrato.setText("");
+               // edt_fechaFinContrato.setText("");
                 mostrarToast("Los campos se han reiniciado");
             }
         });

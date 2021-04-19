@@ -55,11 +55,25 @@
         android:id="@+id/img_update"
         android:layout_width="107dp"
         android:layout_height="64dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/todo10"
         android:onClick="refrescarEmpleados"
         app:layout_constraintEnd_toEndOf="@+id/rv_empleados"
+        app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="@+id/rv_empleados"
         app:layout_constraintTop_toBottomOf="@+id/rv_empleados"
-        app:srcCompat="@drawable/update"
-        android:contentDescription="@string/todo10" />
+        app:srcCompat="@drawable/update" />
+
+    <ImageView
+        android:id="@+id/img_insert"
+        android:layout_width="107dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="TODO"
+        android:onClick="nuevoEmpleado"
+        app:layout_constraintEnd_toStartOf="@+id/img_update"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_empleados"
+        app:srcCompat="@drawable/insertempleado" />
 </androidx.constraintlayout.widget.ConstraintLayout>

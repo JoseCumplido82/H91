@@ -29,12 +29,13 @@ public class ActivityVerEmpleados extends AppCompatActivity {
     private RecyclerView rv_empleados;
     private listaEmpleadosAdapter empleadosAdapter;
     private ArrayList<Empleado> empleados;
-    ImageView img_update=null;
+    private ImageView img_update=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_empleados);
+        //-------------------------------------------------
         img_update=(ImageView)findViewById(R.id.img_update);
         empleados= EmpleadoController.obtenerEmpleados();
         if(empleados!=null){
@@ -99,7 +100,7 @@ public class ActivityVerEmpleados extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PETICION1) {
             if (resultCode == RESULT_OK) {
-                Empleado e = (Empleado) data.getSerializableExtra(NuevoEmpleadoActivity.EXTRA_OBJETO_EMPLEADO);
+                Empleado e = (Empleado) data.getSerializableExtra(ActivityAnadirEmpleado.EXTRA_OBJETO_EMPLEADO);
                 empleados.add(e);
                 // Notify the adapter, that the data has changed.
                 rv_empleados.getAdapter().notifyItemInserted(empleados.size());
@@ -107,6 +108,10 @@ public class ActivityVerEmpleados extends AppCompatActivity {
                 rv_empleados.smoothScrollToPosition(empleados.size());
             }
         }
+    }
+    public void nuevoEmpleado(View view){
+        Intent intent= new Intent(this, ActivityAnadirEmpleado.class);
+        startActivityForResult(intent, PETICION1);
     }
     public void refrescarEmpleados(View view){
         empleados= EmpleadoController.obtenerEmpleados();

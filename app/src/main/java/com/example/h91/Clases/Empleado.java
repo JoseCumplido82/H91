@@ -56,7 +56,7 @@ public class Empleado implements Serializable {
         this.fecha_salida = null;
     }
 
-    public Empleado(int idDepartamento, String usuario, Date fecha_incorporacion) {
+    public Empleado(int idDepartamento, String usuario,String pass, Date fecha_incorporacion) {
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
         this.pass="Madrid2021";
@@ -93,9 +93,10 @@ public class Empleado implements Serializable {
         this.fecha_salida = null;
     }
 
-    public Empleado(int idDepartamento, String nombre) {
+    public Empleado(int idDepartamento, String nombre, String apellido) {
         this.idDepartamento=idDepartamento;
         this.nombre=nombre;
+        this.apellido= apellido;
     }
 
     //getter y setter

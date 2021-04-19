@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.h91.Clases.Departamento;
@@ -37,13 +38,15 @@ public class NuevoEmpleadoActivity extends AppCompatActivity implements AdapterV
     EditText edt_nuevoe_nombre=null;
     EditText edt_fechaIncorporacion3=null;
     EditText edt_nuevoe_apellido=null;
-
+    String pass="";
+    TextView txt_añadirEmpleado2=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_empleado);
         edt_nuevoe_nombre = findViewById(R.id.edt_nuevoe_nombre);
+        txt_añadirEmpleado2 = findViewById(R.id.txt_añadirEmpleado2);
         edt_fechaIncorporacion3 = findViewById(R.id.edt_fechaIncorporacion3);
         sp_nuevoe_departamento = (Spinner)findViewById(R.id.sp_nuevoe_departamento);
         if(sp_nuevoe_departamento!=null){
@@ -77,14 +80,13 @@ public class NuevoEmpleadoActivity extends AppCompatActivity implements AdapterV
 
                     String usuario = String.valueOf(edt_nuevoe_nombre.getText());
                     String fechaIncorporacion =String.valueOf(edt_fechaIncorporacion3.getText());
-                    //String fechaSalida = String.valueOf(edt_fechaFinContrato.getText());
-
+                    pass= String.valueOf(txt_añadirEmpleado2.getText());
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     Date fechaIncorporacionFormateada = new Date(sdf.parse(fechaIncorporacion).getTime());
-                    //Date fechaSalidaFormateada = new Date(sdf.parse(fechaSalida).getTime());
 
 
-                    empleado = new Empleado(dseleccionado.getId(), usuario, (java.sql.Date) fechaIncorporacionFormateada);
+
+                    empleado = new Empleado(dseleccionado.getId(), usuario,pass, (java.sql.Date) fechaIncorporacionFormateada);
 
                 }catch (Exception e)
                 {
@@ -97,9 +99,10 @@ public class NuevoEmpleadoActivity extends AppCompatActivity implements AdapterV
                     mostrarToast("medicamento insertado correctamente");
                     Intent intent = new Intent();
                     //fallo aqui
-                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, (Parcelable) empleado);
+                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, empleado);
                     setResult(RESULT_OK, intent);
                     finish();
+                    Log.i("recoge", "empleado " + " " + empleado);
                 }
                 else{
                     Log.i("empleado", "no crea el empleado recoge " + empleado);
