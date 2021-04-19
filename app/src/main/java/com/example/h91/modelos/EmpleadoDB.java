@@ -24,7 +24,7 @@ public class EmpleadoDB {
         ArrayList<Empleado> empleadosDevueltos = new ArrayList<Empleado>();
         try{
             Statement sentencia = conexion.createStatement();
-            String ordenSQL = "select em.id, em.idDepartamento, em.usuario, em.pass, em.nombre, em.apellido, em.domicilio, em.correo, em.telefono, em.fecha_incorporacion, em.fecha_salida from empleado em;";
+            String ordenSQL = "select em.id, em.idDepartamento, em.usuario, em.pass, em.nombre, em.apellido, em.domicilio, em.correo, em.telefono, em.fecha_incorporacion,em.sanciones, em.fecha_salida from empleado em;";
             ResultSet resultado= sentencia.executeQuery(ordenSQL);
             while (resultado.next())
             {
@@ -40,10 +40,10 @@ public class EmpleadoDB {
                 String telefono = resultado.getString("telefono");
                 //posible error con date, cambiar la importacion de util a sql
                 Date fecha_incorporacion = resultado.getDate("fecha_incorporacion");
-
+                int sanciones= resultado.getInt("sanciones");
                 Date fecha_salida = resultado.getDate("fecha_salida");
                 //CORREGIR
-                Empleado empleado= new Empleado(id, idDepartamento, usuario, pass, nombre, apellido, domicilio, correo, telefono, fecha_incorporacion, fecha_salida);
+                Empleado empleado= new Empleado(id, idDepartamento, usuario, pass, nombre, apellido, domicilio, correo, telefono, fecha_incorporacion, (char) sanciones, fecha_salida);
                 empleadosDevueltos.add(empleado);
 
             }

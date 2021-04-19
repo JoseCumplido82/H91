@@ -33,7 +33,7 @@
         android:id="@+id/txt_detalle_nombree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:text="@string/nombre_empleado"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -46,12 +46,12 @@
         android:id="@+id/txt_detalle_apellidoe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:text="@string/apellidos"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/txt_detalle_nombree"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="@+id/txt_detalle_nombree"
         app:layout_constraintTop_toBottomOf="@+id/txt_detalle_nombree" />
 
@@ -59,11 +59,49 @@
         android:id="@+id/txt_detalle_departamentoe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="20dp"
         android:text="@string/departamento"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/txt_detalle_apellidoe"
         app:layout_constraintStart_toStartOf="@+id/txt_detalle_apellidoe"
         app:layout_constraintTop_toBottomOf="@+id/txt_detalle_apellidoe" />
+
+    <TextView
+        android:id="@+id/txt_detalleCorreoe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/correo"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_detalle_departamentoe"
+        app:layout_constraintStart_toStartOf="@+id/txt_detalle_departamentoe"
+        app:layout_constraintTop_toBottomOf="@+id/txt_detalle_departamentoe" />
+
+    <TextView
+        android:id="@+id/txt_detalleUsuarioe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/usuario"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/txt_detalleSancionese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/sanciones"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_detalleCorreoe"
+        app:layout_constraintStart_toStartOf="@+id/txt_detalleCorreoe"
+        app:layout_constraintTop_toBottomOf="@+id/txt_detalleCorreoe" />
 </androidx.constraintlayout.widget.ConstraintLayout>

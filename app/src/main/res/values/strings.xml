@@ -125,4 +125,7 @@
     <string name="todo10">TODO</string>
     <string name="button23">Button</string>
     <string name="madrid2021">Madrid2021*</string>
+    <string name="correo">Correo</string>
+    <string name="sanciones">Sanciones</string>
+    <string name="introduce_contrase_a">introduce contraseña</string>
 </resources>

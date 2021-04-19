@@ -12,7 +12,7 @@ import com.example.h91.MostrarDetalleEmpleadoActivity;
 import com.example.h91.R;
 
 
-import static com.example.h91.NuevoEmpleadoActivity.EXTRA_OBJETO_EMPLEADO;
+import static com.example.h91.ActivityAnadirEmpleado.EXTRA_OBJETO_EMPLEADO;
 
 public class EmpleadoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView txt_nombreEmpleado4=null;
@@ -38,7 +38,9 @@ public class EmpleadoViewHolder extends RecyclerView.ViewHolder implements View.
         Log.i("empleado","has seleccionado: " + empleado.toString());
         lcAdapter.notifyDataSetChanged();
         Intent intent = new Intent(lcAdapter.getC(), MostrarDetalleEmpleadoActivity.class);
-        Empleado e1 = new Empleado(empleado.getIdDepartamento(), empleado.getNombre(), empleado.getApellido());
+        //Empleado e1 = new Empleado(empleado.getIdDepartamento(), empleado.getNombre(), empleado.getApellido());
+        Empleado e1 = new Empleado(empleado.getIdDepartamento(),empleado.getUsuario(),empleado.getPass(), empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo(), empleado.getTelefono(), empleado.getFecha_incorporacion(), empleado.getSanciones(), empleado.getFecha_salida());
+
 
         //fallo aqui
         intent.putExtra(EXTRA_OBJETO_EMPLEADO, e1);

@@ -15,6 +15,10 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity {
     TextView txt_detalle_nombree=null;
     TextView txt_detalle_apellidoe=null;
     TextView txt_detalle_departamentoe=null;
+    TextView txt_detalle_Correoe=null;
+    TextView txt_detalleUsuarioe=null;
+    TextView txt_detalleSancionese=null;
+    String nombreDpt="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,21 +27,36 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity {
         txt_detalle_nombree = findViewById(R.id.txt_detalle_nombree);
         txt_detalle_apellidoe= findViewById(R.id.txt_detalle_apellidoe);
         txt_detalle_departamentoe=findViewById(R.id.txt_detalle_departamentoe);
+        txt_detalle_Correoe=findViewById(R.id.txt_detalleCorreoe);
+        txt_detalleUsuarioe=findViewById(R.id.txt_detalleUsuarioe);
+        txt_detalleSancionese=findViewById(R.id.txt_detalleSancionese);
         Intent intent = getIntent();
         if(intent != null)
         {
 
             Empleado empleado= (Empleado) intent.getSerializableExtra(ActivityAnadirEmpleado.EXTRA_OBJETO_EMPLEADO);
-            //txt_detalle_nombree.setText("el nombre es" );
-            //txt_detalle_apellidoe.setText("el apellido es: ");
-            //txt_detalle_departamentoe.setText("el departamento es: ");
 
-            //RECIBE EL OBJETO EMPLEADO COMO NULL
-            txt_detalle_nombree.setText(empleado.getNombre());
-            txt_detalle_apellidoe.setText(empleado.getApellido());
-            txt_detalle_departamentoe.setText("departamento" + empleado.getIdDepartamento());
+
+            if(empleado.getIdDepartamento()==1){
+                 nombreDpt= "Compras";
+            }else if(empleado.getIdDepartamento()==2){
+                 nombreDpt="Ventas";
+            }else if(empleado.getIdDepartamento()==3){
+                nombreDpt="Financiero";
+            }else if(empleado.getIdDepartamento()==4){
+                nombreDpt="Marketplace";
+            }else if(empleado.getIdDepartamento()==5){
+                nombreDpt="Logistica";
+            }
+
+            txt_detalle_nombree.setText("EMPLEADO: " + " "+ empleado.getNombre().toUpperCase());
+            txt_detalle_apellidoe.setText("APELLIDO: " + " " + empleado.getApellido().toUpperCase());
+            txt_detalle_departamentoe.setText("DPTO. " + " " + empleado.getIdDepartamento() + " - " + nombreDpt);
+            txt_detalle_Correoe.setText("Correo: " + empleado.getCorreo());
+            txt_detalleUsuarioe.setText("DNI: " + empleado.getUsuario());
+            txt_detalleSancionese.setText("Sanciones: " + Integer.valueOf(empleado.getSanciones()));
             Log.i("empleado", "no se muestran los empleados por " + empleado);
-        //ERRORES NO SE MUESTRA ESTE ACTIVITY
+
         }
 
 

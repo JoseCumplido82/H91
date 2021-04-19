@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.H91">
         <activity android:name=".ActivityMensajeNotificaciones"></activity>
-        <activity android:name=".NuevoEmpleadoActivity" />
         <activity android:name=".MostrarDetalleEmpleadoActivity" />
         <activity android:name=".ActivityMensajeNotificacion" />
         <activity android:name=".ActivityCrearNotificacion" />

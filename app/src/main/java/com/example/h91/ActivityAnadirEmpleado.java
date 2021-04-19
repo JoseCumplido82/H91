@@ -30,7 +30,7 @@ import java.util.Date;
 
 public class ActivityAnadirEmpleado extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    public static final String EXTRA_OBJETO_EMPLEADO= "empleados";
+    public static final String EXTRA_OBJETO_EMPLEADO= "empleado";
     Spinner sp_departamento=null;
     EditText edt_dni =null;
     Departamento dseleccionado=null;
@@ -38,7 +38,6 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
     ArrayList<Departamento> departamentos=null;
     EditText edt_fechaIncorporacion=null;
    // EditText edt_fechaFinContrato=null;
-    TextView txt_passEmpleado=null;
     String pass= "Madrid2021*";
 
 
@@ -49,8 +48,6 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
 
         edt_dni =(EditText) findViewById(R.id.edt_dni);
         edt_fechaIncorporacion= (EditText) findViewById(R.id.edt_fechaIncorporacion);
-        txt_passEmpleado = (TextView)findViewById(R.id.txt_passEmpleado);
-        //edt_fechaFinContrato=(EditText)findViewById(R.id.edt_fechaFinContrato);
         sp_departamento = (Spinner)findViewById(R.id.sp_departamento);
         if(sp_departamento!=null){
             sp_departamento.setOnItemSelectedListener(this);
@@ -85,7 +82,6 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
     public void restablecerCampos(View view){
         edt_dni.setText("");
         edt_fechaIncorporacion.setText("");
-        //edt_fechaFinContrato.setText("");
         mostrarToast("Los campos se han reiniciado");
 
 
@@ -105,6 +101,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                 Empleado em = null;
                 try{
                     String usuario= String.valueOf(edt_dni.getText());
+
                    // String fechaIncorporacion= String.valueOf(edt_fechaIncorporacion.getText());
                     Date fechaIncorporacion2= (Date) edt_fechaIncorporacion.getText();
                     em = new Empleado(dseleccionado.getId(), usuario, pass,(java.sql.Date) fechaIncorporacion2);
@@ -122,7 +119,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                     intent.putExtra(EXTRA_OBJETO_EMPLEADO, em);
                     setResult(RESULT_OK, intent);
                     startActivity(intent);
-                    //finish();
+                    finish();
                     Log.i("recoge", "recoge" + " " + em);
                 }
                 else{
@@ -137,7 +134,6 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
             public void onClick(DialogInterface dialog, int which) {
                 edt_dni.setText("");
                 edt_fechaIncorporacion.setText("");
-               // edt_fechaFinContrato.setText("");
                 mostrarToast("Los campos se han reiniciado");
             }
         });
