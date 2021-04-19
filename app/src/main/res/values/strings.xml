@@ -128,4 +128,13 @@
     <string name="correo">Correo</string>
     <string name="sanciones">Sanciones</string>
     <string name="introduce_contrase_a">introduce contraseña</string>
+    <string name="enviar_notificacion">Enviar Notificacion</string>
+    <string name="sancionar">Sancionar</string>
+    <string name="eliminar_empleado">Eliminar Empleado</string>
+    <string name="sancionar_empleado">SANCIONAR EMPLEADO</string>
+    <string name="tipo_de_sanci_n">Tipo de Sanción</string>
+    <string name="motivo_de_sanci_n">Motivo de sanción</string>
+    <string name="indica_el_motivo_de_la_sancion">Indica el motivo de la sancion</string>
+    <string name="dni_empleado">DNI EMPLEADO</string>
+    <string name="volver_a_pantalla_principal">Volver a pantalla principal</string>
 </resources>

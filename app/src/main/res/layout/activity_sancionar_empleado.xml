@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivitySancionarEmpleado">
+
+    <TextView
+        android:id="@+id/txt_sancionarEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/sancionar_empleado"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_logo21"
+        app:layout_constraintStart_toStartOf="@+id/img_logo21"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo21" />
+
+    <ImageView
+        android:id="@+id/img_logo21"
+        android:layout_width="223dp"
+        android:layout_height="176dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_tipoSancion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/tipo_de_sanci_n"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/txt_sancionarEmpleado"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/txt_sancionarEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/txt_sancionarEmpleado" />
+
+    <Spinner
+        android:id="@+id/sp_sancion"
+        android:layout_width="276dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_tipoSancion"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/txt_tipoSancion"
+        app:layout_constraintTop_toBottomOf="@+id/txt_tipoSancion" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/motivo_de_sanci_n"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/sp_sancion"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/sp_sancion"
+        app:layout_constraintTop_toBottomOf="@+id/sp_sancion" />
+
+    <EditText
+        android:id="@+id/edt_motivoSancion"
+        android:layout_width="253dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/indica_el_motivo_de_la_sancion"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/bt_sancionar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="@string/sancionar"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/edt_motivoSancion"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_motivoSancion"
+        app:layout_constraintTop_toBottomOf="@+id/edt_motivoSancion" />
+
+    <Button
+        android:id="@+id/bt_cancelarSancion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:onClick="restablecerCampos"
+        android:text="@string/cancelar"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/edt_motivoSancion"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_motivoSancion"
+        app:layout_constraintTop_toBottomOf="@+id/edt_motivoSancion" />
+
+    <Button
+        android:id="@+id/bt_volverPrincipal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
+        android:onClick="volverAPrincipal"
+        android:text="@string/volver_a_pantalla_principal"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/bt_cancelarSancion"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/bt_sancionar"
+        app:layout_constraintTop_toBottomOf="@+id/edt_motivoSancion" />
+</androidx.constraintlayout.widget.ConstraintLayout>

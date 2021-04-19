@@ -3,11 +3,9 @@
     package="com.example.h91">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.H91">
-        <activity android:name=".ActivityMensajeNotificaciones"></activity>
+        <activity android:name=".ActivitySancionarEmpleado"></activity>
+        <activity android:name=".ActivityMensajeNotificaciones" />
         <activity android:name=".MostrarDetalleEmpleadoActivity" />
         <activity android:name=".ActivityMensajeNotificacion" />
         <activity android:name=".ActivityCrearNotificacion" />

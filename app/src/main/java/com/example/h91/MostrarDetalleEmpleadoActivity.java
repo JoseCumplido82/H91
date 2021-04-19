@@ -6,12 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.h91.Clases.Empleado;
 import com.example.h91.Clases.EmpleadoViewHolder;
 
-public class MostrarDetalleEmpleadoActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements Serializable{
     TextView txt_detalle_nombree=null;
     TextView txt_detalle_apellidoe=null;
     TextView txt_detalle_departamentoe=null;
@@ -60,5 +63,24 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity {
         }
 
 
+
+
+    }
+
+    public void CrearNotificacionEmpleado(View view) {
+
+        Intent intentelegido = new Intent(this, ActivityMensajeNotificaciones.class);
+        intentelegido.putExtra("referenciaEmpleado", txt_detalleUsuarioe.getText().toString());
+        startActivity(intentelegido);
+    }
+
+    public void CrearSancionEmpleado(View view) {
+        Intent intent= new Intent(this, ActivitySancionarEmpleado.class);
+        startActivity(intent);
+    }
+
+    public void EliminarEmpleado(View view) {
+        Intent intent = new Intent(this, ActivityBorrarEmpleado.class);
+        startActivity(intent);
     }
 }

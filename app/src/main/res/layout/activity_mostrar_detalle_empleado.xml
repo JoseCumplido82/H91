@@ -104,4 +104,43 @@
         app:layout_constraintEnd_toEndOf="@+id/txt_detalleCorreoe"
         app:layout_constraintStart_toStartOf="@+id/txt_detalleCorreoe"
         app:layout_constraintTop_toBottomOf="@+id/txt_detalleCorreoe" />
+
+    <Button
+        android:id="@+id/bt_crearNotificacion2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/enviar_notificacion"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="CrearNotificacionEmpleado"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_detalleSancionese" />
+
+    <Button
+        android:id="@+id/bt_Sancionar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/sancionar"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="CrearSancionEmpleado"
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_detalleSancionese" />
+
+    <Button
+        android:id="@+id/bt_borrarEmpleado2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:onClick="EliminarEmpleado"
+        android:text="@string/eliminar_empleado"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_crearNotificacion2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

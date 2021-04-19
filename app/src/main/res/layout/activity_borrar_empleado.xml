@@ -70,8 +70,8 @@
 
     <Spinner
         android:id="@+id/sp_empleadoEliminar"
-        android:layout_width="352dp"
-        android:layout_height="52dp"
+        android:layout_width="363dp"
+        android:layout_height="88dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="@+id/txt_borrarEmpleadotext"
         app:layout_constraintHorizontal_bias="0.485"

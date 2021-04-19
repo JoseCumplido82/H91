@@ -78,12 +78,12 @@
         android:id="@+id/txt_asunto2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="64dp"
         android:text="@string/asunto"
         android:textSize="18sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="@+id/txt_mensajeNotificaciones"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/txt_mensajeNotificaciones"
         app:layout_constraintTop_toBottomOf="@+id/txt_mensajeNotificaciones" />
 
@@ -125,4 +125,19 @@
         app:layout_constraintHorizontal_bias="0.426"
         app:layout_constraintStart_toEndOf="@+id/bt_enviarNotificacion"
         app:layout_constraintTop_toBottomOf="@+id/edt_observacionesMensaje3" />
+
+    <TextView
+        android:id="@+id/txt_dniUsuario"
+        android:layout_width="122dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:hint="@string/dni_empleado"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txt_mensajeNotificaciones"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/txt_mensajeNotificaciones"
+        app:layout_constraintTop_toBottomOf="@+id/txt_mensajeNotificaciones" />
 </androidx.constraintlayout.widget.ConstraintLayout>
