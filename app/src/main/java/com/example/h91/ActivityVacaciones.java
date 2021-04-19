@@ -1,10 +1,8 @@
 package com.example.h91;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +12,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class ActivityVacaciones extends AppCompatActivity implements View.OnClickListener {
@@ -35,7 +38,8 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     TextView edt_dias;
     TextView txt_diasPedidos;
     Button bt_solicitar3;
-    TextView edt_diasSolicitados;
+    EditText edt_diasSolicitados;
+    EditText et_mostrar_fecha_picker2;
     private static int valorVacaciones=0;
 
     @Override
@@ -55,7 +59,8 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
         //Evento setOnClickListener - clic
         ibObtenerFecha2.setOnClickListener(this);
         edt_diasSolicitados=(EditText)findViewById(R.id.edt_diasSolicitados);
-        txt_diasPedidos=(TextView)findViewById(R.id.txt_diasPedidos); 
+        txt_diasPedidos=(TextView)findViewById(R.id.txt_diasPedidos);
+        et_mostrar_fecha_picker2=(EditText)findViewById(R.id.et_mostrar_fecha_picker2);
         //boton cerrar notificaciones
         Button bt_volver8 = (Button) findViewById(R.id.bt_volver8);
         bt_volver8.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +101,7 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private void obtenerFecha() {
+    private Date obtenerFecha() {
         DatePickerDialog recogerFecha = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -118,13 +123,48 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
         }, anio, mes, dia);
         //Muestro el widget
         recogerFecha.show();
-        txt_diasPedidos.setText("fecha de vuelta de vacaciones el dia " + dia+edt_diasSolicitados.getText().toString());
 
+        return null;
     }
 
     public void mostrarToast(String mensaje)
     {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+    }
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void sumarDiasAFecha() {
+        LocalDateTime today = LocalDateTime.now();     //Today
+        LocalDateTime tomorrow = today.plusDays(diapedido);     //Plus 1 day
+        LocalDateTime yesterday = today.minusDays(1);   //Minus 1 day
+        System.out.println("Today:     "+today);
+        System.out.println("dia solicitado:     "+tomorrow);
+        System.out.println("ayer:     "+yesterday);
+       // txt_diasPedidos.setText();
+        txt_diasPedidos.setText(tomorrow.toString());
+    }
+
+    int diapedido= 5;
+
+    //int diauno= Integer.parseInt(edt_diasSolicitados.getText().toString());
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void calcularFechaVuelta(View view) {
+        sumarDiasAFecha();
+        calcularFecha(obtenerFecha(), diapedido);
+    }
+
+
+    public Date calcularFecha(Date fecha, int dias){
+        Calendar calendar= Calendar.getInstance();
+        calendar.setTime(fecha);
+        calendar.add(Calendar.DAY_OF_YEAR, dias);
+        calendar.getTime();
+
+        return fecha;
+
+
     }
 
 }

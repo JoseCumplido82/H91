@@ -137,4 +137,11 @@
     <string name="indica_el_motivo_de_la_sancion">Indica el motivo de la sancion</string>
     <string name="dni_empleado">DNI EMPLEADO</string>
     <string name="volver_a_pantalla_principal">Volver a pantalla principal</string>
+    <string name="dias_solicitados">Dias solicitados</string>
+    <string name="button2">Button</string>
+    <string name="nuevo_departamento">NUEVO DEPARTAMENTO</string>
+    <string name="guardar_departamento">guardar departamento</string>
+    <string name="name">Name</string>
+    <string name="crear_departamento">crear departamento</string>
+    <string name="introduce_nombre_de_departamento">Introduce nombre de departamento</string>
 </resources>

@@ -63,6 +63,15 @@ public class ActivityGestionPlantilla extends AppCompatActivity {
             }
         });
 
+        //boton crear departamento
+        Button bt_insertarDepartamento = (Button) findViewById(R.id.bt_insertarDepartamento);
+        bt_insertarDepartamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(v.getContext(),NuevoDepartamentoActivity.class);
+                startActivityForResult(intent,0);
+            }
+        });
 
     }
 }

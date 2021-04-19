@@ -21,9 +21,10 @@ public class DepartamentoDB {
         }
         //---------------------------------
         try{
-            String ordensql= "INSERT INTO departamento (nombre) VALUES(?);";
+            String ordensql= "INSERT INTO departamento (idResponsable, nombre) VALUES(?, ?);";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
-            pst.setString(1, d.getNombre());
+            pst.setInt(1, d.getIdResponsable());
+            pst.setString(2, d.getNombre());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();

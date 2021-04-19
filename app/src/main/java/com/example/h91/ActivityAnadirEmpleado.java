@@ -37,7 +37,6 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
     ArrayAdapter<Departamento> adapter=null;
     ArrayList<Departamento> departamentos=null;
     EditText edt_fechaIncorporacion=null;
-   // EditText edt_fechaFinContrato=null;
     String pass= "Madrid2021*";
 
 

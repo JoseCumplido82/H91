@@ -69,11 +69,22 @@
         android:id="@+id/bt_volver14"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="108dp"
         android:text="@string/volver"
         app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="@+id/bt_borrarEmpleado"
-        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="@+id/bt_borrarEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/bt_borrarEmpleado" />
+
+    <Button
+        android:id="@+id/bt_insertarDepartamento"
+        android:layout_width="261sp"
+        android:layout_height="61sp"
+        android:layout_marginTop="20dp"
+        android:text="@string/crear_departamento"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_borrarEmpleado"
         app:layout_constraintStart_toStartOf="@+id/bt_borrarEmpleado"
         app:layout_constraintTop_toBottomOf="@+id/bt_borrarEmpleado" />
 </androidx.constraintlayout.widget.ConstraintLayout>
