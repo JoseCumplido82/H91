@@ -23,15 +23,14 @@ public class AusenciasDB {
         }
         //---------------------------------
         try{
-            String ordensql= "INSERT INTO ausencias (idSolicitante, fecha_inicio, hora_inicio, horas, fecha_solicitud, motivo, idEstado) VALUES(?, ?, ?, ?, ?, ?, ?);";
+            String ordensql= "INSERT INTO ausencias (idSolicitante, fecha_inicio, hora_inicio, horas, fecha_solicitud, motivo) VALUES(?, ?, ?, ?, ?, ?);";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, a.getIdSolicitante());
             pst.setDate(2, (Date) a.getFecha_inicio());
             pst.setInt(3,a.getHora_inicio());
             pst.setInt(4, a.getHoras());
             pst.setDate(5, (Date) a.getFecha_solicitud());
-            pst.setString(6, a.getMotivo());
-            pst.setInt(7, a.getIdEstado());
+            pst.setInt(6, a.getIdEstado());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();

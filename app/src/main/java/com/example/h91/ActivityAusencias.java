@@ -1,10 +1,14 @@
 package com.example.h91;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,7 +19,20 @@ import android.widget.ImageButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.h91.Clases.Ausencias;
+import com.example.h91.Clases.Empleado;
+import com.example.h91.controladores.AusenciasController;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ActivityAusencias extends AppCompatActivity implements View.OnClickListener{
 
@@ -34,7 +51,7 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
     //Widgets
     EditText etFecha;
     ImageButton ibObtenerFecha3;
-
+    Empleado empleado;
 
     //Variables para obtener la hora hora
     final int hora = c.get(Calendar.HOUR_OF_DAY);
@@ -44,7 +61,8 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
     EditText etHora;
     ImageButton ibObtenerHora;
     Button bt_solicitar;
-
+    EditText edt_motivoAusencia;
+    EditText edt_horasASolicitar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //para ocultar la barra de status
@@ -52,7 +70,8 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ausencias);
-
+        edt_motivoAusencia=(EditText)findViewById(R.id.edt_motivoAusencia);
+        edt_horasASolicitar=(EditText)findViewById(R.id.edt_horasASolicitar);
         bt_solicitar=(Button)findViewById(R.id.bt_solicitar);
         //Widget EditText donde se mostrara la fecha obtenida
         etFecha = (EditText) findViewById(R.id.et_mostrar_fecha_picker3);
@@ -150,9 +169,62 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
     }
 
 
-    public void mostrarToast(String mensaje)
+    public void mostrarToast(boolean insercionOK)
     {
-        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+        if(insercionOK)
+        {
+            Toast.makeText(this,"proveedor guardado correctamente", Toast.LENGTH_SHORT).show();
+
+        }
+        else
+        {
+            Toast.makeText(this,"No se pudo guardar el proveedor", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void insertarAusencia(View view) throws ParseException {
+            String motivo= String.valueOf(edt_motivoAusencia.getText());
+            String fecha_inicio= etFecha.getText().toString();
+            String hora_inicio= etHora.getText().toString();
+            int horas= Integer.parseInt(edt_horasASolicitar.getText().toString());
+            LocalDate fecha_solicitud= LocalDate.now();
+            Date date_solicitud= Date.from(fecha_solicitud.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+//  fallo aqui
+        DateFormat format= new SimpleDateFormat("yyyy-MM-dd");
+        Date date= format.parse(fecha_inicio);
+
+
+        DateTimeFormatter formatter= DateTimeFormatter.ofLocalizedDate(FormatStyle.valueOf("yyyy-MM-dd"));
+            LocalDate ld= LocalDate.parse(fecha_inicio, formatter);
+            Date date_inicio= Date.from(ld.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+
+            if(motivo.isEmpty()){
+                edt_motivoAusencia.setError("escribe un motivo para la ausencia");
+                return;
+            }
+        AlertDialog.Builder alerta= new AlertDialog.Builder(this);
+        alerta.setTitle("¿guardar la ausencia?");
+        alerta.setPositiveButton("si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Ausencias ausencias = new Ausencias(empleado.getId(), date, Integer.parseInt(hora_inicio), horas, date_solicitud, motivo);
+                boolean insercionOK= AusenciasController.InsertarAusencias(ausencias);
+                mostrarToast(insercionOK);
+                Log.i("recoge", "recoge " + " " + ausencias);
+            }
+        });
+        alerta.setNegativeButton("no", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alerta.show();
     }
 
     public void SolicitarAusencia(View view) {
@@ -160,7 +232,7 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
         String fecha= etFecha.getText().toString();
         String hora= etHora.getText().toString();
         String fechaYHora= hora + fecha;
-        mostrarToast("HORA SOLICITADA " + etHora.getText().toString() + " DEL DIA " + etFecha.getText().toString());
+        //mostrarToast("HORA SOLICITADA " + etHora.getText().toString() + " DEL DIA " + etFecha.getText().toString());
         Log.i("logmostrado", "Muestro la fecha y la hora " + etFecha.getText().toString()+ " " + etHora.getText().toString());
         Intent sendIntent= new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);

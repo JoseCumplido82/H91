@@ -22,7 +22,7 @@ public class ActivityDocumentos extends AppCompatActivity {
 
         //boton abrir informacion
         Button bt_informacion=(Button) findViewById(R.id.bt_informacion);
-        url= "http://codea.app/";
+        url= "https://h91go.com/#conocenos/";
         bt_informacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +34,7 @@ public class ActivityDocumentos extends AppCompatActivity {
 
         //boton abrir plantillas
         Button bt_plantillas=(Button) findViewById(R.id.bt_plantillas);
-        url2= "http://h91go.com";
+        url2= "https://h91go.com/documentacion/";
         bt_plantillas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

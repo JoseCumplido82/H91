@@ -74,7 +74,7 @@ public class AusenciasController {
         }
     }
 
-    public static boolean InsertarAusencia(Ausencias au){
+    public static boolean InsertarAusencias(Ausencias au){
         FutureTask t = new FutureTask(new TareaInsertarAusencias(au));
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(t);

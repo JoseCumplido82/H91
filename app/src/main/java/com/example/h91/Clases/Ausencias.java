@@ -35,11 +35,13 @@ public class Ausencias {
         this.motivo = "";
         this.idEstado = 0;
     }
-    public Ausencias(int idSolicitante, Date fecha_inicio, int horas, Date fecha_solicitud, int idEstado) {
+    public Ausencias(int idSolicitante, Date fecha_inicio,int hora_inicio, int horas, Date fecha_solicitud, String motivo) {
         this.idSolicitante = idSolicitante;
-        this.fecha_inicio = null;
+        this.fecha_inicio = fecha_inicio;
+        this.hora_inicio=hora_inicio;
         this.horas = horas;
-        this.fecha_solicitud = null;
+        this.fecha_solicitud = fecha_solicitud;
+        this.motivo=motivo;
         this.idEstado = 0;
     }
     //getter y setter

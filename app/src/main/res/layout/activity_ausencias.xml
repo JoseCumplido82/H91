@@ -103,26 +103,53 @@
         android:id="@+id/bt_solicitar"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="104dp"
+        android:onClick="insertarAusencia"
         android:text="@string/solicitar"
-        android:onClick="SolicitarAusencia"
         app:backgroundTint="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="@+id/et_mostrar_hora_picker2"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="@+id/ib_obtener_hora"
-        app:layout_constraintTop_toBottomOf="@+id/et_mostrar_hora_picker2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_motivoAusencia" />
 
     <Button
         android:id="@+id/bt_volver9"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="104dp"
         android:text="@string/volver"
         app:backgroundTint="@color/cardview_dark_background"
-        app:layout_constraintEnd_toEndOf="@+id/bt_solicitar"
-        app:layout_constraintHorizontal_bias="0.547"
-        app:layout_constraintStart_toStartOf="@+id/bt_solicitar"
-        app:layout_constraintTop_toBottomOf="@+id/bt_solicitar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_motivoAusencia" />
+
+    <EditText
+        android:id="@+id/edt_motivoAusencia"
+        android:layout_width="279dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/indique_el_motivo_de_la_ausencia"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/et_mostrar_hora_picker2"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/ib_obtener_hora"
+        app:layout_constraintTop_toBottomOf="@+id/et_mostrar_hora_picker2" />
+
+    <EditText
+        android:id="@+id/edt_horasASolicitar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Indica las horas a solicitar"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/edt_motivoAusencia"
+        app:layout_constraintStart_toStartOf="@+id/edt_motivoAusencia"
+        app:layout_constraintTop_toBottomOf="@+id/edt_motivoAusencia" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

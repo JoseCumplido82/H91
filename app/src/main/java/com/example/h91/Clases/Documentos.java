@@ -3,7 +3,7 @@ package com.example.h91.Clases;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Documentos implements Serializable {
+public class Documentos implements Serializable { //TABLA DOCUMENTOS GENERALES
     //Atributos
    private int id;
    private int idEmpleado;

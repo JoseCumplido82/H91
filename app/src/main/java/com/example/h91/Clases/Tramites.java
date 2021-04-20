@@ -2,7 +2,7 @@ package com.example.h91.Clases;
 
 import java.util.Date;
 
-public class Tramites {
+public class Tramites { //TABLA TRAMITES QUE SON LOS DOCUMENTOS DE LOS EMPLEADOS
     private int id;
     private int idSolicitante;
     private String nombre_documento;
