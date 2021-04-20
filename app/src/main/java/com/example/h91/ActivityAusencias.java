@@ -157,11 +157,11 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
 
     public void SolicitarAusencia(View view) {
 
-     String fecha=   etFecha.getText().toString();
-     String hora=   etHora.getText().toString();
+        String fecha= etFecha.getText().toString();
+        String hora= etHora.getText().toString();
         String fechaYHora= hora + fecha;
         mostrarToast("HORA SOLICITADA " + etHora.getText().toString() + " DEL DIA " + etFecha.getText().toString());
-        Log.i("logmostrado", "Muestro la fecha y la hora " + etFecha + etHora);
+        Log.i("logmostrado", "Muestro la fecha y la hora " + etFecha.getText().toString()+ " " + etHora.getText().toString());
         Intent sendIntent= new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, fechaYHora);

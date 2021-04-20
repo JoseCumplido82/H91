@@ -22,11 +22,10 @@ public class Empleado implements Serializable {
     private String correo;
     private String telefono;
     private Date fecha_incorporacion;
-    private char sanciones;
     private Date fecha_salida;
 
     //constructores
-    public Empleado(int id, int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion,char sanciones, Date fecha_salida) {
+    public Empleado(int id, int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion, Date fecha_salida) {
         this.id = id;
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
@@ -37,7 +36,6 @@ public class Empleado implements Serializable {
         this.correo = correo;
         this.telefono = telefono;
         this.fecha_incorporacion = fecha_incorporacion;
-        this.sanciones=0;
         this.fecha_salida = null;
     }
 
@@ -52,7 +50,6 @@ public class Empleado implements Serializable {
         this.correo = "";
         this.telefono = "";
         this.fecha_incorporacion = null;
-        this.sanciones=0;
         this.fecha_salida = null;
     }
 
@@ -64,7 +61,7 @@ public class Empleado implements Serializable {
     }
 
 
-    public Empleado(int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion,char sanciones, Date fecha_salida) {
+    public Empleado(int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion,Date fecha_salida) {
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
         this.pass = pass;
@@ -74,24 +71,10 @@ public class Empleado implements Serializable {
         this.correo = correo;
         this.telefono = telefono;
         this.fecha_incorporacion = fecha_incorporacion;
-        this.sanciones=0;
         this.fecha_salida = null;
     }
 
-    public Empleado(int id, int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion, Date fecha_salida) {
-        this.id=id;
-        this.idDepartamento = idDepartamento;
-        this.usuario = usuario;
-        this.pass = pass;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.domicilio = domicilio;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.fecha_incorporacion = fecha_incorporacion;
-        this.sanciones=0;
-        this.fecha_salida = null;
-    }
+
 
     public Empleado(int idDepartamento, String nombre, String apellido) {
         this.idDepartamento=idDepartamento;
@@ -102,13 +85,7 @@ public class Empleado implements Serializable {
     //getter y setter
 
 
-    public char getSanciones() {
-        return sanciones;
-    }
 
-    public void setSanciones(char sanciones) {
-        this.sanciones = sanciones;
-    }
 
     public int getId() {
         return id;

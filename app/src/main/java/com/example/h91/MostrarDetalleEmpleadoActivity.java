@@ -57,7 +57,7 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements
             txt_detalle_departamentoe.setText("DPTO. " + " " + empleado.getIdDepartamento() + " - " + nombreDpt);
             txt_detalle_Correoe.setText("Correo: " + empleado.getCorreo());
             txt_detalleUsuarioe.setText("DNI: " + empleado.getUsuario());
-            txt_detalleSancionese.setText("Sanciones: " + Integer.valueOf(empleado.getSanciones()));
+            //txt_detalleSancionese.setText("Sanciones: " + Integer.valueOf(empleado.getSanciones()));
             Log.i("empleado", "no se muestran los empleados por " + empleado);
 
         }

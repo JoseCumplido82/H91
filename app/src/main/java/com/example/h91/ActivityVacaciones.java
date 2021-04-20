@@ -16,8 +16,11 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class ActivityVacaciones extends AppCompatActivity implements View.OnClickListener {
     private static final String CERO = "0";
@@ -38,7 +41,7 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     TextView edt_dias;
     TextView txt_diasPedidos;
     Button bt_solicitar3;
-    EditText edt_diasSolicitados;
+    EditText edt_diasSolicitados=null;
     EditText et_mostrar_fecha_picker2;
     private static int valorVacaciones=0;
 
@@ -51,7 +54,6 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_vacaciones);
         edt_dias = (TextView) findViewById(R.id.edt_dias);
         bt_solicitar3 = (Button) findViewById(R.id.bt_solicitar3);
-
         //Widget EditText donde se mostrara la fecha obtenida
         etFecha = (EditText) findViewById(R.id.et_mostrar_fecha_picker2);
         //Widget ImageButton del cual usaremos el evento clic para obtener la fecha
@@ -133,26 +135,46 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     }
 
 
+    int numero=0;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void sumarDiasAFecha() {
+
+
+        numero= Integer.parseInt(edt_diasSolicitados.getText().toString());
         LocalDateTime today = LocalDateTime.now();     //Today
-        LocalDateTime tomorrow = today.plusDays(diapedido);     //Plus 1 day
+
+        LocalDateTime tomorrow = today.plusDays(numero);     //Plus 1 day
         LocalDateTime yesterday = today.minusDays(1);   //Minus 1 day
         System.out.println("Today:     "+today);
         System.out.println("dia solicitado:     "+tomorrow);
         System.out.println("ayer:     "+yesterday);
        // txt_diasPedidos.setText();
         txt_diasPedidos.setText(tomorrow.toString());
+        System.out.println("el valor de numero es " + numero);
+        System.out.println("///////////////////////////////////////");
+        System.out.print(obtenerFecha());
+
+        String fecha=   etFecha.getText().toString();
+        System.out.println("fecha de obtenerfecha " + fecha + numero);
+        System.out.println("fecha de dia " + dia + numero);
+        System.out.println("sumar a calendar la fecha" );
+
+        c.add(Calendar.DAY_OF_YEAR, numero);
+        //c.setTime();
+        //System.out.println(c.toString());
+        System.out.println("+ " + numero + " dias a fecha seleccionada que es " + fecha + " y volveras el dia " + formatearCalendar(c) ) ;
+        System.out.println("dias pedidos " + numero + " fecha indicada " + fecha + " = " + formatearCalendar(c));
+        System.out.println("fecha de obtenerfecha " );
     }
 
-    int diapedido= 5;
+    int diapedido= 6;
 
     //int diauno= Integer.parseInt(edt_diasSolicitados.getText().toString());
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void calcularFechaVuelta(View view) {
         sumarDiasAFecha();
-        calcularFecha(obtenerFecha(), diapedido);
+     //   calcularFecha(obtenerFecha(), diapedido);
     }
 
 
@@ -166,5 +188,12 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
 
 
     }
+
+    public static String formatearCalendar(Calendar c) {
+        DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
+
+        return df.format(c.getTime());
+    }
+
 
 }

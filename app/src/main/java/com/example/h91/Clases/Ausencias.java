@@ -5,37 +5,69 @@ import java.util.Date;
 public class Ausencias {
     private int id;
     private int idSolicitante;
-    private Date fecha;
+    private Date fecha_inicio;
+    private int hora_inicio;
     private int horas;
     private Date fecha_solicitud;
+    private String motivo;
     private int idEstado;
     //constructores
 
-    public Ausencias(int id, int idSolicitante, Date fecha, int horas, Date fecha_solicitud, int idEstado) {
+
+    public Ausencias(int id, int idSolicitante, Date fecha_inicio, int hora_inicio, int horas, Date fecha_solicitud, String motivo, int idEstado) {
         this.id = id;
         this.idSolicitante = idSolicitante;
-        this.fecha = fecha;
+        this.fecha_inicio = fecha_inicio;
+        this.hora_inicio = hora_inicio;
         this.horas = horas;
         this.fecha_solicitud = fecha_solicitud;
+        this.motivo = motivo;
         this.idEstado = idEstado;
     }
+
     public Ausencias() {
         this.id = 0;
         this.idSolicitante = 0;
-        this.fecha = null;
+        this.fecha_inicio = null;
+        this.hora_inicio = 0;
         this.horas = 0;
         this.fecha_solicitud = null;
+        this.motivo = "";
         this.idEstado = 0;
     }
-    public Ausencias(int idSolicitante, Date fecha, int horas, Date fecha_solicitud, int idEstado) {
+    public Ausencias(int idSolicitante, Date fecha_inicio, int horas, Date fecha_solicitud, int idEstado) {
         this.idSolicitante = idSolicitante;
-        this.fecha = null;
+        this.fecha_inicio = null;
         this.horas = horas;
         this.fecha_solicitud = null;
         this.idEstado = 0;
     }
     //getter y setter
 
+
+    public Date getFecha_inicio() {
+        return fecha_inicio;
+    }
+
+    public void setFecha_inicio(Date fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
+    }
+
+    public int getHora_inicio() {
+        return hora_inicio;
+    }
+
+    public void setHora_inicio(int hora_inicio) {
+        this.hora_inicio = hora_inicio;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
 
     public int getId() {
         return id;
@@ -54,11 +86,11 @@ public class Ausencias {
     }
 
     public Date getFecha() {
-        return fecha;
+        return fecha_inicio;
     }
 
     public void setFecha(Date fecha) {
-        this.fecha = fecha;
+        this.fecha_inicio = fecha_inicio;
     }
 
     public int getHoras() {
@@ -91,7 +123,7 @@ public class Ausencias {
         return "Ausencias{" +
                 "id=" + id +
                 ", idSolicitante=" + idSolicitante +
-                ", fecha=" + fecha +
+                ", fecha_inicio=" + fecha_inicio +
                 ", horas=" + horas +
                 ", fecha_solicitud=" + fecha_solicitud +
                 ", idEstado=" + idEstado +

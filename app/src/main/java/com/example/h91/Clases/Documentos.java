@@ -8,27 +8,27 @@ public class Documentos implements Serializable {
    private int id;
    private int idEmpleado;
    private String nombre;
-   private Date fecha_subida;
+   private int es_plantilla;
 
    //constructores
-    public Documentos(int id, int idEmpleado, String nombre, Date fecha_subida) {
+    public Documentos(int id, int idEmpleado, String nombre, int es_plantilla) {
         this.id = id;
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
-        this.fecha_subida = fecha_subida;
+        this.es_plantilla = es_plantilla;
     }
 
-    public Documentos(int idEmpleado, String nombre, Date fecha_subida) {
+    public Documentos(int idEmpleado, String nombre, int es_plantilla) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
-        this.fecha_subida = fecha_subida;
+        this.es_plantilla = es_plantilla;
     }
 
     public Documentos() {
         this.id = 0;
         this.idEmpleado = 0;
         this.nombre = "";
-        this.fecha_subida = null;
+        this.es_plantilla = 0;
     }
 
     //getter y setter
@@ -57,15 +57,13 @@ public class Documentos implements Serializable {
     }
 
 
-
-    public Date getFecha_subida() {
-        return fecha_subida;
+    public int getEs_plantilla() {
+        return es_plantilla;
     }
 
-    public void setFecha_subida(Date fecha_subida) {
-        this.fecha_subida = fecha_subida;
+    public void setEs_plantilla(int es_plantilla) {
+        this.es_plantilla = es_plantilla;
     }
-
 
     //to string
     @Override
@@ -74,7 +72,6 @@ public class Documentos implements Serializable {
                 "id=" + id +
                 ", idEmpleado=" + idEmpleado +
                 ", nombre='" + nombre + '\'' +
-                ", fecha_subida=" + fecha_subida +
                 '}';
     }
 }

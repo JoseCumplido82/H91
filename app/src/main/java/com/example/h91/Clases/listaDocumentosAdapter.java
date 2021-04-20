@@ -44,7 +44,7 @@ public class listaDocumentosAdapter extends RecyclerView.Adapter<DocumentosViewH
     public void onBindViewHolder(@NonNull DocumentosViewHolder holder, int position) {
         Documentos documentoActual=documentosList.get(position);
         holder.txt_asunto.setText(" "+ documentoActual.getNombre());
-        holder.txt_fecha.setText(" " + documentoActual.getFecha_subida());
+        holder.txt_fecha.setText(" " + documentoActual.getNombre());
 
     }
 

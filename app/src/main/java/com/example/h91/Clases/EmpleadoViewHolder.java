@@ -39,7 +39,7 @@ public class EmpleadoViewHolder extends RecyclerView.ViewHolder implements View.
         lcAdapter.notifyDataSetChanged();
         Intent intent = new Intent(lcAdapter.getC(), MostrarDetalleEmpleadoActivity.class);
         //Empleado e1 = new Empleado(empleado.getIdDepartamento(), empleado.getNombre(), empleado.getApellido());
-        Empleado e1 = new Empleado(empleado.getIdDepartamento(),empleado.getUsuario(),empleado.getPass(), empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo(), empleado.getTelefono(), empleado.getFecha_incorporacion(), empleado.getSanciones(), empleado.getFecha_salida());
+        Empleado e1 = new Empleado(empleado.getIdDepartamento(),empleado.getUsuario(),empleado.getPass(), empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo(), empleado.getTelefono(), empleado.getFecha_incorporacion(), empleado.getFecha_salida());
 
 
         //fallo aqui

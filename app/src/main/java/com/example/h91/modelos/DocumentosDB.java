@@ -59,7 +59,7 @@ public class DocumentosDB {
                 int id = resultadosql.getInt("id");
                 int idEmpleado = resultadosql.getInt("idDepartamento");
                 String nombreDocumento = resultadosql.getString("nombre");
-                Date fecha_subida = resultadosql.getDate("fecha_subida");
+                int es_plantilla = resultadosql.getInt("es_plantilla");
 
             }
             resultadosql.close();
@@ -83,8 +83,8 @@ public class DocumentosDB {
                 int id = resultado.getInt("id");
                 int idEmpleado = resultado.getInt("idEmpleado");
                 String nombre = resultado.getString("nombre");
-                Date fecha_subida = resultado.getDate("fecha_subida");
-                Documentos d = new Documentos(id, idEmpleado, nombre, fecha_subida);
+                int es_plantilla = resultado.getInt("es_plantilla");
+                Documentos d = new Documentos(id, idEmpleado, nombre, es_plantilla);
                 documentosDevueltos.add(d);
             }
             resultado.close();
@@ -135,7 +135,7 @@ public class DocumentosDB {
             pst.setInt(1, d.getId());
             pst.setInt(2, d.getIdEmpleado());
             pst.setString(3, d.getNombre());
-            pst.setDate(4, (Date) d.getFecha_subida());
+            pst.setInt(4, d.getEs_plantilla());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();
