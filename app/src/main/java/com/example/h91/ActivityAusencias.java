@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.h91.Clases.Ausencias;
 import com.example.h91.Clases.Empleado;
 import com.example.h91.controladores.AusenciasController;
+import com.example.h91.modelos.ConfiguracionDB;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -212,10 +213,10 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                Ausencias ausencias = new Ausencias(empleado.getId(), date, Integer.parseInt(hora_inicio), horas, date_solicitud, motivo);
-                boolean insercionOK= AusenciasController.InsertarAusencias(ausencias);
-                mostrarToast(insercionOK);
-                Log.i("recoge", "recoge " + " " + ausencias);
+               // Ausencias ausencias = new Ausencias(empleado.getId(), date, Integer.parseInt(hora_inicio), horas, date_solicitud, motivo);
+             //   boolean insercionOK= AusenciasController.InsertarAusencias(ausencias);
+             //   mostrarToast(insercionOK);
+               // Log.i("recoge", "recoge " + " " + ausencias);
             }
         });
         alerta.setNegativeButton("no", new DialogInterface.OnClickListener() {
@@ -227,21 +228,63 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
         alerta.show();
     }
 
+    public void mostrarToast2(String mensaje)
+    {
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void SolicitarAusencia(View view) {
+        AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
+        alerta1.setTitle("¿Quieres solicitar la ausencia?");
+        alerta1.setPositiveButton("si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(edt_motivoAusencia.getText().toString().isEmpty())
+                {
+                    mostrarToast2("indica un motivo para la ausencia");
+                    return;
+                }
+                Ausencias ausencias= null;
+                try {
+                    String motivo= String.valueOf(edt_motivoAusencia.getText());
+                    String fechatextoAusencia= String.valueOf(etFecha.getText());
+                    Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
+                    int horatexto= Integer.parseInt(String.valueOf(etHora.getText()));
+                    int horas= Integer.parseInt(edt_horasASolicitar.getText().toString());
+                    String fechatextoSolicitud= String.valueOf(LocalDate.now());
+                    Date fechaActual= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
+                    ausencias= new Ausencias(empleado.getId(), fechaAusencias, horatexto, horas,fechaActual, motivo, ConfiguracionDB.idEstado);
+                    boolean insertadoOK= AusenciasController.InsertarAusencias(ausencias);
+                    if (insertadoOK){
+                        mostrarToast2("ausencia creada correctamente");
+                        finish();
+                    }
+                    else {
+                        mostrarToast2("no se pudo crear la ausencia");
+                    }
 
-        String fecha= etFecha.getText().toString();
-        String hora= etHora.getText().toString();
-        String fechaYHora= hora + fecha;
-        //mostrarToast("HORA SOLICITADA " + etHora.getText().toString() + " DEL DIA " + etFecha.getText().toString());
-        Log.i("logmostrado", "Muestro la fecha y la hora " + etFecha.getText().toString()+ " " + etHora.getText().toString());
-        Intent sendIntent= new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, fechaYHora);
-        sendIntent.setType("text/plain");
-        Intent shareintent= Intent.createChooser(sendIntent, null);
-        startActivity(shareintent);
+                }catch (Exception e){
+                    mostrarToast2("error, revisa los datos introducidos");
+                    Log.i("ausencia", "ausencia con id empleado" +ausencias.getIdSolicitante() + " fecha inicio"+ ausencias.getFecha_inicio() + " hora inicio"+ ausencias.getHora_inicio()
+                            + " horas" +  ausencias.getHoras() + " hora solicitud " + ausencias.getFecha_solicitud() + " motivo " + ausencias.getMotivo() + " idestado " +  ausencias.getIdEstado());
+                }
 
-        finish();
+                }
+                });
+        alerta1.setNegativeButton("no", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                edt_motivoAusencia.setText("");
+                etFecha.setText("");
+                etHora.setText("");
+                edt_horasASolicitar.setText("");
+                mostrarToast2("Los campos se han reiniciado");
+            }
+        });
+        alerta1.show();
+
 
     }
 }

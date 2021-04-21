@@ -36,7 +36,7 @@ public class Ausencias implements Serializable {
         this.motivo = "";
         this.idEstado = 1;
     }
-    public Ausencias(int idSolicitante, Date fecha_inicio,int hora_inicio, int horas, Date fecha_solicitud, String motivo) {
+    public Ausencias(int idSolicitante, Date fecha_inicio,int hora_inicio, int horas, Date fecha_solicitud, String motivo, int idEstado) {
         this.idSolicitante = idSolicitante;
         this.fecha_inicio = fecha_inicio;
         this.hora_inicio=hora_inicio;

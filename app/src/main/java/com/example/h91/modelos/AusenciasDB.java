@@ -25,7 +25,7 @@ public class AusenciasDB {
         }
         //---------------------------------
         try{
-            String ordensql= "INSERT INTO ausencias (idSolicitante, fecha_inicio, hora_inicio, horas, fecha_solicitud, motivo) VALUES(?, ?, ?, ?, ?, ?);";
+            String ordensql= "INSERT INTO ausencias (idSolicitante, fecha_inicio, hora_inicio, horas, fecha_solicitud, motivo, idEstado) VALUES(?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, a.getIdSolicitante());
             DateFormat dateFormat= new SimpleDateFormat("yyyy-mm-dd");
@@ -39,7 +39,9 @@ public class AusenciasDB {
             Log.i("sql", "valor de la fecha " + strDateSolicitud);
             java.sql.Date sqlFechaSolicitud= java.sql.Date.valueOf(strDateSolicitud);
             pst.setDate(5, sqlFechaSolicitud);
-            pst.setInt(6, a.getIdEstado());
+            pst.setString(6, a.getMotivo());
+            pst.setInt(7, a.getIdEstado());
+
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();

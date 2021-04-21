@@ -17,4 +17,5 @@ public class ConfiguracionDB {
    //public static final String PUERTOMYSQL = "2083";
     public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
     public static String pass="Madrid2021*";
+    public static int idEstado=1;
 }
