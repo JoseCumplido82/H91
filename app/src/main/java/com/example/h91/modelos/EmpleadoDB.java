@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
 
@@ -72,7 +74,11 @@ public class EmpleadoDB {
             pst.setInt(1, empleado.getIdDepartamento());
             pst.setString(2, empleado.getUsuario());
             pst.setString(3, empleado.getPass());
-            pst.setDate(4, empleado.getFecha_incorporacion());
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+            String strDate = dateFormat.format(empleado.getFecha_incorporacion());
+            Log.i("sql", "valor de la fecha -> "+ strDate);
+            java.sql.Date sqlFecha= java.sql.Date.valueOf(strDate);
+            pst.setDate(4, sqlFecha);
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();
@@ -134,7 +140,8 @@ public class EmpleadoDB {
             pst.setString(6, empleado.getDomicilio());
             pst.setString(7, empleado.getCorreo());
             pst.setString(8, empleado.getTelefono());
-            pst.setDate(9, empleado.getFecha_incorporacion());
+            java.sql.Date sqlFecha = java.sql.Date.valueOf(String.valueOf(empleado.getFecha_incorporacion()));
+            pst.setDate(9, sqlFecha);
             pst.setInt(11, empleado.getId());
             int filasAfectadas = pst.executeUpdate();
             pst.close();

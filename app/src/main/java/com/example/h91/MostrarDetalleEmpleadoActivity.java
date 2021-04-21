@@ -51,14 +51,20 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements
             }else if(empleado.getIdDepartamento()==5){
                 nombreDpt="Logistica";
             }
+            if(txt_detalle_nombree.getText().toString().isEmpty()){
+                txt_detalle_nombree.setText("EMPLEADO: " + " "+ empleado.getNombre().toUpperCase());
+            }
+            if(txt_detalle_apellidoe.getText().toString().isEmpty()){
+                txt_detalle_apellidoe.setText("APELLIDO: " + " " + empleado.getApellido().toUpperCase());
 
-            txt_detalle_nombree.setText("EMPLEADO: " + " "+ empleado.getNombre().toUpperCase());
-            txt_detalle_apellidoe.setText("APELLIDO: " + " " + empleado.getApellido().toUpperCase());
+            }
+          //  txt_detalle_nombree.setText("EMPLEADO: " + " "+ empleado.getNombre().toUpperCase());
+           // txt_detalle_apellidoe.setText("APELLIDO: " + " " + empleado.getApellido().toUpperCase());
             txt_detalle_departamentoe.setText("DPTO. " + " " + empleado.getIdDepartamento() + " - " + nombreDpt);
             txt_detalle_Correoe.setText("Correo: " + empleado.getCorreo());
             txt_detalleUsuarioe.setText("DNI: " + empleado.getUsuario());
             //txt_detalleSancionese.setText("Sanciones: " + Integer.valueOf(empleado.getSanciones()));
-            Log.i("empleado", "no se muestran los empleados por " + empleado);
+            Log.i("empleado", "se muestran el empleado " + empleado);
 
         }
 

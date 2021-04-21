@@ -6,8 +6,8 @@ import android.os.Bundle;
 import com.example.h91.ActivityAnadirEmpleado;
 
 import java.io.Serializable;
-import java.sql.Date;
-//import java.util.Date;
+//import java.sql.Date;
+import java.util.Date;
 
 public class Empleado implements Serializable {
 

@@ -19,6 +19,7 @@ import com.example.h91.Clases.Departamento;
 import com.example.h91.Clases.Empleado;
 import com.example.h91.controladores.DepartamentoController;
 import com.example.h91.controladores.EmpleadoController;
+import com.example.h91.modelos.ConfiguracionDB;
 
 
 import java.io.Serializable;
@@ -37,7 +38,8 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
     ArrayAdapter<Departamento> adapter=null;
     ArrayList<Departamento> departamentos=null;
     EditText edt_fechaIncorporacion=null;
-    String pass= "Madrid2021*";
+    //String pass= "Madrid2021*";
+
 
 
     @Override
@@ -69,7 +71,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
             }
         });
 
-            }
+    }
 
 
     public void mostrarToast(String mensaje)
@@ -101,30 +103,31 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                 try{
                     String usuario= String.valueOf(edt_dni.getText());
 
-                   // String fechaIncorporacion= String.valueOf(edt_fechaIncorporacion.getText());
-                    Date fechaIncorporacion2= (Date) edt_fechaIncorporacion.getText();
-                    em = new Empleado(dseleccionado.getId(), usuario, pass,(java.sql.Date) fechaIncorporacion2);
+                    // String fechaIncorporacion= String.valueOf(edt_fechaIncorporacion.getText());
+                    String fechatexto= String.valueOf(edt_fechaIncorporacion.getText());
+                    Date fechaIncorporacion2=new SimpleDateFormat("yyyy-mm-dd").parse(fechatexto);
+                    em = new Empleado(dseleccionado.getId(), usuario, ConfiguracionDB.pass,fechaIncorporacion2);
+                    Log.i("recoge", "recoge" + " " + em);
+                    //insertar Empleado
+                    boolean insertadoOK = EmpleadoController.InsertarEmpleado(em);
+                    if(insertadoOK)
+                    {
+                        mostrarToast("empleado insertado correctamente");
+                        //      Intent intent = new Intent();
+                        //      intent.putExtra(EXTRA_OBJETO_EMPLEADO, em);
+                        //     setResult(RESULT_OK, intent);
+                        //     startActivity(intent);
+                        //     finish();
+                    }
+                    else{
+                        mostrarToast("no se pudo crear el empleado");
+                    }
 
                 }catch (Exception e)
                 {
                     mostrarToast("error, revisa los datos introducidos");
                 }
-                //insertar Empleado
-                boolean insertadoOK = EmpleadoController.InsertarEmpleado(em);
-                if(insertadoOK)
-                {
-                    mostrarToast("empleado insertado correctamente");
-                    Intent intent = new Intent();
-                    intent.putExtra(EXTRA_OBJETO_EMPLEADO, em);
-                    setResult(RESULT_OK, intent);
-                    startActivity(intent);
-                    finish();
-                    Log.i("recoge", "recoge" + " " + em);
-                }
-                else{
-                    mostrarToast("no se pudo crear el empleado");
-                    Log.i("recoge", "recoge" + " " + em);
-                }
+
             }
         });
 

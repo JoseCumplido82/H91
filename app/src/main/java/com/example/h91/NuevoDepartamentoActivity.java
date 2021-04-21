@@ -22,12 +22,11 @@ import java.util.ArrayList;
 
 public class NuevoDepartamentoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    public static final String EXTRA_OBJETO_DEPARTAMENTO="departamento";
+    //public static final String EXTRA_OBJETO_DEPARTAMENTO="departamento";
     Spinner sp_supervisor=null;
     Empleado eseleccionado=null;
     ArrayAdapter<Empleado> adapter=null;
     ArrayList<Empleado> empleados=null;
-
     EditText edt_nombred=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +52,20 @@ public class NuevoDepartamentoActivity extends AppCompatActivity implements Adap
             edt_nombred.setError("escribe un nombre para el departamento");
             return;
         }
+        int idDelSupervisor= eseleccionado.getId();
+
         AlertDialog.Builder alerta1= new AlertDialog.Builder(this);
         alerta1.setTitle("¿Desea guardar el departamento?");
         alerta1.setPositiveButton("si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Departamento d= new Departamento(eseleccionado.getId(), nombred);
+
+                Departamento d= new Departamento(idDelSupervisor, nombred);
+
                 boolean insercionOK= DepartamentoController.insertarDepartamento(d);
                 mostrarToast(insercionOK);
-                Log.i("recoge", "recoge " + " " + d);
+                Log.i("recoge", "recoge " + "id responsable " + d.getIdResponsable() + " nombre " + d.getNombre()+ " id " + d.getId());
+                Log.i("recoge del empleado", "id empleado " + eseleccionado.getId() + " usuario "+ eseleccionado.getUsuario() + " valor recogido" + idDelSupervisor);
             }
         });
         alerta1.setNegativeButton("no", new DialogInterface.OnClickListener() {
