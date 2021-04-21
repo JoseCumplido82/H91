@@ -1,8 +1,9 @@
 package com.example.h91.Clases;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Ausencias {
+public class Ausencias implements Serializable {
     private int id;
     private int idSolicitante;
     private Date fecha_inicio;
@@ -33,7 +34,7 @@ public class Ausencias {
         this.horas = 0;
         this.fecha_solicitud = null;
         this.motivo = "";
-        this.idEstado = 0;
+        this.idEstado = 1;
     }
     public Ausencias(int idSolicitante, Date fecha_inicio,int hora_inicio, int horas, Date fecha_solicitud, String motivo) {
         this.idSolicitante = idSolicitante;
@@ -42,7 +43,7 @@ public class Ausencias {
         this.horas = horas;
         this.fecha_solicitud = fecha_solicitud;
         this.motivo=motivo;
-        this.idEstado = 0;
+        this.idEstado = 1;
     }
     //getter y setter
 

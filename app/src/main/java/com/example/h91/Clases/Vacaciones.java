@@ -1,24 +1,27 @@
 package com.example.h91.Clases;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Vacaciones {
+public class Vacaciones implements Serializable {
     private int id;
     private int idSolicitante;
     private Date fecha_inicio;
     private Date fecha_fin;
+    private int dias;
     private Date fecha_solicitud;
     private int idEstado;
 
     //-----------
 
 
-    public Vacaciones(int id, int idSolicitante, Date fecha_inicio, Date fecha_fin, Date fecha_solicitud, int idEstado) {
+    public Vacaciones(int id, int idSolicitante, Date fecha_inicio, Date fecha_fin,int dias, Date fecha_solicitud, int idEstado) {
         this.id = id;
         this.idSolicitante = idSolicitante;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
         this.fecha_solicitud = fecha_solicitud;
+        this.dias=dias;
         this.idEstado = idEstado;
     }
     public Vacaciones() {
@@ -27,8 +30,19 @@ public class Vacaciones {
         this.fecha_inicio = null;
         this.fecha_fin = null;
         this.fecha_solicitud = null;
+        this.dias=0;
         this.idEstado = 0;
     }
+
+    public Vacaciones(int idSolicitante, Date fecha_inicio, Date fecha_fin, int dias, Date fecha_solicitud, int idEstado) {
+        this.idSolicitante = idSolicitante;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
+        this.dias = dias;
+        this.fecha_solicitud = fecha_solicitud;
+        this.idEstado = 0;
+    }
+
     public Vacaciones(int id, int idSolicitante, Date fecha_inicio, Date fecha_fin, Date fecha_solicitud) {
         this.id = id;
         this.idSolicitante = idSolicitante;
@@ -86,6 +100,14 @@ public class Vacaciones {
 
     public void setIdEstado(int idEstado) {
         this.idEstado = idEstado;
+    }
+
+    public int getDias() {
+        return dias;
+    }
+
+    public void setDias(int dias) {
+        this.dias = dias;
     }
     //
 
