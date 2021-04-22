@@ -25,6 +25,15 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
         this.idEstado = idEstado;
     }
 
+    public Tramites(int idSolicitante, String nombre_documento, String asunto, String comentario, Date fecha_solicitud, int idEstado) {
+        this.idSolicitante = idSolicitante;
+        this.nombre_documento = nombre_documento;
+        this.asunto = asunto;
+        this.comentario = comentario;
+        this.fecha_solicitud = fecha_solicitud;
+        this.idEstado=idEstado;
+    }
+
     public Tramites(int id, int idSolicitante, String nombre_documento, String asunto, String comentario, Date fecha_solicitud) {
         this.id = id;
         this.idSolicitante = idSolicitante;
@@ -42,6 +51,11 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
         this.comentario = "";
         this.fecha_solicitud = null;
         this.idEstado = 0;
+    }
+
+    public Tramites(String asunto, String comentario) {
+        this.asunto = asunto;
+        this.comentario = comentario;
     }
     //
 

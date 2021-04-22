@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.sql.Date;
 
 public class EmpleadoDB {
+
+
+
+
     //------------------------------------------------------------
     public static ArrayList<Empleado> obtenerEmpleados(){
         Connection conexion= BaseDB.conectarConBaseDeDatos();
@@ -157,8 +161,38 @@ public class EmpleadoDB {
             return false;
         }
     }
+    //---------------------------------------------
+    public static boolean EmpleadoEnTabla(String usuario, String pass) {
+        Connection conexion = BaseDB.conectarConBaseDeDatos();
+        if (conexion == null) {
+            System.out.println("no se ha podido conectar con la base de datos");
+            return false;
+        }
+        Empleado empleadoEncontrado=null;
+        try {
+            String ordenSQL = "select em.usuario, em.pass from empleado em ";
+            PreparedStatement pst=conexion.prepareStatement(ordenSQL);
+            pst.setString(1, usuario);
+            pst.setString(2, pass);
+            ResultSet resultadosql= pst.executeQuery();
+            //---------
+            while (resultadosql.next()){
+                String usuariodos = resultadosql.getString("usuario");
+                String passdos = resultadosql.getString("pass");
+                empleadoEncontrado = new Empleado(usuariodos, passdos);
+
+            }
+            resultadosql.close();
+            pst.close();
+            conexion.close();
+            return true;
+        } catch (SQLException e) {
+            //Log.i("sql", "error sql");
+            return false;
+        }
+    }
     //-------------------------------------------------------------------
-    public static Empleado buscarEmpleadoTabla(String nombre){
+    public static Empleado buscarEmpleadoTabla(String usuario){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
         if(conexion == null){
             return null;
@@ -166,16 +200,16 @@ public class EmpleadoDB {
         //--------------------------------------------------
         Empleado empleadoEncontrado = null;
         try{
-            String ordensql = "select * from empleado where nombre like ?";
+            String ordensql = "select * from empleado where usuario like ?";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
-            pst.setString(1, nombre);
+            pst.setString(1, usuario);
             ResultSet resultadosql= pst.executeQuery();
             //---------------------------------------------
             while (resultadosql.next())
             {
                 int id = resultadosql.getInt("id");
                 int idDepartamento= resultadosql.getInt("idDepartamento");
-                String usuario = resultadosql.getString("usuario");
+                String usuariodos = resultadosql.getString("usuario");
                 String pass = resultadosql.getString("pass");
                 String nombreEmpleado = resultadosql.getString("nombre");
                 String apellido = resultadosql.getString("apellido");
@@ -186,7 +220,7 @@ public class EmpleadoDB {
                 Date fecha_salida = resultadosql.getDate("fecha_salida");
 
                 //CORREGIR
-                empleadoEncontrado = new Empleado(id, idDepartamento, usuario, pass, nombreEmpleado, apellido, domicilio, correo, telefono, fecha_incorporacion, fecha_salida);
+                empleadoEncontrado = new Empleado(id, idDepartamento, usuariodos, pass, nombreEmpleado, apellido, domicilio, correo, telefono, fecha_incorporacion, fecha_salida);
             }
             resultadosql.close();
             pst.close();

@@ -1,20 +1,16 @@
 package com.example.h91;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Parcelable;
-import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -24,20 +20,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.h91.Clases.Solicitud;
+import com.example.h91.Clases.Tramites;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 
 public class ActivityOtrasSolicitudes extends AppCompatActivity {
 
-    public static final String EXTRA_OBJETO_SOLICITUD="solicitud";
+    public static final String EXTRA_OBJETO_SOLICITUD="tramite";
     TextView txt_tituloDocumento=null;
     EditText edt_asuntoSolicitud =null;
     EditText edt_observacionesMensaje = null;
@@ -111,11 +100,13 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity {
 
 
     public void solicitarAusencia(View view) {
-        Solicitud solicitud=null;
+      //  Solicitud solicitud=null;
+        Tramites tramites=null;
      //   try {
             String asunto= edt_asuntoSolicitud.getText().toString();
             String comentario= edt_observacionesMensaje.getText().toString();
-            solicitud= new Solicitud(asunto, comentario);
+            tramites=new Tramites(asunto, comentario);
+        //    solicitud= new Solicitud(asunto, comentario);
        // }catch (Exception e){
             mostrarToast("error, revisa los datos introducidos");
         //}
@@ -124,7 +115,8 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity {
 
         Intent intent= new Intent(this, ActivityMisSolicitudes.class);
 
-         solicitud= new Solicitud(edt_asuntoSolicitud.getText().toString(), edt_observacionesMensaje.getText().toString());
+         tramites= new Tramites(edt_asuntoSolicitud.getText().toString(), edt_observacionesMensaje.getText().toString());
+
         Bundle bundle= new Bundle();
         bundle.putSerializable("imagen", (Serializable) foto_galeria);
         intent.putExtra("imagen", (Parcelable) foto_galeria);

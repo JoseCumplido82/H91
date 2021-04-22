@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MostrarDetalleSolicitud">
+
+    <TextView
+        android:id="@+id/txt_detalleSolicitud"
+        android:layout_width="365dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:text="@string/detalle_del_tramite"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_nombre_documento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="@string/nombre_documento"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_detalleSolicitud"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/txt_detalleSolicitud"
+        app:layout_constraintTop_toBottomOf="@+id/txt_detalleSolicitud" />
+
+    <TextView
+        android:id="@+id/txt_asunto3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/asunto"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nombre_documento"
+        app:layout_constraintStart_toStartOf="@+id/txt_nombre_documento"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombre_documento" />
+
+    <TextView
+        android:id="@+id/txt_comentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/comentario"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_asunto3"
+        app:layout_constraintStart_toStartOf="@+id/txt_asunto3"
+        app:layout_constraintTop_toBottomOf="@+id/txt_asunto3" />
+
+    <TextView
+        android:id="@+id/txt_fecha_solicitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/fecha_solicitud"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_comentario"
+        app:layout_constraintStart_toStartOf="@+id/txt_comentario"
+        app:layout_constraintTop_toBottomOf="@+id/txt_comentario" />
+
+    <TextView
+        android:id="@+id/txt_idEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/id_estado"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_fecha_solicitud"
+        app:layout_constraintStart_toStartOf="@+id/txt_fecha_solicitud"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fecha_solicitud" />
+
+    <Button
+        android:id="@+id/bt_gestionar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="@string/gestionar_tramite"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/txt_idEstado"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/txt_idEstado"
+        app:layout_constraintTop_toBottomOf="@+id/txt_idEstado" />
+</androidx.constraintlayout.widget.ConstraintLayout>

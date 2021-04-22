@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.H91">
-        <activity android:name=".NuevoDepartamentoActivity"></activity>
+        <activity android:name=".MostrarDetalleSolicitud"></activity>
+        <activity android:name=".NuevoDepartamentoActivity" />
         <activity android:name=".ActivitySancionarEmpleado" />
         <activity android:name=".ActivityMensajeNotificaciones" />
         <activity android:name=".MostrarDetalleEmpleadoActivity" />

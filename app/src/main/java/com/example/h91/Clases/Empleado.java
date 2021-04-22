@@ -82,6 +82,11 @@ public class Empleado implements Serializable {
         this.apellido= apellido;
     }
 
+    public Empleado(String usuario, String pass){
+        this.usuario=usuario;
+        this.pass=pass;
+    }
+
     //getter y setter
 
 
