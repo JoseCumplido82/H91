@@ -35,29 +35,18 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_seleccionadia"
         tools:ignore="ContentDescription" />
 
-    <ImageView
-        android:id="@+id/img_logo6"
-        android:layout_width="223dp"
-        android:layout_height="176dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
     <TextView
         android:id="@+id/txt_ausencias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="@string/ausencias3"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/img_logo6"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/img_logo6"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo6" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_seleccionadia"

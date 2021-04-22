@@ -10,7 +10,7 @@
         android:id="@+id/edt_observacionesMensaje3"
         android:layout_width="348dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="center"
@@ -51,34 +51,25 @@
         app:layout_constraintStart_toStartOf="@+id/txt_asunto2"
         app:layout_constraintTop_toBottomOf="@+id/txt_asunto2" />
 
-    <ImageView
-        android:id="@+id/img_logo20"
-        android:layout_width="223dp"
-        android:layout_height="176dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
     <TextView
         android:id="@+id/txt_mensajeNotificaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="@string/mensaje_notificacion"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/img_logo20"
-        app:layout_constraintStart_toStartOf="@+id/img_logo20"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo20" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_asunto2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="70dp"
         android:text="@string/asunto"
         android:textSize="18sp"
         android:textStyle="italic"
@@ -89,9 +80,9 @@
 
     <Button
         android:id="@+id/bt_enviarNotificacion"
-        android:layout_width="120dp"
+        android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:text="@string/enviar"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toStartOf="@+id/bt_cancelarNotificacion"
@@ -101,16 +92,14 @@
 
     <Button
         android:id="@+id/bt_cancelarNotificacion"
-        android:layout_width="120dp"
+        android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginTop="20dp"
         android:onClick="restablecerCampos"
         android:text="@string/cancelar"
         app:backgroundTint="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="@+id/edt_observacionesMensaje3"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_observacionesMensaje3" />
 
@@ -122,7 +111,6 @@
         android:text="@string/volver11"
         app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintEnd_toStartOf="@+id/bt_cancelarNotificacion"
-        app:layout_constraintHorizontal_bias="0.426"
         app:layout_constraintStart_toEndOf="@+id/bt_enviarNotificacion"
         app:layout_constraintTop_toBottomOf="@+id/edt_observacionesMensaje3" />
 
@@ -130,7 +118,7 @@
         android:id="@+id/txt_dniUsuario"
         android:layout_width="122dp"
         android:layout_height="26dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:hint="@string/dni_empleado"
         android:textColor="@color/black"

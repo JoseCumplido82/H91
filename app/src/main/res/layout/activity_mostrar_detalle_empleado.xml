@@ -10,12 +10,13 @@
         android:id="@+id/imageView2"
         android:layout_width="149dp"
         android:layout_height="103dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="@+id/txt_tituloDetalle"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="@+id/txt_tituloDetalle"
         app:layout_constraintTop_toBottomOf="@+id/txt_tituloDetalle"
-        app:srcCompat="@drawable/logo"
-        android:contentDescription="@string/todo" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/txt_tituloDetalle"
@@ -33,7 +34,7 @@
         android:id="@+id/txt_detalle_nombree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="68dp"
         android:text="@string/nombre_empleado"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -135,7 +136,7 @@
         android:id="@+id/bt_borrarEmpleado2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:onClick="EliminarEmpleado"
         android:text="@string/eliminar_empleado"
         app:backgroundTint="@color/design_default_color_error"

@@ -12,6 +12,9 @@ public class ActivityRRHH extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_r_r_h_h);

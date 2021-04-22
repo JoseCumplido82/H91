@@ -6,46 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".ActivityInformacion">
 
-    <ImageView
-        android:id="@+id/img_logo9"
-        android:layout_width="223dp"
-        android:layout_height="176dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
     <TextView
         android:id="@+id/txt_informacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="@string/informacion2"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/img_logo9"
-        app:layout_constraintStart_toStartOf="@+id/img_logo9"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo9" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bt_calendario"
-        android:layout_width="206dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
         android:text="@string/calendario"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/txt_informacion"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="@+id/txt_informacion"
         app:layout_constraintTop_toBottomOf="@+id/txt_informacion" />
 
     <Button
         android:id="@+id/bt_riesgoslaborales"
-        android:layout_width="206dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
         android:text="@string/riesgos_laborales"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/bt_calendario"
@@ -55,9 +46,9 @@
 
     <Button
         android:id="@+id/bt_incendios"
-        android:layout_width="206dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
         android:text="@string/prevencion"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/bt_riesgoslaborales"

@@ -30,6 +30,9 @@ public class NuevoDepartamentoActivity extends AppCompatActivity implements Adap
     EditText edt_nombred=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_departamento);
         edt_nombred= findViewById(R.id.edt_nombred);

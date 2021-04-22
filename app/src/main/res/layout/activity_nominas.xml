@@ -6,29 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ActivityNominas">
 
-    <ImageView
-        android:id="@+id/img_logo3"
-        android:layout_width="223dp"
-        android:layout_height="176dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
     <TextView
         android:id="@+id/txt_Nominas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="@string/nominas"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/img_logo3"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/img_logo3"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo3" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageButton
@@ -65,7 +54,7 @@
         android:id="@+id/txt_selecciona"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:text="@string/seleccione_la_n_mina_que_desea_ver"
         android:textSize="18sp"
         android:textStyle="italic"
@@ -103,8 +92,9 @@
         android:layout_width="94dp"
         android:layout_height="66dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/iconodescarga"
+        android:background="@drawable/outline_file_download_black_48dp"
         android:onClick="descargaPrueba"
+        app:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/bt_volver6"
         app:layout_constraintStart_toStartOf="@+id/bt_volver6"
         app:layout_constraintTop_toBottomOf="@+id/bt_volver6" />

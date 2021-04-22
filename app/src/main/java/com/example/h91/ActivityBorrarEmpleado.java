@@ -26,6 +26,9 @@ public class ActivityBorrarEmpleado extends AppCompatActivity implements Adapter
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrar_empleado);
         sp_empleadoEliminar = (Spinner) findViewById(R.id.sp_empleadoEliminar);

@@ -44,6 +44,9 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anadir_empleado);
 

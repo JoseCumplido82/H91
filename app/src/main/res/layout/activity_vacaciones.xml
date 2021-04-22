@@ -6,28 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ActivityVacaciones">
 
-    <ImageView
-        android:id="@+id/img_logo4"
-        android:layout_width="223dp"
-        android:layout_height="176dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
     <TextView
         android:id="@+id/txt_vacaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="@string/vacaciones2"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/img_logo4"
-        app:layout_constraintStart_toStartOf="@+id/img_logo4"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo4" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_mostrar_fecha_picker2"
@@ -60,28 +51,28 @@
 
     <TextView
         android:id="@+id/txt_selecciona2"
-        android:layout_width="279dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="48dp"
         android:gravity="center"
         android:text="@string/selecciona_fecha_deseada_para_las_vacaciones"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.575"
+        app:layout_constraintHorizontal_bias="0.598"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_diasSolicitados" />
 
     <TextView
         android:id="@+id/txt_diasPedidos"
-        android:layout_width="357dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
         android:gravity="center"
         android:text="@string/vacaciones_hasta_el_dia"
         android:textColor="@color/cardview_dark_background"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/et_mostrar_fecha_picker2"
-        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="@+id/ib_obtener_fecha2"
         app:layout_constraintTop_toBottomOf="@+id/et_mostrar_fecha_picker2" />
 
@@ -89,8 +80,8 @@
         android:id="@+id/bt_solicitar3"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:onClick="solicitarVacaciones"
+        android:layout_marginTop="56dp"
+        android:onClick="insertarVacaciones"
         android:text="@string/solicitar"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/txt_diasPedidos"
@@ -117,11 +108,11 @@
         android:id="@+id/bt_volver8"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="144dp"
         android:text="@string/volver8"
         app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="@+id/txt_diasPedidos"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="@+id/txt_diasPedidos"
         app:layout_constraintTop_toBottomOf="@+id/txt_diasPedidos" />
 
@@ -135,16 +126,6 @@
         android:textStyle="italic"
         app:layout_constraintEnd_toStartOf="@+id/edt_diasSolicitados"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_vacaciones" />
-
-    <Button
-        android:id="@+id/bt_calcular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button"
-        android:onClick="calcularFechaVuelta"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_vacaciones" />
 

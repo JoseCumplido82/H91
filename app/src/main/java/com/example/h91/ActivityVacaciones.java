@@ -1,9 +1,12 @@
 package com.example.h91;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -15,8 +18,14 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.Date;
+import com.example.h91.Clases.Empleado;
+import com.example.h91.Clases.Vacaciones;
+import com.example.h91.controladores.VacacionesController;
+import com.example.h91.modelos.ConfiguracionDB;
+
+import java.util.Date;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
@@ -36,6 +45,7 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     final int anio = c.get(Calendar.YEAR);
 
     //Widgets
+    Empleado empleado;
     EditText etFecha;
     ImageButton ibObtenerFecha2;
     TextView edt_dias;
@@ -78,7 +88,7 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     public void solicitarVacaciones(View view) {
 
          String fecha=   etFecha.getText().toString();
-             mostrarToast("SOLICITUD ENVIADA");
+             mostrarToast2("SOLICITUD ENVIADA");
             edt_dias.setText(String.valueOf(++valorVacaciones));
         txt_diasPedidos.setText(fecha+edt_diasSolicitados.getText().toString());
             
@@ -93,8 +103,59 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
             //finish();
 
     }
+    public void mostrarToast2(String mensaje)
+    {
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
 
-    @Override
+    //METODO BUENO PARA INSERTAR VACACIONES
+    public void insertarVacaciones(View view) {
+        AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
+        alerta1.setTitle("¿Quieres solicitar la ausencia?");
+        alerta1.setPositiveButton("si", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (edt_diasSolicitados.getText().toString().isEmpty()) {
+                    mostrarToast2("introduce cantidad de dias");
+                }
+                Vacaciones vacaciones = null;
+                try {
+                    int idSolicitante = empleado.getId();
+                    int dias = Integer.valueOf(edt_diasSolicitados.getText().toString());
+                    String fechatextoInicio = String.valueOf(etFecha.getText());
+                    Date fechaInicio = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoInicio);
+                    String fechatextoFin = String.valueOf(etFecha.getText()) + dias;
+                    Date fechaFin = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoFin);
+                    String fechatextoSolicitud = String.valueOf(LocalDate.now());
+                    Date fechaActual = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
+                    vacaciones = new Vacaciones(idSolicitante, fechaInicio, fechaFin, dias, fechaActual, ConfiguracionDB.idEstado);
+                    boolean insertadoOK = VacacionesController.insertarVacaciones(vacaciones);
+                    if (insertadoOK) {
+                        mostrarToast2("Dia de vacaciones creado correctamente");
+                        finish();
+                    } else {
+                        mostrarToast2("no se pudo crear la peticion del dia de vacaciones");
+                    }
+                } catch (Exception e) {
+                    mostrarToast2("error, revisa los datos introducidos");
+                    Log.i("vacaciones", "vacaciones no creadas " + " el idSolicitante no lo recoge " + " dias " + edt_diasSolicitados.getText().toString()
+                            + " fecha pedida " + etFecha.getText() + "  fecha actual " + LocalDate.now().toString());
+                }
+            }
+        });
+        alerta1.setNegativeButton("no", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                edt_diasSolicitados.setText("");
+                etFecha.setText("");
+                mostrarToast2(" los campos se han reiniciado");
+            }
+        });
+        alerta1.show();
+    }
+
+            @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ib_obtener_fecha2:
@@ -137,6 +198,8 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
 
     int numero=0;
 
+
+    //METODO PARA HACER LA SUMA DE DIAS A LA FECHA , NO CONSIGO QUE FUNCIONE
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void sumarDiasAFecha() {
 
@@ -168,26 +231,13 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
         System.out.println("fecha de obtenerfecha " );
     }
 
-    int diapedido= 6;
-
-    //int diauno= Integer.parseInt(edt_diasSolicitados.getText().toString());
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void calcularFechaVuelta(View view) {
         sumarDiasAFecha();
-     //   calcularFecha(obtenerFecha(), diapedido);
-    }
-
-
-    public Date calcularFecha(Date fecha, int dias){
-        Calendar calendar= Calendar.getInstance();
-        calendar.setTime(fecha);
-        calendar.add(Calendar.DAY_OF_YEAR, dias);
-        calendar.getTime();
-
-        return fecha;
-
 
     }
+
+
 
     public static String formatearCalendar(Calendar c) {
         DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());

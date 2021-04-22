@@ -6,41 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".NuevoDepartamentoActivity">
 
-    <ImageView
-        android:id="@+id/img_logo22"
-        android:layout_width="223dp"
-        android:layout_height="176dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
     <TextView
         android:id="@+id/txt_nuevoDepartamento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="@string/nuevo_departamento"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/img_logo22"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/img_logo22"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo22" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edt_nombred"
-        android:layout_width="291dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="176dp"
+        android:layout_width="290dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="190dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/introduce_nombre_de_departamento"
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/txt_nuevoDepartamento"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="@+id/txt_nuevoDepartamento"
@@ -48,8 +39,8 @@
 
     <Button
         android:id="@+id/bt_guardarDepartamento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
         android:layout_marginTop="80dp"
         android:onClick="insertarDepartamento"
         android:text="@string/guardar_departamento"
@@ -61,9 +52,9 @@
 
     <Spinner
         android:id="@+id/sp_supervisor"
-        android:layout_width="280dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="290dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="90dp"
         app:layout_constraintEnd_toEndOf="@+id/txt_nuevoDepartamento"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="@+id/txt_nuevoDepartamento"

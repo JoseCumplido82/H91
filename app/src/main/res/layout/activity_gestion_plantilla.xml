@@ -6,34 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ActivityGestionPlantilla">
 
-    <ImageView
-        android:id="@+id/img_logo13"
-        android:layout_width="223dp"
-        android:layout_height="176dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
     <TextView
         android:id="@+id/txt_gestionPlantilla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="@string/gestion_plantilla2"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/img_logo13"
-        app:layout_constraintStart_toStartOf="@+id/img_logo13"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo13" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bt_verEmpleado"
-        android:layout_width="261dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
         android:text="@string/ver_empleados"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/txt_gestionPlantilla"
@@ -43,8 +34,8 @@
 
     <Button
         android:id="@+id/bt_borrarEmpleado"
-        android:layout_width="261dp"
-        android:layout_height="69dp"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
         android:layout_marginTop="20dp"
         android:text="@string/borrar_empleado"
         app:backgroundTint="@color/design_default_color_error"
@@ -55,8 +46,8 @@
 
     <Button
         android:id="@+id/bt_añadirEmpleado"
-        android:layout_width="261dp"
-        android:layout_height="69dp"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
         android:layout_marginTop="20dp"
         android:text="@string/a_adir_empleado"
         app:backgroundTint="@color/design_default_color_error"
@@ -79,8 +70,8 @@
 
     <Button
         android:id="@+id/bt_insertarDepartamento"
-        android:layout_width="261sp"
-        android:layout_height="61sp"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
         android:layout_marginTop="20dp"
         android:text="@string/crear_departamento"
         app:backgroundTint="@color/design_default_color_error"

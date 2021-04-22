@@ -29,6 +29,9 @@ public class ActivityCrearNotificacion extends AppCompatActivity {
    private ArrayList<Empleado> empleados;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_notificacion);
         empleados= EmpleadoController.obtenerEmpleados();
