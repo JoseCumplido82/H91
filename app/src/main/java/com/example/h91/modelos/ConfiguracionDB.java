@@ -1,5 +1,7 @@
 package com.example.h91.modelos;
 
+import com.example.h91.MainActivity;
+
 public class ConfiguracionDB {
       public static final String HOSTDB = "10.0.2.2";
     //public static final String HOSTDB = "217.182.121.210";
@@ -18,4 +20,6 @@ public class ConfiguracionDB {
     public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
     public static String pass="Madrid2021*";
     public static int idEstado=1;
+    public static String UsuarioActual="";
+    public static String PassActual="";
 }

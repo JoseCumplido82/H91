@@ -18,13 +18,15 @@ import com.example.h91.Clases.Empleado;
 import com.example.h91.controladores.EmpleadoController;
 import com.example.h91.modelos.EmpleadoDB;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private String url;
-    private EditText nombreUsuario;
-    private EditText edt_pass;
-    String preferencias1 = nombreUsuario.getText().toString();
-    String preferencias2= edt_pass.getText().toString();
-    boolean preferenciasGuardadas;
+    public EditText nombreUsuario;
+    public EditText edt_pass;
+   // String preferencias1 = nombreUsuario.getText().toString();
+   // String preferencias2= edt_pass.getText().toString();
+    //boolean preferenciasGuardadas;
 
 
 
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String nombreRRHH= "mar";
                 String nombreEmpleado = "andrei";
-              //  comprobarUser(nombreUsuario.getText().toString(), edt_pass.getText().toString());
+         comprobarUser(nombreUsuario.getText().toString(), edt_pass.getText().toString());
 
                 if(nombreUsuario.getText().toString().equals(nombreRRHH)){
                     Intent intent = new Intent(v.getContext(), ActivityRRHH.class);
@@ -84,35 +86,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-        cargarConfiguracionUser();
-    }
 
-    @Override
-    public void onDestroy()
-    {
-        super.onDestroy();
-        guardarConfiguracionUser();
-    }
+
 
     //METODO PARA GUARDAR LA CONFIGURACION DEL USUARIO
-    public void guardarConfiguracionUser(){
-        SharedPreferences preferences= getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor= preferences.edit();
-        editor.putString("DniUser", nombreUsuario.getText().toString());
-        editor.putString("PassUser", edt_pass.getText().toString());
-        editor.commit();
-    }
+ //   public void guardarConfiguracionUser(){
+   //     SharedPreferences preferences= getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+     //   SharedPreferences.Editor editor= preferences.edit();
+       // editor.putString("DniUser", nombreUsuario.getText().toString());
+       // editor.putString("PassUser", edt_pass.getText().toString());
+        //editor.commit();
+   // }
 
     //METODO PARA CARGAR LA CONFIGURACION DEL USUARIO
-    public void cargarConfiguracionUser(){
-        SharedPreferences preferences= getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor= preferences.edit();
-        nombreUsuario.setText(preferences.getString("DniUser", nombreUsuario.getText().toString()));
-        edt_pass.setText(preferences.getString("Passuser", edt_pass.getText().toString()));
-    }
+    //public void cargarConfiguracionUser(){
+      //  SharedPreferences preferences= getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+       // SharedPreferences.Editor editor= preferences.edit();
+       // nombreUsuario.setText(preferences.getString("DniUser", nombreUsuario.getText().toString()));
+        //edt_pass.setText(preferences.getString("Passuser", edt_pass.getText().toString()));
+    //}
 
     //PARA CONTINUAR CON EL LOGIN DE USUARIO
     public void comprobarUser(String nombre, String pass){
@@ -127,9 +119,20 @@ public class MainActivity extends AppCompatActivity {
           System.out.println("no existe empleado");
 
       }
-
-
         Log.i("empleado recuperado" , "he recuperado el empleado " + ComprobarEmpleado.getUsuario() + " " + ComprobarEmpleado.getPass());
 
+    }
+
+
+
+
+    public String getUser(String usuario){
+       usuario= nombreUsuario.getText().toString();
+        return usuario;
+    }
+
+    public String  getPass(String pass){
+        pass=edt_pass.getText().toString();
+        return pass;
     }
 }

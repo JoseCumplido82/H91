@@ -168,26 +168,31 @@ public class EmpleadoDB {
             System.out.println("no se ha podido conectar con la base de datos");
             return false;
         }
-        Empleado empleadoEncontrado=null;
         try {
-            String ordenSQL = "select em.usuario, em.pass from empleado em ";
+            /////---------------------------------
+            String ordenSQL = "select * from empleado where usuario like ? and pass like ? ";
             PreparedStatement pst=conexion.prepareStatement(ordenSQL);
             pst.setString(1, usuario);
             pst.setString(2, pass);
             ResultSet resultadosql= pst.executeQuery();
-            //---------
-            while (resultadosql.next()){
-                String usuariodos = resultadosql.getString("usuario");
-                String passdos = resultadosql.getString("pass");
-                empleadoEncontrado = new Empleado(usuariodos, passdos);
-
+            int numerofilas=0;
+            while (resultadosql.next())
+            {
+               numerofilas++;
             }
             resultadosql.close();
             pst.close();
             conexion.close();
-            return true;
+            if(numerofilas>0){
+                return true;
+            }
+            else {
+                return false;
+            }
+
         } catch (SQLException e) {
-            //Log.i("sql", "error sql");
+            Log.i("sql", "error sql");
+            System.out.println("entra al catch");
             return false;
         }
     }

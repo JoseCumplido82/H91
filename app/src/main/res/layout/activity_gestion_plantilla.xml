@@ -22,39 +22,51 @@
 
     <Button
         android:id="@+id/bt_verEmpleado"
-        android:layout_width="260dp"
+        android:layout_width="230dp"
         android:layout_height="70dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
         android:text="@string/ver_empleados"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/txt_gestionPlantilla"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txt_gestionPlantilla"
         app:layout_constraintTop_toBottomOf="@+id/txt_gestionPlantilla" />
 
     <Button
-        android:id="@+id/bt_borrarEmpleado"
-        android:layout_width="260dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/borrar_empleado"
-        app:backgroundTint="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="@+id/bt_añadirEmpleado"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/bt_añadirEmpleado"
-        app:layout_constraintTop_toBottomOf="@+id/bt_añadirEmpleado" />
-
-    <Button
         android:id="@+id/bt_añadirEmpleado"
-        android:layout_width="260dp"
+        android:layout_width="230dp"
         android:layout_height="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="@string/a_adir_empleado"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/bt_verEmpleado"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/bt_verEmpleado"
         app:layout_constraintTop_toBottomOf="@+id/bt_verEmpleado" />
+
+    <Button
+        android:id="@+id/bt_insertarDepartamento"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/crear_departamento"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_borrarEmpleado"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_borrarEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/bt_borrarEmpleado" />
+
+    <Button
+        android:id="@+id/bt_borrarEmpleado"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/borrar_empleado"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_añadirEmpleado"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_añadirEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/bt_añadirEmpleado" />
 
     <Button
         android:id="@+id/bt_volver14"
@@ -68,14 +80,48 @@
         app:layout_constraintStart_toStartOf="@+id/bt_borrarEmpleado"
         app:layout_constraintTop_toBottomOf="@+id/bt_borrarEmpleado" />
 
-    <Button
-        android:id="@+id/bt_insertarDepartamento"
-        android:layout_width="260dp"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="40dp"
         android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/crear_departamento"
-        app:backgroundTint="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="@+id/bt_borrarEmpleado"
-        app:layout_constraintStart_toStartOf="@+id/bt_borrarEmpleado"
-        app:layout_constraintTop_toBottomOf="@+id/bt_borrarEmpleado" />
+        app:layout_constraintEnd_toStartOf="@+id/bt_borrarEmpleado"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bt_borrarEmpleado"
+        app:srcCompat="@drawable/outline_person_remove_black_48dp"
+        android:contentDescription="@string/todo6" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="40dp"
+        android:layout_height="70dp"
+        app:layout_constraintEnd_toStartOf="@+id/bt_añadirEmpleado"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bt_añadirEmpleado"
+        app:srcCompat="@drawable/outline_person_add_black_48dp"
+        android:contentDescription="@string/todo7" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="40dp"
+        android:layout_height="70dp"
+        app:layout_constraintEnd_toStartOf="@+id/bt_verEmpleado"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bt_verEmpleado"
+        app:srcCompat="@drawable/outline_people_alt_black_48dp"
+        android:contentDescription="@string/todo9" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="40dp"
+        android:layout_height="70dp"
+        app:layout_constraintEnd_toStartOf="@+id/bt_insertarDepartamento"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bt_insertarDepartamento"
+        app:srcCompat="@drawable/outline_addchart_black_48dp"
+        android:contentDescription="@string/todo8" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -112,10 +112,10 @@
     <string name="nuevo_empleado">NUEVO EMPLEADO</string>
     <string name="guardar_empleado">guardar empleado</string>
     <string name="nombre">Nombre:</string>
-    <string name="todo6">TODO</string>
+    <string name="todo11">TODO</string>
     <string name="button">Button</string>
     <string name="dias_disponibles">Dias disponibles</string>
-    <string name="todo8">TODO</string>
+    <string name="todo12">TODO</string>
     <string name="pdf">PDF</string>
     <string name="imagen">Imagen</string>
     <string name="mensaje_notificacion">MENSAJE NOTIFICACION</string>
@@ -152,4 +152,8 @@
     <string name="id_estado">ID Estado</string>
     <string name="gestionar_tramite">GESTIONAR TRAMITE</string>
     <string name="detalle_del_tramite">DETALLE DEL TRAMITE</string>
+    <string name="todo6">TODO</string>
+    <string name="todo7">TODO</string>
+    <string name="todo8">TODO</string>
+    <string name="todo9">TODO</string>
 </resources>
