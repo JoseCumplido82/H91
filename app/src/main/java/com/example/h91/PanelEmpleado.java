@@ -21,11 +21,11 @@ public class PanelEmpleado extends AppCompatActivity {
 
         //importamos nombre de MainActivity
         Bundle bundle = getIntent().getExtras();
-        String nombreImportado= bundle.getString("Bienvenido");
+        //String nombreImportado= bundle.getString("Bienvenido");
 
-        String txt_Bienvenido= nombreImportado;
+      //  String txt_Bienvenido= nombreImportado;
         TextView out= (TextView) findViewById(R.id.txt_Bienvenido);
-        out.setText("Bienvenido " + txt_Bienvenido);
+       // out.setText("Bienvenido " + txt_Bienvenido);
 
         //boton cerrar panel empleado
         Button bt_cerrar = (Button) findViewById(R.id.bt_cerrar);

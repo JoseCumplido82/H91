@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.h91.modelos.ConfiguracionDB;
+
 public class ActivityRRHH extends AppCompatActivity {
 
     @Override
@@ -59,6 +61,8 @@ public class ActivityRRHH extends AppCompatActivity {
         bt_cerrarSesionRRHH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ConfiguracionDB.UsuarioActual="";
+                ConfiguracionDB.PassActual="";
                 Intent intent2 = new Intent (v.getContext(), MainActivity.class);
                 startActivityForResult(intent2, 0);
             }

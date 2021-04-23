@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.h91.Clases.Empleado;
 import com.example.h91.controladores.EmpleadoController;
+import com.example.h91.modelos.ConfiguracionDB;
 import com.example.h91.modelos.EmpleadoDB;
 
 import java.util.ArrayList;
@@ -24,12 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private String url;
     public EditText nombreUsuario;
     public EditText edt_pass;
-   // String preferencias1 = nombreUsuario.getText().toString();
-   // String preferencias2= edt_pass.getText().toString();
-    //boolean preferenciasGuardadas;
+    //  No puese asignar valores aqui, lo tienes que hacer en el oncreate una vez que has utilizado el findviewbyid por eso falla la aplicacion
 
-
-
+    boolean preferenciasGuardadas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,34 +37,58 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
-
-
-
         Button btn = (Button) findViewById(R.id.bt_acceder);
         nombreUsuario= (EditText)findViewById(R.id.edt_usuario);
         edt_pass=(EditText)findViewById(R.id.edt_pass);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nombreRRHH= "mar";
+                String nombreRRHH = "50483599W";
+                String pass = "Madrid2021";
                 String nombreEmpleado = "andrei";
-         comprobarUser(nombreUsuario.getText().toString(), edt_pass.getText().toString());
 
-                if(nombreUsuario.getText().toString().equals(nombreRRHH)){
-                    Intent intent = new Intent(v.getContext(), ActivityRRHH.class);
-                    startActivityForResult(intent,0);
+
+                String usuario = nombreUsuario.getText().toString();
+                String password = edt_pass.getText().toString();
+
+                ConfiguracionDB.UsuarioActual = usuario;
+                ConfiguracionDB.PassActual = password;
+                // String usuario ="X8450397J";
+                //String password = "55diasenP";
+
+                // comprobarUser(nombreUsuario.getText().toString(), edt_pass.getText().toString());
+
+                //if (nombreUsuario.getText().toString().equals(EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual))) {
+                    //Intent intent = new Intent(v.getContext(), ActivityRRHH.class);
+                    //startActivityForResult(intent, 0);
                     //Exportar nombre usuario
-                    intent.putExtra("Bienvenido", nombreUsuario.getText().toString());
-                    startActivityForResult(intent,0);
-                }else if(nombreUsuario.getText().toString().equals(nombreEmpleado)){
-                    Intent intent = new Intent(v.getContext(), PanelEmpleado.class);
-                    startActivityForResult(intent,0);
+                    //intent.putExtra("Bienvenido", nombreUsuario.getText().toString());
+
+                    //COMPRUEBO EL USUARIO
+                    //ConfiguracionDB.UsuarioActual = usuario;
+                    //ConfiguracionDB.PassActual = password;
+
+                  //  startActivityForResult(intent, 0);
+
+                //} else if (nombreUsuario.getText().toString().equals(nombreEmpleado)) {
+                    //Intent intent = new Intent(v.getContext(), PanelEmpleado.class);
+                    //startActivityForResult(intent, 0);
                     //Exportar nombre usuario
-                    intent.putExtra("Bienvenido", nombreUsuario.getText().toString());
-                    startActivityForResult(intent,0);
+
+                   // intent.putExtra("Bienvenido", nombreUsuario.getText().toString());
+                    //ConfiguracionDB.UsuarioActual = usuario;
+                    //ConfiguracionDB.PassActual = password;
+                  //  startActivityForResult(intent, 0);
+                //}
+                boolean resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+                if (resultado == true) {
+                    Intent intent= new Intent(v.getContext(), PanelEmpleado.class);
+                    startActivity(intent);
+                    mostrarToast("encontrado");
+                    Log.i("sql", "encontrado");
+                } else {
+                    mostrarToast("no encontrado");
+                    Log.i("sql", "no encontrado");
                 }
 
             }
@@ -87,24 +109,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void mostrarToast(String encontrado) {
+        Toast.makeText(this,"logeado",Toast.LENGTH_SHORT).show();
+    }
 
 
-    //METODO PARA GUARDAR LA CONFIGURACION DEL USUARIO
- //   public void guardarConfiguracionUser(){
-   //     SharedPreferences preferences= getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-     //   SharedPreferences.Editor editor= preferences.edit();
-       // editor.putString("DniUser", nombreUsuario.getText().toString());
-       // editor.putString("PassUser", edt_pass.getText().toString());
-        //editor.commit();
-   // }
-
-    //METODO PARA CARGAR LA CONFIGURACION DEL USUARIO
-    //public void cargarConfiguracionUser(){
-      //  SharedPreferences preferences= getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-       // SharedPreferences.Editor editor= preferences.edit();
-       // nombreUsuario.setText(preferences.getString("DniUser", nombreUsuario.getText().toString()));
-        //edt_pass.setText(preferences.getString("Passuser", edt_pass.getText().toString()));
-    //}
 
     //PARA CONTINUAR CON EL LOGIN DE USUARIO
     public void comprobarUser(String nombre, String pass){
@@ -115,24 +124,15 @@ public class MainActivity extends AppCompatActivity {
       boolean ComprobadoOK=EmpleadoDB.EmpleadoEnTabla(ComprobarEmpleado.getUsuario(), ComprobarEmpleado.getPass());
       if(ComprobadoOK){
           System.out.println("existe empleado");
+           Intent intent= new Intent(this, PanelEmpleado.class);
+           startActivityForResult(intent,0);
       }else {
           System.out.println("no existe empleado");
-
+          mostrarToast("Pos no te logeas");
       }
         Log.i("empleado recuperado" , "he recuperado el empleado " + ComprobarEmpleado.getUsuario() + " " + ComprobarEmpleado.getPass());
 
     }
 
 
-
-
-    public String getUser(String usuario){
-       usuario= nombreUsuario.getText().toString();
-        return usuario;
-    }
-
-    public String  getPass(String pass){
-        pass=edt_pass.getText().toString();
-        return pass;
-    }
 }

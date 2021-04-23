@@ -197,6 +197,49 @@ public class EmpleadoDB {
         }
     }
     //-------------------------------------------------------------------
+    //---------------------------------------------
+    public static boolean EmpleadoEnTabla2(String usuario, String pass) {
+        Connection conexion = BaseDB.conectarConBaseDeDatos();
+        if (conexion == null) {
+            System.out.println("no se ha podido conectar con la base de datos");
+            return false;
+        }
+        Empleado empleadoEncontrado=null;
+        try {
+            String ordenSQL = "select * from empleado em where usuario LIKE ? and pass LIKE ?";
+            PreparedStatement pst=conexion.prepareStatement(ordenSQL);
+            Log.i("sql", "usuario actual -> " + ConfiguracionDB.UsuarioActual);
+            pst.setString(1, usuario);
+            //pst.setString(1, usuario);
+            Log.i("sql", "password actual -> " + ConfiguracionDB.PassActual);
+            pst.setString(2, ConfiguracionDB.PassActual);
+            ResultSet resultadosql= pst.executeQuery();
+            //---------
+            int numEmps = 0;
+            while (resultadosql.next()){
+                numEmps++;
+
+            }
+            resultadosql.close();
+            pst.close();
+            conexion.close();
+            if(numEmps > 0)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException e) {
+            //Log.i("sql", "error sql");
+            return false;
+        }
+    }
+
+
+
+
+
     public static Empleado buscarEmpleadoTabla(String usuario){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
         if(conexion == null){

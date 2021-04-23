@@ -5,6 +5,7 @@ import android.widget.TextView;
 import com.example.h91.Clases.Empleado;
 import com.example.h91.tareas.TareaComprobarEmpleado;
 import com.example.h91.tareas.TareaBorrarEmpleado;
+import com.example.h91.tareas.TareaComprobarUser;
 import com.example.h91.tareas.TareaInsertarEmpleado;
 import com.example.h91.tareas.TareaMostrarEmpleados;
 import com.example.h91.tareas.TareaObtenerEmpleados;
@@ -147,6 +148,31 @@ public class EmpleadoController {
         }
         finally {
             return actualizadoOK;
+        }
+    }
+
+    public static boolean comprobarUserActual(String usuarioActual, String passActual) {
+        FutureTask t = new FutureTask(new TareaComprobarUser(usuarioActual, passActual));
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(t);
+        boolean comprobadoOK= false;
+        try {
+            comprobadoOK = (boolean)t.get();
+            es.shutdown();
+            try {
+                if(!es.awaitTermination(800,TimeUnit.MILLISECONDS)){
+                    es.shutdownNow();
+                }
+            }catch (InterruptedException e){
+                es.shutdownNow();
+            }
+        }catch (ExecutionException e){
+            e.printStackTrace();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        finally {
+            return comprobadoOK;
         }
     }
 }

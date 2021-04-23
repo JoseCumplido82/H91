@@ -1,6 +1,5 @@
 package com.example.h91.modelos;
 
-import com.example.h91.MainActivity;
 
 public class ConfiguracionDB {
       public static final String HOSTDB = "10.0.2.2";
