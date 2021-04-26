@@ -3,6 +3,7 @@ package com.example.h91.controladores;
 import android.widget.TextView;
 
 import com.example.h91.Clases.Empleado;
+import com.example.h91.tareas.TareaActualizarEmpleado;
 import com.example.h91.tareas.TareaComprobarEmpleado;
 import com.example.h91.tareas.TareaBorrarEmpleado;
 import com.example.h91.tareas.TareaComprobarUser;
@@ -175,4 +176,32 @@ public class EmpleadoController {
             return comprobadoOK;
         }
     }
+
+    public static boolean actualizarEmpleado(Empleado empleado) {
+        FutureTask t = new FutureTask(new TareaActualizarEmpleado(empleado));
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(t);
+        boolean actualizadoOK = false;
+        try {
+            actualizadoOK = (boolean) t.get();
+            es.shutdown();
+            try {
+                if (!es.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+                    es.shutdownNow();
+                }
+            } catch (InterruptedException e) {
+                es.shutdownNow();
+            }
+        } catch (
+                ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        finally {
+            return actualizadoOK;
+        }
+    }
+
+
 }

@@ -12,7 +12,8 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.sql.Date;
+//import java.sql.Date;
+import java.util.Date;
 
 public class EmpleadoDB {
 
@@ -30,7 +31,7 @@ public class EmpleadoDB {
         ArrayList<Empleado> empleadosDevueltos = new ArrayList<Empleado>();
         try{
             Statement sentencia = conexion.createStatement();
-            String ordenSQL = "select em.id, em.idDepartamento, em.usuario, em.pass, em.nombre, em.apellido, em.domicilio, em.correo, em.telefono, em.fecha_incorporacion, em.fecha_salida from empleado em;";
+            String ordenSQL = "select em.id, em.idDepartamento, em.usuario, em.pass, em.nombre, em.apellido, em.domicilio, em.correo, em.telefono, em.fecha_incorporacion, from empleado em;";
             ResultSet resultado= sentencia.executeQuery(ordenSQL);
             while (resultado.next())
             {
@@ -46,9 +47,9 @@ public class EmpleadoDB {
                 String telefono = resultado.getString("telefono");
                 //posible error con date, cambiar la importacion de util a sql
                 Date fecha_incorporacion = resultado.getDate("fecha_incorporacion");
-                Date fecha_salida = resultado.getDate("fecha_salida");
+                //Date fecha_salida = resultado.getDate("fecha_salida");
                 //CORREGIR
-                Empleado empleado= new Empleado(id, idDepartamento, usuario, pass, nombre, apellido, domicilio, correo, telefono, fecha_incorporacion, fecha_salida);
+                Empleado empleado= new Empleado(id, idDepartamento, usuario, pass, nombre, apellido, domicilio, correo, telefono, fecha_incorporacion);
                 empleadosDevueltos.add(empleado);
 
             }
@@ -144,9 +145,8 @@ public class EmpleadoDB {
             pst.setString(6, empleado.getDomicilio());
             pst.setString(7, empleado.getCorreo());
             pst.setString(8, empleado.getTelefono());
-            java.sql.Date sqlFecha = java.sql.Date.valueOf(String.valueOf(empleado.getFecha_incorporacion()));
-            pst.setDate(9, sqlFecha);
-            pst.setInt(11, empleado.getId());
+            pst.setDate(9, (java.sql.Date) empleado.getFecha_incorporacion());
+            pst.setInt(10, empleado.getId());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();
@@ -265,10 +265,10 @@ public class EmpleadoDB {
                 String correo= resultadosql.getString("correo");
                 String telefono = resultadosql.getString("telefono");
                 Date fecha_incorporacion = resultadosql.getDate("fecha_incorporacion");
-                Date fecha_salida = resultadosql.getDate("fecha_salida");
+                //Date fecha_salida = resultadosql.getDate("fecha_salida");
 
                 //CORREGIR
-                empleadoEncontrado = new Empleado(id, idDepartamento, usuariodos, pass, nombreEmpleado, apellido, domicilio, correo, telefono, fecha_incorporacion, fecha_salida);
+                empleadoEncontrado = new Empleado(id, idDepartamento, usuariodos, pass, nombreEmpleado, apellido, domicilio, correo, telefono, fecha_incorporacion);
             }
             resultadosql.close();
             pst.close();

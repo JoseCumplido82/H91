@@ -156,4 +156,21 @@
     <string name="todo7">TODO</string>
     <string name="todo8">TODO</string>
     <string name="todo9">TODO</string>
+    <string name="perfil_empleado">PERFIL EMPLEADO</string>
+    <string name="domicilio">Domicilio</string>
+    <string name="telefono">Telefono</string>
+    <string name="cambiar_contrase_a">Cambiar Contraseña</string>
+    <string name="guardar_datos">guardar datos</string>
+    <string name="perfil_personal">Perfil Personal</string>
+    <string name="domicilio_empleado">domicilio empleado</string>
+    <string name="numero_de_telefono">Numero de telefono</string>
+    <string name="correo_de_contacto">correo de contacto</string>
+    <string name="guardar_cambios">guardar cambios</string>
+    <string name="nombre_departamento">nombre departamento</string>
+    <string name="telefono1">telefono1</string>
+    <string name="direccion1">direccion</string>
+    <string name="fecha_de_incorporacion_empleado">fecha de incorporacion empleado</string>
+    <string name="correo_de_empleado">correo de empleado</string>
+    <string name="domicilio_de_empleado">domicilio de empleado</string>
+    <string name="telefono_empleado">telefono empleado</string>
 </resources>

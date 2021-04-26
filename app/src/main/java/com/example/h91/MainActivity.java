@@ -86,7 +86,14 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     mostrarToast("encontrado");
                     Log.i("sql", "encontrado");
-                } else {
+                }else if(ConfiguracionDB.UsuarioActual.equals("mar")){
+                    Intent intent= new Intent(v.getContext(), ActivityRRHH.class);
+                    startActivity(intent);
+                    mostrarToast("usuario encontrado");
+                    Log.i("sql", "encontrado");
+                }
+
+                else {
                     mostrarToast("no encontrado");
                     Log.i("sql", "no encontrado");
                 }
@@ -132,6 +139,16 @@ public class MainActivity extends AppCompatActivity {
       }
         Log.i("empleado recuperado" , "he recuperado el empleado " + ComprobarEmpleado.getUsuario() + " " + ComprobarEmpleado.getPass());
 
+    }
+
+    //Donde encontrarnos
+    public void MostrarLocalizacion(View view){
+        String direccionMapa="Calle de Fuerteventura, 21, 28703 San Sebastián de los Reyes, Madrid";
+        Uri uri=Uri.parse("geo:0,0?q=" + direccionMapa);
+        Intent intent= new Intent(Intent.ACTION_VIEW, uri);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
 

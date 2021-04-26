@@ -8,8 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class PanelEmpleado extends AppCompatActivity {
+import com.example.h91.Clases.Empleado;
+import com.example.h91.controladores.EmpleadoController;
+import com.example.h91.modelos.ConfiguracionDB;
 
+import java.io.Serializable;
+
+public class PanelEmpleado extends AppCompatActivity{
+    public static final String EXTRA_OBJETO_EMPLEADO= "empleado";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //para ocultar la barra de status
@@ -80,6 +86,27 @@ public class PanelEmpleado extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent5= new Intent(v.getContext(), ActivitySolicitudes.class);
                 startActivityForResult(intent5,0);
+            }
+        });
+
+        //boton mostrar Perfil Personal
+        Button bt_perfilEmpleado= (Button)findViewById(R.id.bt_perfilEmpleado);
+        bt_perfilEmpleado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                boolean EmpleadoOK= EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+               // Empleado empleado= new Empleado(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+                if(EmpleadoOK){
+
+                   // Intent intent= new Intent(PanelEmpleado.this, ActivityPerfilEmpleado.class);
+                    Intent intent= new Intent(PanelEmpleado.this, ActivityPerfilEmpleado.class);
+                    intent.putExtra("empleado", EXTRA_OBJETO_EMPLEADO);
+                    //setResult(RESULT_OK, intent);
+                   // intent.putExtra(EXTRA_OBJETO_EMPLEADO, empleado);
+                    startActivity(intent);
+                }
+
             }
         });
 

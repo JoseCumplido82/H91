@@ -25,7 +25,7 @@ public class Empleado implements Serializable {
     private Date fecha_salida;
 
     //constructores
-    public Empleado(int id, int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion, Date fecha_salida) {
+    public Empleado(int id, int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion) {
         this.id = id;
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
@@ -36,7 +36,17 @@ public class Empleado implements Serializable {
         this.correo = correo;
         this.telefono = telefono;
         this.fecha_incorporacion = fecha_incorporacion;
-        this.fecha_salida = null;
+    }
+    public Empleado(int id, int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono) {
+        this.id = id;
+        this.idDepartamento = idDepartamento;
+        this.usuario = usuario;
+        this.pass = pass;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.domicilio = domicilio;
+        this.correo = correo;
+        this.telefono = telefono;
     }
 
     public Empleado() {
@@ -61,7 +71,7 @@ public class Empleado implements Serializable {
     }
 
 
-    public Empleado(int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion,Date fecha_salida) {
+    public Empleado(int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion) {
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
         this.pass = pass;
@@ -71,7 +81,6 @@ public class Empleado implements Serializable {
         this.correo = correo;
         this.telefono = telefono;
         this.fecha_incorporacion = fecha_incorporacion;
-        this.fecha_salida = null;
     }
 
 
@@ -86,6 +95,7 @@ public class Empleado implements Serializable {
         this.usuario=usuario;
         this.pass=pass;
     }
+
 
     //getter y setter
 

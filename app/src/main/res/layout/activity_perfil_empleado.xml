@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityPerfilEmpleado">
+
+    <TextView
+        android:id="@+id/txt_perfilEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="@string/perfil_empleado"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_dni1"
+        android:layout_width="260dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/dni_empleado"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_perfilEmpleado" />
+
+    <TextView
+        android:id="@+id/txt_departamento1"
+        android:layout_width="115dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/departamento"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_dni1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_dni1"
+        app:layout_constraintTop_toBottomOf="@+id/txt_dni1" />
+
+    <TextView
+        android:id="@+id/txt_nombre1"
+        android:layout_width="260dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/nombre"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_departamento1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_departamento1"
+        app:layout_constraintTop_toBottomOf="@+id/txt_departamento1" />
+
+    <TextView
+        android:id="@+id/txt_apellidos1"
+        android:layout_width="260dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/apellidos"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nombre1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_nombre1"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombre1" />
+
+    <Button
+        android:id="@+id/bt_cambiarPass"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/cambiar_contrase_a"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_guardarEmpleado"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/bt_guardarEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/bt_guardarEmpleado" />
+
+    <Button
+        android:id="@+id/bt_volverAtras"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/volver"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/bt_cambiarPass"
+        app:layout_constraintStart_toStartOf="@+id/bt_cambiarPass"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cambiarPass" />
+
+    <Button
+        android:id="@+id/bt_guardarEmpleado"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:onClick="guardar_cambios"
+        android:text="@string/guardar_cambios"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/txt_fechaIncorpo1"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="@+id/txt_fechaIncorpo1"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fechaIncorpo1" />
+
+    <EditText
+        android:id="@+id/txt_correo1"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/correo_de_empleado"
+        android:inputType="textPersonName"
+        android:text="@string/correo"
+        app:layout_constraintEnd_toEndOf="@+id/txt_domicilio1"
+        app:layout_constraintStart_toStartOf="@+id/txt_domicilio1"
+        app:layout_constraintTop_toBottomOf="@+id/txt_domicilio1" />
+
+    <EditText
+        android:id="@+id/txt_domicilio1"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/domicilio_de_empleado"
+        android:inputType="textPersonName"
+        android:text="@string/direccion1"
+        app:layout_constraintEnd_toEndOf="@+id/txt_apellidos1"
+        app:layout_constraintStart_toStartOf="@+id/txt_apellidos1"
+        app:layout_constraintTop_toBottomOf="@+id/txt_apellidos1" />
+
+    <EditText
+        android:id="@+id/txt_telefono1"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/telefono_empleado"
+        android:inputType="textPersonName"
+        android:maxLength="9"
+        android:text="@string/telefono1"
+        app:layout_constraintEnd_toEndOf="@+id/txt_correo1"
+        app:layout_constraintStart_toStartOf="@+id/txt_correo1"
+        app:layout_constraintTop_toBottomOf="@+id/txt_correo1" />
+
+    <TextView
+        android:id="@+id/txt_nombredpo"
+        android:layout_width="145dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/nombre_departamento"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.019"
+        app:layout_constraintStart_toEndOf="@+id/txt_departamento1"
+        app:layout_constraintTop_toBottomOf="@+id/txt_dni1" />
+
+    <EditText
+        android:id="@+id/txt_fechaIncorpo1"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/fecha_de_incorporacion_empleado"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/txt_telefono1"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="@+id/txt_telefono1"
+        app:layout_constraintTop_toBottomOf="@+id/txt_telefono1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
