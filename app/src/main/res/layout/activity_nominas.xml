@@ -20,36 +20,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageButton
-        android:id="@+id/ib_obtener_fecha"
-        android:layout_width="48dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="84dp"
-        android:src="@drawable/calendario"
-        app:layout_constraintEnd_toEndOf="@+id/txt_selecciona"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txt_selecciona"
-        app:layout_constraintTop_toBottomOf="@+id/txt_selecciona"
-        tools:ignore="ContentDescription" />
-
-    <EditText
-        android:id="@+id/et_mostrar_fecha_picker"
-        android:layout_width="226dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="84dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/formato_fecha"
-        android:inputType="date"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/txt_selecciona"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/txt_selecciona"
-        app:layout_constraintTop_toBottomOf="@+id/txt_selecciona"
-        tools:ignore="UnknownId" />
-
     <TextView
         android:id="@+id/txt_selecciona"
         android:layout_width="wrap_content"
@@ -67,36 +37,33 @@
         android:id="@+id/bt_volver6"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="32dp"
         android:text="@string/volver"
         app:backgroundTint="@color/cardview_dark_background"
-        app:layout_constraintEnd_toEndOf="@+id/et_mostrar_fecha_picker"
+        app:layout_constraintEnd_toEndOf="@+id/rv_nominas"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/et_mostrar_fecha_picker"
-        app:layout_constraintTop_toBottomOf="@+id/et_mostrar_fecha_picker" />
+        app:layout_constraintStart_toStartOf="@+id/rv_nominas"
+        app:layout_constraintTop_toBottomOf="@+id/rv_nominas" />
 
-    <Button
-        android:id="@+id/bt_verNomina"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="132dp"
-        android:background="@drawable/iconodescarga"
-        app:backgroundTint="@color/design_default_color_error"
-        app:layout_constraintEnd_toEndOf="@+id/et_mostrar_fecha_picker"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ib_obtener_fecha"
-        app:layout_constraintTop_toBottomOf="@+id/et_mostrar_fecha_picker" />
-
-    <Button
-        android:id="@+id/bt_descargaprueba"
-        android:layout_width="94dp"
-        android:layout_height="66dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_nominas"
+        android:layout_width="359dp"
+        android:layout_height="389dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/outline_file_download_black_48dp"
-        android:onClick="descargaPrueba"
-        app:backgroundTint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/bt_volver6"
-        app:layout_constraintStart_toStartOf="@+id/bt_volver6"
-        app:layout_constraintTop_toBottomOf="@+id/bt_volver6" />
+        app:layout_constraintEnd_toEndOf="@+id/txt_selecciona"
+        app:layout_constraintStart_toStartOf="@+id/txt_selecciona"
+        app:layout_constraintTop_toBottomOf="@+id/txt_selecciona" />
+
+    <ImageView
+        android:id="@+id/bt_volverAcargarNomina"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:onClick="refrescarNominas"
+        app:layout_constraintEnd_toStartOf="@+id/bt_volver6"
+        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintStart_toStartOf="@+id/rv_nominas"
+        app:layout_constraintTop_toBottomOf="@+id/rv_nominas"
+        app:srcCompat="@drawable/outline_cached_black_48dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

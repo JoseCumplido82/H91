@@ -22,7 +22,9 @@ import com.example.h91.Clases.Empleado;
 import com.example.h91.Clases.Vacaciones;
 import com.example.h91.controladores.VacacionesController;
 import com.example.h91.modelos.ConfiguracionDB;
+import com.example.h91.modelos.EmpleadoDB;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -30,6 +32,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class ActivityVacaciones extends AppCompatActivity implements View.OnClickListener {
     private static final String CERO = "0";
@@ -45,7 +48,6 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     final int anio = c.get(Calendar.YEAR);
 
     //Widgets
-    Empleado empleado;
     EditText etFecha;
     ImageButton ibObtenerFecha2;
     TextView edt_dias;
@@ -118,29 +120,60 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
             public void onClick(DialogInterface dialog, int which) {
                 if (edt_diasSolicitados.getText().toString().isEmpty()) {
                     mostrarToast2("introduce cantidad de dias");
+                    edt_diasSolicitados.setError("Introduce cantidad de dias");
                 }
                 Vacaciones vacaciones = null;
                 try {
-                    int idSolicitante = empleado.getId();
-                    int dias = Integer.valueOf(edt_diasSolicitados.getText().toString());
-                    String fechatextoInicio = String.valueOf(etFecha.getText());
-                    Date fechaInicio = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoInicio);
-                    String fechatextoFin = String.valueOf(etFecha.getText()) + dias;
-                    Date fechaFin = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoFin);
-                    String fechatextoSolicitud = String.valueOf(LocalDate.now());
-                    Date fechaActual = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
-                    vacaciones = new Vacaciones(idSolicitante, fechaInicio, fechaFin, dias, fechaActual, ConfiguracionDB.idEstado);
-                    boolean insertadoOK = VacacionesController.insertarVacaciones(vacaciones);
-                    if (insertadoOK) {
-                        mostrarToast2("Dia de vacaciones creado correctamente");
-                        finish();
-                    } else {
-                        mostrarToast2("no se pudo crear la peticion del dia de vacaciones");
+                    //sumarDias();
+                    System.out.println("entra al try");
+                    boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+                   if(EmpleadoEnTabla) {
+                       System.out.println("entra al if");
+                        Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
+                        System.out.println(empleado);
+
+                        int dias = Integer.valueOf(edt_diasSolicitados.getText().toString());
+                       System.out.println(dias);
+
+                        String fechaTextoInicio= String.valueOf(etFecha.getText());
+                        Date fechaInicio= (new SimpleDateFormat("yyyy-mm-dd").parse(fechaTextoInicio));
+
+                       System.out.println(fechaInicio);
+
+                        String fechatextoFin = String.valueOf(etFecha.getText());
+                        Date fechaFin = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoFin);
+
+
+                       System.out.println(fechaFin);
+
+                        String fechatextoSolicitud = String.valueOf(LocalDate.now());
+                        Date fechaActual = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
+                       System.out.println(fechaActual);
+
+                       // vacaciones= new Vacaciones(empleado.getId(), fechaInicio,fechaFin, dias, fechaActual, ConfiguracionDB.idEstado);
+
+
+
+                        System.out.println(vacaciones);
+
+                        boolean insertadoOK= VacacionesController.insertarVacaciones(vacaciones);
+                        System.out.println("pasa el boolean insertado");
+                        if (insertadoOK)
+                        {
+                            System.out.println("entra al if insertado");
+                            mostrarToast2("Dia de vacaciones creado correctamente");
+                            finish();
+                        }else {
+                            mostrarToast2("no se pudo crear la peticion del dia de vacaciones");
+                        }
+                 //   }else {
+                   //     System.out.println("no encuentra empleado en tabla");
                     }
                 } catch (Exception e) {
                     mostrarToast2("error, revisa los datos introducidos");
-                    Log.i("vacaciones", "vacaciones no creadas " + " el idSolicitante no lo recoge " + " dias " + edt_diasSolicitados.getText().toString()
+                    Log.i("vacaciones", "vacaciones no creadas " + ConfiguracionDB.UsuarioActual + " el idSolicitante no lo recoge " + " dias " + edt_diasSolicitados.getText().toString()
                             + " fecha pedida " + etFecha.getText() + "  fecha actual " + LocalDate.now().toString());
+                  //  System.out.println(ConfiguracionDB.idEstado +" " +"" + " "+vacaciones.getDias() +"" +vacaciones.getFecha_inicio() +""+ vacaciones.getFecha_fin() +" " + vacaciones.getFecha_solicitud());
                 }
             }
         });
@@ -163,6 +196,21 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
+
+    public void sumarDias() throws ParseException {
+        String fechaTextoInicio= String.valueOf(etFecha.getText());
+        Date fechaInicio= (new SimpleDateFormat("yyyy-mm-dd").parse(fechaTextoInicio));
+
+        int dias = Integer.valueOf(edt_diasSolicitados.getText().toString());
+        Calendar calendar= Calendar.getInstance();
+        calendar.set(Integer.valueOf(fechaTextoInicio), dia);
+        calendar.getTime();
+        calendar.add(dia, dias);
+        System.out.println(calendar.getTime());
+
+
+    }
+
 
     private Date obtenerFecha() {
         DatePickerDialog recogerFecha = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {

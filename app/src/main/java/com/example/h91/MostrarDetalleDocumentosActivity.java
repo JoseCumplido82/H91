@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MostrarDetalleDocumentosActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class MostrarDetalleDocumentosActivity extends AppCompatActivity implements Serializable {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,7 @@
 package com.example.h91.Clases;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,19 +21,17 @@ public class TramitesViewHolder extends RecyclerView.ViewHolder implements View.
     TextView txt_idEstado=null;
     Button bt_gestionar=null;
 
-
-
     final listaTramitesAdapter lcAdapter;
 
     public TramitesViewHolder(@NonNull View itemView, listaTramitesAdapter tcAdapter) {
         super(itemView);
-        txt_detalleSolicitud= (TextView) itemView.findViewById(R.id.txt_detalleSolicitud);
-        txt_nombre_documento=(TextView)itemView.findViewById(R.id.txt_nombre_documento);
-        txt_asunto3=(TextView) itemView.findViewById(R.id.txt_asunto3);
-        txt_comentario=(TextView)itemView.findViewById(R.id.txt_comentario);
-        txt_fecha_solicitud=(TextView)itemView.findViewById(R.id.txt_fecha_solicitud);
-        txt_idEstado=(TextView)itemView.findViewById(R.id.txt_idEstado);
-        bt_gestionar=(Button)itemView.findViewById(R.id.bt_gestionar);
+       // txt_detalleSolicitud= (TextView) itemView.findViewById(R.id.txt_detalleSolicitud);
+        txt_nombre_documento=(TextView)itemView.findViewById(R.id.txt_nombret);
+        txt_asunto3=(TextView) itemView.findViewById(R.id.txt_asuntot);
+        //txt_comentario=(TextView)itemView.findViewById(R.id.txt_comentario);
+       // txt_fecha_solicitud=(TextView)itemView.findViewById(R.id.txt_fecha_solicitud);
+        txt_idEstado=(TextView)itemView.findViewById(R.id.txt_idEstadoTramite);
+        //bt_gestionar=(Button)itemView.findViewById(R.id.bt_gestionar);
         this.lcAdapter= tcAdapter;
         itemView.setOnClickListener(this);
     }
@@ -42,10 +41,13 @@ public class TramitesViewHolder extends RecyclerView.ViewHolder implements View.
     public void onClick(View v) {
     int mPosition= getLayoutPosition();
     Tramites tramites= this.lcAdapter.getListaTramites().get(mPosition);
+        Log.i("tramite", "has seleccionado: " + tramites.toString());
     lcAdapter.notifyDataSetChanged();
     Intent intent= new Intent(lcAdapter.getC(), MostrarDetalleSolicitud.class);
-    Tramites tramites1= new Tramites(tramites.getIdSolicitante(), tramites.getNombre_documento(), tramites.getAsunto(), tramites.getComentario(), tramites.getFecha_solicitud(), tramites.getIdEstado());
-    intent.putExtra(EXTRA_OBJETO_SOLICITUD, tramites1);
+    //Tramites tramites1= new Tramites(tramites.getIdSolicitante(), tramites.getNombre_documento(), tramites.getAsunto(), tramites.getComentario(), tramites.getFecha_solicitud(), tramites.getIdEstado());
+        Tramites t1= new Tramites(tramites.getNombre_documento(), tramites.getAsunto(), tramites.getIdEstado());
+    //intent.putExtra(EXTRA_OBJETO_SOLICITUD, tramites1);
+        intent.putExtra(EXTRA_OBJETO_SOLICITUD, t1);
     lcAdapter.getC().startActivity(intent);
     }
 }

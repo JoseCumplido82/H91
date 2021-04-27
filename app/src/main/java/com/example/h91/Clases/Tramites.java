@@ -57,6 +57,12 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
         this.asunto = asunto;
         this.comentario = comentario;
     }
+
+    public Tramites(String nombre_documento, String asunto, int idEstado) {
+        this.nombre_documento=nombre_documento;
+        this.asunto = asunto;
+        this.idEstado=idEstado;
+    }
     //
 
 

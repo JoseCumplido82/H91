@@ -157,4 +157,8 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
             mostrarToast("no se ha encontrado el empleado");
         }
     }
+
+    public void volverAMenuEmpleado(View view) {
+        finish();
+    }
 }

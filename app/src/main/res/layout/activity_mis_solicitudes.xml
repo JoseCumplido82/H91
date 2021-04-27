@@ -22,8 +22,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_tramites"
-        android:layout_width="377dp"
-        android:layout_height="343dp"
+        android:layout_width="300dp"
+        android:layout_height="306dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/txt_misSolicitudes"
         app:layout_constraintStart_toStartOf="@+id/txt_misSolicitudes"
@@ -37,7 +37,20 @@
         android:text="@string/volver14"
         app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="@+id/rv_tramites"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintStart_toStartOf="@+id/rv_tramites"
         app:layout_constraintTop_toBottomOf="@+id/rv_tramites" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:onClick="refrescarTramites"
+        app:layout_constraintEnd_toStartOf="@+id/bt_volver"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_tramites"
+        app:srcCompat="@drawable/outline_cached_black_48dp"
+        android:contentDescription="@string/missolicitudes2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

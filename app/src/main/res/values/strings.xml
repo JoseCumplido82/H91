@@ -173,4 +173,12 @@
     <string name="correo_de_empleado">correo de empleado</string>
     <string name="domicilio_de_empleado">domicilio de empleado</string>
     <string name="telefono_empleado">telefono empleado</string>
+    <string name="como_llegar">como llegar</string>
+    <string name="nombre_tramite">Nombre tramite</string>
+    <string name="missolicitudes2">TODO</string>
+    <string name="nombre_y_fecha_de_la_nomina">Nombre y fecha de la nomina</string>
+    <string name="fecha_subida_nomina">Fecha subida nomina</string>
+    <string name="detalle_nomina">DETALLE NOMINA</string>
+    <string name="bt_descargarNomina">Button</string>
+    <string name="descargar_nomina">Descargar nomina</string>
 </resources>

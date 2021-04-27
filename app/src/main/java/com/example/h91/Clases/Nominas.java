@@ -1,8 +1,10 @@
 package com.example.h91.Clases;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Nominas {
+public class Nominas implements Serializable {
+    public static final String EXTRA_OBJETO_NOMINA="nomina";
     //atributos
     private int id;
     private int idEmpleado;

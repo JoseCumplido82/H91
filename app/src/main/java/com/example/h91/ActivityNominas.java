@@ -1,6 +1,11 @@
 package com.example.h91;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.app.DownloadManager;
@@ -12,10 +17,16 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.webkit.CookieManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.example.h91.Clases.Nominas;
+import com.example.h91.Clases.listaNominasAdapter;
+import com.example.h91.controladores.NominasController;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -28,160 +39,98 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 
-public class ActivityNominas extends AppCompatActivity implements View.OnClickListener{
+public class ActivityNominas extends AppCompatActivity {
 
-    private static final String CERO = "0";
-    private static final String BARRA = "/";
-    private String URL ="https://www.icv.csic.es/prevencion/Documentos/manuales/Guia_basica_sobre_Prevencion_de_Incendios.pdf";
-    private String nameFile="incendios";
-
-    //Calendario para obtener fecha & hora
-    public final Calendar c = Calendar.getInstance();
-
-    //Variables para obtener la fecha
-    final int mes = c.get(Calendar.MONTH);
-    final int dia = c.get(Calendar.DAY_OF_MONTH);
-    final int anio = c.get(Calendar.YEAR);
-
-
-    //Widgets
-    EditText etFecha;
-    ImageButton ibObtenerFecha;
-
-    Button bt_descargaprueba;
-
+    //public static final String EXTRA_OBJETO_NOMINA= "nominas";
+    private static final int PETICION1 = 1;
+    private RecyclerView rv_nominas;
+    private listaNominasAdapter nominasAdapterAdapter;
+    private ArrayList<Nominas> nominas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //para ocultar la barra de status
-        getSupportActionBar().hide();
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nominas);
-
-        //Widget EditText donde se mostrara la fecha obtenida
-        etFecha = (EditText) findViewById(R.id.et_mostrar_fecha_picker);
-        //Widget ImageButton del cual usaremos el evento clic para obtener la fecha
-        ibObtenerFecha = (ImageButton) findViewById(R.id.ib_obtener_fecha);
-        //Evento setOnClickListener - clic
-        ibObtenerFecha.setOnClickListener(this);
-
-        bt_descargaprueba=(Button)findViewById(R.id.bt_descargaprueba);
-
-
-        //boton descargar nomina
-        Button bt_verNomina = (Button) findViewById(R.id.bt_verNomina);
-    //    bt_verNomina.setOnClickListener(new View.OnClickListener() {
-       //     @Override
-//                DescargarNomina();
-         //   }
-      //  });
-
-        //boton cerrar notificaciones
-        Button bt_volver6 = (Button) findViewById(R.id.bt_volver6);
-        bt_volver6.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_mostrar_detalle_nominas);
+        //-----------------------------------------------------------
+        nominas = NominasController.obtenerNominas();
+        if(nominas != null) {
+            rv_nominas = (RecyclerView) findViewById(R.id.rv_nominas);
+            // Create an adapter and supply the data to be displayed.
+            nominasAdapterAdapter = new listaNominasAdapter(this, nominas);
+            // Connect the adapter with the RecyclerView.
+            rv_nominas.setAdapter(nominasAdapterAdapter);
+            // Give the RecyclerView a default layout manager.
+            rv_nominas.setLayoutManager(new LinearLayoutManager(this));
+        }
+        else{
+            Log.i("nominas", "no pude recuperar las nominas");
+        }
+        //------------------------------------------------------------
+        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
+                ItemTouchHelper.DOWN | ItemTouchHelper.UP, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
-            public void onClick(View v) {
-                //Intent intent7 = new Intent (v.getContext(), PanelEmpleado.class);
-                //startActivityForResult(intent7, 0);
-                finish();
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                int from = viewHolder.getAdapterPosition();
+                int to = target.getAdapterPosition();
+                Collections.swap(nominas, from, to);
+                nominasAdapterAdapter.notifyItemMoved(from, to);
+                return true;
+            }
+
+
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                if(direction == ItemTouchHelper.LEFT)
+                {
+                    mostrarToast("has eliminado la nomina");
+                    Nominas n = nominas.get(viewHolder.getAdapterPosition());
+                    NominasController.borrarNominas(n);
+                    nominas.remove(viewHolder.getAdapterPosition());
+                    nominasAdapterAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                }
+                if(direction == ItemTouchHelper.RIGHT)
+                {
+                    mostrarToast("ha pulsado derecha, nomina oculta, si quiere eliminarla pulse izquierda");
+                    nominas.remove(viewHolder.getAdapterPosition());
+                    nominasAdapterAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+
+                }
             }
         });
-
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URL)));
-
-
+        helper.attachToRecyclerView(rv_nominas);
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.ib_obtener_fecha:
-                obtenerFecha();
-                break;
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PETICION1) {
+            if (resultCode == RESULT_OK) {
+                Nominas c = (Nominas) data.getSerializableExtra(Nominas.EXTRA_OBJETO_NOMINA);
+                nominas.add(c);
+                // Notify the adapter, that the data has changed.
+                rv_nominas.getAdapter().notifyItemInserted(nominas.size());
+                // Scroll to the bottom.
+                rv_nominas.smoothScrollToPosition(nominas.size());
+            }
         }
     }
 
-    private void fechaParaDescargar(){
 
-
+    private void mostrarToast(String texto) {
+        Toast.makeText(this,texto, Toast.LENGTH_SHORT).show();
     }
 
-
-    private void obtenerFecha() {
-
-        DatePickerDialog recogerFecha = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                //Esta variable lo que realiza es aumentar en uno el mes ya que comienza desde 0 = enero
-                final int mesActual = month + 1;
-                //Formateo el día obtenido: antepone el 0 si son menores de 10
-                String diaFormateado = (dayOfMonth < 10)? CERO + String.valueOf(dayOfMonth):String.valueOf(dayOfMonth);
-                //Formateo el mes obtenido: antepone el 0 si son menores de 10
-                String mesFormateado = (mesActual < 10)? CERO + String.valueOf(mesActual):String.valueOf(mesActual);
-                //Muestro la fecha con el formato deseado
-                etFecha.setText(diaFormateado + BARRA + mesFormateado + BARRA + year);
-
-
-            }
-            //Estos valores deben ir en ese orden, de lo contrario no mostrara la fecha actual
-            /**
-             *También puede cargar los valores que usted desee
-             */
-        },anio, mes, dia);
-        //Muestro el widget
-        recogerFecha.show();
-
+    public void refrescarNominas(View view) {
+        nominas = NominasController.obtenerNominas();
+        if(nominas != null) {
+            nominasAdapterAdapter.setListaNominas(nominas);
+            rv_nominas.getAdapter().notifyDataSetChanged();
+        }
     }
 
-
-
-
-
-
-
-  //  public void DescargarNomina() {
-    //    try {
-
-      //      URL url = new URL("https://www.icv.csic.es/prevencion/Documentos/manuales/");
-            //URL url = new URL("empleados.h91go.com/pr_nominas");
-        //    HttpURLConnection c = (HttpURLConnection) url.openConnection();
-         //   c.setRequestMethod("GET");
-          //  c.setDoOutput(true);
-           // c.connect();
-
-            //String Path = Environment.getExternalStorageDirectory() + "/download/";
-            //Log.v("PdfManager", "PATH: " + Path);
-            //File file = new File(Path);
-            //file.mkdirs();
-            //FileOutputStream fos = new FileOutputStream("Guia_basica_sobre_Prevencion_de_Incendios.pdf");
-
-//            InputStream is = c.getInputStream();
-
-  //          byte[] buffer = new byte[702];
-    //        int len1 = 0;
-      //      while ((len1 = is.read(buffer)) != -1) {
-        //        fos.write(buffer, 0, len1);
-          //  }
-            //fos.close();
-            //is.close();
-        //} catch (IOException e) {
-          //  Log.d("PdfManager", "Error: " + e);
-       // }
-       // Log.v("PdfManager", "Check: ");
-   // }
-
-
-
-    //metodo para descargar pdf
-    public void DescargarNomina(View view) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URL)));
-    }
-
-
-    public void descargaPrueba(View view) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URL)));
-    }
 }

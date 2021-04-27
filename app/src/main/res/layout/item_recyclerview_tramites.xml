@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="348dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3sp"
         android:orientation="vertical">
 
         <TextView
@@ -14,7 +15,7 @@
             android:layout_height="wrap_content"
             android:background="@color/cardview_dark_background"
             android:gravity="center"
-            android:text="@string/nombre_documento"
+            android:text="@string/nombre_tramite"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -38,4 +39,5 @@
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

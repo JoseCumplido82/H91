@@ -58,9 +58,10 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
                 nombreEstadoTramite= "Finalizado";
             }
 
+            txt_idEstado.setText( nombreEstadoTramite);
             txt_nombre_documento.setText(tramites.getNombre_documento());
             txt_asunto3.setText(tramites.getAsunto());
-            txt_comentario.setText(tramites.getComentario());
+            txt_comentario.setText("comentario " + tramites.getComentario());
             txt_fecha_solicitud.setText((CharSequence) tramites.getFecha_solicitud());
 
 

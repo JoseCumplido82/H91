@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.H91">
-        <activity android:name=".ActivityPerfilEmpleado"></activity>
+        <activity android:name=".MostrarDetalleNominas"></activity>
+        <activity android:name=".ActivityPerfilEmpleado" />
         <activity android:name=".MostrarDetalleSolicitud" />
         <activity android:name=".NuevoDepartamentoActivity" />
         <activity android:name=".ActivitySancionarEmpleado" />

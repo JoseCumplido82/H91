@@ -61,7 +61,9 @@ public class TramitesDB {
         ArrayList<Tramites> tramitesDevueltos = new ArrayList<Tramites>();
         try{
             Statement sentencia = conexion.createStatement();
-            String ordenSQL = "select t.id, t.idSolicitante, t.nombre_documento, t.asunto, t.comentario, t.fecha_solicitud, t.idEstado from tramites t;";
+            //String ordenSQL = "select t.id, t.idSolicitante, t.nombre_documento, t.asunto, t.comentario, t.fecha_solicitud, t.idEstado from tramites t;"; // WHERE t.idSolicitante like ?
+            String ordenSQL = "select t.id, t.idSolicitante, t.nombre_documento, t.asunto, t.comentario, t.fecha_solicitud, t.idEstado from tramites t WHERE t.idSolicitante like ?;"; //
+
             ResultSet resultado= sentencia.executeQuery(ordenSQL);
             while (resultado.next())
             {

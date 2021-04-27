@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MostrarDetalleNominas">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="365dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/detalle_nomina"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_detalle_nombren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/nombre_y_fecha_de_la_nomina"
+        android:textColor="#C82121"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/txt_fechasubida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="@string/fecha_de_subida"
+        android:textColor="#C82121"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txt_detalle_nombren"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/txt_detalle_nombren"
+        app:layout_constraintTop_toBottomOf="@+id/txt_detalle_nombren" />
+
+    <Button
+        android:id="@+id/bt_descargarNomina"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="124dp"
+        android:onClick="descargaPrueba"
+        android:text="@string/descargar_nomina"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/txt_fechasubida"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="@+id/txt_fechasubida"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fechasubida" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

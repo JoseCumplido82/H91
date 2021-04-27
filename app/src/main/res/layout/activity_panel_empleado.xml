@@ -23,7 +23,7 @@
         android:id="@+id/bt_cerrar"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="192dp"
         android:gravity="center"
         android:text="@string/cerrar_sesion"
         app:backgroundTint="@color/cardview_dark_background"
@@ -61,13 +61,13 @@
         android:id="@+id/bt_notificaciones"
         android:layout_width="260dp"
         android:layout_height="70dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
 
         android:gravity="center"
         android:text="@string/notificaciones"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/txt_Bienvenido"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="@+id/txt_Bienvenido"
         app:layout_constraintTop_toBottomOf="@+id/txt_Bienvenido" />
 
@@ -75,7 +75,7 @@
         android:id="@+id/txt_Bienvenido"
         android:layout_width="281dp"
         android:layout_height="30dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="@string/bienvenido"
         android:textColor="@color/cardview_dark_background"
@@ -94,5 +94,16 @@
         app:layout_constraintEnd_toEndOf="@+id/bt_documentos"
         app:layout_constraintStart_toStartOf="@+id/bt_documentos"
         app:layout_constraintTop_toBottomOf="@+id/bt_documentos" />
+
+    <Button
+        android:id="@+id/bt_comoLlegar"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/como_llegar"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_perfilEmpleado"
+        app:layout_constraintStart_toStartOf="@+id/bt_perfilEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/bt_perfilEmpleado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

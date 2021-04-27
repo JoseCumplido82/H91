@@ -3,6 +3,7 @@ package com.example.h91;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import java.io.Serializable;
 
 public class PanelEmpleado extends AppCompatActivity{
     public static final String EXTRA_OBJETO_EMPLEADO= "empleado";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //para ocultar la barra de status
@@ -110,5 +112,23 @@ public class PanelEmpleado extends AppCompatActivity{
             }
         });
 
+        Button bt_comoLlegar=(Button)findViewById(R.id.bt_comoLlegar);
+        bt_comoLlegar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String direccionMapa="Calle de Fuerteventura, 21, 28703 San Sebastián de los Reyes, Madrid";
+                Uri uri=Uri.parse("geo:0,0?q=" + direccionMapa);
+                Intent intent= new Intent(Intent.ACTION_VIEW, uri);
+                if (intent.resolveActivity(getPackageManager()) == null) {
+                    startActivity(intent);
+                    System.out.println("cargando mapas");
+                }
+                else {
+                    System.out.println("no se ha cargado el mapa");
+                }
+            }
+        });
     }
+
+
 }

@@ -27,7 +27,7 @@ public class VacacionesDB {
         }
         //-----------------------------------------
         try {
-            String ordensql= "INSERT INTO vacaciones(idSolicitante, fecha_inicio, fecha_fin, dias, fecha_solicitud, idEstado) VALUES (?,?,?,?,?,?,?)";
+            String ordensql= "INSERT INTO vacaciones(idSolicitante, fecha_inicio, fecha_fin, dias, fecha_solicitud, idEstado) VALUES (?,?,?,?,?,?)";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, v.getIdSolicitante());
             //

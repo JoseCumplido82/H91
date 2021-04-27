@@ -141,15 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Donde encontrarnos
-    public void MostrarLocalizacion(View view){
-        String direccionMapa="Calle de Fuerteventura, 21, 28703 San Sebastián de los Reyes, Madrid";
-        Uri uri=Uri.parse("geo:0,0?q=" + direccionMapa);
-        Intent intent= new Intent(Intent.ACTION_VIEW, uri);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
-    }
+
 
 
 }

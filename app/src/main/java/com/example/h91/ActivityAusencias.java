@@ -23,6 +23,7 @@ import com.example.h91.Clases.Ausencias;
 import com.example.h91.Clases.Empleado;
 import com.example.h91.controladores.AusenciasController;
 import com.example.h91.modelos.ConfiguracionDB;
+import com.example.h91.modelos.EmpleadoDB;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -52,7 +53,7 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
     //Widgets
     EditText etFecha;
     ImageButton ibObtenerFecha3;
-    Empleado empleado;
+
 
     //Variables para obtener la hora hora
     final int hora = c.get(Calendar.HOUR_OF_DAY);
@@ -248,22 +249,32 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                 }
                 Ausencias ausencias= null;
                 try {
-                    String motivo= String.valueOf(edt_motivoAusencia.getText());
-                    String fechatextoAusencia= String.valueOf(etFecha.getText());
-                    Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
-                    int horatexto= Integer.parseInt(String.valueOf(etHora.getText()));
-                    int horas= Integer.parseInt(edt_horasASolicitar.getText().toString());
-                    String fechatextoSolicitud= String.valueOf(LocalDate.now());
-                    Date fechaActual= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
-                    ausencias= new Ausencias(empleado.getId(), fechaAusencias, horatexto, horas,fechaActual, motivo, ConfiguracionDB.idEstado);
-                    boolean insertadoOK= AusenciasController.InsertarAusencias(ausencias);
-                    if (insertadoOK){
-                        mostrarToast2("ausencia creada correctamente");
-                        finish();
+                    boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+                    if(EmpleadoEnTabla) {
+                        System.out.println("entra al if");
+                        Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
+
+                        System.out.println(empleado);
+                        String motivo= String.valueOf(edt_motivoAusencia.getText());
+                        String fechatextoAusencia= String.valueOf(etFecha.getText());
+                        Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
+                        int horatexto= Integer.parseInt(String.valueOf(etHora.getText()));
+                        int horas= Integer.parseInt(edt_horasASolicitar.getText().toString());
+                        String fechatextoSolicitud= String.valueOf(LocalDate.now());
+                        Date fechaActual= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
+
+                        ausencias= new Ausencias(empleado.getId(), fechaAusencias, horatexto, horas,fechaActual, motivo, ConfiguracionDB.idEstado);
+                        boolean insertadoOK= AusenciasController.InsertarAusencias(ausencias);
+                        if (insertadoOK){
+                            mostrarToast2("ausencia creada correctamente");
+                            finish();
+                        }
+                        else {
+                            mostrarToast2("no se pudo crear la ausencia");
+                        }
+
                     }
-                    else {
-                        mostrarToast2("no se pudo crear la ausencia");
-                    }
+
 
                 }catch (Exception e){
                     mostrarToast2("error, revisa los datos introducidos");

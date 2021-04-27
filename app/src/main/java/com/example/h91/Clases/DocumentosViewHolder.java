@@ -19,8 +19,8 @@ public class DocumentosViewHolder extends RecyclerView.ViewHolder implements Vie
 
     public DocumentosViewHolder(@NonNull View itemView, listaDocumentosAdapter lcAdapter){
         super(itemView);
-        txt_asunto=(TextView) itemView.findViewById(R.id.txt_asuntod);
-        txt_fecha=(TextView) itemView.findViewById(R.id.txt_fechad);
+        txt_asunto=(TextView) itemView.findViewById(R.id.txt_nombret);
+        txt_fecha=(TextView) itemView.findViewById(R.id.txt_asuntot);
         this.lcAdapter = lcAdapter;
         itemView.setOnClickListener(this);
     }

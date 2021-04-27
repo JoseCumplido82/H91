@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,10 +23,12 @@ import android.widget.Toast;
 
 import com.example.h91.Clases.Solicitud;
 import com.example.h91.Clases.Tramites;
+import com.example.h91.controladores.TramitesController;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class ActivityOtrasSolicitudes extends AppCompatActivity {
+public class ActivityOtrasSolicitudes extends AppCompatActivity  {
 
     public static final String EXTRA_OBJETO_SOLICITUD="tramite";
     TextView txt_tituloDocumento=null;
@@ -34,6 +38,7 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity {
     Button bt_imagenSeleccionada=null;
     Button bt_pdfSeleccionado= null;
     ImageView foto_galeria=null;
+    ArrayList<Tramites> tramites=null;
     private static final int PHOTO_SELECTED=100;
     Uri imageUri;
 
@@ -83,6 +88,8 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity {
                 bt_imagenSeleccionada.setVisibility(View.VISIBLE);
                 bt_pdfSeleccionado.setVisibility(View.VISIBLE);
                 //openGallery();
+
+
             }
         });
 
@@ -102,25 +109,38 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity {
     public void solicitarAusencia(View view) {
       //  Solicitud solicitud=null;
         Tramites tramites=null;
-     //   try {
+       try {
+
             String asunto= edt_asuntoSolicitud.getText().toString();
             String comentario= edt_observacionesMensaje.getText().toString();
             tramites=new Tramites(asunto, comentario);
+
+
         //    solicitud= new Solicitud(asunto, comentario);
-       // }catch (Exception e){
+        }catch (Exception e){
             mostrarToast("error, revisa los datos introducidos");
-        //}
+        }
+        //insertar tramite
+        boolean insertadoOK= TramitesController.insertarTramites(tramites);
+       if(insertadoOK){
+           mostrarToast("tramite insertado correctamente");
+           Intent intent= new Intent();
+           intent.putExtra(EXTRA_OBJETO_SOLICITUD, tramites);
+           setResult(RESULT_OK, intent);
+           finish();
+       }else{
+           mostrarToast("no se pudo crear el tramite");
+       }
 
-        
 
-        Intent intent= new Intent(this, ActivityMisSolicitudes.class);
+       // Intent intent= new Intent(this, ActivityMisSolicitudes.class);
 
-         tramites= new Tramites(edt_asuntoSolicitud.getText().toString(), edt_observacionesMensaje.getText().toString());
+         //tramites= new Tramites(edt_asuntoSolicitud.getText().toString(), edt_observacionesMensaje.getText().toString());
 
-        Bundle bundle= new Bundle();
-        bundle.putSerializable("imagen", (Serializable) foto_galeria);
-        intent.putExtra("imagen", (Parcelable) foto_galeria);
-        startActivity(intent);
+        //Bundle bundle= new Bundle();
+        //bundle.putSerializable("imagen", (Serializable) foto_galeria);
+        //intent.putExtra("imagen", (Parcelable) foto_galeria);
+        //startActivity(intent);
 
 
 

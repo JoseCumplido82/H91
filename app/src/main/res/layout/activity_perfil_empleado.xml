@@ -85,6 +85,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="12dp"
         android:text="@string/volver"
+        android:onClick="volverAMenuEmpleado"
         app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="@+id/bt_cambiarPass"
         app:layout_constraintStart_toStartOf="@+id/bt_cambiarPass"

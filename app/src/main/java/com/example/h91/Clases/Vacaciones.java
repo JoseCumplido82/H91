@@ -40,7 +40,7 @@ public class Vacaciones implements Serializable {
         this.fecha_fin = fecha_fin;
         this.dias = dias;
         this.fecha_solicitud = fecha_solicitud;
-        this.idEstado = 0;
+        this.idEstado = 1;
     }
 
     public Vacaciones(int id, int idSolicitante, Date fecha_inicio, Date fecha_fin, Date fecha_solicitud) {
@@ -49,7 +49,6 @@ public class Vacaciones implements Serializable {
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
         this.fecha_solicitud = fecha_solicitud;
-        this.idEstado = 0;
     }
     //-----------------
 
