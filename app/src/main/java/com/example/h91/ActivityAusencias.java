@@ -187,49 +187,6 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void insertarAusencia(View view) throws ParseException {
-            String motivo= String.valueOf(edt_motivoAusencia.getText());
-            String fecha_inicio= etFecha.getText().toString();
-            String hora_inicio= etHora.getText().toString();
-            int horas= Integer.parseInt(edt_horasASolicitar.getText().toString());
-            LocalDate fecha_solicitud= LocalDate.now();
-            Date date_solicitud= Date.from(fecha_solicitud.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-//  fallo aqui
-        DateFormat format= new SimpleDateFormat("yyyy-MM-dd");
-        Date date= format.parse(fecha_inicio);
-
-
-        DateTimeFormatter formatter= DateTimeFormatter.ofLocalizedDate(FormatStyle.valueOf("yyyy-MM-dd"));
-            LocalDate ld= LocalDate.parse(fecha_inicio, formatter);
-            Date date_inicio= Date.from(ld.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-
-            if(motivo.isEmpty()){
-                edt_motivoAusencia.setError("escribe un motivo para la ausencia");
-                return;
-            }
-        AlertDialog.Builder alerta= new AlertDialog.Builder(this);
-        alerta.setTitle("¿guardar la ausencia?");
-        alerta.setPositiveButton("si", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-               // Ausencias ausencias = new Ausencias(empleado.getId(), date, Integer.parseInt(hora_inicio), horas, date_solicitud, motivo);
-             //   boolean insercionOK= AusenciasController.InsertarAusencias(ausencias);
-             //   mostrarToast(insercionOK);
-               // Log.i("recoge", "recoge " + " " + ausencias);
-            }
-        });
-        alerta.setNegativeButton("no", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        alerta.show();
-    }
 
     public void mostrarToast2(String mensaje)
     {
@@ -259,7 +216,6 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                         ConfiguracionDB.IDUsuarioActual= empleado.getId();
                         System.out.println(ConfiguracionDB.IDUsuarioActual);
                         int idActual= ConfiguracionDB.IDUsuarioActual;
-                          //boolean Idobtenido= AusenciasDB.IDEmpleadoAusencia(ConfiguracionDB.UsuarioActual);
                         boolean Idobtenido= AusenciasController.obtenerIDempleadoAusencia(ConfiguracionDB.IDUsuarioActual);
                           if(Idobtenido){
                               System.out.println("llega al if del Idobtenido");
@@ -269,18 +225,20 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                               String motivo= String.valueOf(edt_motivoAusencia.getText());
                               System.out.println(motivo);
                               String fechatextoAusencia= String.valueOf(etFecha.getText());
-                              System.out.println(fechatextoAusencia);
-                              Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
-                              //int horasprueba= Integer.valueOf((edt_horasASolicitar).toString());
-                             int horas= Integer.parseInt(edt_horasASolicitar.getText().toString());
                               String fechatextoSolicitud= String.valueOf(LocalDate.now());
+                              System.out.println("fecha de la ausencia " +fechatextoAusencia);
+                              System.out.println("fecha de la solicitud " + fechatextoSolicitud);
+                              int horaspedidas= Integer.parseInt(edt_horasASolicitar.getText().toString());
+                              System.out.println("horas solicitadas " + horaspedidas);
+                              Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
+                              //int horaSolicitud= Integer.valueOf(String.valueOf(etHora));
+                             //System.out.println("horas " + horaSolicitud);
+                              //String fechatextoSolicitud= String.valueOf(LocalDate.now());
+                              int horaSolicitud;
                               Date fechaActual= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
-                                //System.out.println(idActual + motivo + "" + fechatextoAusencia + "" + horatexto + "" + horas + fechatextoSolicitud + ConfiguracionDB.idEstado);
-                              System.out.println("recoge valores bien");
-                              System.out.println(idActual);
-
-                              ausencias= new Ausencias(idActual, fechaAusencias, hora,horas,fechaActual, motivo, ConfiguracionDB.idEstado);
-                             // System.out.println(ausencias);
+                              ausencias= new Ausencias(idActual, fechaAusencias,Integer.valueOf(etHora.getText().toString()) ,horaspedidas,fechaActual, motivo, ConfiguracionDB.idEstado);
+                              System.out.println(ausencias);
+                              Log.e("errores", ausencias.toString());
                               boolean insertadoOK= AusenciasController.InsertarAusencias(ausencias);
                               if (insertadoOK){
                                   mostrarToast2("ausencia creada correctamente");
