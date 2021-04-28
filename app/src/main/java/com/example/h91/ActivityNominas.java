@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.h91.Clases.Nominas;
 import com.example.h91.Clases.listaNominasAdapter;
 import com.example.h91.controladores.NominasController;
+import com.example.h91.modelos.ConfiguracionDB;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -54,9 +55,10 @@ public class ActivityNominas extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mostrar_detalle_nominas);
+        setContentView(R.layout.activity_nominas);
+        int dni=ConfiguracionDB.IDUsuarioActual;
         //-----------------------------------------------------------
-        nominas = NominasController.obtenerNominas();
+        nominas = NominasController.obtenerNominas(dni);
         if(nominas != null) {
             rv_nominas = (RecyclerView) findViewById(R.id.rv_nominas);
             // Create an adapter and supply the data to be displayed.
@@ -126,7 +128,9 @@ public class ActivityNominas extends AppCompatActivity {
     }
 
     public void refrescarNominas(View view) {
-        nominas = NominasController.obtenerNominas();
+        int id=ConfiguracionDB.IDUsuarioActual;
+        nominas = NominasController.obtenerNominas(id);
+
         if(nominas != null) {
             nominasAdapterAdapter.setListaNominas(nominas);
             rv_nominas.getAdapter().notifyDataSetChanged();

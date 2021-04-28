@@ -3,6 +3,9 @@ package com.example.h91;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.*;
+import java.time.format.*;
+
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -30,6 +33,7 @@ import com.example.h91.modelos.EmpleadoDB;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -37,6 +41,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
 
 public class ActivityAusencias extends AppCompatActivity implements View.OnClickListener{
 
@@ -227,23 +233,41 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                               String fechatextoSolicitud= String.valueOf(LocalDate.now());
                               System.out.println("fecha de la ausencia " +fechatextoAusencia);
                               System.out.println("fecha de la solicitud " + fechatextoSolicitud);
+
+
+
                               int horaspedidas= Integer.parseInt(edt_horasASolicitar.getText().toString());
                               System.out.println("horas solicitadas " + horaspedidas);
                               String horaInicio= etHora.getText().toString();
-                              System.out.println(horaInicio);
-                              Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
+                              System.out.println("hora de inicio de solicitud " + horaInicio);
+                              System.out.println("hora actual " + java.util.Date.from(Instant.now()));
+                              System.out.println("IdEmpleado " + idActual);
+                              System.out.println("Id estado solicitud " + ConfiguracionDB.idEstado);
+                              Calendar fechacalendar= new GregorianCalendar();
+                              int año= fechacalendar.get(Calendar.YEAR);
+                              int mesaño= fechacalendar.get(Calendar.MONTH);
+                              int diaaño= fechacalendar.get(Calendar.DAY_OF_MONTH);
+                              String fechahoy= año+"/"+(mesaño+1)+"/"+diaaño;
+                              System.out.println("fecha de hoy " +fechahoy);
+                              //Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
+                              //Date fechaActual= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
 
-                              Date fechaActual= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
-                              Log.i("fecha actual", String.valueOf(fechaActual));
-                              ausencias= new Ausencias(idActual, fechaAusencias,horaInicio,horaspedidas,fechaActual, motivo, ConfiguracionDB.idEstado);
-                              System.out.println(ausencias);
+
+                              //ausencias= new Ausencias(idActual, (Date) etFecha.getText(),horaInicio,horaspedidas,java.util.Date.from(Instant.now()), motivo, ConfiguracionDB.idEstado);
+                              ausencias= new Ausencias(idActual, (Date) etFecha.getText(),horaInicio,horaspedidas,java.util.Date.from(Instant.now()), motivo, ConfiguracionDB.idEstado);
+
+
+                              Log.i("mensaje", String.valueOf(ausencias));
+                              System.out.println(ausencias.toString());
                               Log.i("errores", ausencias.toString());
                               boolean insertadoOK= AusenciasController.InsertarAusencias(ausencias);
                               if (insertadoOK){
+                                  System.out.println("entra al if del insertado");
                                   mostrarToast2("ausencia creada correctamente");
                                   finish();
                               }
                               else {
+                                  System.out.println("entra al else del insertado");
                                   mostrarToast2("no se pudo crear la ausencia");
                               }
                           }else
@@ -262,8 +286,10 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
 
                 }catch (Exception e){
                     mostrarToast2("error, revisa los datos introducidos");
-//                    Log.i("ausencia", "ausencia con id empleado"  + " fecha inicio"+ ausencias.getFecha_inicio() + " hora inicio"+ ausencias.getHora_inicio()
-  //                          + " horas" +  ausencias.getHoras() + " hora solicitud " + ausencias.getFecha_solicitud() + " motivo " + ausencias.getMotivo() + " idestado " +  ausencias.getIdEstado());
+                    //Log.i("ausencia", "ausencia con id empleado"  + " fecha inicio"+ (Date) etFecha.getText() + " hora inicio"+ ausencias.getHora_inicio()
+                      //      + " horas" +  ausencias.getHoras() + " hora solicitud " + ausencias.getFecha_solicitud() + " motivo " + ausencias.getMotivo() + " idestado " +  ausencias.getIdEstado());
+                    Log.i("ausencia", "ausencia con id empleado"  +ConfiguracionDB.IDUsuarioActual + " fecha inicio " +(Date) etFecha.getText() + " hora inicio "+ etHora.getText().toString()
+                            + " horas " +  Integer.parseInt(edt_horasASolicitar.getText().toString()) + " hora solicitud " +Instant.now() + " motivo " + String.valueOf(edt_motivoAusencia.getText()) + " idestado " +   ConfiguracionDB.idEstado);
                 }
 
                 }

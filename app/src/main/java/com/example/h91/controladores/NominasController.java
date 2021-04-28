@@ -17,7 +17,7 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
 public class NominasController  {
-    public static ArrayList<Nominas> obtenerNominas(){
+    public static ArrayList<Nominas> obtenerNominas(int dni){
         ArrayList<Nominas> nominasDevueltas= null;
         FutureTask t= new FutureTask(new TareaObtenerNominas());
         ExecutorService es = Executors.newSingleThreadExecutor();

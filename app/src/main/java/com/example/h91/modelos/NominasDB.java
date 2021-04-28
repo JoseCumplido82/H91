@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class NominasDB {
-    public static ArrayList<Nominas> obtenerNominas(){
+    public static ArrayList<Nominas> obtenerNominas(int idEmpleado){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
         if(conexion==null){
             System.out.println("no se ha podido conectar con la base de datos");
@@ -23,6 +23,35 @@ public class NominasDB {
         try {
             Statement sentencia = conexion.createStatement();
             String ordenSQL= "select nomi.id, nomi.idEmpleado, nomi.nombre, nomi.fecha_subida from nominas nomi;";
+            ResultSet resultado= sentencia.executeQuery(ordenSQL);
+            while (resultado.next()){
+                int id= resultado.getInt("id");
+                int idEmpleado2 = resultado.getInt("idEmpleado");
+                String nombre= resultado.getString("nombre");
+                Date fecha_subida=resultado.getDate("fecha_subida");
+                Nominas n = new Nominas(id, idEmpleado2, nombre, fecha_subida);
+                nominasDevueltas.add(n);
+            }
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+            return nominasDevueltas;
+        }catch (SQLException e){
+            Log.i("sql", "error sql");
+            return null;
+        }
+    }
+
+    public static ArrayList<Nominas> obtenerNominas2(){
+        Connection conexion = BaseDB.conectarConBaseDeDatos();
+        if(conexion==null){
+            System.out.println("no se ha podido conectar con la base de datos");
+            return null;
+        }
+        ArrayList<Nominas> nominasDevueltas= new ArrayList<Nominas>();
+        try {
+            Statement sentencia = conexion.createStatement();
+            String ordenSQL= "select nomi.id, nomi.idEmpleado, nomi.nombre, nomi.fecha_subida from nominas nomi WHERE idEmpleado =?;";
             ResultSet resultado= sentencia.executeQuery(ordenSQL);
             while (resultado.next()){
                 int id= resultado.getInt("id");
@@ -41,6 +70,8 @@ public class NominasDB {
             return null;
         }
     }
+
+
     public static boolean insertarNominaTabla(Nominas n)
     {
         Connection conexion = BaseDB.conectarConBaseDeDatos();
