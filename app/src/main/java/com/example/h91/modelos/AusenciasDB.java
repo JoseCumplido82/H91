@@ -33,7 +33,7 @@ public class AusenciasDB {
             Log.i("sql", "valor de la fecha " + strDateInicio);
             java.sql.Date sqlFechaInicio= java.sql.Date.valueOf(strDateInicio);
             pst.setDate(2, sqlFechaInicio);
-            pst.setInt(3,a.getHora_inicio());
+            pst.setString(3,a.getHora_inicio());
             pst.setInt(4, a.getHoras());
             String strDateSolicitud= dateFormat.format(a.getFecha_solicitud());
             Log.i("sql", "valor de la fecha " + strDateSolicitud);
@@ -74,7 +74,7 @@ public class AusenciasDB {
                 int id = resultado.getInt("id");
                 int idSolicitante = resultado.getInt("idSolicitante");
                 Date fecha_inicio= resultado.getDate("fecha_inicio");
-                int hora_inicio=resultado.getInt("hora_inicio");
+                String hora_inicio=resultado.getString("hora_inicio");
                 int horas=resultado.getInt("horas");
                 Date fecha_solicitud = resultado.getDate("fecha_solicitud");
                 String motivo=resultado.getString("motivo");

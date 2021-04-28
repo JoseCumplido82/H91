@@ -7,7 +7,7 @@ public class Ausencias implements Serializable {
     private int id;
     private int idSolicitante;
     private Date fecha_inicio;
-    private int hora_inicio;
+    private String hora_inicio;
     private int horas;
     private Date fecha_solicitud;
     private String motivo;
@@ -15,7 +15,7 @@ public class Ausencias implements Serializable {
     //constructores
 
 
-    public Ausencias(int id, int idSolicitante, Date fecha_inicio, int hora_inicio, int horas, Date fecha_solicitud, String motivo, int idEstado) {
+    public Ausencias(int id, int idSolicitante, Date fecha_inicio, String hora_inicio, int horas, Date fecha_solicitud, String motivo, int idEstado) {
         this.id = id;
         this.idSolicitante = idSolicitante;
         this.fecha_inicio = fecha_inicio;
@@ -30,13 +30,13 @@ public class Ausencias implements Serializable {
         this.id = 0;
         this.idSolicitante = 0;
         this.fecha_inicio = null;
-        this.hora_inicio = 0;
+        this.hora_inicio = "";
         this.horas = 0;
         this.fecha_solicitud = null;
         this.motivo = "";
         this.idEstado = 1;
     }
-    public Ausencias(int idSolicitante, Date fecha_inicio,int hora_inicio, int horas, Date fecha_solicitud, String motivo, int idEstado) {
+    public Ausencias(int idSolicitante, Date fecha_inicio,String hora_inicio, int horas, Date fecha_solicitud, String motivo, int idEstado) {
         this.idSolicitante = idSolicitante;
         this.fecha_inicio = fecha_inicio;
         this.hora_inicio=hora_inicio;
@@ -56,11 +56,11 @@ public class Ausencias implements Serializable {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public int getHora_inicio() {
+    public String getHora_inicio() {
         return hora_inicio;
     }
 
-    public void setHora_inicio(int hora_inicio) {
+    public void setHora_inicio(String hora_inicio) {
         this.hora_inicio = hora_inicio;
     }
 

@@ -221,7 +221,6 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                               System.out.println("llega al if del Idobtenido");
                               System.out.println(empleado);
                               System.out.println(idActual);
-                              //LLega hasta aqui
                               String motivo= String.valueOf(edt_motivoAusencia.getText());
                               System.out.println(motivo);
                               String fechatextoAusencia= String.valueOf(etFecha.getText());
@@ -230,15 +229,15 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                               System.out.println("fecha de la solicitud " + fechatextoSolicitud);
                               int horaspedidas= Integer.parseInt(edt_horasASolicitar.getText().toString());
                               System.out.println("horas solicitadas " + horaspedidas);
+                              String horaInicio= etHora.getText().toString();
+                              System.out.println(horaInicio);
                               Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
-                              //int horaSolicitud= Integer.valueOf(String.valueOf(etHora));
-                             //System.out.println("horas " + horaSolicitud);
-                              //String fechatextoSolicitud= String.valueOf(LocalDate.now());
-                              int horaSolicitud;
+
                               Date fechaActual= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
-                              ausencias= new Ausencias(idActual, fechaAusencias,Integer.valueOf(etHora.getText().toString()) ,horaspedidas,fechaActual, motivo, ConfiguracionDB.idEstado);
+                              Log.i("fecha actual", String.valueOf(fechaActual));
+                              ausencias= new Ausencias(idActual, fechaAusencias,horaInicio,horaspedidas,fechaActual, motivo, ConfiguracionDB.idEstado);
                               System.out.println(ausencias);
-                              Log.e("errores", ausencias.toString());
+                              Log.i("errores", ausencias.toString());
                               boolean insertadoOK= AusenciasController.InsertarAusencias(ausencias);
                               if (insertadoOK){
                                   mostrarToast2("ausencia creada correctamente");
