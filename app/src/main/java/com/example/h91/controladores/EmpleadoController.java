@@ -10,6 +10,7 @@ import com.example.h91.tareas.TareaComprobarUser;
 import com.example.h91.tareas.TareaInsertarEmpleado;
 import com.example.h91.tareas.TareaMostrarEmpleados;
 import com.example.h91.tareas.TareaObtenerEmpleados;
+import com.example.h91.tareas.TareaObtenerIDEmpleado;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -176,6 +177,36 @@ public class EmpleadoController {
             return comprobadoOK;
         }
     }
+
+    //----------------------------------------------------------------
+    public static boolean conseguirID(int usuario){
+
+        FutureTask t = new FutureTask(new TareaObtenerIDEmpleado(usuario));
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(t);
+        boolean comprobadoOK= false;
+        try {
+            comprobadoOK = (boolean)t.get();
+            es.shutdown();
+            try {
+                if(!es.awaitTermination(800,TimeUnit.MILLISECONDS)){
+                    es.shutdownNow();
+                }
+            }catch (InterruptedException e){
+                es.shutdownNow();
+            }
+        }catch (ExecutionException e){
+            e.printStackTrace();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        finally {
+            return comprobadoOK;
+        }
+
+    }
+
+    //-------------------------------------------------------------
 
     public static boolean actualizarEmpleado(Empleado empleado) {
         FutureTask t = new FutureTask(new TareaActualizarEmpleado(empleado));

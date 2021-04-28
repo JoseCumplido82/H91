@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.example.h91.Clases.Ausencias;
 import com.example.h91.Clases.Empleado;
 import com.example.h91.controladores.AusenciasController;
+import com.example.h91.modelos.AusenciasDB;
 import com.example.h91.modelos.ConfiguracionDB;
 import com.example.h91.modelos.EmpleadoDB;
 
@@ -247,39 +249,64 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                     mostrarToast2("indica un motivo para la ausencia");
                     return;
                 }
-                Ausencias ausencias= null;
+                Ausencias ausencias=null;
                 try {
                     boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
                     if(EmpleadoEnTabla) {
                         System.out.println("entra al if");
                         Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
-
                         System.out.println(empleado);
-                        String motivo= String.valueOf(edt_motivoAusencia.getText());
-                        String fechatextoAusencia= String.valueOf(etFecha.getText());
-                        Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
-                        int horatexto= Integer.parseInt(String.valueOf(etHora.getText()));
-                        int horas= Integer.parseInt(edt_horasASolicitar.getText().toString());
-                        String fechatextoSolicitud= String.valueOf(LocalDate.now());
-                        Date fechaActual= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
+                        ConfiguracionDB.IDUsuarioActual= empleado.getId();
+                        System.out.println(ConfiguracionDB.IDUsuarioActual);
+                        int idActual= ConfiguracionDB.IDUsuarioActual;
+                          //boolean Idobtenido= AusenciasDB.IDEmpleadoAusencia(ConfiguracionDB.UsuarioActual);
+                        boolean Idobtenido= AusenciasController.obtenerIDempleadoAusencia(ConfiguracionDB.IDUsuarioActual);
+                          if(Idobtenido){
+                              System.out.println("llega al if del Idobtenido");
+                              System.out.println(empleado);
+                              System.out.println(idActual);
+                              //LLega hasta aqui
+                              String motivo= String.valueOf(edt_motivoAusencia.getText());
+                              System.out.println(motivo);
+                              String fechatextoAusencia= String.valueOf(etFecha.getText());
+                              System.out.println(fechatextoAusencia);
+                              Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
+                              //int horasprueba= Integer.valueOf((edt_horasASolicitar).toString());
+                             int horas= Integer.parseInt(edt_horasASolicitar.getText().toString());
+                              String fechatextoSolicitud= String.valueOf(LocalDate.now());
+                              Date fechaActual= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
+                                //System.out.println(idActual + motivo + "" + fechatextoAusencia + "" + horatexto + "" + horas + fechatextoSolicitud + ConfiguracionDB.idEstado);
+                              System.out.println("recoge valores bien");
+                              System.out.println(idActual);
 
-                        ausencias= new Ausencias(empleado.getId(), fechaAusencias, horatexto, horas,fechaActual, motivo, ConfiguracionDB.idEstado);
-                        boolean insertadoOK= AusenciasController.InsertarAusencias(ausencias);
-                        if (insertadoOK){
-                            mostrarToast2("ausencia creada correctamente");
-                            finish();
-                        }
-                        else {
-                            mostrarToast2("no se pudo crear la ausencia");
-                        }
+                              ausencias= new Ausencias(idActual, fechaAusencias, hora,horas,fechaActual, motivo, ConfiguracionDB.idEstado);
+                             // System.out.println(ausencias);
+                              boolean insertadoOK= AusenciasController.InsertarAusencias(ausencias);
+                              if (insertadoOK){
+                                  mostrarToast2("ausencia creada correctamente");
+                                  finish();
+                              }
+                              else {
+                                  mostrarToast2("no se pudo crear la ausencia");
+                              }
+                          }else
+                          {
+                              System.out.println(AusenciasDB.IDEmpleadoAusencia(ConfiguracionDB.IDUsuarioActual));
+                              System.out.println(idActual);
+                              System.out.println(AusenciasController.obtenerIDempleadoAusencia(ConfiguracionDB.IDUsuarioActual));
+                              System.out.println(empleado);
+                              System.out.println("no entra en el if de obtener id");
+                          }
 
+                    }else {
+                        System.out.println("el empleado no esta en la bbdd");
                     }
 
 
                 }catch (Exception e){
                     mostrarToast2("error, revisa los datos introducidos");
-                    Log.i("ausencia", "ausencia con id empleado" +ausencias.getIdSolicitante() + " fecha inicio"+ ausencias.getFecha_inicio() + " hora inicio"+ ausencias.getHora_inicio()
-                            + " horas" +  ausencias.getHoras() + " hora solicitud " + ausencias.getFecha_solicitud() + " motivo " + ausencias.getMotivo() + " idestado " +  ausencias.getIdEstado());
+//                    Log.i("ausencia", "ausencia con id empleado"  + " fecha inicio"+ ausencias.getFecha_inicio() + " hora inicio"+ ausencias.getHora_inicio()
+  //                          + " horas" +  ausencias.getHoras() + " hora solicitud " + ausencias.getFecha_solicitud() + " motivo " + ausencias.getMotivo() + " idestado " +  ausencias.getIdEstado());
                 }
 
                 }

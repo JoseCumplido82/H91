@@ -92,6 +92,42 @@ public class AusenciasDB {
             return  ausenciaDevuelta;
         }
     }
+    //-------------------------------------------------------------------
+    public static boolean IDEmpleadoAusencia(int dniUser) {
+        Connection conexion = BaseDB.conectarConBaseDeDatos();
+        if (conexion == null) {
+            System.out.println("no se ha podido conectar con la base de datos");
+            return false;
+        }
+        try {
+            /////---------------------------------
+            String ordenSQL = "select * from ausencias where idSolicitante like ?";
+            PreparedStatement pst=conexion.prepareStatement(ordenSQL);
+            pst.setInt(1, dniUser);
+            ResultSet resultadosql= pst.executeQuery();
+            int numerofilas=0;
+            while (resultadosql.next())
+            {
+                numerofilas++;
+            }
+            resultadosql.close();
+            pst.close();
+            conexion.close();
+            if(numerofilas>0){
+                return true;
+
+            }
+            else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            Log.i("sql", "error sql");
+            System.out.println("entra al catch");
+            return false;
+        }
+    }
+
     //--------------------------------------------------------------------
     public static boolean borrarAusenciaTabla(Ausencias ausencias){
         Connection conexion = BaseDB.conectarConBaseDeDatos();

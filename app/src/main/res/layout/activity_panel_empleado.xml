@@ -65,6 +65,7 @@
 
         android:gravity="center"
         android:text="@string/notificaciones"
+        android:visibility="invisible"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/txt_Bienvenido"
         app:layout_constraintHorizontal_bias="0.476"

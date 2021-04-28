@@ -7,6 +7,7 @@ import com.example.h91.tareas.TareaBorrarAusencia;
 import com.example.h91.tareas.TareaInsertarAusencias;
 import com.example.h91.tareas.TareaMostrarAusencias;
 import com.example.h91.tareas.TareaObtenerAusencias;
+import com.example.h91.tareas.TareaObtenerIDEmpleado;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -17,10 +18,10 @@ import java.util.concurrent.TimeUnit;
 
 public class AusenciasController {
 
-    public static ArrayList<Ausencias> obtenerAusencias()
+    public static ArrayList<Ausencias> obtenerAusencias(int idUser)
     {
         ArrayList<Ausencias> ausenciasDevueltas =null;
-        FutureTask t = new FutureTask(new TareaObtenerAusencias());
+        FutureTask t = new FutureTask(new TareaObtenerAusencias(idUser));
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(t);
         try {
@@ -99,6 +100,32 @@ public class AusenciasController {
             return insercionOK;
         }
     }
+
+    public static boolean obtenerIDempleadoAusencia(int dni){
+        FutureTask t = new FutureTask(new TareaObtenerIDEmpleado(dni));
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(t);
+        boolean obtenidoOK= false;
+        try{
+            obtenidoOK = (boolean)t.get();
+            es.shutdown();
+            try {
+                if(!es.awaitTermination(800, TimeUnit.MILLISECONDS)){
+                    es.shutdownNow();
+                }
+            }catch (InterruptedException e){
+                es.shutdownNow();
+            }
+        }catch (ExecutionException e){
+            e.printStackTrace();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        finally {
+            return obtenidoOK;
+        }
+    }
+
 
     public static boolean borrarAusencia(Ausencias asleccionada){
         FutureTask t = new FutureTask(new TareaBorrarAusencia(asleccionada));

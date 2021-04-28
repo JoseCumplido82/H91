@@ -59,6 +59,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
+        android:contentDescription="@string/boton_volver_nominas"
         android:onClick="refrescarNominas"
         app:layout_constraintEnd_toStartOf="@+id/bt_volver6"
         app:layout_constraintHorizontal_bias="0.287"

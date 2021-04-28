@@ -19,6 +19,7 @@ import com.example.h91.Clases.Tramites;
 import com.example.h91.Clases.listaEmpleadosAdapter;
 import com.example.h91.Clases.listaTramitesAdapter;
 import com.example.h91.controladores.TramitesController;
+import com.example.h91.modelos.ConfiguracionDB;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,16 +42,22 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_solicitudes);
 //------------------------------------------------------------------
-        tramites = TramitesController.obtenerTramites();
-        if(tramites!=null){
-            rv_tramites=(RecyclerView)findViewById(R.id.rv_tramites);
-            tramitesAdapterAdapter= new listaTramitesAdapter(this, tramites);
-            rv_tramites.setAdapter(tramitesAdapterAdapter);
-            rv_tramites.setLayoutManager(new LinearLayoutManager(this));
-        }else {
-            Log.i("tramites", "no pude recuperar los tramites");
-            System.out.println("no pude recuperar los tramites");
+        Empleado empleado= new Empleado(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+        int idEmpleado= empleado.getId();
+        boolean tramiteok= TramitesController.obtenerIDempleadoTramite(idEmpleado);
+        if (tramiteok){
+            tramites = TramitesController.obtenerTramites();
+            if(tramites!=null){
+                rv_tramites=(RecyclerView)findViewById(R.id.rv_tramites);
+                tramitesAdapterAdapter= new listaTramitesAdapter(this, tramites);
+                rv_tramites.setAdapter(tramitesAdapterAdapter);
+                rv_tramites.setLayoutManager(new LinearLayoutManager(this));
+            }else {
+                Log.i("tramites", "no pude recuperar los tramites");
+                System.out.println("no pude recuperar los tramites");
+            }
         }
+
         //-------------------------------------------------------------------------
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
                 ItemTouchHelper.DOWN | ItemTouchHelper.UP, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {

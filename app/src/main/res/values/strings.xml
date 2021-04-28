@@ -181,4 +181,5 @@
     <string name="detalle_nomina">DETALLE NOMINA</string>
     <string name="bt_descargarNomina">Button</string>
     <string name="descargar_nomina">Descargar nomina</string>
+    <string name="boton_volver_nominas">boton volver nominas</string>
 </resources>

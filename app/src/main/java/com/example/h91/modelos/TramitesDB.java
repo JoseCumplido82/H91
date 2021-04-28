@@ -115,6 +115,44 @@ public class TramitesDB {
             return false;
         }
     }
+//---------------------------------------------------------------------------
+public static boolean IDEmpleadoAusencia(int idEmpleado) {
+    Connection conexion = BaseDB.conectarConBaseDeDatos();
+    if (conexion == null) {
+        System.out.println("no se ha podido conectar con la base de datos");
+        return false;
+    }
+    try {
+        /////---------------------------------
+        String ordenSQL = "select * from tramites where idSolicitante like ?";
+        PreparedStatement pst=conexion.prepareStatement(ordenSQL);
+        pst.setInt(1, idEmpleado);
+        ResultSet resultadosql= pst.executeQuery();
+        int numerofilas=0;
+        while (resultadosql.next())
+        {
+            numerofilas++;
+        }
+        resultadosql.close();
+        pst.close();
+        conexion.close();
+        if(numerofilas>0){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    } catch (SQLException e) {
+        Log.i("sql", "error sql");
+        Log.i("sql", "entra en idempleado");
+        System.out.println("entra al catch");
+        return false;
+    }
+}
+
+
+
 //-----------------------------------------------------------------------------
     public static Tramites buscarTramitesTabla(String nombre_documento){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
