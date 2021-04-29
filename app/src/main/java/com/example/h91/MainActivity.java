@@ -82,10 +82,14 @@ public class MainActivity extends AppCompatActivity {
                 //}
                 boolean resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
                 if (resultado == true) {
-                    Intent intent= new Intent(v.getContext(), PanelEmpleado.class);
-                    startActivity(intent);
-                    mostrarToast("encontrado");
-                    Log.i("sql", "encontrado");
+                   // Intent intent= new Intent(v.getContext(), PanelEmpleado.class);
+                   // startActivity(intent);
+                  ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+
+                        mostrarToast("encontrado");
+                        Log.i("sql", "encontrado");
+
+
                 }else if(ConfiguracionDB.UsuarioActual.equals("mar")){
                     Intent intent= new Intent(v.getContext(), ActivityRRHH.class);
                     startActivity(intent);
@@ -120,6 +124,34 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,"logeado",Toast.LENGTH_SHORT).show();
     }
 
+
+    public boolean ComprobarSiHayDatosEmpleado(String dni, String pass){
+        boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+        String nombre = "";
+        String apellido = "";
+        String telefono = "";
+            if (EmpleadoEnTabla == true) {
+                Empleado e = (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
+                 nombre = e.getNombre();
+                 apellido = e.getApellido();
+                 telefono = e.getTelefono();
+               if (nombre.equals("")) {
+                    Intent intent = new Intent(this, ActivityRellenarDatosEmpleado.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(this, PanelEmpleado.class);
+                    startActivity(intent);
+                    mostrarToast("encontrado");
+                    Log.i("sql", "encontrado");
+                }
+
+            } else {
+                System.out.println("no encontrado el empleado");
+                return false;
+            }
+            return true;
+
+    }
 
 
     //PARA CONTINUAR CON EL LOGIN DE USUARIO

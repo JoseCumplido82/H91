@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityRellenarDatosEmpleado">
+
+    <TextView
+        android:id="@+id/txt_rellenoDeCampos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="@string/completar_datos_empleado"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_NombreEmpleado"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:text="@string/introduce_tu_nombre"
+        app:layout_constraintEnd_toEndOf="@+id/txt_rellenoDeCampos"
+        app:layout_constraintStart_toStartOf="@+id/txt_rellenoDeCampos"
+        app:layout_constraintTop_toBottomOf="@+id/txt_rellenoDeCampos" />
+
+    <EditText
+        android:id="@+id/edt_ApellidosEmpleado"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:text="@string/introduce_tus_apellidos"
+        app:layout_constraintEnd_toEndOf="@+id/edt_NombreEmpleado"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_NombreEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/edt_NombreEmpleado" />
+
+    <EditText
+        android:id="@+id/edt_DomicilioEmpleado"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:text="@string/introduce_tu_domicilio"
+        app:layout_constraintEnd_toEndOf="@+id/edt_ApellidosEmpleado"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_ApellidosEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/edt_ApellidosEmpleado" />
+
+    <EditText
+        android:id="@+id/edt_EmailEmpleado"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:text="@string/introduce_tu_email"
+        app:layout_constraintEnd_toEndOf="@+id/edt_DomicilioEmpleado"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_DomicilioEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/edt_DomicilioEmpleado" />
+
+    <EditText
+        android:id="@+id/edt_TelefonoEmpleado"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="9"
+        android:text="@string/introduce_tu_telefono"
+        app:layout_constraintEnd_toEndOf="@+id/edt_EmailEmpleado"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_EmailEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/edt_EmailEmpleado" />
+
+    <Button
+        android:id="@+id/bt_guardarDatosEmpleado"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="144dp"
+        android:onClick="GuardarDatosEmpleado"
+        android:text="@string/guardar_datos"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/edt_TelefonoEmpleado"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/edt_TelefonoEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/edt_TelefonoEmpleado" />
+
+    <Button
+        android:id="@+id/bt_restablecerDatosEmpleado"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:onClick="RestablecerDatosEmpleado"
+        android:text="@string/restablecer_datos"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_guardarDatosEmpleado"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_guardarDatosEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/bt_guardarDatosEmpleado" />
+
+    <EditText
+        android:id="@+id/edt_password1"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Introduce contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/edt_TelefonoEmpleado"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_TelefonoEmpleado"
+        app:layout_constraintTop_toBottomOf="@+id/edt_TelefonoEmpleado" />
+
+    <EditText
+        android:id="@+id/edt_password2"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/introduce_contrase_a"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/edt_password1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_password1"
+        app:layout_constraintTop_toBottomOf="@+id/edt_password1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

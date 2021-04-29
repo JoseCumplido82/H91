@@ -129,49 +129,49 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                     boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
                    if(EmpleadoEnTabla) {
                        System.out.println("entra al if");
-                        Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
-                        System.out.println(empleado);
+                       Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
+                       System.out.println(empleado);
+                       ConfiguracionDB.IDUsuarioActual = empleado.getId();
 
-                        int dias = Integer.valueOf(edt_diasSolicitados.getText().toString());
+                       int idEmpleado = ConfiguracionDB.IDUsuarioActual;
+                       System.out.println(" id del empleado " + idEmpleado);
+                       int dias = Integer.valueOf(edt_diasSolicitados.getText().toString());
                        System.out.println(dias);
 
-                        String fechaTextoInicio= String.valueOf(etFecha.getText());
-                        Date fechaInicio= (new SimpleDateFormat("yyyy-mm-dd").parse(fechaTextoInicio));
+                       String fechaTextoInicio = String.valueOf(etFecha.getText());
+                       Date fechaInicio = (new SimpleDateFormat("yyyy-mm-dd").parse(fechaTextoInicio));
 
                        System.out.println(fechaInicio);
 
-                        String fechatextoFin = String.valueOf(etFecha.getText());
-                        Date fechaFin = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoFin);
+                       String fechatextoFin = String.valueOf(etFecha.getText());
+                       Date fechaFin = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoFin);
 
 
                        System.out.println(fechaFin);
 
-                        String fechatextoSolicitud = String.valueOf(LocalDate.now());
-                        Date fechaActual = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
+                       String fechatextoSolicitud = String.valueOf(LocalDate.now());
+                       Date fechaActual = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
                        System.out.println(fechaActual);
 
-                       // vacaciones= new Vacaciones(empleado.getId(), fechaInicio,fechaFin, dias, fechaActual, ConfiguracionDB.idEstado);
+                       vacaciones = new Vacaciones(ConfiguracionDB.IDUsuarioActual, (Date) etFecha.getText(), fechaFin, dias, fechaActual, ConfiguracionDB.idEstado);
 
 
+                       System.out.println(vacaciones);
 
-                        System.out.println(vacaciones);
-
-                        boolean insertadoOK= VacacionesController.insertarVacaciones(vacaciones);
-                        System.out.println("pasa el boolean insertado");
-                        if (insertadoOK)
-                        {
-                            System.out.println("entra al if insertado");
-                            mostrarToast2("Dia de vacaciones creado correctamente");
-                            finish();
-                        }else {
-                            mostrarToast2("no se pudo crear la peticion del dia de vacaciones");
-                        }
-                 //   }else {
-                   //     System.out.println("no encuentra empleado en tabla");
-                    }
+                       boolean insertadoOK = VacacionesController.insertarVacaciones(vacaciones);
+                       System.out.println("pasa el boolean insertado");
+                       if (insertadoOK) {
+                           System.out.println("entra al if insertado");
+                           mostrarToast2("Dia de vacaciones creado correctamente");
+                           finish();
+                       } else {
+                           mostrarToast2("no se pudo crear la peticion del dia de vacaciones");
+                       }
+                   }
                 } catch (Exception e) {
                     mostrarToast2("error, revisa los datos introducidos");
-                    Log.i("vacaciones", "vacaciones no creadas " + ConfiguracionDB.UsuarioActual + " el idSolicitante no lo recoge " + " dias " + edt_diasSolicitados.getText().toString()
+                    
+                    Log.i("vacaciones", "vacaciones no creadas " + ConfiguracionDB.UsuarioActual + " el idSolicitante " +ConfiguracionDB.IDUsuarioActual+ " dias " + edt_diasSolicitados.getText().toString()
                             + " fecha pedida " + etFecha.getText() + "  fecha actual " + LocalDate.now().toString());
                   //  System.out.println(ConfiguracionDB.idEstado +" " +"" + " "+vacaciones.getDias() +"" +vacaciones.getFecha_inicio() +""+ vacaciones.getFecha_fin() +" " + vacaciones.getFecha_solicitud());
                 }
@@ -278,13 +278,6 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
         System.out.println("dias pedidos " + numero + " fecha indicada " + fecha + " = " + formatearCalendar(c));
         System.out.println("fecha de obtenerfecha " );
     }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void calcularFechaVuelta(View view) {
-        sumarDiasAFecha();
-
-    }
-
 
 
     public static String formatearCalendar(Calendar c) {

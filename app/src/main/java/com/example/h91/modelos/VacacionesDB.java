@@ -35,19 +35,24 @@ public class VacacionesDB {
             String strDateInicio= dateFormat.format(v.getFecha_inicio());
             Log.i("sql", "valor de la fecha de inicio " + strDateInicio);
             java.sql.Date sqlFechaInicio= java.sql.Date.valueOf(strDateInicio);
-            pst.setDate(2, sqlFechaInicio);
+           // pst.setDate(2, sqlFechaInicio);
+
+            pst.setDate(2, (java.sql.Date) v.getFecha_inicio());
             //
             String strDateFin= dateFormat.format(v.getFecha_fin());
             Log.i("sql", "valor de la fecha de fin " +strDateFin);
             java.sql.Date sqlFechaFin= java.sql.Date.valueOf(strDateFin);
-            pst.setDate(3, sqlFechaFin);
+            //pst.setDate(3, sqlFechaFin);
+            pst.setDate(3, (java.sql.Date) v.getFecha_fin());
             //
             pst.setInt(4, v.getDias());
             //
             String strDateSolicitud= dateFormat.format(v.getFecha_solicitud());
             Log.i("sql", "valor de la fecha de solicitud " + strDateSolicitud);
             java.sql.Date sqlFechaSolicitud= java.sql.Date.valueOf(strDateSolicitud);
-            pst.setDate(5, sqlFechaSolicitud);
+            //pst.setDate(5, sqlFechaSolicitud);
+            pst.setDate(5, (java.sql.Date) v.getFecha_solicitud());
+
             //
             pst.setInt(6, v.getIdEstado());
             int filasAfectadas= pst.executeUpdate();

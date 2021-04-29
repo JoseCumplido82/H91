@@ -182,4 +182,11 @@
     <string name="bt_descargarNomina">Button</string>
     <string name="descargar_nomina">Descargar nomina</string>
     <string name="boton_volver_nominas">boton volver nominas</string>
+    <string name="completar_datos_empleado">COMPLETAR DATOS EMPLEADO</string>
+    <string name="introduce_tu_nombre">Introduce tu nombre</string>
+    <string name="introduce_tu_telefono">Introduce tu telefono</string>
+    <string name="restablecer_datos">Restablecer datos</string>
+    <string name="introduce_tu_email">Introduce tu Email</string>
+    <string name="introduce_tus_apellidos">Introduce tus apellidos</string>
+    <string name="introduce_tu_domicilio">Introduce tu domicilio</string>
 </resources>

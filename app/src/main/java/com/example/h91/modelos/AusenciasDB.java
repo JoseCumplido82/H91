@@ -28,17 +28,18 @@ public class AusenciasDB {
             String ordensql= "INSERT INTO ausencias (idSolicitante, fecha_inicio, hora_inicio, horas, fecha_solicitud, motivo, idEstado) VALUES(?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, a.getIdSolicitante());
-            DateFormat dateFormat= new SimpleDateFormat("yyyy-mm-dd");
-            String strDateInicio= dateFormat.format(a.getFecha_inicio());
-            Log.i("sql", "valor de la fecha " + strDateInicio);
-            java.sql.Date sqlFechaInicio= java.sql.Date.valueOf(strDateInicio);
-            pst.setDate(2, sqlFechaInicio);
-            pst.setString(3,a.getHora_inicio());
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String strDate = dateFormat.format(a.getFecha_inicio());
+            Log.i("sql", "valor de la fecha elegida-> "+ strDate);
+            java.sql.Date sqlFecha= java.sql.Date.valueOf(strDate);
+            pst.setDate(2, sqlFecha);
+            pst.setString(3, a.getHora_inicio());
             pst.setInt(4, a.getHoras());
-            String strDateSolicitud= dateFormat.format(a.getFecha_solicitud());
-            Log.i("sql", "valor de la fecha " + strDateSolicitud);
-            java.sql.Date sqlFechaSolicitud= java.sql.Date.valueOf(strDateSolicitud);
-            pst.setDate(5, sqlFechaSolicitud);
+            DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+            String strDate2 = dateFormat2.format(a.getFecha_solicitud());
+            Log.i("sql", "valor de la fecha que se pide la solicitud-> "+ strDate2);
+            java.sql.Date sqlFech2a= java.sql.Date.valueOf(strDate2);
+            pst.setDate(5, sqlFech2a);
             pst.setString(6, a.getMotivo());
             pst.setInt(7, a.getIdEstado());
 

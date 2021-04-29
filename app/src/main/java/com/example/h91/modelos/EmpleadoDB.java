@@ -161,6 +161,44 @@ public class EmpleadoDB {
             return false;
         }
     }
+    //-----------------------------------------------------------------------
+    public static boolean actualizarEmpleadoTabla2(Empleado empleado){
+        Connection conexion = BaseDB.conectarConBaseDeDatos();
+        if(conexion==null)
+        {
+            return false;
+        }
+        //---------------------------------
+        try {
+            String ordensql = "UPDATE empleado SET idDepartamento =?, usuario=?, pass=?, nombre=?, apellido=?, domicilio=?, correo=?, telefono=?, fecha_incorporacion=? WHERE (id=?);";
+            PreparedStatement pst= conexion.prepareStatement(ordensql);
+            pst.setInt(1, empleado.getIdDepartamento());
+            pst.setString(2, empleado.getUsuario());
+            pst.setString(3, empleado.getPass());
+            pst.setString(4, empleado.getNombre());
+            pst.setString(5, empleado.getApellido());
+            pst.setString(6, empleado.getDomicilio());
+            pst.setString(7, empleado.getCorreo());
+            pst.setString(8, empleado.getTelefono());
+            pst.setDate(9, (java.sql.Date) empleado.getFecha_incorporacion());
+            pst.setInt(10, empleado.getId());
+            int filasAfectadas = pst.executeUpdate();
+            pst.close();
+            conexion.close();
+            if(filasAfectadas >0)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }catch (SQLException e){
+            return false;
+        }
+    }
+
+
+
     //---------------------------------------------
     public static boolean EmpleadoEnTabla(String usuario, String pass) {
         Connection conexion = BaseDB.conectarConBaseDeDatos();

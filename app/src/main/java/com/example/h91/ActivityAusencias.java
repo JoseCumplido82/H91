@@ -47,7 +47,7 @@ import java.util.GregorianCalendar;
 public class ActivityAusencias extends AppCompatActivity implements View.OnClickListener{
 
     private static final String CERO = "0";
-    private static final String BARRA = "/";
+    private static final String BARRA = "-";
     private static final String DOS_PUNTOS= ":";
 
     //Calendario para obtener fecha & hora
@@ -138,7 +138,9 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                 //Formateo el mes obtenido: antepone el 0 si son menores de 10
                 String mesFormateado = (mesActual < 10)? CERO + String.valueOf(mesActual):String.valueOf(mesActual);
                 //Muestro la fecha con el formato deseado
-                etFecha.setText(diaFormateado + BARRA + mesFormateado + BARRA + year);
+                //etFecha.setText(diaFormateado + BARRA + mesFormateado + BARRA + year);
+                etFecha.setText(year + BARRA + mesFormateado + BARRA + diaFormateado);
+
 
 
             }
@@ -225,36 +227,48 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                         boolean Idobtenido= AusenciasController.obtenerIDempleadoAusencia(ConfiguracionDB.IDUsuarioActual);
                           if(Idobtenido){
                               System.out.println("llega al if del Idobtenido");
-                              System.out.println(empleado);
-                              System.out.println(idActual);
+                              //empleado
+                              System.out.println("empleado " + empleado);
+                                //id del empleado
+                              System.out.println("id del empleado "+ idActual);
+                              //motivo de la ausencia
                               String motivo= String.valueOf(edt_motivoAusencia.getText());
-                              System.out.println(motivo);
+                              System.out.println("motivo de la ausencia " + motivo);
+                              //fecha de la ausencia
+
                               String fechatextoAusencia= String.valueOf(etFecha.getText());
-                              String fechatextoSolicitud= String.valueOf(LocalDate.now());
-                              System.out.println("fecha de la ausencia " +fechatextoAusencia);
+
+                              SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd");
+                              Date datofecha= format.parse(fechatextoAusencia);
+                              //String fechaausencia= format.format(datofecha);
+
+                              System.out.println("fecha de la ausencia " +datofecha);
+
+                                //fecha de la solicitud
+                              System.out.println("llega al simple date format de la fecha de la solicitud");
+                              SimpleDateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
+                              Date date= new Date();
+                              String fechatextoSolicitud= formato.format(date);
+                              System.out.println("fecha de hoy " + date);
+
+
                               System.out.println("fecha de la solicitud " + fechatextoSolicitud);
-
-
-
+                                //horas pedidas
                               int horaspedidas= Integer.parseInt(edt_horasASolicitar.getText().toString());
                               System.out.println("horas solicitadas " + horaspedidas);
                               String horaInicio= etHora.getText().toString();
                               System.out.println("hora de inicio de solicitud " + horaInicio);
-                              System.out.println("hora actual " + java.util.Date.from(Instant.now()));
-                              System.out.println("IdEmpleado " + idActual);
+                                //hora del reloj
+                              SimpleDateFormat formatoHora= new SimpleDateFormat("HH:mm:ss");
+                              Date date1= new Date();
+                              String hora_actual= formatoHora.format(date1);
+                              System.out.println(hora_actual);
+
                               System.out.println("Id estado solicitud " + ConfiguracionDB.idEstado);
-                              Calendar fechacalendar= new GregorianCalendar();
-                              int año= fechacalendar.get(Calendar.YEAR);
-                              int mesaño= fechacalendar.get(Calendar.MONTH);
-                              int diaaño= fechacalendar.get(Calendar.DAY_OF_MONTH);
-                              String fechahoy= año+"/"+(mesaño+1)+"/"+diaaño;
-                              System.out.println("fecha de hoy " +fechahoy);
-                              //Date fechaAusencias= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoAusencia);
-                              //Date fechaActual= new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
 
 
-                              //ausencias= new Ausencias(idActual, (Date) etFecha.getText(),horaInicio,horaspedidas,java.util.Date.from(Instant.now()), motivo, ConfiguracionDB.idEstado);
-                              ausencias= new Ausencias(idActual, (Date) etFecha.getText(),horaInicio,horaspedidas,java.util.Date.from(Instant.now()), motivo, ConfiguracionDB.idEstado);
+
+                              ausencias= new Ausencias(idActual, datofecha, hora_actual,horaspedidas, date, motivo, ConfiguracionDB.idEstado);
 
 
                               Log.i("mensaje", String.valueOf(ausencias));
@@ -286,10 +300,7 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
 
                 }catch (Exception e){
                     mostrarToast2("error, revisa los datos introducidos");
-                    //Log.i("ausencia", "ausencia con id empleado"  + " fecha inicio"+ (Date) etFecha.getText() + " hora inicio"+ ausencias.getHora_inicio()
-                      //      + " horas" +  ausencias.getHoras() + " hora solicitud " + ausencias.getFecha_solicitud() + " motivo " + ausencias.getMotivo() + " idestado " +  ausencias.getIdEstado());
-                    Log.i("ausencia", "ausencia con id empleado"  +ConfiguracionDB.IDUsuarioActual + " fecha inicio " +(Date) etFecha.getText() + " hora inicio "+ etHora.getText().toString()
-                            + " horas " +  Integer.parseInt(edt_horasASolicitar.getText().toString()) + " hora solicitud " +Instant.now() + " motivo " + String.valueOf(edt_motivoAusencia.getText()) + " idestado " +   ConfiguracionDB.idEstado);
+
                 }
 
                 }

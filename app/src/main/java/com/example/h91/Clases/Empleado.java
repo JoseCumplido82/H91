@@ -83,6 +83,16 @@ public class Empleado implements Serializable {
         this.fecha_incorporacion = fecha_incorporacion;
     }
 
+    public Empleado(String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono) {
+        this.usuario = usuario;
+        this.pass = pass;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.domicilio = domicilio;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
+
 
 
     public Empleado(int idDepartamento, String nombre, String apellido) {

@@ -71,6 +71,7 @@
         android:text="@string/vacaciones_hasta_el_dia"
         android:textColor="@color/cardview_dark_background"
         android:textSize="14sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/et_mostrar_fecha_picker2"
         app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="@+id/ib_obtener_fecha2"
