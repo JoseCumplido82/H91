@@ -36,7 +36,7 @@ import java.util.TimeZone;
 
 public class ActivityVacaciones extends AppCompatActivity implements View.OnClickListener {
     private static final String CERO = "0";
-    private static final String BARRA = "/";
+    private static final String BARRA = "-";
 
 
     //Calendario para obtener fecha & hora
@@ -132,28 +132,53 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                        Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
                        System.out.println(empleado);
                        ConfiguracionDB.IDUsuarioActual = empleado.getId();
-
                        int idEmpleado = ConfiguracionDB.IDUsuarioActual;
                        System.out.println(" id del empleado " + idEmpleado);
                        int dias = Integer.valueOf(edt_diasSolicitados.getText().toString());
-                       System.out.println(dias);
+                       System.out.println("dias pedidos "+dias);
 
                        String fechaTextoInicio = String.valueOf(etFecha.getText());
-                       Date fechaInicio = (new SimpleDateFormat("yyyy-mm-dd").parse(fechaTextoInicio));
-
-                       System.out.println(fechaInicio);
-
-                       String fechatextoFin = String.valueOf(etFecha.getText());
-                       Date fechaFin = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoFin);
+                       SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd");
+                       Date fechaInicio= format.parse(fechaTextoInicio);
+                       System.out.println("fecha de inicio " + fechaInicio);
 
 
-                       System.out.println(fechaFin);
+                        //FALLO AQUI AL CONSEGUIR LA FECHA DE VUELTA
+                       Calendar calendario= Calendar.getInstance();
+                       calendario.setTime(fechaInicio);
+                      // calendario.add(Calendar.DAY_OF_YEAR, dias);
+                       //calendario.getTime();
+                        int num_dias_afectar=0;
+                       String fecha_termino="";
+                       while (dias<=num_dias_afectar)
+                       {
 
-                       String fechatextoSolicitud = String.valueOf(LocalDate.now());
-                       Date fechaActual = new SimpleDateFormat("yyyy-mm-dd").parse(fechatextoSolicitud);
-                       System.out.println(fechaActual);
+                           if (calendario.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendario.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
+                           {
 
-                       vacaciones = new Vacaciones(ConfiguracionDB.IDUsuarioActual, (Date) etFecha.getText(), fechaFin, dias, fechaActual, ConfiguracionDB.idEstado);
+                               Date fecha_fin = calendario.getTime();
+                               fecha_termino = format.format(fecha_fin);
+                               dias++;
+                           }
+                           calendario.add(Calendar.DATE, 1);
+                           System.out.println("fecha de termino de vacaciones" + fecha_termino);
+                       }
+                       System.out.println("fecha de termino de vacaciones fuera" + fecha_termino);
+
+
+                       //System.out.println(calendario.toString());
+                       //Date fechaDeVuelta= format.parse(String.valueOf(calendario));
+                       //System.out.println(fechaDeVuelta.toString());
+
+
+
+
+                       SimpleDateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
+                       Date fechaHoy= new Date();
+                       String fechatextoSolicitud= formato.format(fechaHoy);
+                       System.out.println("fecha de hoy " + fechatextoSolicitud);
+
+                       vacaciones = new Vacaciones(ConfiguracionDB.IDUsuarioActual, fechaInicio, fechaHoy, dias, fechaInicio, ConfiguracionDB.idEstado);
 
 
                        System.out.println(vacaciones);
@@ -197,19 +222,6 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void sumarDias() throws ParseException {
-        String fechaTextoInicio= String.valueOf(etFecha.getText());
-        Date fechaInicio= (new SimpleDateFormat("yyyy-mm-dd").parse(fechaTextoInicio));
-
-        int dias = Integer.valueOf(edt_diasSolicitados.getText().toString());
-        Calendar calendar= Calendar.getInstance();
-        calendar.set(Integer.valueOf(fechaTextoInicio), dia);
-        calendar.getTime();
-        calendar.add(dia, dias);
-        System.out.println(calendar.getTime());
-
-
-    }
 
 
     private Date obtenerFecha() {
@@ -223,7 +235,8 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                 //Formateo el mes obtenido: antepone el 0 si son menores de 10
                 String mesFormateado = (mesActual < 10) ? CERO + String.valueOf(mesActual) : String.valueOf(mesActual);
                 //Muestro la fecha con el formato deseado
-                etFecha.setText(diaFormateado + BARRA + mesFormateado + BARRA + year);
+                //etFecha.setText(diaFormateado + BARRA + mesFormateado + BARRA + year);
+                etFecha.setText(year + BARRA + mesFormateado + BARRA + diaFormateado);
 
 
             }
@@ -242,49 +255,5 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
     }
-
-
-    int numero=0;
-
-
-    //METODO PARA HACER LA SUMA DE DIAS A LA FECHA , NO CONSIGO QUE FUNCIONE
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void sumarDiasAFecha() {
-
-
-        numero= Integer.parseInt(edt_diasSolicitados.getText().toString());
-        LocalDateTime today = LocalDateTime.now();     //Today
-
-        LocalDateTime tomorrow = today.plusDays(numero);     //Plus 1 day
-        LocalDateTime yesterday = today.minusDays(1);   //Minus 1 day
-        System.out.println("Today:     "+today);
-        System.out.println("dia solicitado:     "+tomorrow);
-        System.out.println("ayer:     "+yesterday);
-       // txt_diasPedidos.setText();
-        txt_diasPedidos.setText(tomorrow.toString());
-        System.out.println("el valor de numero es " + numero);
-        System.out.println("///////////////////////////////////////");
-        System.out.print(obtenerFecha());
-
-        String fecha=   etFecha.getText().toString();
-        System.out.println("fecha de obtenerfecha " + fecha + numero);
-        System.out.println("fecha de dia " + dia + numero);
-        System.out.println("sumar a calendar la fecha" );
-
-        c.add(Calendar.DAY_OF_YEAR, numero);
-        //c.setTime();
-        //System.out.println(c.toString());
-        System.out.println("+ " + numero + " dias a fecha seleccionada que es " + fecha + " y volveras el dia " + formatearCalendar(c) ) ;
-        System.out.println("dias pedidos " + numero + " fecha indicada " + fecha + " = " + formatearCalendar(c));
-        System.out.println("fecha de obtenerfecha " );
-    }
-
-
-    public static String formatearCalendar(Calendar c) {
-        DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
-
-        return df.format(c.getTime());
-    }
-
 
 }
