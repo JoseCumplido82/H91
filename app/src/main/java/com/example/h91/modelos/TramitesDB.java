@@ -25,7 +25,7 @@ public class TramitesDB {
         }
         //---------------------------------
         try{
-            String ordensql= "INSERT INTO tramites (idSolicitante, nombre_documento, asunto, comentario, fecha_solicitud, idEstado) VALUES(?, ?, ?, ?, ?, ?);";
+            String ordensql= "INSERT INTO tramites (idSolicitante, nombre_documento, asunto, comentario, fecha_solicitud, idEstado) VALUES(?,?,?,?,?,?);";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, t.getIdSolicitante());
             pst.setString(2, t.getNombre_documento());

@@ -113,7 +113,7 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     //METODO BUENO PARA INSERTAR VACACIONES
     public void insertarVacaciones(View view) {
         AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
-        alerta1.setTitle("¿Quieres solicitar la ausencia?");
+        alerta1.setTitle("¿Quieres solicitar los dias de vacaciones?");
         alerta1.setPositiveButton("si", new DialogInterface.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -142,18 +142,11 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                        Date fechaInicio= format.parse(fechaTextoInicio);
                        System.out.println("fecha de inicio " + fechaInicio);
 
-                       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                        //FALLO AQUI AL CONSEGUIR LA FECHA DE VUELTA
                        Calendar calendario= Calendar.getInstance();
                        calendario.setTime(fechaInicio);
-                      //calendario.add(Calendar.DAY_OF_YEAR, dias);
-                       //calendario.getTime();
                         int num_dias_afectar=0;
                        String fecha_termino="";
                        Date fecha_fin=null;
-                       //while (dias<=num_dias_afectar)
-                       //{
                            while (num_dias_afectar<=dias)
                            {
                            if (calendario.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendario.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
@@ -167,12 +160,6 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                            System.out.println("fecha de termino de vacaciones" + fecha_termino);
                        }
                        System.out.println("fecha de termino de vacaciones fuera" + fecha_termino);
-
-
-                         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 
                        SimpleDateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
                        Date fechaHoy= new Date();

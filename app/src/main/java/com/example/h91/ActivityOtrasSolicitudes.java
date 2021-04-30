@@ -1,17 +1,22 @@
 package com.example.h91;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -21,12 +26,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.h91.Clases.Empleado;
 import com.example.h91.Clases.Solicitud;
 import com.example.h91.Clases.Tramites;
 import com.example.h91.controladores.TramitesController;
+import com.example.h91.modelos.ConfiguracionDB;
+import com.example.h91.modelos.EmpleadoDB;
 
+import java.io.File;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class ActivityOtrasSolicitudes extends AppCompatActivity  {
 
@@ -41,6 +53,7 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity  {
     ArrayList<Tramites> tramites=null;
     private static final int PHOTO_SELECTED=100;
     Uri imageUri;
+    String nombreImagen ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,76 +120,100 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity  {
 
 
     public void solicitarAusencia(View view) {
-      //  Solicitud solicitud=null;
-        Tramites tramites=null;
-       try {
+        android.app.AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
+        alerta1.setTitle("¿Quieres solicitar los dias de vacaciones?");
+        alerta1.setPositiveButton("si", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (edt_asuntoSolicitud.getText().toString().isEmpty()) {
+                            mostrarToast("Introduce un asunto para la solicitud");
+                            edt_asuntoSolicitud.setError("Introduce un asunto para la solicitud");
+                        }
+                        Tramites tramites = null;
+                        try {
+                            System.out.println("entra al try");
+                            boolean EmpleadoEnTabla = EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+                            if (EmpleadoEnTabla) {
+                                System.out.println("entra al if del boolean");
+                                Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
+                                System.out.println(empleado);
+                                ConfiguracionDB.IDUsuarioActual = empleado.getId();
+                                int idEmpleado = ConfiguracionDB.IDUsuarioActual;
+                                System.out.println("el id del empleado es: " + idEmpleado);
+                                String asunto = edt_asuntoSolicitud.getText().toString();
+                                String comentario = edt_observacionesMensaje.getText().toString();
 
-            String asunto= edt_asuntoSolicitud.getText().toString();
-            String comentario= edt_observacionesMensaje.getText().toString();
-            tramites=new Tramites(asunto, comentario);
+                                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                                Date fechaHoy = new Date();
+                                String fechatextoSolicitud = formato.format(fechaHoy);
+                                System.out.println("fecha de hoy " + fechatextoSolicitud);
 
+                               // String nombreDocumento = foto_galeria.toString();
+                                //String nombreDocumento="";
+                                if (comentario.equals("")) {
+                                    tramites = new Tramites(idEmpleado, nombreImagen, asunto, fechaHoy, ConfiguracionDB.idEstado);
+                                } else {
+                                    tramites = new Tramites(idEmpleado, nombreImagen, asunto, comentario, fechaHoy, ConfiguracionDB.idEstado);
+                                }
 
-        //    solicitud= new Solicitud(asunto, comentario);
-        }catch (Exception e){
-            mostrarToast("error, revisa los datos introducidos");
-        }
-        //insertar tramite
-        boolean insertadoOK= TramitesController.insertarTramites(tramites);
-       if(insertadoOK){
-           mostrarToast("tramite insertado correctamente");
-           Intent intent= new Intent();
-           intent.putExtra(EXTRA_OBJETO_SOLICITUD, tramites);
-           setResult(RESULT_OK, intent);
-           finish();
-       }else{
-           mostrarToast("no se pudo crear el tramite");
-       }
+                                System.out.println(tramites);
+                                boolean insertadoOK = TramitesController.insertarTramites(tramites);
+                                System.out.println("pasa el boolean insertado");
+                                if (insertadoOK) {
+                                    System.out.println("entra al if del insertadook");
+                                    mostrarToast2("Dia de ausencia creado correctamente");
+                                    finish();
+                                } else {
+                                    System.out.println("no se pudo crear el dia de ausencia");
+                                }
 
+                            }
+                        } catch (Exception e) {
+                            Log.i("tramites", "tramite no creado");
+                        }
+                    }
+                });
+        alerta1.setNegativeButton("no", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                edt_asuntoSolicitud.setText("");
+                edt_observacionesMensaje.setText("");
+                mostrarToast2(" los campos se han reiniciado");
+            }
+        });
+        alerta1.show();
+    }
 
-       // Intent intent= new Intent(this, ActivityMisSolicitudes.class);
-
-         //tramites= new Tramites(edt_asuntoSolicitud.getText().toString(), edt_observacionesMensaje.getText().toString());
-
-        //Bundle bundle= new Bundle();
-        //bundle.putSerializable("imagen", (Serializable) foto_galeria);
-        //intent.putExtra("imagen", (Parcelable) foto_galeria);
-        //startActivity(intent);
-
-
-
-
+    public void mostrarToast2(String mensaje)
+    {
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
     private void openFolder(){
-
-
+    checkStoragePermission();
         //FUNCIONA PARA ELEGIR PDF
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("application/pdf");
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-
+        Intent pdfGaleria = new Intent(Intent.ACTION_GET_CONTENT);
+        pdfGaleria.setType("application/pdf");
+        pdfGaleria.addCategory(Intent.CATEGORY_OPENABLE);
         try {
-            startActivityForResult(Intent.createChooser(intent, "Select txt file"), 0);
-
-                mostrarToast("PDF SELECCIONADO");
+            startActivityForResult(Intent.createChooser(pdfGaleria, "Selecciona un archivo pdf"), 0);
+            mostrarToast("PDF SELECCIONADO");
 
 
         } catch (ActivityNotFoundException ex) {
             // Potentially direct the user to the Market with a Dialog
-
         }
-
-
-
     }
 
+
+
     private void openGallery(){
+        checkStoragePermission();
         Intent galeria = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(galeria, PHOTO_SELECTED);
-
-//        foto_galeria.setImageResource(PHOTO_SELECTED);
-        mostrarToast("IMAGEN SELECCIONADO");
-
+        //foto_galeria.setImageResource(PHOTO_SELECTED);
+        mostrarToast("IMAGEN SELECCIONADA");
     }
 
     @Override
@@ -185,7 +222,13 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity  {
         if (resultCode == RESULT_OK && requestCode == PHOTO_SELECTED) {
             imageUri = data.getData();
             foto_galeria.setImageURI(imageUri);
-            txt_tituloDocumento.setText("imagen cargada");
+            txt_tituloDocumento.setText("IMAGEN CARGADA");
+            //List<String> nombreImagen= imageUri.getPathSegments();
+           //String nombreImagen= imageUri.getPath();
+            File f= new File(""+ imageUri);
+            nombreImagen=  f.getName();
+            System.out.println(nombreImagen);
+
         }
     }
 
