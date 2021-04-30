@@ -31,7 +31,7 @@ public class TramitesDB {
             pst.setString(2, t.getNombre_documento());
             pst.setString(3, t.getAsunto());
             pst.setString(4, t.getComentario());
-            DateFormat dateFormat= new SimpleDateFormat("yyyy-mm-dd");
+            DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
             String strDateSolicitud= dateFormat.format(t.getFecha_solicitud());
             Log.i("sql", "valor de la fecha " + strDateSolicitud);
             java.sql.Date sqlFechaSolicitud= java.sql.Date.valueOf(strDateSolicitud);
