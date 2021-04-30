@@ -142,23 +142,26 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                        Date fechaInicio= format.parse(fechaTextoInicio);
                        System.out.println("fecha de inicio " + fechaInicio);
 
+                       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                         //FALLO AQUI AL CONSEGUIR LA FECHA DE VUELTA
                        Calendar calendario= Calendar.getInstance();
                        calendario.setTime(fechaInicio);
-                      // calendario.add(Calendar.DAY_OF_YEAR, dias);
+                      //calendario.add(Calendar.DAY_OF_YEAR, dias);
                        //calendario.getTime();
                         int num_dias_afectar=0;
                        String fecha_termino="";
-                       while (dias<=num_dias_afectar)
-                       {
-
+                       Date fecha_fin=null;
+                       //while (dias<=num_dias_afectar)
+                       //{
+                           while (num_dias_afectar<=dias)
+                           {
                            if (calendario.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendario.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
                            {
 
-                               Date fecha_fin = calendario.getTime();
+                                fecha_fin = calendario.getTime();
                                fecha_termino = format.format(fecha_fin);
-                               dias++;
+                               num_dias_afectar++;
                            }
                            calendario.add(Calendar.DATE, 1);
                            System.out.println("fecha de termino de vacaciones" + fecha_termino);
@@ -166,9 +169,7 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                        System.out.println("fecha de termino de vacaciones fuera" + fecha_termino);
 
 
-                       //System.out.println(calendario.toString());
-                       //Date fechaDeVuelta= format.parse(String.valueOf(calendario));
-                       //System.out.println(fechaDeVuelta.toString());
+                         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -178,7 +179,7 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                        String fechatextoSolicitud= formato.format(fechaHoy);
                        System.out.println("fecha de hoy " + fechatextoSolicitud);
 
-                       vacaciones = new Vacaciones(ConfiguracionDB.IDUsuarioActual, fechaInicio, fechaHoy, dias, fechaInicio, ConfiguracionDB.idEstado);
+                       vacaciones = new Vacaciones(ConfiguracionDB.IDUsuarioActual, fechaInicio, fecha_fin, dias, fechaHoy, ConfiguracionDB.idEstado);
 
 
                        System.out.println(vacaciones);
@@ -196,9 +197,8 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                 } catch (Exception e) {
                     mostrarToast2("error, revisa los datos introducidos");
                     
-                    Log.i("vacaciones", "vacaciones no creadas " + ConfiguracionDB.UsuarioActual + " el idSolicitante " +ConfiguracionDB.IDUsuarioActual+ " dias " + edt_diasSolicitados.getText().toString()
-                            + " fecha pedida " + etFecha.getText() + "  fecha actual " + LocalDate.now().toString());
-                  //  System.out.println(ConfiguracionDB.idEstado +" " +"" + " "+vacaciones.getDias() +"" +vacaciones.getFecha_inicio() +""+ vacaciones.getFecha_fin() +" " + vacaciones.getFecha_solicitud());
+                    Log.i("vacaciones", "vacaciones no creadas ");
+
                 }
             }
         });
