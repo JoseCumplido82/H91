@@ -37,7 +37,7 @@ public class ActivitySancionarEmpleado extends AppCompatActivity {
 
         txt_dniEmpleadorecogido=(TextView)findViewById(R.id.txt_dniEmpleadorecogido);
         tipoSancion= new String[]{"Leve", "Grave"};
-        adapter= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tipoSancion);
+        adapter= new ArrayAdapter<String>(this, R.layout.spinner_item_sancion, tipoSancion);
         sp_sancion.setAdapter(adapter);
         getIntent().getSerializableExtra("referenciaEmpleado");
         txt_dniEmpleadorecogido.setText((CharSequence) getIntent().getSerializableExtra("referenciaEmpleado"));
@@ -76,6 +76,7 @@ public class ActivitySancionarEmpleado extends AppCompatActivity {
                 Sanciones sanciones=null;
                 try {
                     System.out.println("entra al try de sanciones");
+                    System.out.println(txt_dniEmpleadorecogido.getText().toString());
                     Empleado empleado= (EmpleadoDB.buscarEmpleadoTabla(txt_dniEmpleadorecogido.getText().toString()));
                     System.out.println(empleado);
                     String spinnerselect= sp_sancion.getSelectedItem().toString();
