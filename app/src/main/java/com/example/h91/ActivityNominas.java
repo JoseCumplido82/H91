@@ -46,7 +46,7 @@ import java.util.Collections;
 
 public class ActivityNominas extends AppCompatActivity {
 
-    //public static final String EXTRA_OBJETO_NOMINA= "nominas";
+    public static final String EXTRA_OBJETO_NOMINA= "nominas";
     private static final int PETICION1 = 1;
     private RecyclerView rv_nominas;
     private listaNominasAdapter nominasAdapterAdapter;
@@ -54,23 +54,34 @@ public class ActivityNominas extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nominas);
         int dni=ConfiguracionDB.IDUsuarioActual;
         //-----------------------------------------------------------
-        nominas = NominasController.obtenerNominas(dni);
-        if(nominas != null) {
-            rv_nominas = (RecyclerView) findViewById(R.id.rv_nominas);
-            // Create an adapter and supply the data to be displayed.
-            nominasAdapterAdapter = new listaNominasAdapter(this, nominas);
-            // Connect the adapter with the RecyclerView.
-            rv_nominas.setAdapter(nominasAdapterAdapter);
-            // Give the RecyclerView a default layout manager.
-            rv_nominas.setLayoutManager(new LinearLayoutManager(this));
+
+        boolean nominasok= NominasController.obtenerIDempleadoTramite(ConfiguracionDB.IDUsuarioActual);
+        if(nominasok){
+            nominas = NominasController.obtenerNominas(ConfiguracionDB.IDUsuarioActual);
+            if(nominas != null) {
+                rv_nominas = (RecyclerView) findViewById(R.id.rv_nominas);
+                nominasAdapterAdapter = new listaNominasAdapter(this, nominas);
+                rv_nominas.setAdapter(nominasAdapterAdapter);
+                rv_nominas.setLayoutManager(new LinearLayoutManager(this));
+                System.out.println(nominas);
+                System.out.println("entra al if de nominas, deberian recuperarse nominas en caso de existir");
+            }
+            else{
+                Log.i("nominas", "no pude recuperar las nominas");
+                System.out.println("no pude recuperar las nominas");
+            }
         }
-        else{
-            Log.i("nominas", "no pude recuperar las nominas");
-        }
+
+
         //------------------------------------------------------------
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
                 ItemTouchHelper.DOWN | ItemTouchHelper.UP, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -112,11 +123,9 @@ public class ActivityNominas extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PETICION1) {
             if (resultCode == RESULT_OK) {
-                Nominas c = (Nominas) data.getSerializableExtra(Nominas.EXTRA_OBJETO_NOMINA);
+                Nominas c = (Nominas) data.getSerializableExtra(ActivityNominas.EXTRA_OBJETO_NOMINA);
                 nominas.add(c);
-                // Notify the adapter, that the data has changed.
                 rv_nominas.getAdapter().notifyItemInserted(nominas.size());
-                // Scroll to the bottom.
                 rv_nominas.smoothScrollToPosition(nominas.size());
             }
         }

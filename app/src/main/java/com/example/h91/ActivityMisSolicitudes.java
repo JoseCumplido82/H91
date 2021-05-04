@@ -41,9 +41,6 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_solicitudes);
-//------------------------------------------------------------------
-       // Empleado empleado= new Empleado(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
-       // int idEmpleado= empleado.getId();
         boolean tramiteok= TramitesController.obtenerIDempleadoTramite(ConfiguracionDB.IDUsuarioActual);
         if (tramiteok){
             tramites = TramitesController.obtenerTramites(ConfiguracionDB.IDUsuarioActual);

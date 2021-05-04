@@ -6,6 +6,7 @@ import com.example.h91.Clases.Nominas;
 import com.example.h91.tareas.TareaBorrarNominas;
 import com.example.h91.tareas.TareaInsertarNominas;
 import com.example.h91.tareas.TareaMostrarNominas;
+import com.example.h91.tareas.TareaObtenerIDEmpleado;
 import com.example.h91.tareas.TareaObtenerNominas;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class NominasController  {
     public static ArrayList<Nominas> obtenerNominas(int dni){
         ArrayList<Nominas> nominasDevueltas= null;
-        FutureTask t= new FutureTask(new TareaObtenerNominas());
+        FutureTask t= new FutureTask(new TareaObtenerNominas(dni));
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(t);
         try {
@@ -39,6 +40,32 @@ public class NominasController  {
         }
         return nominasDevueltas;
     }
+
+    public static boolean obtenerIDempleadoTramite(int dni){
+        FutureTask t = new FutureTask(new TareaObtenerIDEmpleado(dni));
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(t);
+        boolean obtenidoOK= false;
+        try{
+            obtenidoOK = (boolean)t.get();
+            es.shutdown();
+            try {
+                if(!es.awaitTermination(800, TimeUnit.MILLISECONDS)){
+                    es.shutdownNow();
+                }
+            }catch (InterruptedException e){
+                es.shutdownNow();
+            }
+        }catch (ExecutionException e){
+            e.printStackTrace();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        finally {
+            return obtenidoOK;
+        }
+    }
+
 
     public static void MostrarNominas(TextView txt_nominas)
     {

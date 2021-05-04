@@ -58,6 +58,8 @@ public class listaNominasAdapter extends RecyclerView.Adapter<NominasViewHolder>
     @Override
     public void onBindViewHolder(@NonNull NominasViewHolder holder, int position) {
         Nominas nominaActual= listaNominas.get(position);
+        holder.txt_nombren.setText("Nombre Nomina: " + nominaActual.getNombre());
+        holder.txt_fechasubidanomina.setText("Fecha: "+ nominaActual.getFecha_subida());
 
     }
 

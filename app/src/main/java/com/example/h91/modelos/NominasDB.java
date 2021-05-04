@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class NominasDB {
-    public static ArrayList<Nominas> obtenerNominas(int idEmpleado){
+    public static ArrayList<Nominas> obtenerNominas(int idempleado){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
         if(conexion==null){
             System.out.println("no se ha podido conectar con la base de datos");
@@ -21,48 +21,21 @@ public class NominasDB {
         }
         ArrayList<Nominas> nominasDevueltas= new ArrayList<Nominas>();
         try {
-            Statement sentencia = conexion.createStatement();
-            String ordenSQL= "select nomi.id, nomi.idEmpleado, nomi.nombre, nomi.fecha_subida from nominas nomi where nomi.id like ?;";
-            ResultSet resultado= sentencia.executeQuery(ordenSQL);
+            String ordenSQL= "select nomi.id, nomi.idEmpleado, nomi.nombre, nomi.fecha_subida from nominas nomi where nomi.idEmpleado like ?;";
+            PreparedStatement pst= conexion.prepareStatement(ordenSQL);
+            pst.setInt(1, idempleado);
+            ResultSet resultado= pst.executeQuery();
             while (resultado.next()){
                 int id= resultado.getInt("id");
-                int idEmpleado2 = resultado.getInt("idEmpleado");
+                int idSolicitante = resultado.getInt("idEmpleado");
+                Log.i("sql", "id del empleado " + ConfiguracionDB.IDUsuarioActual);
                 String nombre= resultado.getString("nombre");
                 Date fecha_subida=resultado.getDate("fecha_subida");
-                Nominas n = new Nominas(id, idEmpleado2, nombre, fecha_subida);
+                Nominas n = new Nominas(id, idSolicitante, nombre, fecha_subida);
                 nominasDevueltas.add(n);
             }
             resultado.close();
-            sentencia.close();
-            conexion.close();
-            return nominasDevueltas;
-        }catch (SQLException e){
-            Log.i("sql", "error sql");
-            return null;
-        }
-    }
-
-    public static ArrayList<Nominas> obtenerNominas2(){
-        Connection conexion = BaseDB.conectarConBaseDeDatos();
-        if(conexion==null){
-            System.out.println("no se ha podido conectar con la base de datos");
-            return null;
-        }
-        ArrayList<Nominas> nominasDevueltas= new ArrayList<Nominas>();
-        try {
-            Statement sentencia = conexion.createStatement();
-            String ordenSQL= "select nomi.id, nomi.idEmpleado, nomi.nombre, nomi.fecha_subida from nominas nomi WHERE idEmpleado =?;";
-            ResultSet resultado= sentencia.executeQuery(ordenSQL);
-            while (resultado.next()){
-                int id= resultado.getInt("id");
-                int idEmpleado = resultado.getInt("idEmpleado");
-                String nombre= resultado.getString("nombre");
-                Date fecha_subida=resultado.getDate("fecha_subida");
-                Nominas n = new Nominas(id, idEmpleado, nombre, fecha_subida);
-                nominasDevueltas.add(n);
-            }
-            resultado.close();
-            sentencia.close();
+            pst.close();
             conexion.close();
             return nominasDevueltas;
         }catch (SQLException e){

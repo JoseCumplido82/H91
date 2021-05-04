@@ -12,7 +12,8 @@ import com.example.h91.MostrarDetalleNominas;
 import com.example.h91.R;
 
 //import static com.example.h91.ActivityNominas.EXTRA_OBJETO_NOMINA;
-import static com.example.h91.Clases.Nominas.EXTRA_OBJETO_NOMINA;
+import static com.example.h91.ActivityNominas.EXTRA_OBJETO_NOMINA;
+//import static com.example.h91.Clases.Nominas.EXTRA_OBJETO_NOMINA;
 
 public class NominasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Nominas implements Serializable {
-    public static final String EXTRA_OBJETO_NOMINA="nomina";
+    //public static final String EXTRA_OBJETO_NOMINA="nomina";
     //atributos
     private int id;
     private int idEmpleado;

@@ -16,9 +16,10 @@ import android.widget.TextView;
 
 import com.example.h91.Clases.Nominas;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class MostrarDetalleNominas extends AppCompatActivity {
+public class MostrarDetalleNominas extends AppCompatActivity implements Serializable {
 
     TextView txt_fechasubida=null;
     TextView txt_detalle_nombren=null;
@@ -33,7 +34,8 @@ public class MostrarDetalleNominas extends AppCompatActivity {
         Intent intent= getIntent();
         if(intent!=null)
         {
-            Nominas n= (Nominas)intent.getSerializableExtra(Nominas.EXTRA_OBJETO_NOMINA);
+            //Nominas n= (Nominas)intent.getSerializableExtra(Nominas.EXTRA_OBJETO_NOMINA);
+            Nominas n= (Nominas)intent.getSerializableExtra(ActivityNominas.EXTRA_OBJETO_NOMINA);
             txt_detalle_nombren.setText(n.getNombre());
             txt_fechasubida.setText((CharSequence) n.getFecha_subida());
 

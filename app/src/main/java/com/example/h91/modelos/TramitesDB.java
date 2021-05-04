@@ -60,20 +60,15 @@ public class TramitesDB {
         }
         ArrayList<Tramites> tramitesDevueltos = new ArrayList<Tramites>();
         try{
-            //Statement sentencia = conexion.createStatement();
-            //String ordenSQL = "select t.id, t.idSolicitante, t.nombre_documento, t.asunto, t.comentario, t.fecha_solicitud, t.idEstado from tramites t WHERE t.idSolicitante like ?;";
+
             String ordenSQL = "select t.id, t.idSolicitante, t.nombre_documento, t.asunto, t.comentario, t.fecha_solicitud, t.idEstado from tramites t WHERE t.idSolicitante = ?;"; //
             PreparedStatement pst= conexion.prepareStatement(ordenSQL);
             pst.setInt(1, idempleado);
             ResultSet resultado= pst.executeQuery();
-            //ResultSet resultado= sentencia.executeQuery(ordenSQL);
             while (resultado.next())
             {
-                // System.out.println("llega al resultado del while pero no coge los atributos del empleado");
                 int id= resultado.getInt("id");
                 int idSolicitante= resultado.getInt("idSolicitante");
-                //idempleado= ConfiguracionDB.IDUsuarioActual;
-                //int idSolicitante= idempleado;
                 Log.i("sql", "id del empleado " + ConfiguracionDB.IDUsuarioActual);
                 String nombre_documento= resultado.getString("nombre_documento");
                 String asunto= resultado.getString("asunto");
