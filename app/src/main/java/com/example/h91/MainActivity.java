@@ -130,17 +130,24 @@ public class MainActivity extends AppCompatActivity {
         String nombre = "";
         String apellido = "";
         String telefono = "";
+        int codDepartamento=0;
             if (EmpleadoEnTabla == true) {
                 Empleado e = (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
                  nombre = e.getNombre();
                  apellido = e.getApellido();
                  telefono = e.getTelefono();
                  String NombredeEmpleado="";
+                 codDepartamento=e.getIdDepartamento();
                  //if(!NombredeEmpleado.equals(nombre)){
                if (nombre==null) {
                     Intent intent = new Intent(this, ActivityRellenarDatosEmpleado.class);
                     startActivity(intent);
-                } else {
+                }else if(codDepartamento==13){
+                    Intent intent= new Intent(this, ActivityRRHH.class);
+                    startActivity(intent);
+               }
+
+               else {
                     Intent intent = new Intent(this, PanelEmpleado.class);
                     startActivity(intent);
                     mostrarToast("encontrado");

@@ -31,7 +31,7 @@ public class EmpleadoDB {
         ArrayList<Empleado> empleadosDevueltos = new ArrayList<Empleado>();
         try{
             Statement sentencia = conexion.createStatement();
-            String ordenSQL = "select em.id, em.idDepartamento, em.usuario, em.pass, em.nombre, em.apellido, em.domicilio, em.correo, em.telefono, em.fecha_incorporacion, from empleado em;";
+            String ordenSQL = "select em.id, em.idDepartamento, em.usuario, em.pass, em.nombre, em.apellido, em.domicilio, em.correo, em.telefono, em.fecha_incorporacion from empleado em;";
             ResultSet resultado= sentencia.executeQuery(ordenSQL);
             while (resultado.next())
             {

@@ -120,7 +120,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                         //      intent.putExtra(EXTRA_OBJETO_EMPLEADO, em);
                         //     setResult(RESULT_OK, intent);
                         //     startActivity(intent);
-                        //     finish();
+                             finish();
                     }
                     else{
                         mostrarToast("no se pudo crear el empleado");
