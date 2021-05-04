@@ -75,10 +75,10 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
      if(EmpleadoEnTabla) {
             Empleado empleado= (EmpleadoDB.buscarEmpleadoTabla(dni));
 
-         if (edt_password1.getText().equals(edt_password2.getText()) && validarEmail(email)) {
-              empleado = new Empleado(empleado.getIdDepartamento(), dni, pass1, nombre, apellidos, domicilio, telefono, email, empleado.getFecha_incorporacion());
+         if (edt_password1.getText().toString().equals(edt_password2.getText().toString()) && validarEmail(email)) {
+              empleado = new Empleado(empleado.getId(),empleado.getIdDepartamento(), dni, pass1, nombre, apellidos, domicilio, email, telefono, empleado.getFecha_incorporacion());
 
-             Log.i("Datos del empleado", email);
+             Log.i("Datos del empleado", empleado.toString());
              boolean actualidadook = EmpleadoController.actualizarEmpleado(empleado);
              if (actualidadook) {
                  mostrarToast("EMPLEADO ACTUALIZADO CORRECTAMENTE");
@@ -92,7 +92,7 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
 
             }
          else {
-             if(!edt_password1.getText().equals(edt_password2.getText())){
+             if(!edt_password1.getText().toString().equals(edt_password2.getText().toString())){
                  edt_password1.setError("las contraseñas no coinciden");
                  edt_password2.setError("Las contraseñas no coinciden ");
              }else {

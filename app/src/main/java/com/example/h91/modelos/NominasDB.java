@@ -22,7 +22,7 @@ public class NominasDB {
         ArrayList<Nominas> nominasDevueltas= new ArrayList<Nominas>();
         try {
             Statement sentencia = conexion.createStatement();
-            String ordenSQL= "select nomi.id, nomi.idEmpleado, nomi.nombre, nomi.fecha_subida from nominas nomi;";
+            String ordenSQL= "select nomi.id, nomi.idEmpleado, nomi.nombre, nomi.fecha_subida from nominas nomi where nomi.id like ?;";
             ResultSet resultado= sentencia.executeQuery(ordenSQL);
             while (resultado.next()){
                 int id= resultado.getInt("id");

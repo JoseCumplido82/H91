@@ -135,7 +135,9 @@ public class MainActivity extends AppCompatActivity {
                  nombre = e.getNombre();
                  apellido = e.getApellido();
                  telefono = e.getTelefono();
-               if (nombre.equals("")) {
+                 String NombredeEmpleado="";
+                 //if(!NombredeEmpleado.equals(nombre)){
+               if (nombre==null) {
                     Intent intent = new Intent(this, ActivityRellenarDatosEmpleado.class);
                     startActivity(intent);
                 } else {

@@ -137,4 +137,7 @@ public class ActivityNominas extends AppCompatActivity {
         }
     }
 
+    public void volverMenu(View view) {
+        finish();
+    }
 }

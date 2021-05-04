@@ -339,9 +339,7 @@ public class EmpleadoDB {
                 String correo= resultadosql.getString("correo");
                 String telefono = resultadosql.getString("telefono");
                 Date fecha_incorporacion = resultadosql.getDate("fecha_incorporacion");
-                //Date fecha_salida = resultadosql.getDate("fecha_salida");
 
-                //CORREGIR
                 empleadoEncontrado = new Empleado(id, idDepartamento, usuariodos, pass, nombreEmpleado, apellido, domicilio, correo, telefono, fecha_incorporacion);
             }
             resultadosql.close();

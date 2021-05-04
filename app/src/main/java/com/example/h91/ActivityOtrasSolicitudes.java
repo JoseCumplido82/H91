@@ -94,15 +94,8 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity  {
         bt_adjuntarDocumentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   Intent intentImagen= new Intent();
-              //  intentImagen.setType("image/*");
-               // intentImagen.setAction(Intent.ACTION_GET_CONTENT);
-                //startActivityForResult(intentImagen, PHOTO_SELECTED);
                 bt_imagenSeleccionada.setVisibility(View.VISIBLE);
                 bt_pdfSeleccionado.setVisibility(View.VISIBLE);
-                //openGallery();
-
-
             }
         });
 
@@ -206,8 +199,6 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity  {
         }
     }
 
-
-
     private void openGallery(){
         checkStoragePermission();
         Intent galeria = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -225,16 +216,14 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity  {
             txt_tituloDocumento.setText("IMAGEN CARGADA");
             //List<String> nombreImagen= imageUri.getPathSegments();
            //String nombreImagen= imageUri.getPath();
-            File f= new File(""+ imageUri);
+            File f= new File(imageUri.getPath());
             nombreImagen=  f.getName();
             System.out.println(nombreImagen);
 
         }
     }
 
-
-
-
+    
     public boolean checkStoragePermission(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
