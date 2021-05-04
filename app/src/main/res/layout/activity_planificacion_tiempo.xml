@@ -24,6 +24,7 @@
         android:layout_width="230dp"
         android:layout_height="70dp"
         android:layout_marginTop="84dp"
+        android:onClick="irAcalendario"
         android:text="@string/ir_a_planificacion_de_tiempo"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/txt_PlanificacionTiempo"

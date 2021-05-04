@@ -22,7 +22,8 @@ public class ActivityDocumentos extends AppCompatActivity {
 
         //boton abrir informacion
         Button bt_informacion=(Button) findViewById(R.id.bt_informacion);
-        url= "https://h91go.com/#conocenos/";
+        //url= "https://h91go.com/#conocenos/";
+        url="http://empleados.h91go.com/php/abrir_fichero.php?archivo=doc1.pdf";
         bt_informacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +35,9 @@ public class ActivityDocumentos extends AppCompatActivity {
 
         //boton abrir plantillas
         Button bt_plantillas=(Button) findViewById(R.id.bt_plantillas);
-        url2= "https://h91go.com/documentacion/";
+        //url2= "https://h91go.com/documentacion/";
+        //url2="http://empleados.h91go.com/php/panel_empleado.php";
+        url2="http://empleados.h91go.com/php/abrir_fichero.php?archivo=doc3.pdf";
         bt_plantillas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +46,8 @@ public class ActivityDocumentos extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
         //boton mostrar documentos subidos
         Button bt_docusubidos = (Button) findViewById(R.id.bt_docusubidos);

@@ -49,6 +49,7 @@
         android:layout_height="61dp"
         android:layout_marginTop="16dp"
         android:text="@string/documentos_subidos"
+        android:visibility="invisible"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/bt_plantillas"
         app:layout_constraintStart_toStartOf="@+id/bt_plantillas"

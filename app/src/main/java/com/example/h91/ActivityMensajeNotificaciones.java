@@ -1,12 +1,18 @@
 package com.example.h91;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.h91.Clases.Empleado;
+import com.example.h91.modelos.EmpleadoDB;
 
 public class ActivityMensajeNotificaciones extends AppCompatActivity {
 
@@ -36,6 +42,31 @@ public class ActivityMensajeNotificaciones extends AppCompatActivity {
         edt_asuntoSolicitud2.setText("");
         edt_observacionesMensaje3.setText("");;
         mostrarToast("Los campos se han restablecido");
+
+
+    }
+
+    public void EnviarNotificacionEmpleado(View view) {
+
+        String asunto=edt_asuntoSolicitud2.getText().toString();
+        String observaciones= edt_observacionesMensaje3.getText().toString();
+        String dni= txt_dniUsuario.getText().toString();
+
+                if(edt_asuntoSolicitud2.getText().toString().isEmpty()){
+                    mostrarToast("introduce un asunto para la notificacion");
+                    edt_asuntoSolicitud2.setError("Introduce un motivo para la notificación");
+                }
+                    Empleado empleado= (EmpleadoDB.buscarEmpleadoTabla(txt_dniUsuario.getText().toString()));
+
+                    Intent intent= new Intent(Intent.ACTION_SEND);
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String(empleado.getCorreo()));
+                    intent.putExtra(Intent.EXTRA_SUBJECT, asunto);
+                    intent.putExtra(Intent.EXTRA_TEXT, observaciones);
+
+                    intent.setType("message/rfc822");
+
+                    startActivity(Intent.createChooser(intent, "Elije un cliente de correo"));
+
 
 
     }

@@ -22,7 +22,7 @@ public class BaseDB {
         } catch (SQLException e) {
             Log.i("conexion","no se pudo conectar con la base de datos");
             Log.i("conexion", "la cadena de conexion url es " + ConfiguracionDB.URLMYSQL);
-            // System.out.println("no se pudo establecer la conexion con la base de datos");
+             System.out.println("no se pudo establecer la conexion con la base de datos");
 
             return null;
         }
