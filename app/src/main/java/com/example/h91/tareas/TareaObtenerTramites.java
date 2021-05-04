@@ -8,9 +8,11 @@ import java.util.concurrent.Callable;
 
 
 public class TareaObtenerTramites implements Callable<ArrayList<Tramites>> {
+    private int idEmpleado;
+    public TareaObtenerTramites(int idEmpleado){this.idEmpleado=idEmpleado;}
         @Override
         public ArrayList<Tramites> call() throws Exception {
-            ArrayList<Tramites> tramites = TramitesDB.obtenerTramites();
+            ArrayList<Tramites> tramites = TramitesDB.obtenerTramites(this.idEmpleado);
             return tramites;
         }
 

@@ -76,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="@string/sancionar"
+        android:onClick="SancionarEmpleado"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/edt_motivoSancion"
         app:layout_constraintHorizontal_bias="0.0"
@@ -107,4 +108,14 @@
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="@+id/bt_sancionar"
         app:layout_constraintTop_toBottomOf="@+id/edt_motivoSancion" />
+
+    <TextView
+        android:id="@+id/txt_dniEmpleadorecogido"
+        android:layout_width="246dp"
+        android:layout_height="40dp"
+        android:hint="id empleado"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

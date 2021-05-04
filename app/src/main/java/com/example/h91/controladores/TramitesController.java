@@ -41,9 +41,9 @@ public class TramitesController {
         }
     }
 
-    public static ArrayList<Tramites> obtenerTramites(){
+    public static ArrayList<Tramites> obtenerTramites(int idempleado){
         ArrayList<Tramites> tramitesDevueltos=null;
-        FutureTask t= new FutureTask(new TareaObtenerTramites());
+        FutureTask t= new FutureTask(new TareaObtenerTramites(idempleado));
         ExecutorService es= Executors.newSingleThreadExecutor();
         es.submit(t);
         try {

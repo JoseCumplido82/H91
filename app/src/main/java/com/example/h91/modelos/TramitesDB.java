@@ -51,7 +51,7 @@ public class TramitesDB {
         }
     }
 
-    public static ArrayList<Tramites> obtenerTramites(){
+    public static ArrayList<Tramites> obtenerTramites(int idempleado){
         Connection conexion= BaseDB.conectarConBaseDeDatos();
         if(conexion ==null)
         {
@@ -60,10 +60,13 @@ public class TramitesDB {
         }
         ArrayList<Tramites> tramitesDevueltos = new ArrayList<Tramites>();
         try{
-            Statement sentencia = conexion.createStatement();
-            String ordenSQL = "select t.id, t.idSolicitante, t.nombre_documento, t.asunto, t.comentario, t.fecha_solicitud, t.idEstado from tramites t WHERE t.idSolicitante like ?;";
-
-            ResultSet resultado= sentencia.executeQuery(ordenSQL);
+            //Statement sentencia = conexion.createStatement();
+            //String ordenSQL = "select t.id, t.idSolicitante, t.nombre_documento, t.asunto, t.comentario, t.fecha_solicitud, t.idEstado from tramites t WHERE t.idSolicitante like ?;";
+            String ordenSQL = "select t.id, t.idSolicitante, t.nombre_documento, t.asunto, t.comentario, t.fecha_solicitud, t.idEstado from tramites t WHERE t.idSolicitante = ?;"; //
+            PreparedStatement pst= conexion.prepareStatement(ordenSQL);
+            pst.setInt(1, idempleado);
+            ResultSet resultado= pst.executeQuery();
+            //ResultSet resultado= sentencia.executeQuery(ordenSQL);
             while (resultado.next())
             {
                 // System.out.println("llega al resultado del while pero no coge los atributos del empleado");
@@ -81,7 +84,7 @@ public class TramitesDB {
                 tramitesDevueltos.add(tramites);
             }
             resultado.close();
-            sentencia.close();
+            pst.close();
             conexion.close();
             return tramitesDevueltos;
         }catch (SQLException e){

@@ -216,6 +216,9 @@ public class EmpleadoDB {
             int numerofilas=0;
             while (resultadosql.next())
             {
+                ConfiguracionDB.UsuarioActual = resultadosql.getString("usuario");
+                ConfiguracionDB.PassActual = resultadosql.getString("pass");
+                ConfiguracionDB.IDUsuarioActual = resultadosql.getInt("id");
                numerofilas++;
             }
             resultadosql.close();

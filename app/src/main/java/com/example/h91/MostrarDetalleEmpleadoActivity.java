@@ -22,7 +22,7 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements
     TextView txt_detalleUsuarioe=null;
     TextView txt_detalleSancionese=null;
     String nombreDpt="";
-
+    Empleado empleado= new Empleado();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,12 +77,14 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements
     public void CrearNotificacionEmpleado(View view) {
 
         Intent intentelegido = new Intent(this, ActivityMensajeNotificaciones.class);
+
         intentelegido.putExtra("referenciaEmpleado", txt_detalleUsuarioe.getText().toString());
         startActivity(intentelegido);
     }
 
     public void CrearSancionEmpleado(View view) {
         Intent intent= new Intent(this, ActivitySancionarEmpleado.class);
+        intent.putExtra("referenciaEmpleado", txt_detalleUsuarioe.getText().toString());
         startActivity(intent);
     }
 

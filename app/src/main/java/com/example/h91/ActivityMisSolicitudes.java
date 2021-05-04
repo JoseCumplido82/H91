@@ -42,11 +42,11 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_solicitudes);
 //------------------------------------------------------------------
-        Empleado empleado= new Empleado(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
-        int idEmpleado= empleado.getId();
-        boolean tramiteok= TramitesController.obtenerIDempleadoTramite(idEmpleado);
+       // Empleado empleado= new Empleado(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+       // int idEmpleado= empleado.getId();
+        boolean tramiteok= TramitesController.obtenerIDempleadoTramite(ConfiguracionDB.IDUsuarioActual);
         if (tramiteok){
-            tramites = TramitesController.obtenerTramites();
+            tramites = TramitesController.obtenerTramites(ConfiguracionDB.IDUsuarioActual);
             if(tramites!=null){
                 rv_tramites=(RecyclerView)findViewById(R.id.rv_tramites);
                 tramitesAdapterAdapter= new listaTramitesAdapter(this, tramites);
@@ -120,7 +120,7 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
     }
 
     public void refrescarTramites(View view){
-        tramites= TramitesController.obtenerTramites();
+        tramites= TramitesController.obtenerTramites(ConfiguracionDB.IDUsuarioActual);
         if(tramites!=null){
             tramitesAdapterAdapter.setListaTramites(tramites);
             rv_tramites.getAdapter().notifyDataSetChanged();
