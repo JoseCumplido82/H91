@@ -96,12 +96,12 @@ public class NuevoDepartamentoActivity extends AppCompatActivity implements Adap
     {
         if(insercionOK)
         {
-            Toast.makeText(this,"proveedor guardado correctamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"departamento guardado correctamente", Toast.LENGTH_SHORT).show();
             finish();
         }
         else
         {
-            Toast.makeText(this,"No se pudo guardar el proveedor", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"No se pudo guardar el departamento", Toast.LENGTH_SHORT).show();
         }
     }
 }

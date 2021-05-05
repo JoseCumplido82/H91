@@ -161,4 +161,8 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
     public void volverAMenuEmpleado(View view) {
         finish();
     }
+
+    public void cambiarContraseña(View view) {
+
+    }
 }

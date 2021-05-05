@@ -48,7 +48,7 @@
         android:id="@+id/bt_insertarDepartamento"
         android:layout_width="230dp"
         android:layout_height="70dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/crear_departamento"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/bt_borrarEmpleado"
@@ -72,7 +72,7 @@
         android:id="@+id/bt_volver14"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="232dp"
         android:text="@string/volver"
         app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="@+id/bt_borrarEmpleado"
@@ -123,5 +123,29 @@
         app:layout_constraintTop_toTopOf="@+id/bt_insertarDepartamento"
         app:srcCompat="@drawable/outline_addchart_black_48dp"
         android:contentDescription="@string/todo8" />
+
+    <Button
+        android:id="@+id/bt_borrarDepartamento"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/borrar_departamento"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_insertarDepartamento" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="40dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/bt_borrarDepartamento"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:srcCompat="@drawable/outline_delete_forever_black_48dp"
+        android:contentDescription="@string/todo20" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

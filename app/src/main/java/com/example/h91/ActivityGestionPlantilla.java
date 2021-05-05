@@ -29,8 +29,15 @@ public class ActivityGestionPlantilla extends AppCompatActivity {
             }
         });
 
-        //boton añadir empleados
-        //Button bt_añadirEmpleado
+        //boton borrar departamento
+        Button bt_borrarDepartamento= (Button)findViewById(R.id.bt_borrarDepartamento);
+        bt_borrarDepartamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(v.getContext(), ActivityBorrarDepartamento.class);
+                startActivityForResult(intent,0);
+            }
+        });
 
 
         //boton añadir empleados

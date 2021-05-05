@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityBorrarDepartamento">
+
+    <TextView
+        android:id="@+id/txt_borrarDepartamento2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="@string/borrar_departamento2"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_borrardp2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/selecciona_el_departamento_que_deseas_eliminar"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/txt_borrarDepartamento2"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="@+id/txt_borrarDepartamento2"
+        app:layout_constraintTop_toBottomOf="@+id/txt_borrarDepartamento2" />
+
+    <Spinner
+        android:id="@+id/sp_departamentoEliminar"
+        android:layout_width="365dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_borrardp2"
+        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintStart_toStartOf="@+id/txt_borrardp2"
+        app:layout_constraintTop_toBottomOf="@+id/txt_borrardp2" />
+
+    <Button
+        android:id="@+id/bt_eliminarDepartamento"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="36dp"
+        android:onClick="BorrarDepartamento"
+        android:text="@string/eliminar"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/sp_departamentoEliminar"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/sp_departamentoEliminar"
+        app:layout_constraintTop_toBottomOf="@+id/sp_departamentoEliminar" />
+
+    <Button
+        android:id="@+id/bt_volver22"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/volver"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/bt_eliminarDepartamento"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_eliminarDepartamento"
+        app:layout_constraintTop_toBottomOf="@+id/bt_eliminarDepartamento" />
+</androidx.constraintlayout.widget.ConstraintLayout>

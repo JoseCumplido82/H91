@@ -60,7 +60,7 @@ public class ActivityBorrarEmpleado extends AppCompatActivity implements Adapter
 
     public void borrarEmpleado(View view){
         AlertDialog.Builder alerta = new AlertDialog.Builder(this);
-        alerta.setTitle("¿borrar el empleado?");
+        alerta.setTitle("¿Desea borrar el empleado?");
         alerta.setPositiveButton("si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -74,6 +74,7 @@ public class ActivityBorrarEmpleado extends AppCompatActivity implements Adapter
                 if(borradoOK)
                 {
                     mostrarToast("empleado borrado correctamente");
+                    System.out.println("empleado borrado correctamente");
                     adapter.clear();
                     empleados = EmpleadoController.obtenerEmpleados();
                     adapter.addAll(empleados);
@@ -102,5 +103,8 @@ public class ActivityBorrarEmpleado extends AppCompatActivity implements Adapter
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
+
 
 }

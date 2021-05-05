@@ -189,4 +189,8 @@
     <string name="introduce_tu_email">Introduce tu Email</string>
     <string name="introduce_tus_apellidos">Introduce tus apellidos</string>
     <string name="introduce_tu_domicilio">Introduce tu domicilio</string>
+    <string name="borrar_departamento">borrar departamento</string>
+    <string name="todo20">TODO</string>
+    <string name="selecciona_el_departamento_que_deseas_eliminar">Selecciona el departamento que deseas eliminar</string>
+    <string name="borrar_departamento2">BORRAR DEPARTAMENTO</string>
 </resources>
