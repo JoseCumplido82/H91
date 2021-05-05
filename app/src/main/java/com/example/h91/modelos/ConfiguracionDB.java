@@ -30,7 +30,7 @@ public class ConfiguracionDB {
 
 
 //variables staticas para usar en toda la APP
-    public static String pass="Madrid2021*";
+    public static String pass="Madrid2021";
     public static int idEstado=1;
     public static String UsuarioActual="";
     public static String PassActual="";

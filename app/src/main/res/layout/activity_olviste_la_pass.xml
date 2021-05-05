@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityOlvisteLaPass">
+
+    <TextView
+        android:id="@+id/txt_olvidasteLaPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="@string/has_olvidado_la_contrase_a55"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_NombreUsuario"
+        android:layout_width="342dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="56dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/introduce_tu_usuario"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_olvidasteLaPass" />
+
+    <Button
+        android:id="@+id/bt_restablecerPass"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="316dp"
+        android:onClick="RestablecerPassOlvidada"
+        android:text="@string/restablecer_contrase_a"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/edt_NombreUsuario"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/edt_NombreUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/edt_NombreUsuario" />
+
+    <TextView
+        android:id="@+id/txt_defectoPass"
+        android:layout_width="335dp"
+        android:layout_height="157dp"
+        android:layout_marginTop="176dp"
+        android:gravity="center"
+        android:text="@string/le_recomendamos_que_cambie_la_contrase_a_ya_que_su_usuario_tendr_la_clave_por_defecto_de_creaci_n"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_NombreUsuario" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -107,12 +107,14 @@ public class MainActivity extends AppCompatActivity {
 
         //boton abrir informacion
         TextView txt_passolvidada=(TextView) findViewById(R.id.txt_passolvidada);
-        url= "http://codea.app/";
+        //url= "http://codea.app/";
         txt_passolvidada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri= Uri.parse(url);
-                Intent intent= new Intent(Intent.ACTION_VIEW, uri);
+               // Uri uri= Uri.parse(url);
+                //Intent intent= new Intent(Intent.ACTION_VIEW, uri);
+                //startActivity(intent);
+                Intent intent= new Intent(MainActivity.this, ActivityOlvisteLaPass.class);
                 startActivity(intent);
             }
         });

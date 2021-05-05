@@ -196,4 +196,8 @@
     <string name="cambiar_contrase_a3">CAMBIAR CONTRASEÑA</string>
     <string name="repite_contrase_a2">Repite contraseña</string>
     <string name="cancelar_tramite">CANCELAR TRAMITE</string>
+    <string name="restablecer_contrase_a">restablecer contraseña</string>
+    <string name="introduce_tu_usuario">Introduce tu usuario</string>
+    <string name="has_olvidado_la_contrase_a55">¿HAS OLVIDADO LA CONTRASEÑA?</string>
+    <string name="le_recomendamos_que_cambie_la_contrase_a_ya_que_su_usuario_tendr_la_clave_por_defecto_de_creaci_n">Le recomendamos que cambie la contraseña, ya que su usuario tendrá la clave por defecto de creación</string>
 </resources>

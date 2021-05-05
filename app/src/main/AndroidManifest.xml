@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.H91">
-        <activity android:name=".ActivityCambiarPass"></activity>
+        <activity android:name=".ActivityOlvisteLaPass"></activity>
+        <activity android:name=".ActivityCambiarPass" />
         <activity android:name=".ActivityBorrarDepartamento" />
         <activity android:name=".ActivityRellenarDatosEmpleado" />
         <activity android:name=".MostrarDetalleNominas" />
