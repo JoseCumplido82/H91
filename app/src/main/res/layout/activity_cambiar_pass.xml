@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityCambiarPass">
+
+    <TextView
+        android:id="@+id/txt_cambiarPassDeEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="@string/cambiar_contrase_a3"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_cambiarPass1"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="@string/introduce_contrase_a"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_cambiarPassDeEmpleado"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/edt_cambiarPass2"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="@string/repite_contrase_a2"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_cambiarPass1"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/bt_cambiarPass2"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/cambiar_contrase_a"
+        android:onClick="GuardarContraseñaEmpleado"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/edt_cambiarPass2"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/edt_cambiarPass2"
+        app:layout_constraintTop_toBottomOf="@+id/edt_cambiarPass2" />
+
+    <Button
+        android:id="@+id/bt_cancelarCambio"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/cancelar"
+        android:onClick="volverAMenuEmplea"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/bt_cambiarPass2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_cambiarPass2"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cambiarPass2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

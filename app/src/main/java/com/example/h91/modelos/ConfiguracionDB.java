@@ -14,11 +14,11 @@ public class ConfiguracionDB {
     //
     //
 
+    //----------------------------------------------------------------------------------------------------
 
     //PARA EXTERNA
     //public static final String HOSTDB = "217.182.121.210";
     //public static final String HOSTDB = "hidalgo91.com";
-
 
     //public static final String NOMBREDB = "hidalgoc_wpD";
     //public static final String USUARIODB = "hidalgoc_wpD";

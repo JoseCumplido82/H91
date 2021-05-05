@@ -193,4 +193,6 @@
     <string name="todo20">TODO</string>
     <string name="selecciona_el_departamento_que_deseas_eliminar">Selecciona el departamento que deseas eliminar</string>
     <string name="borrar_departamento2">BORRAR DEPARTAMENTO</string>
+    <string name="cambiar_contrase_a3">CAMBIAR CONTRASEÑA</string>
+    <string name="repite_contrase_a2">Repite contraseña</string>
 </resources>

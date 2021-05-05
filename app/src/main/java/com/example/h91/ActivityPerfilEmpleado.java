@@ -1,7 +1,9 @@
 package com.example.h91;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -118,44 +120,60 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
 
 
     public void guardar_cambios(View view){
-        boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
-        if(EmpleadoEnTabla){
-            Empleado e= (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
+        AlertDialog.Builder alerta= new AlertDialog.Builder(this);
+        alerta.setTitle("¿Desea guardar estos cambios?");
+        alerta.setPositiveButton("si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+                if(EmpleadoEnTabla){
+                    Empleado e= (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
 
-            if(!txt_correo1.getText().equals("")||!txt_domicilio1.getText().equals("")||!txt_telefono1.equals("")){
-                if(validarEmail(txt_correo1.getText().toString())){
+                    if(!txt_correo1.getText().equals("")||!txt_domicilio1.getText().equals("")||!txt_telefono1.equals("")){
+                        if(validarEmail(txt_correo1.getText().toString())){
 
 
 
-                     e= new Empleado(e.getId(),Integer.valueOf((String) txt_departamento1.getText()), txt_dni1.getText().toString(), ConfiguracionDB.PassActual, txt_nombre1.getText().toString(),
-                            txt_apellidos1.getText().toString(), txt_domicilio1.getText().toString(), txt_correo1.getText().toString(),
-                            txt_telefono1.getText().toString(),e.getFecha_incorporacion());
+                            e= new Empleado(e.getId(),Integer.valueOf((String) txt_departamento1.getText()), txt_dni1.getText().toString(), ConfiguracionDB.PassActual, txt_nombre1.getText().toString(),
+                                    txt_apellidos1.getText().toString(), txt_domicilio1.getText().toString(), txt_correo1.getText().toString(),
+                                    txt_telefono1.getText().toString(),e.getFecha_incorporacion());
 
-                    Log.i("Datos del empleado", e.toString());
-                   boolean actualidadook= EmpleadoController.actualizarEmpleado(e);
-                   if(actualidadook){
-                       mostrarToast("EMPLEADO ACTUALIZADO CORRECTAMENTE");
-                       System.out.println("Empleado actualizado " + e.toString());
-                       finish();
-                   }else {
-                       mostrarToast("EMPLEADO NO ACTUALIZADO ");
-                       System.out.println("Empleado no actualizado " + e.toString());
-                   }
+                            Log.i("Datos del empleado", e.toString());
+                            boolean actualidadook= EmpleadoController.actualizarEmpleado(e);
+                            if(actualidadook){
+                                mostrarToast("EMPLEADO ACTUALIZADO CORRECTAMENTE");
+                                System.out.println("Empleado actualizado " + e.toString());
+                                finish();
+                            }else {
+                                mostrarToast("EMPLEADO NO ACTUALIZADO ");
+                                System.out.println("Empleado no actualizado " + e.toString());
+                            }
 
-                }else{
-                    txt_correo1.setError("Direccion de correo no válida");
-                    System.out.println("error con el correo no valido");
+                        }else{
+                            txt_correo1.setError("Direccion de correo no válida");
+                            System.out.println("error con el correo no valido");
+                        }
+                    }else{
+                        mostrarToast("Debe rellenar todos los 3 campos");
+                        System.out.println("error al rellenar los campos");
+                    }
+
+
                 }
-            }else{
-                mostrarToast("Debe rellenar todos los 3 campos");
-                System.out.println("error al rellenar los campos");
+                else{
+                    mostrarToast("no se ha encontrado el empleado");
+                }
             }
+        });
+        alerta.setNegativeButton("no", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                    finish();
+            }
+        });
+        alerta.show();
 
 
-        }
-        else{
-            mostrarToast("no se ha encontrado el empleado");
-        }
     }
 
     public void volverAMenuEmpleado(View view) {
@@ -163,6 +181,8 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
     }
 
     public void cambiarContraseña(View view) {
+        Intent intent= new Intent(this, ActivityCambiarPass.class);
+        startActivity(intent);
 
     }
 }

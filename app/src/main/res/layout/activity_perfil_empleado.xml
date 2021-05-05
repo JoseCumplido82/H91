@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/txt_departamento1"
-        android:layout_width="115dp"
+        android:layout_width="45dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
         android:hint="@string/departamento"
@@ -150,7 +150,7 @@
 
     <TextView
         android:id="@+id/txt_nombredpo"
-        android:layout_width="145dp"
+        android:layout_width="215dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
         android:hint="@string/nombre_departamento"
