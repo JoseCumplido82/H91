@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.h91.Clases.Empleado;
 import com.example.h91.Clases.Tramites;
+import com.example.h91.controladores.TramitesController;
+import com.example.h91.modelos.ConfiguracionDB;
 
 import java.io.Serializable;
 
@@ -23,8 +26,13 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
     TextView txt_idEstado=null;
     Button bt_gestionar=null;
     String nombreEstadoTramite="";
+    Tramites tramites=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_detalle_solicitud);
         txt_detalleSolicitud= (TextView) findViewById(R.id.txt_detalleSolicitud);
@@ -38,7 +46,7 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
         if(intent != null){
 
 
-            Tramites tramites=(Tramites)intent.getSerializableExtra(ActivityOtrasSolicitudes.EXTRA_OBJETO_SOLICITUD);
+            tramites=(Tramites)intent.getSerializableExtra(ActivityOtrasSolicitudes.EXTRA_OBJETO_SOLICITUD);
 
 
             if(tramites.getIdEstado()==1){
@@ -61,7 +69,7 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
             txt_idEstado.setText( nombreEstadoTramite);
             txt_nombre_documento.setText(tramites.getNombre_documento());
             txt_asunto3.setText(tramites.getAsunto());
-            txt_comentario.setText("comentario " + tramites.getComentario());
+            txt_comentario.setText(tramites.getComentario());
             txt_fecha_solicitud.setText((CharSequence) tramites.getFecha_solicitud());
 
 
@@ -74,5 +82,27 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
     public void enviarAGestionarTramite(View view) {
         //Intent intent= new Intent(this, ActivitySancionarEmpleado.class);
         //startActivity(intent);
+
+            int estado= 3;
+            txt_idEstado.setText("Cancelado");
+            txt_idEstado.setBackgroundColor(Color.RED);
+
+
+        tramites = new Tramites(ConfiguracionDB.IDUsuarioActual, txt_nombre_documento.getText().toString(),txt_asunto3.getText().toString(), tramites.getFecha_solicitud(), estado);
+        boolean actualizadoOK= TramitesController.actualizarTramites(tramites);
+        System.out.println(tramites);
+        if(actualizadoOK){
+            mostrarToast("TRAMITE CANCELADO CORRECTAMENTE");
+            System.out.println("TRAMITE CANCELADO CORRECTAMENTE");
+            finish();
+        }else {
+            mostrarToast("NO SE HA PODIDO CANCELAR LA SOLICITUD");
+            System.out.println("NO SE HA PODIDO CANCELAR LA SOLICITUD");
+            finish();
+        }
+    }
+
+    private void mostrarToast(String encontrado) {
+        Toast.makeText(this,"logeado",Toast.LENGTH_SHORT).show();
     }
 }
