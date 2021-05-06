@@ -106,6 +106,17 @@ public class PanelEmpleado extends AppCompatActivity{
             }
         });
 
+        //boton ayuda empleado
+        TextView txt_ayudaUsuario= (TextView)findViewById(R.id.txt_ayudaUsuario);
+        txt_ayudaUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(PanelEmpleado.this, ActivityAyudaEmpleado.class);
+                startActivity(intent);
+            }
+        });
+
+        //boton como llegar a la oficina
         Button bt_comoLlegar=(Button)findViewById(R.id.bt_comoLlegar);
         bt_comoLlegar.setOnClickListener(new View.OnClickListener() {
             @Override

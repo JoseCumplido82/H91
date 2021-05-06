@@ -76,7 +76,7 @@
         android:id="@+id/txt_Bienvenido"
         android:layout_width="281dp"
         android:layout_height="30dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:text="@string/bienvenido"
         android:textColor="@color/cardview_dark_background"
@@ -106,5 +106,19 @@
         app:layout_constraintEnd_toEndOf="@+id/bt_perfilEmpleado"
         app:layout_constraintStart_toStartOf="@+id/bt_perfilEmpleado"
         app:layout_constraintTop_toBottomOf="@+id/bt_perfilEmpleado" />
+
+    <TextView
+        android:id="@+id/txt_ayudaUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="¿Necesitas ayuda?"
+        android:textColor="#C81818"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cerrar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
