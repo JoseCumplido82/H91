@@ -65,6 +65,6 @@ public class listaNominasAdapter extends RecyclerView.Adapter<NominasViewHolder>
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listaNominas.size();
     }
 }

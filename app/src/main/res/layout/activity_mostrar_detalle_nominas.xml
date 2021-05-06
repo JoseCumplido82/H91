@@ -53,6 +53,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="124dp"
         android:text="@string/descargar_nomina"
+        android:onClick="DescargarNomina"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/txt_fechasubida"
         app:layout_constraintHorizontal_bias="0.517"
