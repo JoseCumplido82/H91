@@ -19,7 +19,6 @@ public class ActivityGestionPlantilla extends AppCompatActivity {
 
 
         //boton ver empleados
-
         Button bt_verEmpleado= (Button)findViewById(R.id.bt_verEmpleado);
         bt_verEmpleado.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +52,6 @@ public class ActivityGestionPlantilla extends AppCompatActivity {
 
 
         //boton borrar empleados
-
         Button bt_borrarEmpleado= (Button)findViewById(R.id.bt_borrarEmpleado);
         bt_borrarEmpleado.setOnClickListener(new View.OnClickListener() {
             @Override

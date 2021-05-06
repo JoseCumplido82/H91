@@ -3,8 +3,6 @@ package com.example.h91.Clases;
 public class Estados {
     private int id;
     private String nombre;
-    //
-
 
     public Estados(int id, String nombre) {
         this.id = id;
@@ -23,7 +21,6 @@ public class Estados {
         this.id = id;
         this.nombre = "";
     }
-    //
 
     public int getId() {
         return id;
@@ -40,8 +37,6 @@ public class Estados {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    //
 
 
     @Override

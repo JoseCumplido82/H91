@@ -47,11 +47,6 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
         edt_password2=(EditText)findViewById(R.id.edt_password2);
     }
 
-
-
-
-
-
     public void RestablecerDatosEmpleado(View view){
         edt_NombreEmpleado.setText("");
         edt_ApellidosEmpleado.setText("");
@@ -88,8 +83,6 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
                  mostrarToast("EMPLEADO NO ACTUALIZADO ");
                  System.out.println("Empleado no actualizado " + empleado.toString());
              }
-
-
             }
          else {
              if(!edt_password1.getText().toString().equals(edt_password2.getText().toString())){

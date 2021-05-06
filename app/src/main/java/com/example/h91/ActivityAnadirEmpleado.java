@@ -38,7 +38,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
     ArrayAdapter<Departamento> adapter=null;
     ArrayList<Departamento> departamentos=null;
     EditText edt_fechaIncorporacion=null;
-    //String pass= "Madrid2021*";
+
 
 
 
@@ -105,8 +105,6 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                 Empleado em = null;
                 try{
                     String usuario= String.valueOf(edt_dni.getText());
-
-                    // String fechaIncorporacion= String.valueOf(edt_fechaIncorporacion.getText());
                     String fechatexto= String.valueOf(edt_fechaIncorporacion.getText());
                     Date fechaIncorporacion2=new SimpleDateFormat("yyyy-mm-dd").parse(fechatexto);
                     em = new Empleado(dseleccionado.getId(), usuario, ConfiguracionDB.pass,fechaIncorporacion2);
@@ -116,11 +114,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                     if(insertadoOK)
                     {
                         mostrarToast("empleado insertado correctamente");
-                        //      Intent intent = new Intent();
-                        //      intent.putExtra(EXTRA_OBJETO_EMPLEADO, em);
-                        //     setResult(RESULT_OK, intent);
-                        //     startActivity(intent);
-                             finish();
+                        finish();
                     }
                     else{
                         mostrarToast("no se pudo crear el empleado");

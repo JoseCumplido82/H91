@@ -16,8 +16,6 @@ public class ActivitySolicitudes extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitudes);
-
-
         //boton mostrar vacaciones
         Button bt_vacaciones= (Button)findViewById(R.id.bt_vacaciones);
         bt_vacaciones.setOnClickListener(new View.OnClickListener() {

@@ -38,7 +38,6 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     private static final String CERO = "0";
     private static final String BARRA = "-";
 
-
     //Calendario para obtener fecha & hora
     public final Calendar c = Calendar.getInstance();
 
@@ -90,19 +89,17 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
     public void solicitarVacaciones(View view) {
 
          String fecha=   etFecha.getText().toString();
-             mostrarToast2("SOLICITUD ENVIADA");
-            edt_dias.setText(String.valueOf(++valorVacaciones));
-        txt_diasPedidos.setText(fecha+edt_diasSolicitados.getText().toString());
-            
-            Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, fecha);
-        sendIntent.setType("text/plain");
-
-            Intent shareIntent= Intent.createChooser(sendIntent, null);
-            startActivity(shareIntent);
-            //startActivityForResult(intent,0);
-            //finish();
+         mostrarToast2("SOLICITUD ENVIADA");
+         edt_dias.setText(String.valueOf(++valorVacaciones));
+         txt_diasPedidos.setText(fecha+edt_diasSolicitados.getText().toString());
+         Intent sendIntent = new Intent();
+         sendIntent.setAction(Intent.ACTION_SEND);
+         sendIntent.putExtra(Intent.EXTRA_TEXT, fecha);
+         sendIntent.setType("text/plain");
+         Intent shareIntent= Intent.createChooser(sendIntent, null);
+         startActivity(shareIntent);
+         //startActivityForResult(intent,0);
+        //finish();
 
     }
     public void mostrarToast2(String mensaje)
@@ -136,23 +133,20 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                        System.out.println(" id del empleado " + idEmpleado);
                        int dias = Integer.valueOf(edt_diasSolicitados.getText().toString());
                        System.out.println("dias pedidos "+dias);
-
                        String fechaTextoInicio = String.valueOf(etFecha.getText());
                        SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd");
                        Date fechaInicio= format.parse(fechaTextoInicio);
                        System.out.println("fecha de inicio " + fechaInicio);
-
                        Calendar calendario= Calendar.getInstance();
                        calendario.setTime(fechaInicio);
-                        int num_dias_afectar=0;
+                       int num_dias_afectar=0;
                        String fecha_termino="";
                        Date fecha_fin=null;
                            while (num_dias_afectar<=dias)
                            {
                            if (calendario.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendario.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
                            {
-
-                                fecha_fin = calendario.getTime();
+                               fecha_fin = calendario.getTime();
                                fecha_termino = format.format(fecha_fin);
                                num_dias_afectar++;
                            }
@@ -160,17 +154,12 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                            System.out.println("fecha de termino de vacaciones" + fecha_termino);
                        }
                        System.out.println("fecha de termino de vacaciones fuera" + fecha_termino);
-
                        SimpleDateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
                        Date fechaHoy= new Date();
                        String fechatextoSolicitud= formato.format(fechaHoy);
                        System.out.println("fecha de hoy " + fechatextoSolicitud);
-
                        vacaciones = new Vacaciones(ConfiguracionDB.IDUsuarioActual, fechaInicio, fecha_fin, dias, fechaHoy, ConfiguracionDB.idEstado);
-
-
                        System.out.println(vacaciones);
-
                        boolean insertadoOK = VacacionesController.insertarVacaciones(vacaciones);
                        System.out.println("pasa el boolean insertado");
                        if (insertadoOK) {
@@ -183,9 +172,7 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                    }
                 } catch (Exception e) {
                     mostrarToast2("error, revisa los datos introducidos");
-                    
                     Log.i("vacaciones", "vacaciones no creadas ");
-
                 }
             }
         });

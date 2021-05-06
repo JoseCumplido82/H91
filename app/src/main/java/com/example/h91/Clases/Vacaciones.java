@@ -11,10 +11,7 @@ public class Vacaciones implements Serializable {
     private int dias;
     private Date fecha_solicitud;
     private int idEstado;
-
     //-----------
-
-
     public Vacaciones(int id, int idSolicitante, Date fecha_inicio, Date fecha_fin,int dias, Date fecha_solicitud, int idEstado) {
         this.id = id;
         this.idSolicitante = idSolicitante;
@@ -33,7 +30,6 @@ public class Vacaciones implements Serializable {
         this.dias=0;
         this.idEstado = 0;
     }
-
     public Vacaciones(int idSolicitante, Date fecha_inicio, Date fecha_fin, int dias, Date fecha_solicitud, int idEstado) {
         this.idSolicitante = idSolicitante;
         this.fecha_inicio = fecha_inicio;
@@ -51,8 +47,6 @@ public class Vacaciones implements Serializable {
         this.fecha_solicitud = fecha_solicitud;
     }
     //-----------------
-
-
     public int getId() {
         return id;
     }
@@ -109,7 +103,6 @@ public class Vacaciones implements Serializable {
         this.dias = dias;
     }
     //
-
     @Override
     public String toString() {
         return "Vacaciones{" +

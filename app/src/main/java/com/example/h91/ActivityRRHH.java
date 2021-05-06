@@ -17,13 +17,11 @@ public class ActivityRRHH extends AppCompatActivity {
         //para ocultar la barra de status
         getSupportActionBar().hide();
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_r_r_h_h);
 
 
         //boton gestion plantilla
-
         Button bt_gestionPlantilla= (Button)findViewById(R.id.bt_gestionPlantilla);
         bt_gestionPlantilla.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +32,6 @@ public class ActivityRRHH extends AppCompatActivity {
         });
 
         //boton planificacion de tiempo
-
         Button bt_planificacionTiempo= (Button)findViewById(R.id.bt_planificacionTiempo);
         bt_planificacionTiempo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +42,6 @@ public class ActivityRRHH extends AppCompatActivity {
         });
 
         //boton crear notificacion
-
         Button bt_crearNotificacion= (Button)findViewById(R.id.bt_crearNotificacion);
         bt_crearNotificacion.setOnClickListener(new View.OnClickListener() {
             @Override

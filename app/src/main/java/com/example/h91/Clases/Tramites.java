@@ -11,10 +11,7 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
     private String comentario;
     private Date fecha_solicitud;
     private int idEstado;
-
     //
-
-
     public Tramites(int id, int idSolicitante, String nombre_documento, String asunto, String comentario, Date fecha_solicitud, int idEstado) {
         this.id = id;
         this.idSolicitante = idSolicitante;
@@ -24,7 +21,6 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
         this.fecha_solicitud = fecha_solicitud;
         this.idEstado = idEstado;
     }
-
     public Tramites(int idSolicitante, String nombre_documento, String asunto, String comentario, Date fecha_solicitud, int idEstado) {
         this.idSolicitante = idSolicitante;
         this.nombre_documento = nombre_documento;
@@ -33,7 +29,6 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
         this.fecha_solicitud = fecha_solicitud;
         this.idEstado=idEstado;
     }
-
     public Tramites(int idSolicitante, String nombre_documento, String asunto, Date fecha_solicitud, int idEstado) {
         this.idSolicitante = idSolicitante;
         this.nombre_documento = nombre_documento;
@@ -41,7 +36,6 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
         this.fecha_solicitud = fecha_solicitud;
         this.idEstado=idEstado;
     }
-
     public Tramites(int id, int idSolicitante, String nombre_documento, String asunto, String comentario, Date fecha_solicitud) {
         this.id = id;
         this.idSolicitante = idSolicitante;
@@ -60,20 +54,16 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
         this.fecha_solicitud = null;
         this.idEstado = 0;
     }
-
     public Tramites(String asunto, String comentario) {
         this.asunto = asunto;
         this.comentario = comentario;
     }
-
     public Tramites(String nombre_documento, String asunto, int idEstado) {
         this.nombre_documento=nombre_documento;
         this.asunto = asunto;
         this.idEstado=idEstado;
     }
     //
-
-
     public int getId() {
         return id;
     }
@@ -97,7 +87,6 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
     public void setNombre_documento(String nombre_documento) {
         this.nombre_documento = nombre_documento;
     }
-
     public String getAsunto() {
         return asunto;
     }

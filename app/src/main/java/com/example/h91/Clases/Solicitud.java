@@ -8,7 +8,7 @@ public class Solicitud implements Serializable {
     private String asunto;
     private String comentario;
     private Bitmap imagen;
-
+    //------------------------------------------
     public Solicitud(String asunto, String comentario, Bitmap imagen) {
         this.asunto = asunto;
         this.comentario = comentario;
@@ -25,7 +25,7 @@ public class Solicitud implements Serializable {
         this.comentario = "";
         this.imagen = null;
     }
-
+//----------------------------------------------------------
     public String getAsunto() {
         return asunto;
     }
@@ -49,7 +49,7 @@ public class Solicitud implements Serializable {
     public void setImagen(Bitmap imagen) {
         this.imagen = imagen;
     }
-
+//------------------------------------------------------
     @Override
     public String toString() {
         return "Solicitud{" +

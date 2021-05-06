@@ -87,7 +87,6 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
             }
         });
         helper.attachToRecyclerView(rv_tramites);
-
         //boton cerrar ausencias
         Button bt_volver = (Button) findViewById(R.id.bt_volver);
         bt_volver.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +96,6 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
                 startActivityForResult(intent3, 0);
             }
         });
-
-
     }
 
     @Override

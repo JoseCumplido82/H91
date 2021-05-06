@@ -26,15 +26,12 @@ public class PanelEmpleado extends AppCompatActivity{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_panel_empleado);
-
         //importamos nombre de MainActivity
         Bundle bundle = getIntent().getExtras();
         //String nombreImportado= bundle.getString("Bienvenido");
-
       //  String txt_Bienvenido= nombreImportado;
         TextView out= (TextView) findViewById(R.id.txt_Bienvenido);
        // out.setText("Bienvenido " + txt_Bienvenido);
-
         //boton cerrar panel empleado
         Button bt_cerrar = (Button) findViewById(R.id.bt_cerrar);
         bt_cerrar.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +43,6 @@ public class PanelEmpleado extends AppCompatActivity{
                 Intent intent = new Intent(v.getContext(),MainActivity.class);
                 startActivity(intent);
                 //onBackPressed();
-
             }
         });
 
@@ -96,11 +92,9 @@ public class PanelEmpleado extends AppCompatActivity{
         bt_perfilEmpleado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 boolean EmpleadoOK= EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
                // Empleado empleado= new Empleado(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
                 if(EmpleadoOK){
-
                    // Intent intent= new Intent(PanelEmpleado.this, ActivityPerfilEmpleado.class);
                     Intent intent= new Intent(PanelEmpleado.this, ActivityPerfilEmpleado.class);
                     intent.putExtra("empleado", EXTRA_OBJETO_EMPLEADO);

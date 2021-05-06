@@ -38,7 +38,7 @@ public class ActivityVerEmpleados extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_empleados);
-        //-------------------------------------------------
+
         img_update=(ImageView)findViewById(R.id.img_update);
         empleados= EmpleadoController.obtenerEmpleados();
         if(empleados!=null){

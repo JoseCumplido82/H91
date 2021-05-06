@@ -141,15 +141,11 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity  {
                                 Date fechaHoy = new Date();
                                 String fechatextoSolicitud = formato.format(fechaHoy);
                                 System.out.println("fecha de hoy " + fechatextoSolicitud);
-
-                               // String nombreDocumento = foto_galeria.toString();
-                                //String nombreDocumento="";
                                 if (comentario.equals("")) {
                                     tramites = new Tramites(idEmpleado, nombreImagen, asunto, fechaHoy, ConfiguracionDB.idEstado);
                                 } else {
                                     tramites = new Tramites(idEmpleado, nombreImagen, asunto, comentario, fechaHoy, ConfiguracionDB.idEstado);
                                 }
-
                                 System.out.println(tramites);
                                 boolean insertadoOK = TramitesController.insertarTramites(tramites);
                                 System.out.println("pasa el boolean insertado");

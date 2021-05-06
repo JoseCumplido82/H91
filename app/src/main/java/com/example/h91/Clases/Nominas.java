@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Nominas implements Serializable {
-    //public static final String EXTRA_OBJETO_NOMINA="nomina";
+
     //atributos
     private int id;
     private int idEmpleado;
@@ -72,9 +72,7 @@ public class Nominas implements Serializable {
         this.fecha_subida = fecha_subida;
     }
 
-
     //to string
-
 
     @Override
     public String toString() {

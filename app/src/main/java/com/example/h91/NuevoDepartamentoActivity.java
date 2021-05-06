@@ -62,9 +62,7 @@ public class NuevoDepartamentoActivity extends AppCompatActivity implements Adap
         alerta1.setPositiveButton("si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
                 Departamento d= new Departamento(idDelSupervisor, nombred);
-
                 boolean insercionOK= DepartamentoController.insertarDepartamento(d);
                 mostrarToast(insercionOK);
                 Log.i("recoge", "recoge " + "id responsable " + d.getIdResponsable() + " nombre " + d.getNombre()+ " id " + d.getId());

@@ -132,8 +132,6 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                     if(!txt_correo1.getText().equals("")||!txt_domicilio1.getText().equals("")||!txt_telefono1.equals("")){
                         if(validarEmail(txt_correo1.getText().toString())){
 
-
-
                             e= new Empleado(e.getId(),Integer.valueOf((String) txt_departamento1.getText()), txt_dni1.getText().toString(), ConfiguracionDB.PassActual, txt_nombre1.getText().toString(),
                                     txt_apellidos1.getText().toString(), txt_domicilio1.getText().toString(), txt_correo1.getText().toString(),
                                     txt_telefono1.getText().toString(),e.getFecha_incorporacion());

@@ -89,7 +89,6 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
         ibObtenerFecha3 = (ImageButton) findViewById(R.id.ib_obtener_fecha3);
         //Evento setOnClickListener - clic
         ibObtenerFecha3.setOnClickListener(this);
-
         //Widget EditText donde se mostrara la hora obtenida
         etHora = (EditText) findViewById(R.id.et_mostrar_hora_picker2);
         //Widget ImageButton del cual usaremos el evento clic para obtener la hora
@@ -229,48 +228,36 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                               System.out.println("llega al if del Idobtenido");
                               //empleado
                               System.out.println("empleado " + empleado);
-                                //id del empleado
+                              //id del empleado
                               System.out.println("id del empleado "+ idActual);
                               //motivo de la ausencia
                               String motivo= String.valueOf(edt_motivoAusencia.getText());
                               System.out.println("motivo de la ausencia " + motivo);
                               //fecha de la ausencia
-
                               String fechatextoAusencia= String.valueOf(etFecha.getText());
-
                               SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-dd");
                               Date datofecha= format.parse(fechatextoAusencia);
                               //String fechaausencia= format.format(datofecha);
-
                               System.out.println("fecha de la ausencia " +datofecha);
-
-                                //fecha de la solicitud
+                              //fecha de la solicitud
                               System.out.println("llega al simple date format de la fecha de la solicitud");
                               SimpleDateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
                               Date date= new Date();
                               String fechatextoSolicitud= formato.format(date);
                               System.out.println("fecha de hoy " + date);
-
-
                               System.out.println("fecha de la solicitud " + fechatextoSolicitud);
-                                //horas pedidas
+                              //horas pedidas
                               int horaspedidas= Integer.parseInt(edt_horasASolicitar.getText().toString());
                               System.out.println("horas solicitadas " + horaspedidas);
                               String horaInicio= etHora.getText().toString();
                               System.out.println("hora de inicio de solicitud " + horaInicio);
-                                //hora del reloj
+                              //hora del reloj
                               SimpleDateFormat formatoHora= new SimpleDateFormat("HH:mm:ss");
                               Date date1= new Date();
                               String hora_actual= formatoHora.format(date1);
                               System.out.println(hora_actual);
-
                               System.out.println("Id estado solicitud " + ConfiguracionDB.idEstado);
-
-
-
                               ausencias= new Ausencias(idActual, datofecha, hora_actual,horaspedidas, date, motivo, ConfiguracionDB.idEstado);
-
-
                               Log.i("mensaje", String.valueOf(ausencias));
                               System.out.println(ausencias.toString());
                               Log.i("errores", ausencias.toString());
@@ -296,13 +283,9 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                     }else {
                         System.out.println("el empleado no esta en la bbdd");
                     }
-
-
                 }catch (Exception e){
                     mostrarToast2("error, revisa los datos introducidos");
-
                 }
-
                 }
                 });
         alerta1.setNegativeButton("no", new DialogInterface.OnClickListener() {

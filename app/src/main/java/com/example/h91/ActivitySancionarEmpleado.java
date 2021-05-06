@@ -22,7 +22,6 @@ import com.example.h91.modelos.EmpleadoDB;
 public class ActivitySancionarEmpleado extends AppCompatActivity {
 
     Spinner sp_sancion;
-
     EditText edt_motivoSancion;
     TextView txt_dniEmpleadorecogido;
     String [] tipoSancion= null;
@@ -34,7 +33,6 @@ public class ActivitySancionarEmpleado extends AppCompatActivity {
         setContentView(R.layout.activity_sancionar_empleado);
         sp_sancion=(Spinner)findViewById(R.id.sp_sancion);
         edt_motivoSancion=(EditText)findViewById(R.id.edt_motivoSancion);
-
         txt_dniEmpleadorecogido=(TextView)findViewById(R.id.txt_dniEmpleadorecogido);
         tipoSancion= new String[]{"Leve", "Grave"};
         adapter= new ArrayAdapter<String>(this, R.layout.spinner_item_sancion, tipoSancion);
@@ -52,10 +50,7 @@ public class ActivitySancionarEmpleado extends AppCompatActivity {
 
     public void restablecerCampos(View view){
         edt_motivoSancion.setText("");
-
         mostrarToast("Los campos se han restablecido");
-
-
     }
 
     public void volverAPrincipal(View view){

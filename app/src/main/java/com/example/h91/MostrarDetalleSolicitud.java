@@ -82,12 +82,9 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
     public void enviarAGestionarTramite(View view) {
         //Intent intent= new Intent(this, ActivitySancionarEmpleado.class);
         //startActivity(intent);
-
-            int estado= 3;
-            txt_idEstado.setText("Cancelado");
-            txt_idEstado.setBackgroundColor(Color.RED);
-
-
+        int estado= 3;
+        txt_idEstado.setText("Cancelado");
+        txt_idEstado.setBackgroundColor(Color.RED);
         tramites = new Tramites(ConfiguracionDB.IDUsuarioActual, txt_nombre_documento.getText().toString(),txt_asunto3.getText().toString(), tramites.getFecha_solicitud(), estado);
         boolean actualizadoOK= TramitesController.actualizarTramites(tramites);
         System.out.println(tramites);
@@ -101,7 +98,6 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
             finish();
         }
     }
-
     private void mostrarToast(String encontrado) {
         Toast.makeText(this,"logeado",Toast.LENGTH_SHORT).show();
     }

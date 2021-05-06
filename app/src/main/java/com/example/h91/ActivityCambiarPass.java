@@ -35,10 +35,6 @@ public class ActivityCambiarPass extends AppCompatActivity {
         edt_cambiarPass2=(EditText) findViewById(R.id.edt_cambiarPass2);
         bt_cambiarPass2=(Button)findViewById(R.id.bt_cambiarPass2);
         bt_cancelarCambio=(Button)findViewById(R.id.bt_cancelarCambio);
-
-
-
-
     }
 
     public void GuardarContraseñaEmpleado(View view) {

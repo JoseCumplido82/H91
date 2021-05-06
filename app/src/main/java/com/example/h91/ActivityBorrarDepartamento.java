@@ -49,7 +49,6 @@ public class ActivityBorrarDepartamento extends AppCompatActivity implements Ada
                 sp_departamentoEliminar.setAdapter(adapter);
             }
         }
-
         //boton para volver a menu gestion plantilla
         bt_volver22.setOnClickListener(new View.OnClickListener() {
             @Override

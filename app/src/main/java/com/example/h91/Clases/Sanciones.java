@@ -8,15 +8,12 @@ public class Sanciones implements Serializable {
     private String motivo;
     private String observacion;
     //----------------------------------
-
-
     public Sanciones(int id, int idSancionado, String motivo, String observacion) {
         this.id = id;
         this.idSancionado = idSancionado;
         this.motivo = motivo;
         this.observacion = observacion;
     }
-
     public Sanciones(int idSancionado, String motivo, String observacion) {
         this.idSancionado = idSancionado;
         this.motivo = motivo;
@@ -29,8 +26,6 @@ public class Sanciones implements Serializable {
         this.observacion = "";
     }
     //----------------------------------
-
-
     public int getId() {
         return id;
     }
@@ -62,10 +57,7 @@ public class Sanciones implements Serializable {
     public void setObservacion(String observacion) {
         this.observacion = observacion;
     }
-
     //--------------------------------------------
-
-
     @Override
     public String toString() {
         return "Sanciones{" +

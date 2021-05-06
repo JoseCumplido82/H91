@@ -27,7 +27,6 @@ public class ActivityMensajeNotificaciones extends AppCompatActivity {
         edt_observacionesMensaje3=(EditText)findViewById(R.id.edt_observacionesMensaje3);
         txt_dniUsuario=(TextView)findViewById(R.id.txt_dniUsuario);
         getIntent().getSerializableExtra("referenciaEmpleado");
-
         txt_dniUsuario.setText((CharSequence) getIntent().getSerializableExtra("referenciaEmpleado"));
     }
 

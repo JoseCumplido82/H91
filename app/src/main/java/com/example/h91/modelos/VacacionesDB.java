@@ -151,8 +151,6 @@ public class VacacionesDB {
                 int dias= resultadosql.getInt("dias");
                 Date fecha_solicitud= resultadosql.getDate("fecha_solicitud");
                 int idEstado= resultadosql.getInt("idEstado");
-
-                //CORREGIR
                 vacacionesEncontradas = new Vacaciones(id, idEstado, fecha_inicio, fecha_fin, dias, fecha_solicitud, idEstado);
             }
             resultadosql.close();

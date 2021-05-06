@@ -96,7 +96,6 @@ public class ActivityBorrarEmpleado extends AppCompatActivity implements Adapter
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Empleado e = (Empleado) sp_empleadoEliminar.getItemAtPosition(position);
         eseleccionado = e;
-        //  Toast.makeText(this, e.getNombre(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

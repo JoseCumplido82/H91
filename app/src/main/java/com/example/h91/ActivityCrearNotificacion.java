@@ -48,9 +48,6 @@ public class ActivityCrearNotificacion extends AppCompatActivity {
         }
 
 
-
-
-
         //boton volver a panel RRHH
         Button bt_volver19 = (Button) findViewById(R.id.bt_volver19);
         bt_volver19.setOnClickListener(new View.OnClickListener() {
