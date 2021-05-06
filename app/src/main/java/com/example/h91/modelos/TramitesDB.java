@@ -198,7 +198,7 @@ public static boolean IDEmpleadoAusencia(int idEmpleado) {
         }
         //----------------------------
         try {
-            String ordensql = "UPDATE tramites SET idSolicitante=?, nombre_documento = ?, asunto=?, comentario=?, fecha_solicitud=?, idEstado=? WHERE idEstado = ?";
+            String ordensql = "UPDATE tramites SET idSolicitante=?, nombre_documento=?, asunto=?, comentario=?, fecha_solicitud=?, idEstado=? WHERE id=?";
             PreparedStatement pst = conexion.prepareStatement(ordensql);
             pst.setInt(1, t.getIdSolicitante());
             pst.setString(2,t.getNombre_documento());
@@ -206,6 +206,7 @@ public static boolean IDEmpleadoAusencia(int idEmpleado) {
             pst.setString(4, t.getComentario());
             pst.setDate(5, (java.sql.Date) t.getFecha_solicitud());
             pst.setInt(6, t.getIdEstado());
+            pst.setInt(7, t.getId());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();

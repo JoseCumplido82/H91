@@ -49,7 +49,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/comentario"
         android:textSize="18sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/txt_asunto3"
         app:layout_constraintStart_toStartOf="@+id/txt_asunto3"
         app:layout_constraintTop_toBottomOf="@+id/txt_asunto3" />

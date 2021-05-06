@@ -35,4 +35,5 @@ public class ConfiguracionDB {
     public static String UsuarioActual="";
     public static String PassActual="";
     public static int IDUsuarioActual=0;
+
 }

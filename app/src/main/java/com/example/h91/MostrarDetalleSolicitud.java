@@ -45,7 +45,6 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
         Intent intent = getIntent();
         if(intent != null){
 
-
             tramites=(Tramites)intent.getSerializableExtra(ActivityOtrasSolicitudes.EXTRA_OBJETO_SOLICITUD);
 
 
@@ -78,14 +77,12 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
 
         }
     }
-    //enviar a url de gestion de tramites
+
     public void enviarAGestionarTramite(View view) {
-        //Intent intent= new Intent(this, ActivitySancionarEmpleado.class);
-        //startActivity(intent);
         int estado= 3;
         txt_idEstado.setText("Cancelado");
         txt_idEstado.setBackgroundColor(Color.RED);
-        tramites = new Tramites(ConfiguracionDB.IDUsuarioActual, txt_nombre_documento.getText().toString(),txt_asunto3.getText().toString(), tramites.getFecha_solicitud(), estado);
+        tramites = new Tramites(tramites.getId(), ConfiguracionDB.IDUsuarioActual, txt_nombre_documento.getText().toString(),txt_asunto3.getText().toString(),tramites.getComentario(), tramites.getFecha_solicitud(), estado);
         boolean actualizadoOK= TramitesController.actualizarTramites(tramites);
         System.out.println(tramites);
         if(actualizadoOK){
