@@ -46,6 +46,10 @@ public class MostrarDetalleNominas extends AppCompatActivity implements Serializ
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_detalle_nominas);
 

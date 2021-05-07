@@ -69,8 +69,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
         bt_volver16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent3 = new Intent (v.getContext(), ActivityRRHH.class);
-                startActivityForResult(intent3, 0);
+                finish();
             }
         });
 

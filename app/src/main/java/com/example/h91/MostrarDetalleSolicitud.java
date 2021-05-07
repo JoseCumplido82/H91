@@ -16,6 +16,8 @@ import com.example.h91.controladores.TramitesController;
 import com.example.h91.modelos.ConfiguracionDB;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MostrarDetalleSolicitud extends AppCompatActivity implements Serializable {
     TextView txt_detalleSolicitud=null;
@@ -80,12 +82,20 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
 
     public void enviarAGestionarTramite(View view) {
         int estado= 3;
+        int id=0;
+
+        SimpleDateFormat formato= new SimpleDateFormat("yyyy-mm-dd");
+        Date fechaHoy= new Date();
+        String fechatextoSolicitud= formato.format(fechaHoy);
+        System.out.println("fecha de hoy " + fechatextoSolicitud);
+
         txt_idEstado.setText("Cancelado");
         txt_idEstado.setBackgroundColor(Color.RED);
-        tramites = new Tramites(tramites.getId(), ConfiguracionDB.IDUsuarioActual, txt_nombre_documento.getText().toString(),txt_asunto3.getText().toString(),tramites.getComentario(), tramites.getFecha_solicitud(), estado);
+        tramites = new Tramites(tramites.getId(), ConfiguracionDB.IDUsuarioActual, txt_nombre_documento.getText().toString(),txt_asunto3.getText().toString(),tramites.getComentario(),tramites.getFecha_solicitud(), estado);
         boolean actualizadoOK= TramitesController.actualizarTramites(tramites);
         System.out.println(tramites);
         if(actualizadoOK){
+
             mostrarToast("TRAMITE CANCELADO CORRECTAMENTE");
             System.out.println("TRAMITE CANCELADO CORRECTAMENTE");
             finish();
@@ -96,6 +106,6 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
         }
     }
     private void mostrarToast(String encontrado) {
-        Toast.makeText(this,"logeado",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,encontrado,Toast.LENGTH_SHORT).show();
     }
 }

@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private String url;
     public EditText nombreUsuario;
     public EditText edt_pass;
-    //  No puese asignar valores aqui, lo tienes que hacer en el oncreate una vez que has utilizado el findviewbyid por eso falla la aplicacion
-
-    boolean preferenciasGuardadas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,19 +83,19 @@ public class MainActivity extends AppCompatActivity {
                    // startActivity(intent);
                   ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
 
-                        mostrarToast("encontrado");
+                        mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                         Log.i("sql", "encontrado");
 
 
                 }else if(ConfiguracionDB.UsuarioActual.equals("mar")){
                     Intent intent= new Intent(v.getContext(), ActivityRRHH.class);
                     startActivity(intent);
-                    mostrarToast("usuario encontrado");
+                    mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                     Log.i("sql", "encontrado");
                 }
 
                 else {
-                    mostrarToast("no encontrado");
+                    mostrarToast("USUARIO INCORRECTO");
                     Log.i("sql", "no encontrado");
                 }
 
@@ -111,9 +108,6 @@ public class MainActivity extends AppCompatActivity {
         txt_passolvidada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Uri uri= Uri.parse(url);
-                //Intent intent= new Intent(Intent.ACTION_VIEW, uri);
-                //startActivity(intent);
                 Intent intent= new Intent(MainActivity.this, ActivityOlvisteLaPass.class);
                 startActivity(intent);
             }
@@ -123,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void mostrarToast(String encontrado) {
-        Toast.makeText(this,"logeado",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,encontrado,Toast.LENGTH_LONG).show();
     }
 
 
@@ -147,12 +141,13 @@ public class MainActivity extends AppCompatActivity {
                 }else if(codDepartamento==13){
                     Intent intent= new Intent(this, ActivityRRHH.class);
                     startActivity(intent);
+
                }
 
                else {
                     Intent intent = new Intent(this, PanelEmpleado.class);
                     startActivity(intent);
-                    mostrarToast("encontrado");
+                    mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                     Log.i("sql", "encontrado");
                 }
 

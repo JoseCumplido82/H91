@@ -28,26 +28,43 @@ public class ActivityOlvisteLaPass extends AppCompatActivity {
     }
 
     public void RestablecerPassOlvidada(View view) {
-        Empleado empleado= (EmpleadoDB.buscarEmpleadoTabla(edt_NombreUsuario.getText().toString()));
-        empleado=new Empleado(empleado.getId(), empleado.getIdDepartamento(), edt_NombreUsuario.getText().toString(),
-                ConfiguracionDB.pass, empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo()
-                ,empleado.getTelefono(), empleado.getFecha_incorporacion());
-        boolean actualizadoOK= EmpleadoController.actualizarEmpleado(empleado);
-        if(actualizadoOK)
-        {
-         mostrarToast("CONTRASEÑA RESETEADA POR DEFECTO");
-         System.out.println("CONTRASEÑA RESETEADA POR DEFECTO");
-         finish();
-         Intent intent= new Intent(ActivityOlvisteLaPass.this, MainActivity.class);
-         startActivity(intent);
-        }else {
-            mostrarToast("CONTRASEÑA NO RESETEADA");
-            System.out.println("CONTRASEÑA NO RESETEADA");
+        try {
+            if(edt_NombreUsuario.getText().toString().isEmpty()){
+                edt_NombreUsuario.setError("Introduce tu usuario");
+                mostrarToast("INTRODUCE TU USUARIO");
+            }
+            Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(edt_NombreUsuario.getText().toString()));
+            empleado = new Empleado(empleado.getId(), empleado.getIdDepartamento(), edt_NombreUsuario.getText().toString(),
+                    ConfiguracionDB.pass, empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo()
+                    , empleado.getTelefono(), empleado.getFecha_incorporacion());
+            boolean actualizadoOK = EmpleadoController.actualizarEmpleado(empleado);
+            if (actualizadoOK) {
+                mostrarToast("CONTRASEÑA RESETEADA POR DEFECTO, POR FAVOR CONTANTE CON RRHHH PARA CONOCER SU NUEVA CONTRASEÑA");
+                System.out.println("CONTRASEÑA RESETEADA POR DEFECTO");
+                finish();
+                Intent intent = new Intent(ActivityOlvisteLaPass.this, MainActivity.class);
+                startActivity(intent);
+            } else {
+                mostrarToast("CONTRASEÑA NO RESETEADA");
+                System.out.println("CONTRASEÑA NO RESETEADA");
+            }
+
+        }catch (Exception e){
+            mostrarToast("USUARIO NO ENCONTRADO");
+            System.out.println("entra en el catch");
+            edt_NombreUsuario.setError("Introduce un usuario correcto");
         }
 
     }
 
     private void mostrarToast(String encontrado) {
-        Toast.makeText(this,"logeado",Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this,encontrado,Toast.LENGTH_LONG).show();
     }
+
+    //private void mostrarToast(String encontrado) {
+
+      //  Toast.makeText(this,"CONTACTE CON RRHH PARA CONOCER SU NUEVA CONTRASEÑA",Toast.LENGTH_LONG).show();
+    //}
+
 }
