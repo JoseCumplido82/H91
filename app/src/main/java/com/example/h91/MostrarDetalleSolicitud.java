@@ -48,8 +48,6 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
         if(intent != null){
 
             tramites=(Tramites)intent.getSerializableExtra(ActivityOtrasSolicitudes.EXTRA_OBJETO_SOLICITUD);
-
-
             if(tramites.getIdEstado()==1){
                 txt_idEstado.setBackgroundColor(Color.YELLOW);
                 nombreEstadoTramite= "En proceso";
@@ -72,10 +70,6 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
             txt_asunto3.setText(tramites.getAsunto());
             txt_comentario.setText(tramites.getComentario());
             txt_fecha_solicitud.setText((CharSequence) tramites.getFecha_solicitud());
-
-
-
-
 
         }
     }

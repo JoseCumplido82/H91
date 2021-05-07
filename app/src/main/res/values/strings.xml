@@ -201,4 +201,5 @@
     <string name="le_recomendamos_que_cambie_la_contrase_a_ya_que_su_usuario_tendr_la_clave_por_defecto_de_creaci_n">Le recomendamos que cambie la contraseña una vez sea restablecida, ya que su usuario tendrá la clave por defecto de creación.</string>
     <string name="como_funciona_la_app">¿Como funciona la App?</string>
     <string name="te_mostramos_como_funciona_la_app">Te mostramos como funciona la App</string>
+    <string name="su_contrase_a_ser_restablecida_comuniquese_con_rrhh_para_que_le_indiquen_la_nueva_contrase_a">Su contraseña será restablecida, comuniquese con RRHH para que le indiquen la nueva contraseña</string>
 </resources>

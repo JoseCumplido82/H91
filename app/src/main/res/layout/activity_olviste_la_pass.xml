@@ -56,7 +56,7 @@
         android:layout_height="157dp"
         android:layout_marginTop="176dp"
         android:gravity="center"
-        android:text="Su contraseña será restablecida, comuniquese con RRHH para que le indiquen la nueva contraseña"
+        android:text="@string/su_contrase_a_ser_restablecida_comuniquese_con_rrhh_para_que_le_indiquen_la_nueva_contrase_a"
         android:textColor="@color/design_default_color_error"
         android:textSize="18sp"
         android:textStyle="bold|italic"

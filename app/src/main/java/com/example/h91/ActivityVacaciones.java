@@ -196,8 +196,6 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
         }
     }
 
-
-
     private Date obtenerFecha() {
         DatePickerDialog recogerFecha = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -211,7 +209,6 @@ public class ActivityVacaciones extends AppCompatActivity implements View.OnClic
                 //Muestro la fecha con el formato deseado
                 //etFecha.setText(diaFormateado + BARRA + mesFormateado + BARRA + year);
                 etFecha.setText(year + BARRA + mesFormateado + BARRA + diaFormateado);
-
 
             }
             //Estos valores deben ir en ese orden, de lo contrario no mostrara la fecha actual
