@@ -15,6 +15,10 @@ public class ActivityAyudaEmpleado extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayuda_empleado);
 

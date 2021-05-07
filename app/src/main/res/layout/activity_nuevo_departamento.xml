@@ -59,4 +59,17 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="@+id/txt_nuevoDepartamento"
         app:layout_constraintTop_toBottomOf="@+id/txt_nuevoDepartamento" />
+
+    <Button
+        android:id="@+id/bt_volverAGestionP"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/volver"
+        android:onClick="cerrarNuevoDp"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_guardarDepartamento" />
 </androidx.constraintlayout.widget.ConstraintLayout>

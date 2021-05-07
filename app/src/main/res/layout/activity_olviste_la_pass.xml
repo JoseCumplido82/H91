@@ -56,7 +56,7 @@
         android:layout_height="157dp"
         android:layout_marginTop="176dp"
         android:gravity="center"
-        android:text="@string/le_recomendamos_que_cambie_la_contrase_a_ya_que_su_usuario_tendr_la_clave_por_defecto_de_creaci_n"
+        android:text="Su contraseña será restablecida, comuniquese con RRHH para que le indiquen la nueva contraseña"
         android:textColor="@color/design_default_color_error"
         android:textSize="18sp"
         android:textStyle="bold|italic"

@@ -11,8 +11,6 @@ public class ConfiguracionDB {
     private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     public static final String PUERTOMYSQL = "3306";
     public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
-    //
-    //
 
     //----------------------------------------------------------------------------------------------------
 
@@ -28,6 +26,15 @@ public class ConfiguracionDB {
    //public static final String PUERTOMYSQL = "2083";
     //public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
 
+
+    //PARA SERVER INSTITUTO
+    //public static final String HOSTDB="infsalinas.sytes.net";
+    //public static final String NOMBREDB="empleados";
+    //public static final String USUARIODB="damserver1";
+    //public static final String CLAVEDB="dam1234";
+    //private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
+    //public static final String PUERTOMYSQL="5306";
+    //public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
 
 //variables staticas para usar en toda la APP
     public static String pass="Madrid2021";

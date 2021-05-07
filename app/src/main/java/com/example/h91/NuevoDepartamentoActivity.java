@@ -102,4 +102,8 @@ public class NuevoDepartamentoActivity extends AppCompatActivity implements Adap
             Toast.makeText(this,"No se pudo guardar el departamento", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void cerrarNuevoDp(View view) {
+        finish();
+    }
 }

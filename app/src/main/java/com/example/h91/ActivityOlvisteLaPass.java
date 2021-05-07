@@ -17,6 +17,10 @@ public class ActivityOlvisteLaPass extends AppCompatActivity {
     EditText edt_NombreUsuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_olviste_la_pass);
         edt_NombreUsuario=(EditText)findViewById(R.id.edt_NombreUsuario);
