@@ -16,12 +16,15 @@ import com.example.h91.controladores.EmpleadoController;
 import com.example.h91.modelos.ConfiguracionDB;
 import com.example.h91.modelos.EmpleadoDB;
 
+import java.security.NoSuchAlgorithmException;
+
 public class ActivityCambiarPass extends AppCompatActivity {
 
     EditText edt_cambiarPass1=null;
     EditText edt_cambiarPass2=null;
     Button bt_cambiarPass2=null;
     Button bt_cancelarCambio=null;
+    String passCifrada="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +48,17 @@ public class ActivityCambiarPass extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 String dni= ConfiguracionDB.UsuarioActual;
                 String pass= edt_cambiarPass1.getText().toString();
+                try {
+                    passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(pass, ConfiguracionDB.getSalt());
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
                 boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(dni,ConfiguracionDB.PassActual);
                 if(EmpleadoEnTabla)
                 {
                     Empleado empleado= (EmpleadoDB.buscarEmpleadoTabla(dni));
                     if(edt_cambiarPass1.getText().toString().equals(edt_cambiarPass2.getText().toString())){
-                        empleado= new Empleado(empleado.getId(), empleado.getIdDepartamento(), dni, pass, empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(),
+                        empleado= new Empleado(empleado.getId(), empleado.getIdDepartamento(), dni, passCifrada, empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(),
                                 empleado.getCorreo(),empleado.getTelefono(), empleado.getFecha_incorporacion());
                         boolean actualizadoOK= EmpleadoController.actualizarEmpleado(empleado);
                         if(actualizadoOK)

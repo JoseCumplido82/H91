@@ -1,6 +1,15 @@
 package com.example.h91.modelos;
 
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+
 public class ConfiguracionDB {
 
     //PARA LOCAL
@@ -10,7 +19,7 @@ public class ConfiguracionDB {
     public static final String CLAVEDB = "";
     private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     public static final String PUERTOMYSQL = "3306";
-    public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
+    public static final String URLMYSQL = "jdbc:mysql://" + HOSTDB + ":" + PUERTOMYSQL + "/" + NOMBREDB + OPCIONES;
 
     //----------------------------------------------------------------------------------------------------
 
@@ -25,13 +34,12 @@ public class ConfiguracionDB {
     //public static final String USUARIODB = "hidalgoc_wpD";
     //public static final String CLAVEDB = "eE08092020**";
     //private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-   // private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
-   //public static final String PUERTOMYSQL = "2083";
+    // private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
+    //public static final String PUERTOMYSQL = "2083";
     //public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
 
 
     //PARA SERVER INSTITUTO
-
 
 
     //public static final String HOSTDB="infsalinas.sytes.net";
@@ -42,11 +50,88 @@ public class ConfiguracionDB {
     //public static final String PUERTOMYSQL="5306";
     //public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
 
-//variables staticas para usar en toda la APP
-    public static String pass="Madrid2021";
-    public static int idEstado=1;
-    public static String UsuarioActual="";
-    public static String PassActual="";
-    public static int IDUsuarioActual=0;
+    //variables staticas para usar en toda la APP
+    public static String pass = "Madrid2021";
+    public static int idEstado = 1;
+    public static String UsuarioActual = "";
+    public static String PassActual = "";
+    public static int IDUsuarioActual = 0;
+    public static byte[] salt;
+
+    static {
+        try {
+            salt = getSalt();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //------------
+    //METODOS DE ENCRIPTACION SHA_1, SHA 256 Y SHA 512
+
+    public static String get_SHA_1_SecurePassword(String passwordToHash, byte[] salt) {
+        String generatedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            md.update(salt);
+            byte[] bytes = md.digest(passwordToHash.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return generatedPassword;
+    }
+
+    public static String get_SHA_512_SecurePassword(String passwordToHash, byte[] salt) throws NoSuchAlgorithmException {
+        String generatedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            md.update(salt);
+            byte[] bytes = md.digest(passwordToHash.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return generatedPassword;
+    }
+
+    public static String get_SHA_256_SecurePassword(String passwordToHash, byte[] salt)
+    {
+        //Use MessageDigest md = MessageDigest.getInstance("SHA-256");
+        String generatedPassword = null;
+        try {
+             MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(salt);
+            byte[] bytes = md.digest(passwordToHash.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return generatedPassword;
+    }
+
+
+    //Add salt
+    public static byte[] getSalt() throws NoSuchAlgorithmException {
+        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+        byte[] salt = new byte[16];
+        sr.nextBytes(salt);
+        return salt;
+    }
+
+
+
 
 }

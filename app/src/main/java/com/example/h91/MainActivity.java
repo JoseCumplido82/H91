@@ -1,11 +1,13 @@
 package com.example.h91;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.example.h91.controladores.EmpleadoController;
 import com.example.h91.modelos.ConfiguracionDB;
 import com.example.h91.modelos.EmpleadoDB;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         nombreUsuario= (EditText)findViewById(R.id.edt_usuario);
         edt_pass=(EditText)findViewById(R.id.edt_pass);
         btn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
                 String nombreRRHH = "50483599W";
@@ -88,8 +92,16 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }else if(ConfiguracionDB.UsuarioActual.equals("mar")){
+                    String claveGenerada="";
                     Intent intent= new Intent(v.getContext(), ActivityRRHH.class);
+                    try {
+                        claveGenerada= ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.UsuarioActual, ConfiguracionDB.getSalt());
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    }
                     startActivity(intent);
+
+                    System.out.println("clave generada ->" + claveGenerada);
                     mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                     Log.i("sql", "encontrado");
                 }
