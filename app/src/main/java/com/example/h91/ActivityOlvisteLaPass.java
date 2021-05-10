@@ -13,8 +13,11 @@ import com.example.h91.controladores.EmpleadoController;
 import com.example.h91.modelos.ConfiguracionDB;
 import com.example.h91.modelos.EmpleadoDB;
 
+import java.security.NoSuchAlgorithmException;
+
 public class ActivityOlvisteLaPass extends AppCompatActivity {
     EditText edt_NombreUsuario;
+    String passCifrada="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -35,12 +38,13 @@ public class ActivityOlvisteLaPass extends AppCompatActivity {
             }
             Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(edt_NombreUsuario.getText().toString()));
             empleado = new Empleado(empleado.getId(), empleado.getIdDepartamento(), edt_NombreUsuario.getText().toString(),
-                    ConfiguracionDB.pass, empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo()
+                    ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass, ConfiguracionDB.getSalt()), empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo()
                     , empleado.getTelefono(), empleado.getFecha_incorporacion());
             boolean actualizadoOK = EmpleadoController.actualizarEmpleado(empleado);
             if (actualizadoOK) {
                 mostrarToast("CONTRASEÑA RESETEADA POR DEFECTO, POR FAVOR CONTANTE CON RRHHH PARA CONOCER SU NUEVA CONTRASEÑA");
                 System.out.println("CONTRASEÑA RESETEADA POR DEFECTO");
+                System.out.println(passCifrada);
                 finish();
                 Intent intent = new Intent(ActivityOlvisteLaPass.this, MainActivity.class);
                 startActivity(intent);

@@ -15,6 +15,7 @@ import com.example.h91.controladores.EmpleadoController;
 import com.example.h91.modelos.ConfiguracionDB;
 import com.example.h91.modelos.EmpleadoDB;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.regex.Pattern;
 
 public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
     Button bt_restablecerDatosEmpleado=null;
     EditText edt_password1=null;
     EditText edt_password2=null;
+    String passCifrada="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
         edt_password2.setText("");
     }
 
-    public void GuardarDatosEmpleado(View view) {
+    public void GuardarDatosEmpleado(View view) throws NoSuchAlgorithmException {
      String nombre= edt_NombreEmpleado.getText().toString();
      String apellidos= edt_ApellidosEmpleado.getText().toString();
      String domicilio= edt_DomicilioEmpleado.getText().toString();
@@ -71,7 +73,8 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
             Empleado empleado= (EmpleadoDB.buscarEmpleadoTabla(dni));
 
          if (edt_password1.getText().toString().equals(edt_password2.getText().toString()) && validarEmail(email)) {
-              empleado = new Empleado(empleado.getId(),empleado.getIdDepartamento(), dni, pass1, nombre, apellidos, domicilio, email, telefono, empleado.getFecha_incorporacion());
+             passCifrada= ConfiguracionDB.get_SHA_512_SecurePassword(pass1, ConfiguracionDB.getSalt());
+              empleado = new Empleado(empleado.getId(),empleado.getIdDepartamento(), dni, passCifrada, nombre, apellidos, domicilio, email, telefono, empleado.getFecha_incorporacion());
 
              Log.i("Datos del empleado", empleado.toString());
              boolean actualidadook = EmpleadoController.actualizarEmpleado(empleado);

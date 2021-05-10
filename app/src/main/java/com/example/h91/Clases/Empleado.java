@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.h91.ActivityAnadirEmpleado;
+import com.example.h91.modelos.ConfiguracionDB;
 
 import java.io.Serializable;
 //import java.sql.Date;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 public class Empleado implements Serializable {
@@ -63,10 +65,10 @@ public class Empleado implements Serializable {
         this.fecha_salida = null;
     }
 
-    public Empleado(int idDepartamento, String usuario,String pass, Date fecha_incorporacion) {
+    public Empleado(int idDepartamento, String usuario,String pass, Date fecha_incorporacion) throws NoSuchAlgorithmException {
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
-        this.pass="Madrid2021";
+        this.pass= ConfiguracionDB.get_SHA_512_SecurePassword("Madrid2021", ConfiguracionDB.getSalt());
         this.fecha_incorporacion = fecha_incorporacion;
     }
 

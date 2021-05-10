@@ -23,6 +23,7 @@ import com.example.h91.modelos.ConfiguracionDB;
 
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,8 +39,10 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
     ArrayAdapter<Departamento> adapter=null;
     ArrayList<Departamento> departamentos=null;
     EditText edt_fechaIncorporacion=null;
+    String passCifrada="";
 
-
+    public ActivityAnadirEmpleado() throws NoSuchAlgorithmException {
+    }
 
 
     @Override
@@ -101,12 +104,22 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                     mostrarToast("selecciona un departamento");
                     return;
                 }
+
+
                 Empleado em = null;
                 try{
+
+                    try {
+                        passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass, ConfiguracionDB.getSalt());
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(passCifrada);
+                    String salt= String.valueOf(ConfiguracionDB.getSalt());
                     String usuario= String.valueOf(edt_dni.getText());
                     String fechatexto= String.valueOf(edt_fechaIncorporacion.getText());
                     Date fechaIncorporacion2=new SimpleDateFormat("yyyy-mm-dd").parse(fechatexto);
-                    em = new Empleado(dseleccionado.getId(), usuario, ConfiguracionDB.pass,fechaIncorporacion2);
+                    em = new Empleado(dseleccionado.getId(), usuario, passCifrada,fechaIncorporacion2);
                     Log.i("recoge", "recoge" + " " + em);
                     //insertar Empleado
                     boolean insertadoOK = EmpleadoController.InsertarEmpleado(em);

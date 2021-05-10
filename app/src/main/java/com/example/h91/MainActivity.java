@@ -21,6 +21,7 @@ import com.example.h91.controladores.EmpleadoController;
 import com.example.h91.modelos.ConfiguracionDB;
 import com.example.h91.modelos.EmpleadoDB;
 
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private String url;
     public EditText nombreUsuario;
     public EditText edt_pass;
+    String claveObtenida= "";
+    String clave="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,49 +47,30 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                String nombreRRHH = "50483599W";
-                String pass = "Madrid2021";
-                String nombreEmpleado = "andrei";
-
 
                 String usuario = nombreUsuario.getText().toString();
                 String password = edt_pass.getText().toString();
 
                 ConfiguracionDB.UsuarioActual = usuario;
                 ConfiguracionDB.PassActual = password;
-                // String usuario ="X8450397J";
-                //String password = "55diasenP";
 
-                // comprobarUser(nombreUsuario.getText().toString(), edt_pass.getText().toString());
+                try {
+                    claveObtenida=password+ConfiguracionDB.getSalt();
+                    clave= ConfiguracionDB.get_SHA_512_SecurePassword(claveObtenida, ConfiguracionDB.getSalt());
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
 
-                //if (nombreUsuario.getText().toString().equals(EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual))) {
-                    //Intent intent = new Intent(v.getContext(), ActivityRRHH.class);
-                    //startActivityForResult(intent, 0);
-                    //Exportar nombre usuario
-                    //intent.putExtra("Bienvenido", nombreUsuario.getText().toString());
 
-                    //COMPRUEBO EL USUARIO
-                    //ConfiguracionDB.UsuarioActual = usuario;
-                    //ConfiguracionDB.PassActual = password;
+                boolean resultado = false;
+                System.out.println(clave);
+                    resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual,clave);
 
-                  //  startActivityForResult(intent, 0);
-
-                //} else if (nombreUsuario.getText().toString().equals(nombreEmpleado)) {
-                    //Intent intent = new Intent(v.getContext(), PanelEmpleado.class);
-                    //startActivityForResult(intent, 0);
-                    //Exportar nombre usuario
-
-                   // intent.putExtra("Bienvenido", nombreUsuario.getText().toString());
-                    //ConfiguracionDB.UsuarioActual = usuario;
-                    //ConfiguracionDB.PassActual = password;
-                  //  startActivityForResult(intent, 0);
-                //}
-                boolean resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+                System.out.println("clave primera :" + clave);
                 if (resultado == true) {
-                   // Intent intent= new Intent(v.getContext(), PanelEmpleado.class);
-                   // startActivity(intent);
-                  ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
-
+                    System.out.println(clave);
+                  ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, claveObtenida);
+                    System.out.println("imprimir despues del comprobar datos empleado: " + claveObtenida);
                         mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                         Log.i("sql", "encontrado");
 
@@ -94,14 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 }else if(ConfiguracionDB.UsuarioActual.equals("mar")){
                     String claveGenerada="";
                     Intent intent= new Intent(v.getContext(), ActivityRRHH.class);
-                    try {
-                        claveGenerada= ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.UsuarioActual, ConfiguracionDB.getSalt());
-                    } catch (NoSuchAlgorithmException e) {
-                        e.printStackTrace();
-                    }
                     startActivity(intent);
-
-                    System.out.println("clave generada ->" + claveGenerada);
                     mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                     Log.i("sql", "encontrado");
                 }
@@ -134,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public boolean ComprobarSiHayDatosEmpleado(String dni, String pass){
-        boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+        boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, clave);
         String nombre = "";
         String apellido = "";
         String telefono = "";
@@ -185,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
            startActivityForResult(intent,0);
       }else {
           System.out.println("no existe empleado");
-          mostrarToast("Pos no te logeas");
+          mostrarToast("no llegas a loguear");
       }
         Log.i("empleado recuperado" , "he recuperado el empleado " + ComprobarEmpleado.getUsuario() + " " + ComprobarEmpleado.getPass());
 
