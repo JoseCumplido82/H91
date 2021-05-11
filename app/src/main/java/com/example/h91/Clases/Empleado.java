@@ -69,14 +69,14 @@ public class Empleado implements Serializable {
     public Empleado(int idDepartamento, String usuario,String pass,String salt, Date fecha_incorporacion)  {
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
-        this.pass= "Madrid2021";
+        this.pass= pass;
         this.salt=salt;
         this.fecha_incorporacion = fecha_incorporacion;
     }
     public Empleado(int idDepartamento, String usuario,String pass, Date fecha_incorporacion)  {
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
-        this.pass= "Madrid2021";
+        this.pass= pass;
         this.fecha_incorporacion = fecha_incorporacion;
     }
 

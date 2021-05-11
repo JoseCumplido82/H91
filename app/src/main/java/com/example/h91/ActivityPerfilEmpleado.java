@@ -1,10 +1,12 @@
 package com.example.h91;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -21,6 +23,7 @@ import com.example.h91.modelos.ConfiguracionDB;
 import com.example.h91.modelos.EmpleadoDB;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,6 +45,8 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
     Button bt_volverAtras=null;
     Button bt_guardarEmpleado=null;
     TextView txt_nombredpo=null;
+    String passCifrada="";
+    byte[]salt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,16 +128,27 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
         AlertDialog.Builder alerta= new AlertDialog.Builder(this);
         alerta.setTitle("¿Desea guardar estos cambios?");
         alerta.setPositiveButton("si", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+                System.out.println("contraseña despues del bool: " + ConfiguracionDB.PassActual);
                 if(EmpleadoEnTabla){
                     Empleado e= (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
+                    System.out.println("pass " + e.getPass());
+                    try {
+                        salt=ConfiguracionDB.getSalt();
+                    } catch (NoSuchAlgorithmException noSuchAlgorithmException) {
+                        noSuchAlgorithmException.printStackTrace();
+                    }
+                    passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual, salt);
+                    System.out.println("pass cifrada " + passCifrada);
+                    String textosalt= ConfiguracionDB.saltToString(salt);
 
                     if(!txt_correo1.getText().equals("")||!txt_domicilio1.getText().equals("")||!txt_telefono1.equals("")){
                         if(validarEmail(txt_correo1.getText().toString())){
 
-                            e= new Empleado(e.getId(),Integer.valueOf((String) txt_departamento1.getText()), txt_dni1.getText().toString(), ConfiguracionDB.PassActual, txt_nombre1.getText().toString(),
+                            e= new Empleado(e.getId(),Integer.valueOf((String) txt_departamento1.getText()), txt_dni1.getText().toString(), e.getPass(),textosalt, txt_nombre1.getText().toString(),
                                     txt_apellidos1.getText().toString(), txt_domicilio1.getText().toString(), txt_correo1.getText().toString(),
                                     txt_telefono1.getText().toString(),e.getFecha_incorporacion());
 
@@ -142,6 +158,8 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                                 mostrarToast("EMPLEADO ACTUALIZADO CORRECTAMENTE");
                                 System.out.println("Empleado actualizado " + e.toString());
                                 finish();
+                                Intent intent= new Intent(ActivityPerfilEmpleado.this, MainActivity.class);
+                                startActivity(intent);
                             }else {
                                 mostrarToast("EMPLEADO NO ACTUALIZADO ");
                                 System.out.println("Empleado no actualizado " + e.toString());

@@ -18,14 +18,12 @@ import com.example.h91.controladores.EmpleadoController;
 import com.example.h91.modelos.ConfiguracionDB;
 import com.example.h91.modelos.EmpleadoDB;
 
-import java.security.NoSuchAlgorithmException;
-
 public class MainActivity extends AppCompatActivity {
     private String url;
     Empleado empleado;
     public EditText nombreUsuario;
     public EditText edt_pass;
-    String passAComparar = "";
+    String claveCifrada = "";
     byte[] salt;
 
     @Override
@@ -50,33 +48,32 @@ public class MainActivity extends AppCompatActivity {
                 ConfiguracionDB.UsuarioActual = usuario;
                 ConfiguracionDB.PassActual = password;
 
+
+
+                 empleado= EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     salt=ConfiguracionDB.saltFromString(empleado.getSalt());
                 }
-                passAComparar =ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,salt);
 
-
-
+                claveCifrada =ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,salt);
                 boolean resultado = false;
-                System.out.println(passAComparar);
-
-                    resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, passAComparar);
-
-                System.out.println("clave primera :" + passAComparar);
+                System.out.println("clave generada con el pass recogido y salt" + claveCifrada);
+                resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, claveCifrada);
+                System.out.println("clave primera :" + claveCifrada);
                 if (resultado == true) {
-                    System.out.println(passAComparar);
-                    ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, passAComparar);
-                    System.out.println("imprimir despues del comprobar datos empleado: " + passAComparar);
+                    System.out.println(claveCifrada);
+                    ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, claveCifrada);
+                    System.out.println("imprimir despues del comprobar datos empleado: " + claveCifrada);
                         mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                         Log.i("sql", "encontrado");
 
 
-                }else if(ConfiguracionDB.UsuarioActual.equals("mar")){
-                    String claveGenerada="";
-                    Intent intent= new Intent(v.getContext(), ActivityRRHH.class);
-                    startActivity(intent);
-                    mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
-                    Log.i("sql", "encontrado");
+              //  }else if(ConfiguracionDB.UsuarioActual.equals("mar")){
+                //    String claveGenerada="";
+                 //   Intent intent= new Intent(v.getContext(), ActivityRRHH.class);
+                  //  startActivity(intent);
+                  //  mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
+                  //  Log.i("sql", "encontrado");
                 }
 
                 else {
@@ -106,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public boolean ComprobarSiHayDatosEmpleado(String dni, String pass) {
-        System.out.println("clave dentro del metodo comprobar si hay datos del empleado :" + passAComparar);
-        boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, passAComparar);
+        System.out.println("clave dentro del metodo comprobar si hay datos del empleado :" + claveCifrada);
+        boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, claveCifrada);
         String nombre = "";
         String apellido = "";
         String telefono = "";

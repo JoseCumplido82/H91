@@ -108,15 +108,12 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                     mostrarToast("selecciona un departamento");
                     return;
                 }
-
-
                 Empleado em = null;
                 try{
                     salt=ConfiguracionDB.getSalt();
-                        passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass,salt);
-                        String textosalt= ConfiguracionDB.saltToString(salt);
+                    passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass,salt);
+                    String textosalt= ConfiguracionDB.saltToString(salt);
                     System.out.println(passCifrada);
-                    String salt= String.valueOf(ConfiguracionDB.getSalt());
                     String usuario= String.valueOf(edt_dni.getText());
                     String fechatexto= String.valueOf(edt_fechaIncorporacion.getText());
                     Date fechaIncorporacion2=new SimpleDateFormat("yyyy-mm-dd").parse(fechatexto);

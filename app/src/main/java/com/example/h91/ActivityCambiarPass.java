@@ -1,10 +1,12 @@
 package com.example.h91;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +27,7 @@ public class ActivityCambiarPass extends AppCompatActivity {
     Button bt_cambiarPass2=null;
     Button bt_cancelarCambio=null;
     String passCifrada="";
+    byte[] salt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,31 +41,40 @@ public class ActivityCambiarPass extends AppCompatActivity {
         edt_cambiarPass2=(EditText) findViewById(R.id.edt_cambiarPass2);
         bt_cambiarPass2=(Button)findViewById(R.id.bt_cambiarPass2);
         bt_cancelarCambio=(Button)findViewById(R.id.bt_cancelarCambio);
+
     }
 
     public void GuardarContraseñaEmpleado(View view) {
         AlertDialog.Builder alerta= new AlertDialog.Builder(this);
         alerta.setTitle("¿Desea guardar estos cambios?");
         alerta.setPositiveButton("si", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String dni= ConfiguracionDB.UsuarioActual;
                 String pass= edt_cambiarPass1.getText().toString();
-                try {
-                    passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(pass, ConfiguracionDB.getSalt());
-                } catch (NoSuchAlgorithmException e) {
-                    e.printStackTrace();
-                }
+
+                String dni= ConfiguracionDB.UsuarioActual;
+
                 boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(dni,ConfiguracionDB.PassActual);
                 if(EmpleadoEnTabla)
                 {
                     Empleado empleado= (EmpleadoDB.buscarEmpleadoTabla(dni));
+                    try {
+                        salt=ConfiguracionDB.getSalt();
+                    } catch (NoSuchAlgorithmException noSuchAlgorithmException) {
+                        noSuchAlgorithmException.printStackTrace();
+                    }
+                    passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(pass, salt);
+                    String textosalt= ConfiguracionDB.saltToString(salt);
+
                     if(edt_cambiarPass1.getText().toString().equals(edt_cambiarPass2.getText().toString())){
-                        empleado= new Empleado(empleado.getId(), empleado.getIdDepartamento(), dni, passCifrada, empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(),
+                        empleado= new Empleado(empleado.getId(), empleado.getIdDepartamento(), dni, passCifrada,textosalt, empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(),
                                 empleado.getCorreo(),empleado.getTelefono(), empleado.getFecha_incorporacion());
                         boolean actualizadoOK= EmpleadoController.actualizarEmpleado(empleado);
                         if(actualizadoOK)
                         {
+                            System.out.println(empleado.getPass());
+                            System.out.println(empleado);
                             mostrarToast("CONTRASEÑA ACTUALIZADA CORRECTAMENTE");
                             System.out.println("CONTRASEÑA ACTUALIZADA");
                             finish();

@@ -293,7 +293,8 @@ public class EmpleadoDB {
             pst.setString(1, usuario);
             //pst.setString(1, usuario);
             Log.i("sql", "password actual -> " + ConfiguracionDB.PassActual);
-            pst.setString(2, ConfiguracionDB.PassActual);
+          //  pst.setString(2, ConfiguracionDB.PassActual);
+            pst.setString(2, pass);
             ResultSet resultadosql= pst.executeQuery();
             //---------
             int numEmps = 0;
