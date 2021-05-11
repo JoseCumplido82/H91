@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
         //boton abrir informacion
         TextView txt_passolvidada=(TextView) findViewById(R.id.txt_passolvidada);
-        //url= "http://codea.app/";
         txt_passolvidada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public boolean ComprobarSiHayDatosEmpleado(String dni, String pass){
-        System.out.println(passAComparar);
+        System.out.println("clave dentro del metodo comprobar si hay datos del empleado :" + passAComparar);
         boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, passAComparar);
         String nombre = "";
         String apellido = "";

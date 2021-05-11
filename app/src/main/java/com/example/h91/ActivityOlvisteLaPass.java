@@ -38,7 +38,7 @@ public class ActivityOlvisteLaPass extends AppCompatActivity {
             }
             Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(edt_NombreUsuario.getText().toString()));
             empleado = new Empleado(empleado.getId(), empleado.getIdDepartamento(), edt_NombreUsuario.getText().toString(),
-                    ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass, ConfiguracionDB.getSalt())+ConfiguracionDB.salt, empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo()
+                    ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass, ConfiguracionDB.salt), empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo()
                     , empleado.getTelefono(), empleado.getFecha_incorporacion());
             boolean actualizadoOK = EmpleadoController.actualizarEmpleado(empleado);
             if (actualizadoOK) {
