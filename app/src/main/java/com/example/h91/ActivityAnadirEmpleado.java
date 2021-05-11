@@ -41,6 +41,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
     EditText edt_fechaIncorporacion=null;
     String passCifrada="";
 
+
     public ActivityAnadirEmpleado() throws NoSuchAlgorithmException {
     }
 

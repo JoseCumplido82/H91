@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                 try {
-                    passAComparar =ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,ConfiguracionDB.salt)+ConfiguracionDB.salt;
+                    passAComparar =ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,ConfiguracionDB.salt);
+                    System.out.println("imprimo el salt" + ConfiguracionDB.salt);
+                    System.out.println("imprimo el get salt :" + ConfiguracionDB.getSalt()) ;
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 }
