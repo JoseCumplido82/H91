@@ -73,7 +73,7 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
             Empleado empleado= (EmpleadoDB.buscarEmpleadoTabla(dni));
 
          if (edt_password1.getText().toString().equals(edt_password2.getText().toString()) && validarEmail(email)) {
-             passCifrada= ConfiguracionDB.get_SHA_512_SecurePassword(pass1, ConfiguracionDB.getSalt());
+             passCifrada= ConfiguracionDB.get_SHA_512_SecurePassword(pass1, ConfiguracionDB.getSalt())+ConfiguracionDB.salt;
               empleado = new Empleado(empleado.getId(),empleado.getIdDepartamento(), dni, passCifrada, nombre, apellidos, domicilio, email, telefono, empleado.getFecha_incorporacion());
 
              Log.i("Datos del empleado", empleado.toString());

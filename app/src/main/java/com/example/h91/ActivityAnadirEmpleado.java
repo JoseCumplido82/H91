@@ -110,7 +110,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                 try{
 
                     try {
-                        passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass, ConfiguracionDB.getSalt());
+                        passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass, ConfiguracionDB.getSalt())+ConfiguracionDB.salt;
                     } catch (NoSuchAlgorithmException e) {
                         e.printStackTrace();
                     }
