@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.h91.Clases.Empleado;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -288,8 +289,8 @@ public class EmpleadoDB {
             Log.i("sql", "usuario actual -> " + ConfiguracionDB.UsuarioActual);
             pst.setString(1, usuario);
             //pst.setString(1, usuario);
-            Log.i("sql", "password actual -> " + ConfiguracionDB.PassActual);
-            pst.setString(2, ConfiguracionDB.PassActual);
+            Log.i("sql", "password actual -> " + ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,ConfiguracionDB.salt));
+            pst.setString(2, ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,ConfiguracionDB.salt));
             ResultSet resultadosql= pst.executeQuery();
             //---------
             int numEmps = 0;
@@ -307,7 +308,7 @@ public class EmpleadoDB {
             else{
                 return false;
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NoSuchAlgorithmException e) {
             //Log.i("sql", "error sql");
             return false;
         }

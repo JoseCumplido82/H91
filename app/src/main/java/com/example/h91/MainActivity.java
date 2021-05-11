@@ -60,12 +60,20 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean resultado = false;
                 System.out.println(passAComparar);
-                    resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, passAComparar);
+                try {
+                    resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,ConfiguracionDB.salt));
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
 
                 System.out.println("clave primera :" + passAComparar);
                 if (resultado == true) {
                     System.out.println(passAComparar);
-                  ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, passAComparar);
+                    try {
+                        ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, passAComparar);
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    }
                     System.out.println("imprimir despues del comprobar datos empleado: " + passAComparar);
                         mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                         Log.i("sql", "encontrado");
@@ -105,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public boolean ComprobarSiHayDatosEmpleado(String dni, String pass){
+    public boolean ComprobarSiHayDatosEmpleado(String dni, String pass) throws NoSuchAlgorithmException {
         System.out.println("clave dentro del metodo comprobar si hay datos del empleado :" + passAComparar);
         boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, passAComparar);
         String nombre = "";
@@ -144,25 +152,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    //PARA CONTINUAR CON EL LOGIN DE USUARIO
-    public void comprobarUser(String nombre, String pass){
-        String nombreUser= String.valueOf(nombreUsuario.getText());
-        String passUser= String.valueOf(edt_pass.getText());
-        Empleado ComprobarEmpleado= new Empleado(nombreUser, passUser);
-        //buscar empleado en tabla para ver si existe
-      boolean ComprobadoOK=EmpleadoDB.EmpleadoEnTabla(ComprobarEmpleado.getUsuario(), ComprobarEmpleado.getPass());
-      if(ComprobadoOK){
-          System.out.println("existe empleado");
-           Intent intent= new Intent(this, PanelEmpleado.class);
-           startActivityForResult(intent,0);
-      }else {
-          System.out.println("no existe empleado");
-          mostrarToast("no llegas a loguear");
-      }
-        Log.i("empleado recuperado" , "he recuperado el empleado " + ComprobarEmpleado.getUsuario() + " " + ComprobarEmpleado.getPass());
-
-    }
 
 
 
