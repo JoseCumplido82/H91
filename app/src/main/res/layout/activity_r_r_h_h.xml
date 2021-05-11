@@ -47,7 +47,7 @@
         android:id="@+id/bt_crearNotificacion"
         android:layout_width="260dp"
         android:layout_height="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="116dp"
         android:text="@string/crear_notificacion"
         android:visibility="invisible"
         app:backgroundTint="@color/design_default_color_error"
@@ -60,11 +60,23 @@
         android:id="@+id/bt_cerrarSesionRRHH"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:text="@string/cerrar_sesion"
         app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="@+id/bt_crearNotificacion"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="@+id/bt_crearNotificacion"
         app:layout_constraintTop_toBottomOf="@+id/bt_crearNotificacion" />
+
+    <Button
+        android:id="@+id/bt_cambiarPassRRHH"
+        android:layout_width="260dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/cambiar_contrase_a"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/bt_planificacionTiempo"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/bt_planificacionTiempo"
+        app:layout_constraintTop_toBottomOf="@+id/bt_planificacionTiempo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

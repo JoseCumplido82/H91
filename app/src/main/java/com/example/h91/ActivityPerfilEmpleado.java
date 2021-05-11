@@ -132,9 +132,13 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
+                System.out.println("1----------------------------------------------------------");
+
                 System.out.println("contraseña despues del bool: " + ConfiguracionDB.PassActual);
                 if(EmpleadoEnTabla){
                     Empleado e= (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
+                    System.out.println("2----------------------------------------------------------");
+
                     System.out.println("pass " + e.getPass());
                     try {
                         salt=ConfiguracionDB.getSalt();
@@ -142,6 +146,7 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                         noSuchAlgorithmException.printStackTrace();
                     }
                     passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual, salt);
+                    System.out.println("3----------------------------------------------------------");
                     System.out.println("pass cifrada " + passCifrada);
                     String textosalt= ConfiguracionDB.saltToString(salt);
 
@@ -151,6 +156,7 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                             e= new Empleado(e.getId(),Integer.valueOf((String) txt_departamento1.getText()), txt_dni1.getText().toString(), e.getPass(),textosalt, txt_nombre1.getText().toString(),
                                     txt_apellidos1.getText().toString(), txt_domicilio1.getText().toString(), txt_correo1.getText().toString(),
                                     txt_telefono1.getText().toString(),e.getFecha_incorporacion());
+                            System.out.println("4----------------------------------------------------------");
 
                             Log.i("Datos del empleado", e.toString());
                             boolean actualidadook= EmpleadoController.actualizarEmpleado(e);

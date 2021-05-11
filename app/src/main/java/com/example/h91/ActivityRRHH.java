@@ -64,5 +64,15 @@ public class ActivityRRHH extends AppCompatActivity {
             }
         });
 
+        //boton cambiar contraseña RRHH
+        Button bt_cambiarPassRRHH =(Button) findViewById(R.id.bt_cambiarPassRRHH);
+        bt_cambiarPassRRHH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(v.getContext(), ActivityCambiarPass.class);
+                startActivityForResult(intent,0);
+            }
+        });
+
     }
 }
