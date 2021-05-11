@@ -22,9 +22,11 @@ import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
     private String url;
+    Empleado empleado;
     public EditText nombreUsuario;
     public EditText edt_pass;
     String passAComparar = "";
+    byte[] salt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,32 +50,22 @@ public class MainActivity extends AppCompatActivity {
                 ConfiguracionDB.UsuarioActual = usuario;
                 ConfiguracionDB.PassActual = password;
 
-
-                try {
-                    passAComparar =ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,ConfiguracionDB.salt);
-                    System.out.println("imprimo el salt" + ConfiguracionDB.salt);
-                    System.out.println("imprimo el get salt :" + ConfiguracionDB.getSalt()) ;
-                } catch (NoSuchAlgorithmException e) {
-                    e.printStackTrace();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    salt=ConfiguracionDB.saltFromString(empleado.getSalt());
                 }
+                passAComparar =ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,salt);
+
 
 
                 boolean resultado = false;
                 System.out.println(passAComparar);
-                try {
-                    resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,ConfiguracionDB.salt));
-                } catch (NoSuchAlgorithmException e) {
-                    e.printStackTrace();
-                }
+
+                    resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, passAComparar);
 
                 System.out.println("clave primera :" + passAComparar);
                 if (resultado == true) {
                     System.out.println(passAComparar);
-                    try {
-                        ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, passAComparar);
-                    } catch (NoSuchAlgorithmException e) {
-                        e.printStackTrace();
-                    }
+                    ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, passAComparar);
                     System.out.println("imprimir despues del comprobar datos empleado: " + passAComparar);
                         mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                         Log.i("sql", "encontrado");
@@ -113,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public boolean ComprobarSiHayDatosEmpleado(String dni, String pass) throws NoSuchAlgorithmException {
+    public boolean ComprobarSiHayDatosEmpleado(String dni, String pass) {
         System.out.println("clave dentro del metodo comprobar si hay datos del empleado :" + passAComparar);
         boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, passAComparar);
         String nombre = "";

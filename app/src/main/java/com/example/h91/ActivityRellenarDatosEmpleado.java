@@ -1,7 +1,9 @@
 package com.example.h91;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -30,6 +32,7 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
     EditText edt_password1=null;
     EditText edt_password2=null;
     String passCifrada="";
+    byte salt[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
         edt_password2.setText("");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void GuardarDatosEmpleado(View view) throws NoSuchAlgorithmException {
      String nombre= edt_NombreEmpleado.getText().toString();
      String apellidos= edt_ApellidosEmpleado.getText().toString();
@@ -73,8 +77,10 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
             Empleado empleado= (EmpleadoDB.buscarEmpleadoTabla(dni));
 
          if (edt_password1.getText().toString().equals(edt_password2.getText().toString()) && validarEmail(email)) {
-             passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(pass1, ConfiguracionDB.salt);
-              empleado = new Empleado(empleado.getId(),empleado.getIdDepartamento(), dni, passCifrada, nombre, apellidos, domicilio, email, telefono, empleado.getFecha_incorporacion());
+             salt=ConfiguracionDB.getSalt();
+             passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass,salt);
+             String textosalt= ConfiguracionDB.saltToString(salt);
+              empleado = new Empleado(empleado.getId(),empleado.getIdDepartamento(), dni, passCifrada, textosalt, nombre, apellidos, domicilio, email, telefono, empleado.getFecha_incorporacion());
 
              Log.i("Datos del empleado", empleado.toString());
              boolean actualidadook = EmpleadoController.actualizarEmpleado(empleado);

@@ -18,6 +18,7 @@ public class Empleado implements Serializable {
     private int idDepartamento;
     private String usuario;
     private String pass;
+    private String salt;
     private String nombre;
     private String apellido;
     private String domicilio;
@@ -65,13 +66,41 @@ public class Empleado implements Serializable {
         this.fecha_salida = null;
     }
 
-    public Empleado(int idDepartamento, String usuario,String pass, Date fecha_incorporacion) throws NoSuchAlgorithmException {
+    public Empleado(int idDepartamento, String usuario,String pass,String salt, Date fecha_incorporacion)  {
         this.idDepartamento = idDepartamento;
         this.usuario = usuario;
-        this.pass= ConfiguracionDB.get_SHA_512_SecurePassword("Madrid2021", ConfiguracionDB.getSalt());
+        this.pass= "Madrid2021";
+        this.salt=salt;
+        this.fecha_incorporacion = fecha_incorporacion;
+    }
+    public Empleado(int idDepartamento, String usuario,String pass, Date fecha_incorporacion)  {
+        this.idDepartamento = idDepartamento;
+        this.usuario = usuario;
+        this.pass= "Madrid2021";
         this.fecha_incorporacion = fecha_incorporacion;
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public Empleado(int id, int idDepartamento, String usuario, String pass, String salt, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion) {
+        this.id = id;
+        this.idDepartamento = idDepartamento;
+        this.usuario = usuario;
+        this.pass = pass;
+        this.salt = salt;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.domicilio = domicilio;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.fecha_incorporacion = fecha_incorporacion;
+    }
 
     public Empleado(int idDepartamento, String usuario, String pass, String nombre, String apellido, String domicilio, String correo, String telefono, Date fecha_incorporacion) {
         this.idDepartamento = idDepartamento;

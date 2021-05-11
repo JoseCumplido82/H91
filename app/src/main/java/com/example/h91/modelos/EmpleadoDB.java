@@ -74,17 +74,18 @@ public class EmpleadoDB {
         }
         //------------
         try{
-           String ordensql = "INSERT INTO empleado (idDepartamento, usuario, pass, fecha_incorporacion) VALUES (?, ?, ?, ?);";
+           String ordensql = "INSERT INTO empleado (idDepartamento, usuario, pass, salt, fecha_incorporacion) VALUES (?, ?, ?, ?, ?);";
            // String ordensql= "INSERT INTO `empleado`(`idDepartamento`, `usuario`, `pass`,`fecha_incorporacion`) VALUES (2,'47147133G','Madrid2021*','2020-01-07');"; PROBADO EN MYSQL Y FUNCIONA CORRECTAMENTE LA SENTENCIA
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, empleado.getIdDepartamento());
             pst.setString(2, empleado.getUsuario());
             pst.setString(3, empleado.getPass());
+            pst.setString(4,empleado.getSalt());
             DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
             String strDate = dateFormat.format(empleado.getFecha_incorporacion());
             Log.i("sql", "valor de la fecha -> "+ strDate);
             java.sql.Date sqlFecha= java.sql.Date.valueOf(strDate);
-            pst.setDate(4, sqlFecha);
+            pst.setDate(5, sqlFecha);
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();
@@ -136,18 +137,19 @@ public class EmpleadoDB {
         }
         //---------------------------------
         try {
-            String ordensql = "UPDATE empleado SET idDepartamento =?, usuario=?, pass=?, nombre=?, apellido=?, domicilio=?, correo=?, telefono=?, fecha_incorporacion=? WHERE (id=?);";
+            String ordensql = "UPDATE empleado SET idDepartamento =?, usuario=?, pass=?, salt=?, nombre=?, apellido=?, domicilio=?, correo=?, telefono=?, fecha_incorporacion=? WHERE (id=?);";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, empleado.getIdDepartamento());
             pst.setString(2, empleado.getUsuario());
             pst.setString(3, empleado.getPass());
-            pst.setString(4, empleado.getNombre());
-            pst.setString(5, empleado.getApellido());
-            pst.setString(6, empleado.getDomicilio());
-            pst.setString(7, empleado.getCorreo());
-            pst.setString(8, empleado.getTelefono());
-            pst.setDate(9, (java.sql.Date) empleado.getFecha_incorporacion());
-            pst.setInt(10, empleado.getId());
+            pst.setString(4, empleado.getSalt());
+            pst.setString(5, empleado.getNombre());
+            pst.setString(6, empleado.getApellido());
+            pst.setString(7, empleado.getDomicilio());
+            pst.setString(8, empleado.getCorreo());
+            pst.setString(9, empleado.getTelefono());
+            pst.setDate(10, (java.sql.Date) empleado.getFecha_incorporacion());
+            pst.setInt(11, empleado.getId());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();
@@ -171,18 +173,19 @@ public class EmpleadoDB {
         }
         //---------------------------------
         try {
-            String ordensql = "UPDATE empleado SET idDepartamento =?, usuario=?, pass=?, nombre=?, apellido=?, domicilio=?, correo=?, telefono=?, fecha_incorporacion=? WHERE (id=?);";
+            String ordensql = "UPDATE empleado SET idDepartamento =?, usuario=?, pass=?, salt=?, nombre=?, apellido=?, domicilio=?, correo=?, telefono=?, fecha_incorporacion=? WHERE (id=?);";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, empleado.getIdDepartamento());
             pst.setString(2, empleado.getUsuario());
             pst.setString(3, empleado.getPass());
-            pst.setString(4, empleado.getNombre());
-            pst.setString(5, empleado.getApellido());
-            pst.setString(6, empleado.getDomicilio());
-            pst.setString(7, empleado.getCorreo());
-            pst.setString(8, empleado.getTelefono());
-            pst.setDate(9, (java.sql.Date) empleado.getFecha_incorporacion());
-            pst.setInt(10, empleado.getId());
+            pst.setString(4,empleado.getSalt());
+            pst.setString(5, empleado.getNombre());
+            pst.setString(6, empleado.getApellido());
+            pst.setString(7, empleado.getDomicilio());
+            pst.setString(8, empleado.getCorreo());
+            pst.setString(9, empleado.getTelefono());
+            pst.setDate(10, (java.sql.Date) empleado.getFecha_incorporacion());
+            pst.setInt(11, empleado.getId());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();
@@ -289,8 +292,8 @@ public class EmpleadoDB {
             Log.i("sql", "usuario actual -> " + ConfiguracionDB.UsuarioActual);
             pst.setString(1, usuario);
             //pst.setString(1, usuario);
-            Log.i("sql", "password actual -> " + ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,ConfiguracionDB.salt));
-            pst.setString(2, ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,ConfiguracionDB.salt));
+            Log.i("sql", "password actual -> " + ConfiguracionDB.PassActual);
+            pst.setString(2, ConfiguracionDB.PassActual);
             ResultSet resultadosql= pst.executeQuery();
             //---------
             int numEmps = 0;
@@ -308,7 +311,7 @@ public class EmpleadoDB {
             else{
                 return false;
             }
-        } catch (SQLException | NoSuchAlgorithmException e) {
+        } catch (SQLException e) {
             //Log.i("sql", "error sql");
             return false;
         }
@@ -337,6 +340,7 @@ public class EmpleadoDB {
                 int idDepartamento= resultadosql.getInt("idDepartamento");
                 String usuariodos = resultadosql.getString("usuario");
                 String pass = resultadosql.getString("pass");
+                String salt = resultadosql.getString("salt");
                 String nombreEmpleado = resultadosql.getString("nombre");
                 String apellido = resultadosql.getString("apellido");
                 String domicilio = resultadosql.getString("domicilio");
@@ -344,7 +348,7 @@ public class EmpleadoDB {
                 String telefono = resultadosql.getString("telefono");
                 Date fecha_incorporacion = resultadosql.getDate("fecha_incorporacion");
 
-                empleadoEncontrado = new Empleado(id, idDepartamento, usuariodos, pass, nombreEmpleado, apellido, domicilio, correo, telefono, fecha_incorporacion);
+                empleadoEncontrado = new Empleado(id, idDepartamento, usuariodos, pass, salt, nombreEmpleado, apellido, domicilio, correo, telefono, fecha_incorporacion);
             }
             resultadosql.close();
             pst.close();

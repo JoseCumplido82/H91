@@ -1,8 +1,10 @@
 package com.example.h91;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -40,7 +42,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
     ArrayList<Departamento> departamentos=null;
     EditText edt_fechaIncorporacion=null;
     String passCifrada="";
-
+    byte [] salt;
 
     public ActivityAnadirEmpleado() throws NoSuchAlgorithmException {
     }
@@ -98,6 +100,7 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
         AlertDialog.Builder alerta1 = new AlertDialog.Builder(this);
         alerta1.setTitle("quieres guardar el empleado?");
         alerta1.setPositiveButton("si", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if(dseleccionado == null)
@@ -109,18 +112,15 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
 
                 Empleado em = null;
                 try{
-
-                    try {
-                        passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass, ConfiguracionDB.salt);
-                    } catch (NoSuchAlgorithmException e) {
-                        e.printStackTrace();
-                    }
+                    salt=ConfiguracionDB.getSalt();
+                        passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass,salt);
+                        String textosalt= ConfiguracionDB.saltToString(salt);
                     System.out.println(passCifrada);
                     String salt= String.valueOf(ConfiguracionDB.getSalt());
                     String usuario= String.valueOf(edt_dni.getText());
                     String fechatexto= String.valueOf(edt_fechaIncorporacion.getText());
                     Date fechaIncorporacion2=new SimpleDateFormat("yyyy-mm-dd").parse(fechatexto);
-                    em = new Empleado(dseleccionado.getId(), usuario, passCifrada,fechaIncorporacion2);
+                    em = new Empleado(dseleccionado.getId(), usuario, passCifrada,textosalt,fechaIncorporacion2);
                     Log.i("recoge", "recoge" + " " + em);
                     //insertar Empleado
                     boolean insertadoOK = EmpleadoController.InsertarEmpleado(em);

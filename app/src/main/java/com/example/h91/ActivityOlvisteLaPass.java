@@ -1,8 +1,10 @@
 package com.example.h91;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +20,7 @@ import java.security.NoSuchAlgorithmException;
 public class ActivityOlvisteLaPass extends AppCompatActivity {
     EditText edt_NombreUsuario;
     String passCifrada="";
+    byte [] salt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -30,15 +33,20 @@ public class ActivityOlvisteLaPass extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void RestablecerPassOlvidada(View view) {
         try {
             if(edt_NombreUsuario.getText().toString().isEmpty()){
                 edt_NombreUsuario.setError("Introduce tu usuario");
                 mostrarToast("INTRODUCE TU USUARIO");
             }
+            salt=ConfiguracionDB.getSalt();
+            passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass,salt);
+            String textosalt= ConfiguracionDB.saltToString(salt);
+
             Empleado empleado = (EmpleadoDB.buscarEmpleadoTabla(edt_NombreUsuario.getText().toString()));
             empleado = new Empleado(empleado.getId(), empleado.getIdDepartamento(), edt_NombreUsuario.getText().toString(),
-                    ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass, ConfiguracionDB.salt), empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo()
+                    ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.pass, salt),textosalt, empleado.getNombre(), empleado.getApellido(), empleado.getDomicilio(), empleado.getCorreo()
                     , empleado.getTelefono(), empleado.getFecha_incorporacion());
             boolean actualizadoOK = EmpleadoController.actualizarEmpleado(empleado);
             if (actualizadoOK) {
