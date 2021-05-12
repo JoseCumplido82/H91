@@ -13,7 +13,7 @@ import java.util.Base64;
 
 public class ConfiguracionDB {
 
-    //PARA LOCAL
+    //PARA CONECTAR CON BBDD LOCAL
    // public static final String HOSTDB = "10.0.2.2";
    // public static final String NOMBREDB = "empleados";
    // public static final String USUARIODB = "root";
@@ -24,7 +24,7 @@ public class ConfiguracionDB {
 
     //----------------------------------------------------------------------------------------------------
 
-    //PARA EXTERNA
+    //PARA CONECTAR CON BBDD SERVIDOR EXTERNA RAIOLA
 
     //84.78.105.67 - ip publica equipo local
 
@@ -40,7 +40,7 @@ public class ConfiguracionDB {
     //public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
 
 
-    //PARA SERVER INSTITUTO
+    //PARA CONECTAR CON BBDD SERVER INSTITUTO
 
 
     public static final String HOSTDB="infsalinas.sytes.net";
@@ -67,7 +67,12 @@ public class ConfiguracionDB {
         }
     }
 
-    //------------
+
+
+
+
+
+    //---------------------------------------------------------------------------
     //METODOS DE ENCRIPTACION SHA_1, SHA 256 Y SHA 512
 
     public static String get_SHA_1_SecurePassword(String passwordToHash, byte[] salt) {

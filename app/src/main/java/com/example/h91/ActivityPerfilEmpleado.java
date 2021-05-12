@@ -30,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class ActivityPerfilEmpleado extends AppCompatActivity {
 
 
@@ -45,8 +46,9 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
     Button bt_volverAtras=null;
     Button bt_guardarEmpleado=null;
     TextView txt_nombredpo=null;
-    String passCifrada="";
+    //String passCifrada="";
     byte[]salt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +135,6 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
                 System.out.println("1----------------------------------------------------------");
-
                 System.out.println("contraseña despues del bool: " + ConfiguracionDB.PassActual);
                 if(EmpleadoEnTabla){
                     Empleado e= (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
@@ -145,15 +146,15 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                     } catch (NoSuchAlgorithmException noSuchAlgorithmException) {
                         noSuchAlgorithmException.printStackTrace();
                     }
-                    passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual, salt);
+                    //passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual, salt);
                     System.out.println("3----------------------------------------------------------");
-                    System.out.println("pass cifrada " + passCifrada);
+                    //System.out.println("pass cifrada " + passCifrada);
                     String textosalt= ConfiguracionDB.saltToString(salt);
 
                     if(!txt_correo1.getText().equals("")||!txt_domicilio1.getText().equals("")||!txt_telefono1.equals("")){
                         if(validarEmail(txt_correo1.getText().toString())){
 
-                            e= new Empleado(e.getId(),Integer.valueOf((String) txt_departamento1.getText()), txt_dni1.getText().toString(), e.getPass(),textosalt, txt_nombre1.getText().toString(),
+                            e= new Empleado(e.getId(),Integer.valueOf((String) txt_departamento1.getText()), txt_dni1.getText().toString(), e.getPass(),e.getSalt(), txt_nombre1.getText().toString(),
                                     txt_apellidos1.getText().toString(), txt_domicilio1.getText().toString(), txt_correo1.getText().toString(),
                                     txt_telefono1.getText().toString(),e.getFecha_incorporacion());
                             System.out.println("4----------------------------------------------------------");
@@ -161,10 +162,13 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                             Log.i("Datos del empleado", e.toString());
                             boolean actualidadook= EmpleadoController.actualizarEmpleado(e);
                             if(actualidadook){
+                                System.out.println("pass ->" + e.getPass());
+                                System.out.println("salt -> " + e.getSalt());
                                 mostrarToast("EMPLEADO ACTUALIZADO CORRECTAMENTE");
                                 System.out.println("Empleado actualizado " + e.toString());
                                 finish();
-                                Intent intent= new Intent(ActivityPerfilEmpleado.this, MainActivity.class);
+                                Intent intent= new Intent(ActivityPerfilEmpleado.this, PanelEmpleado.class);
+                                //Intent intent= new Intent(ActivityPerfilEmpleado.this, MainActivity.class);
                                 startActivity(intent);
                             }else {
                                 mostrarToast("EMPLEADO NO ACTUALIZADO ");
