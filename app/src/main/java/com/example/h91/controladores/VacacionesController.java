@@ -37,7 +37,7 @@ public class VacacionesController {
             return insercionOK;
         }
     }
-
+//-------------------------------------------------------------------------------
     public static ArrayList<Vacaciones> obtenerVacaciones(){
         ArrayList<Vacaciones> vacacionesDevueltas=null;
         FutureTask t= new FutureTask(new TareaObtenerVacaciones());
@@ -60,7 +60,7 @@ public class VacacionesController {
         }
         return vacacionesDevueltas;
     }
-
+//-------------------------------------------------------------------------
     public static boolean borrarVacaciones(Vacaciones vacaciones)
     {
         FutureTask t = new FutureTask(new TareaBorrarVacaciones(vacaciones));
@@ -86,8 +86,4 @@ public class VacacionesController {
             return borradoOK;
         }
     }
-
-
-
-
 }

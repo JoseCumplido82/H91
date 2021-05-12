@@ -87,7 +87,6 @@ public class TramitesDB {
             return null;
         }
     }
-
     //---------------------------------------------------------------------------
     public static boolean borrarTramitesTabla(Tramites tramites)
     {
@@ -150,9 +149,6 @@ public static boolean IDEmpleadoAusencia(int idEmpleado) {
         return false;
     }
 }
-
-
-
 //-----------------------------------------------------------------------------
     public static Tramites buscarTramitesTabla(String nombre_documento){
         Connection conexion = BaseDB.conectarConBaseDeDatos();

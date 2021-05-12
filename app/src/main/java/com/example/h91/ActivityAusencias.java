@@ -109,9 +109,6 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
 
     }
 
-
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -123,8 +120,6 @@ public class ActivityAusencias extends AppCompatActivity implements View.OnClick
                 break;
         }
     }
-
-
 
     private void obtenerFecha(){
         DatePickerDialog recogerFecha = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {

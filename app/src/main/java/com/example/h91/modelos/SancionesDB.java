@@ -38,7 +38,7 @@ public class SancionesDB {
             return false;
         }
     }
-
+//------------------------------------------------------------
     public static Sanciones buscarSacionesTabla(String motivo)
     {
         Connection conexion = BaseDB.conectarConBaseDeDatos();
@@ -46,11 +46,9 @@ public class SancionesDB {
         {
             return null;
         }
-        //-------------
         Sanciones sancionesEncontradas=null;
         try {
             ResultSet resultadosql= BaseDB.buscarFilasEnTabla(conexion, "sanciones", "motivo", motivo);
-            //---------------
             if(resultadosql==null)
             {
                 return null;
@@ -69,7 +67,7 @@ public class SancionesDB {
             return null;
         }
     }
-
+//---------------------------------------------------------
     public static ArrayList<Sanciones> obtenerSanciones(){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
         if(conexion == null)
@@ -99,7 +97,7 @@ public class SancionesDB {
             return sancionesDevueltas;
         }
     }
-
+//-------------------------------------------------------------------------
     public static boolean borrarSancionesTabla(Sanciones s)
     {
         Connection conexion = BaseDB.conectarConBaseDeDatos();
@@ -107,7 +105,6 @@ public class SancionesDB {
         {
             return false;
         }
-        //----------------------------
         try {
             String ordensql= "DELETE FROM sanciones WHERE isSancionado LIKE ?;";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
@@ -126,14 +123,13 @@ public class SancionesDB {
             return false;
         }
     }
-
+//----------------------------------------------------------------------
     public static boolean actualizarSancionesTabla(Sanciones s){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
         if(conexion == null)
         {
             return false;
         }
-        //----------------------------
         try {
             String ordensql= "UPDATE sanciones SET idSancionado = ? WHERE id=?";
             PreparedStatement pst= conexion.prepareStatement(ordensql);

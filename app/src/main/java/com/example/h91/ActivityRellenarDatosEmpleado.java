@@ -73,9 +73,6 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
      String pass1= edt_password1.getText().toString();
      String pass2= edt_password2.getText().toString();
      String dni= ConfiguracionDB.UsuarioActual;
-     //salt=ConfiguracionDB.getSalt();
-     //passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,salt);
-     //String textosalt= ConfiguracionDB.saltToString(salt);
      boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(dni, ConfiguracionDB.PassActual);
      if(EmpleadoEnTabla) {
             Empleado empleado= (EmpleadoDB.buscarEmpleadoTabla(dni));
@@ -89,8 +86,8 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
          String textosalt= ConfiguracionDB.saltToString(salt);
 
          if (edt_password1.getText().toString().equals(edt_password2.getText().toString()) && validarEmail(email)) {
-             //String nuevaClaveCifrada= ConfiguracionDB.get_SHA_512_SecurePassword(pass1, salt);
-                     empleado = new Empleado(empleado.getId(),empleado.getIdDepartamento(), dni, passCifrada, textosalt, nombre, apellidos, domicilio, email, telefono, empleado.getFecha_incorporacion());
+
+             empleado = new Empleado(empleado.getId(),empleado.getIdDepartamento(), dni, passCifrada, textosalt, nombre, apellidos, domicilio, email, telefono, empleado.getFecha_incorporacion());
 
              Log.i("Datos del empleado", empleado.toString());
              boolean actualidadook = EmpleadoController.actualizarEmpleado(empleado);
@@ -116,11 +113,6 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
          }
          }
     }
-
-
-
-
-
 
     private void mostrarToast(String encontrado) {
         Toast.makeText(this,"logeado",Toast.LENGTH_SHORT).show();

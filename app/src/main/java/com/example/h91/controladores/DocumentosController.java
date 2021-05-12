@@ -39,7 +39,7 @@ public class DocumentosController {
             return insercionOK;
         }
     }
-
+//------------------------------------------------------------------------------
     public static ArrayList<Documentos> obtenerDocumentos() {
         ArrayList<Documentos> documentosDevueltos = null;
         FutureTask t = new FutureTask (new TareaObtenerDocumentos());
@@ -62,7 +62,7 @@ public class DocumentosController {
         }
         return documentosDevueltos;
     }
-
+//--------------------------------------------------------------------------------
     public static boolean borrarDocumentos(Documentos d)
     {
         FutureTask t = new FutureTask(new TareaBorrarDocumentos(d));
@@ -89,7 +89,7 @@ public class DocumentosController {
             return borradoOK;
         }
     }
-
+//--------------------------------------------------------------------------------
     public static boolean actualizarDocumentos(Documentos d) {
         FutureTask t = new FutureTask(new TareaActualizarDocumentos(d));
         ExecutorService es = Executors.newSingleThreadExecutor();

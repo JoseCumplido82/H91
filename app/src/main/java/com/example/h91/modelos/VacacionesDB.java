@@ -64,7 +64,7 @@ public class VacacionesDB {
             return false;
         }
     }
-
+//-------------------------------------------------------------------------
     public static ArrayList<Vacaciones> obtenerVacaciones()
     {
         Connection conexion = BaseDB.conectarConBaseDeDatos();
@@ -89,7 +89,6 @@ public class VacacionesDB {
                 int idEstado= resultado.getInt("idEstado");
                 Vacaciones v= new Vacaciones(id, idSolicitante, fecha_inicio, fecha_fin, dias, fecha_solicitud, idEstado);
                 vacacionesDevueltas.add(v);
-
             }
             resultado.close();
             sentencia.close();
@@ -100,7 +99,6 @@ public class VacacionesDB {
             return null;
         }
     }
-
     //---------------------------------------------------------------------------
     public static boolean borrarVacacionesTabla(Vacaciones vacaciones)
     {
@@ -134,14 +132,12 @@ public class VacacionesDB {
         if(conexion == null){
             return null;
         }
-        //--------------------------------------------------
         Vacaciones vacacionesEncontradas = null;
         try{
             String ordensql = "select * from vacaciones where idSolicitante like ?";
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, IdSolicitante);
             ResultSet resultadosql= pst.executeQuery();
-            //---------------------------------------------
             while (resultadosql.next())
             {
                 int id = resultadosql.getInt("id");

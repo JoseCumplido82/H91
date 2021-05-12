@@ -17,10 +17,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class EmpleadoDB {
-
-
-
-
     //------------------------------------------------------------
     public static ArrayList<Empleado> obtenerEmpleados(){
         Connection conexion= BaseDB.conectarConBaseDeDatos();
@@ -36,7 +32,6 @@ public class EmpleadoDB {
             ResultSet resultado= sentencia.executeQuery(ordenSQL);
             while (resultado.next())
             {
-                // System.out.println("llega al resultado del while pero no coge los atributos del empleado");
                 int id= resultado.getInt("id");
                 int idDepartamento= resultado.getInt("idDepartamento");
                 String usuario= resultado.getString("usuario");
@@ -46,10 +41,7 @@ public class EmpleadoDB {
                 String domicilio = resultado.getString("domicilio");
                 String correo = resultado.getString("correo");
                 String telefono = resultado.getString("telefono");
-                //posible error con date, cambiar la importacion de util a sql
                 Date fecha_incorporacion = resultado.getDate("fecha_incorporacion");
-                //Date fecha_salida = resultado.getDate("fecha_salida");
-                //CORREGIR
                 Empleado empleado= new Empleado(id, idDepartamento, usuario, pass, nombre, apellido, domicilio, correo, telefono, fecha_incorporacion);
                 empleadosDevueltos.add(empleado);
 
@@ -75,7 +67,6 @@ public class EmpleadoDB {
         //------------
         try{
            String ordensql = "INSERT INTO empleado (idDepartamento, usuario, pass, salt, fecha_incorporacion) VALUES (?, ?, ?, ?, ?);";
-           // String ordensql= "INSERT INTO `empleado`(`idDepartamento`, `usuario`, `pass`,`fecha_incorporacion`) VALUES (2,'47147133G','Madrid2021*','2020-01-07');"; PROBADO EN MYSQL Y FUNCIONA CORRECTAMENTE LA SENTENCIA
             PreparedStatement pst= conexion.prepareStatement(ordensql);
             pst.setInt(1, empleado.getIdDepartamento());
             pst.setString(2, empleado.getUsuario());
@@ -200,9 +191,6 @@ public class EmpleadoDB {
             return false;
         }
     }
-
-
-
     //---------------------------------------------
     public static boolean EmpleadoEnTabla(String usuario, String pass) {
         Connection conexion = BaseDB.conectarConBaseDeDatos();
@@ -242,8 +230,6 @@ public class EmpleadoDB {
         }
     }
     //-------------------------------------------------------------------
-
-    //---------------------------------------------
     public static boolean EmpleadoID(int usuario) {
         Connection conexion = BaseDB.conectarConBaseDeDatos();
         if (conexion == null) {
@@ -251,7 +237,6 @@ public class EmpleadoDB {
             return false;
         }
         try {
-            /////---------------------------------
             String ordenSQL = "select * from empleado where id like ?";
             PreparedStatement pst=conexion.prepareStatement(ordenSQL);
             pst.setInt(1, usuario);
@@ -291,9 +276,7 @@ public class EmpleadoDB {
             PreparedStatement pst=conexion.prepareStatement(ordenSQL);
             Log.i("sql", "usuario actual -> " + ConfiguracionDB.UsuarioActual);
             pst.setString(1, usuario);
-            //pst.setString(1, usuario);
             Log.i("sql", "password actual -> " + ConfiguracionDB.PassActual);
-          //  pst.setString(2, ConfiguracionDB.PassActual);
             pst.setString(2, pass);
             ResultSet resultadosql= pst.executeQuery();
             //---------
@@ -313,15 +296,10 @@ public class EmpleadoDB {
                 return false;
             }
         } catch (SQLException e) {
-            //Log.i("sql", "error sql");
             return false;
         }
     }
-
-
-
-
-
+    //-----------------------------------------------------------------------
     public static Empleado buscarEmpleadoTabla(String usuario){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
         if(conexion == null){

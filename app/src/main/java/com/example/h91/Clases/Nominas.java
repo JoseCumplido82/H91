@@ -12,7 +12,6 @@ public class Nominas implements Serializable {
     private Date fecha_subida;
 
     //constructores
-
     public Nominas(int id, int idEmpleado, String nombre, Date fecha_subida) {
         this.id = id;
         this.idEmpleado = idEmpleado;

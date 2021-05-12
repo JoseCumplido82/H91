@@ -12,6 +12,7 @@ import com.example.h91.MostrarDetalleDocumentosActivity;
 import com.example.h91.R;
 
 public class DocumentosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
     public TextView txt_asunto= null;
     public TextView txt_fecha= null;
 

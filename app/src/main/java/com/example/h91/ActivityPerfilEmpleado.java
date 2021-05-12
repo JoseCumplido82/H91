@@ -56,8 +56,6 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
         //para ocultar la barra de status
         getSupportActionBar().hide();
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_empleado);
         txt_dni1=(TextView)findViewById(R.id.txt_dni1);
@@ -73,8 +71,6 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
         txt_nombredpo=(TextView)findViewById(R.id.txt_nombredpo);
         bt_guardarEmpleado=(Button)findViewById(R.id.bt_guardarEmpleado);
         String nombreDpt="";
-
-
            boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
            if(EmpleadoEnTabla){
               Empleado e= (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
@@ -96,6 +92,12 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                            nombreDpt="Marketplace";
                        }else if(e.getIdDepartamento()==5){
                            nombreDpt="Logistica";
+                       }else if(e.getIdDepartamento()==13){
+                           nombreDpt="RRHH";
+                       }else if(e.getIdDepartamento()==18){
+                           nombreDpt="Desarrollo";
+                       }else if(e.getIdDepartamento()==19){
+                           nombreDpt="IT";
                        }
                 txt_departamento1.setText(String.valueOf(departamentoNombre));
                 txt_nombredpo.setText(nombreDpt);
@@ -112,8 +114,6 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
 
            }
 
-
-
     }
 
     private void mostrarToast(String encontrado) {
@@ -124,8 +124,6 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
     }
-
-
     public void guardar_cambios(View view){
         AlertDialog.Builder alerta= new AlertDialog.Builder(this);
         alerta.setTitle("¿Desea guardar estos cambios?");
@@ -134,31 +132,20 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 boolean EmpleadoEnTabla= EmpleadoDB.EmpleadoEnTabla(ConfiguracionDB.UsuarioActual, ConfiguracionDB.PassActual);
-                System.out.println("1----------------------------------------------------------");
-                System.out.println("contraseña despues del bool: " + ConfiguracionDB.PassActual);
                 if(EmpleadoEnTabla){
                     Empleado e= (EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual));
-                    System.out.println("2----------------------------------------------------------");
-
-                    System.out.println("pass " + e.getPass());
                     try {
                         salt=ConfiguracionDB.getSalt();
                     } catch (NoSuchAlgorithmException noSuchAlgorithmException) {
                         noSuchAlgorithmException.printStackTrace();
                     }
-                    //passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual, salt);
-                    System.out.println("3----------------------------------------------------------");
-                    //System.out.println("pass cifrada " + passCifrada);
                     String textosalt= ConfiguracionDB.saltToString(salt);
-
                     if(!txt_correo1.getText().equals("")||!txt_domicilio1.getText().equals("")||!txt_telefono1.equals("")){
                         if(validarEmail(txt_correo1.getText().toString())){
 
                             e= new Empleado(e.getId(),Integer.valueOf((String) txt_departamento1.getText()), txt_dni1.getText().toString(), e.getPass(),e.getSalt(), txt_nombre1.getText().toString(),
                                     txt_apellidos1.getText().toString(), txt_domicilio1.getText().toString(), txt_correo1.getText().toString(),
                                     txt_telefono1.getText().toString(),e.getFecha_incorporacion());
-                            System.out.println("4----------------------------------------------------------");
-
                             Log.i("Datos del empleado", e.toString());
                             boolean actualidadook= EmpleadoController.actualizarEmpleado(e);
                             if(actualidadook){
@@ -175,9 +162,6 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                                     Intent intent1= new Intent(ActivityPerfilEmpleado.this, PanelEmpleado.class);
                                     startActivity(intent1);
                                 }
-                                //Intent intent= new Intent(ActivityPerfilEmpleado.this, PanelEmpleado.class);
-                                //Intent intent= new Intent(ActivityPerfilEmpleado.this, MainActivity.class);
-                                //startActivity(intent);
                             }else {
                                 mostrarToast("EMPLEADO NO ACTUALIZADO ");
                                 System.out.println("Empleado no actualizado " + e.toString());
@@ -191,8 +175,6 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                         mostrarToast("Debe rellenar todos los 3 campos");
                         System.out.println("error al rellenar los campos");
                     }
-
-
                 }
                 else{
                     mostrarToast("no se ha encontrado el empleado");

@@ -12,7 +12,6 @@ import java.security.SecureRandom;
 import java.util.Base64;
 
 public class ConfiguracionDB {
-
     //PARA CONECTAR CON BBDD LOCAL
    // public static final String HOSTDB = "10.0.2.2";
    // public static final String NOMBREDB = "empleados";
@@ -25,12 +24,9 @@ public class ConfiguracionDB {
     //----------------------------------------------------------------------------------------------------
 
     //PARA CONECTAR CON BBDD SERVIDOR EXTERNA RAIOLA
-
     //84.78.105.67 - ip publica equipo local
-
     //public static final String HOSTDB = "217.182.121.210";
     //public static final String HOSTDB = "hidalgo91.com";
-
     //public static final String NOMBREDB = "hidalgoc_wpD";
     //public static final String USUARIODB = "hidalgoc_wpD";
     //public static final String CLAVEDB = "eE08092020**";
@@ -39,10 +35,9 @@ public class ConfiguracionDB {
     //public static final String PUERTOMYSQL = "2083";
     //public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
 
+    //------------------------------------------------------------------------------------------------------
 
     //PARA CONECTAR CON BBDD SERVER INSTITUTO
-
-
     public static final String HOSTDB="infsalinas.sytes.net";
     public static final String NOMBREDB="empleados";
     public static final String USUARIODB="usuario";
@@ -66,11 +61,6 @@ public class ConfiguracionDB {
             e.printStackTrace();
         }
     }
-
-
-
-
-
 
     //---------------------------------------------------------------------------
     //METODOS DE ENCRIPTACION SHA_1, SHA 256 Y SHA 512

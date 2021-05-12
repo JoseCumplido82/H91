@@ -65,10 +65,6 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements
 
         }
 
-
-
-
-
     }
 
     public void CrearNotificacionEmpleado(View view) {

@@ -43,7 +43,6 @@ public class AusenciasController {
         return ausenciasDevueltas;
     }
     //---------------------------------------------------
-
     public static void MostrarAusencias (TextView txt_ausencias)
     {
         FutureTask t = new FutureTask(new TareaMostrarAusencias());
@@ -74,7 +73,7 @@ public class AusenciasController {
             e.printStackTrace();
         }
     }
-
+//--------------------------------------------------------------------------
     public static boolean InsertarAusencias(Ausencias au){
         FutureTask t = new FutureTask(new TareaInsertarAusencias(au));
         ExecutorService es = Executors.newSingleThreadExecutor();
@@ -100,7 +99,7 @@ public class AusenciasController {
             return insercionOK;
         }
     }
-
+//---------------------------------------------------------------------------------
     public static boolean obtenerIDempleadoAusencia(int dni){
         FutureTask t = new FutureTask(new TareaObtenerIDEmpleado(dni));
         ExecutorService es = Executors.newSingleThreadExecutor();
@@ -125,8 +124,7 @@ public class AusenciasController {
             return obtenidoOK;
         }
     }
-
-
+    //---------------------------------------------------------------------------------
     public static boolean borrarAusencia(Ausencias asleccionada){
         FutureTask t = new FutureTask(new TareaBorrarAusencia(asleccionada));
         ExecutorService es = Executors.newSingleThreadExecutor();

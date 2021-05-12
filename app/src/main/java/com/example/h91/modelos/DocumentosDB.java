@@ -69,6 +69,7 @@ public class DocumentosDB {
             return null;
         }
     }
+    //--------------------------------------------------------------
     public static ArrayList<Documentos> obtenerDocumentos(){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
         if(conexion==null){
@@ -96,7 +97,7 @@ public class DocumentosDB {
             return documentosDevueltos;
         }
     }
-
+//-------------------------------------------------------------------
     public static  boolean borrarDocumentosTabla(Documentos d){
         Connection conexion= BaseDB.conectarConBaseDeDatos();
         if(conexion== null){
@@ -121,7 +122,7 @@ public class DocumentosDB {
             return false;
         }
     }
-
+//--------------------------------------------------------------------------
     public static boolean actualizarDocumentosTabla(Documentos d)
     {
         Connection conexion = BaseDB.conectarConBaseDeDatos();

@@ -46,8 +46,6 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
 
     public ActivityAnadirEmpleado() throws NoSuchAlgorithmException {
     }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //para ocultar la barra de status
@@ -66,9 +64,6 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
                 adapter = new ArrayAdapter<Departamento>(this, R.layout.item_departamento, departamentos);
                 sp_departamento.setAdapter(adapter);
             }
-
-
-
         }
         //boton cerrar añadir empleado
         Button bt_volver16 = (Button) findViewById(R.id.bt_volver16);
@@ -92,8 +87,6 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
         edt_dni.setText("");
         edt_fechaIncorporacion.setText("");
         mostrarToast("Los campos se han reiniciado");
-
-
     }
 
     public void insertarEmpleado(View view) {
@@ -137,7 +130,6 @@ public class ActivityAnadirEmpleado extends AppCompatActivity implements Adapter
 
             }
         });
-
         alerta1.setNegativeButton("no", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

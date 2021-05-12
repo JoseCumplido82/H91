@@ -1,9 +1,10 @@
 package com.example.h91.Clases;
 
 public class Estados {
+    //ATRIBUTOS
     private int id;
     private String nombre;
-
+//CONSTRUCTORES
     public Estados(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
@@ -21,7 +22,7 @@ public class Estados {
         this.id = id;
         this.nombre = "";
     }
-
+//GETTER Y SETTER
     public int getId() {
         return id;
     }
@@ -38,7 +39,7 @@ public class Estados {
         this.nombre = nombre;
     }
 
-
+//TO STRING
     @Override
     public String toString() {
         return "Estados{" +

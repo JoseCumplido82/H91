@@ -61,11 +61,7 @@ public class ActivityCrearNotificacion extends AppCompatActivity {
 
     }
 
-
-
-
     public void crearMensaje(View view){
-
 
        if( cb_seleccionar.isChecked()==true){
            mostrarToast("prueba " + cb_seleccionar.isChecked());

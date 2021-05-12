@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOCUMENTOS DE LOS EMPLEADOS
+    //ATRIBUTOS
     private int id;
     private int idSolicitante;
     private String nombre_documento;
@@ -11,7 +12,7 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
     private String comentario;
     private Date fecha_solicitud;
     private int idEstado;
-    //
+    //CONSTRUCTORES
     public Tramites(int id, int idSolicitante, String nombre_documento, String asunto, String comentario, Date fecha_solicitud, int idEstado) {
         this.id = id;
         this.idSolicitante = idSolicitante;
@@ -63,7 +64,7 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
         this.asunto = asunto;
         this.idEstado=idEstado;
     }
-    //
+    //GETTER Y SETTER
     public int getId() {
         return id;
     }
@@ -118,8 +119,7 @@ public class Tramites implements Serializable { //TABLA TRAMITES QUE SON LOS DOC
     public void setIdEstado(int idEstado) {
         this.idEstado = idEstado;
     }
-    //
-
+    //TO STRING
     @Override
     public String toString() {
         return "Tramites{" +

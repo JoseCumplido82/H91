@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Vacaciones implements Serializable {
+    //ATRIBUTOS
     private int id;
     private int idSolicitante;
     private Date fecha_inicio;
@@ -11,7 +12,7 @@ public class Vacaciones implements Serializable {
     private int dias;
     private Date fecha_solicitud;
     private int idEstado;
-    //-----------
+    //---CONSTRUCTORES--------
     public Vacaciones(int id, int idSolicitante, Date fecha_inicio, Date fecha_fin,int dias, Date fecha_solicitud, int idEstado) {
         this.id = id;
         this.idSolicitante = idSolicitante;
@@ -46,7 +47,7 @@ public class Vacaciones implements Serializable {
         this.fecha_fin = fecha_fin;
         this.fecha_solicitud = fecha_solicitud;
     }
-    //-----------------
+    //-----GETTER Y SETTER------------
     public int getId() {
         return id;
     }
@@ -102,7 +103,7 @@ public class Vacaciones implements Serializable {
     public void setDias(int dias) {
         this.dias = dias;
     }
-    //
+    //TO STRING
     @Override
     public String toString() {
         return "Vacaciones{" +

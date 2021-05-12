@@ -40,7 +40,7 @@ public class TramitesController {
             return insercionOK;
         }
     }
-
+//---------------------------------------------------------------------------
     public static ArrayList<Tramites> obtenerTramites(int idempleado){
         ArrayList<Tramites> tramitesDevueltos=null;
         FutureTask t= new FutureTask(new TareaObtenerTramites(idempleado));
@@ -63,7 +63,7 @@ public class TramitesController {
         }
         return tramitesDevueltos;
     }
-
+//--------------------------------------------------------------------------
     public static boolean obtenerIDempleadoTramite(int dni){
         FutureTask t = new FutureTask(new TareaObtenerIDEmpleado(dni));
         ExecutorService es = Executors.newSingleThreadExecutor();
@@ -88,9 +88,7 @@ public class TramitesController {
             return obtenidoOK;
         }
     }
-
-
-
+    //------------------------------------------------------------------------------
     public static boolean borrarTramites(Tramites t)
     {
         FutureTask task= new FutureTask(new TareaBorrarTramites(t));
@@ -116,6 +114,7 @@ public class TramitesController {
             return borradoOK;
         }
     }
+    //----------------------------------------------------------------------------
     public static boolean actualizarTramites(Tramites tramites){
         FutureTask t= new FutureTask(new TareaActualizarTramites(tramites));
         ExecutorService es= Executors.newSingleThreadExecutor();

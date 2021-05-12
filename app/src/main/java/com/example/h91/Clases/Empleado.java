@@ -140,9 +140,6 @@ public class Empleado implements Serializable {
 
     //getter y setter
 
-
-
-
     public int getId() {
         return id;
     }
@@ -231,8 +228,6 @@ public class Empleado implements Serializable {
         this.fecha_salida = fecha_salida;
     }
     //to string
-
-
     @Override
     public String toString() {
         return

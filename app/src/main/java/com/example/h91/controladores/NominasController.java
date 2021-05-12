@@ -40,7 +40,7 @@ public class NominasController  {
         }
         return nominasDevueltas;
     }
-
+//-----------------------------------------------------------------------
     public static boolean obtenerIDempleadoTramite(int dni){
         FutureTask t = new FutureTask(new TareaObtenerIDEmpleado(dni));
         ExecutorService es = Executors.newSingleThreadExecutor();
@@ -65,8 +65,7 @@ public class NominasController  {
             return obtenidoOK;
         }
     }
-
-
+    //-----------------------------------------------------------------------
     public static void MostrarNominas(TextView txt_nominas)
     {
         FutureTask t= new FutureTask(new TareaMostrarNominas());
@@ -98,7 +97,7 @@ public class NominasController  {
             e.printStackTrace();
         }
     }
-    //---------------------------------
+    //---------------------------------------------------------------------
     public static boolean InsertarNomina(Nominas c)
     {
         FutureTask task= new FutureTask(new TareaInsertarNominas(c));
@@ -124,7 +123,7 @@ public class NominasController  {
             return insercionOK;
         }
     }
-
+//---------------------------------------------------------------------------
     public static boolean borrarNominas(Nominas nseleccionada){
         FutureTask task= new FutureTask(new TareaBorrarNominas(nseleccionada));
         ExecutorService es= Executors.newSingleThreadExecutor();

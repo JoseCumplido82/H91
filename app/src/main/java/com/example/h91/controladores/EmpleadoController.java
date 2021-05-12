@@ -46,7 +46,6 @@ public class EmpleadoController {
         return empleadosDevueltos;
     }
     //---------------------------------------------------
-
     public static void MostrarEmpleados (TextView txt_empleados)
     {
         FutureTask t = new FutureTask(new TareaMostrarEmpleados());
@@ -77,7 +76,7 @@ public class EmpleadoController {
             e.printStackTrace();
         }
     }
-
+//---------------------------------------------------------------------------------------
     public static boolean InsertarEmpleado(Empleado em){
         FutureTask t = new FutureTask(new TareaInsertarEmpleado(em));
         ExecutorService es = Executors.newSingleThreadExecutor();
@@ -103,7 +102,7 @@ public class EmpleadoController {
             return insercionOK;
         }
     }
-
+//----------------------------------------------------------------------------------
     public static boolean borrarEmpleado(Empleado esleccionado){
         FutureTask t = new FutureTask(new TareaBorrarEmpleado(esleccionado));
         ExecutorService es = Executors.newSingleThreadExecutor();
@@ -128,6 +127,7 @@ public class EmpleadoController {
             return borradoOK;
         }
     }
+    //---------------------------------------------------------------------------
     public static boolean comprobarEmpleado(Empleado empleado){
         FutureTask t = new FutureTask(new TareaComprobarEmpleado(empleado));
         ExecutorService es = Executors.newSingleThreadExecutor();
@@ -152,7 +152,7 @@ public class EmpleadoController {
             return actualizadoOK;
         }
     }
-
+//------------------------------------------------------------------------------------------
     public static boolean comprobarUserActual(String usuarioActual, String passActual) {
         FutureTask t = new FutureTask(new TareaComprobarUser(usuarioActual, passActual));
         ExecutorService es = Executors.newSingleThreadExecutor();
@@ -177,7 +177,6 @@ public class EmpleadoController {
             return comprobadoOK;
         }
     }
-
     //----------------------------------------------------------------
     public static boolean conseguirID(int usuario){
 
@@ -205,9 +204,7 @@ public class EmpleadoController {
         }
 
     }
-
     //-------------------------------------------------------------
-
     public static boolean actualizarEmpleado(Empleado empleado) {
         FutureTask t = new FutureTask(new TareaActualizarEmpleado(empleado));
         ExecutorService es = Executors.newSingleThreadExecutor();

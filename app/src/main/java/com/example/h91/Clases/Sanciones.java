@@ -3,11 +3,12 @@ package com.example.h91.Clases;
 import java.io.Serializable;
 
 public class Sanciones implements Serializable {
+    //ATRIBUTOS
     private int id;
     private int idSancionado;
     private String motivo;
     private String observacion;
-    //----------------------------------
+    //------------CONSTRUCTORES----------------------
     public Sanciones(int id, int idSancionado, String motivo, String observacion) {
         this.id = id;
         this.idSancionado = idSancionado;
@@ -25,7 +26,7 @@ public class Sanciones implements Serializable {
         this.motivo = "";
         this.observacion = "";
     }
-    //----------------------------------
+    //------GETTER Y SETTER----------------------------
     public int getId() {
         return id;
     }
@@ -57,7 +58,7 @@ public class Sanciones implements Serializable {
     public void setObservacion(String observacion) {
         this.observacion = observacion;
     }
-    //--------------------------------------------
+    //------------TO STRING--------------------------------
     @Override
     public String toString() {
         return "Sanciones{" +

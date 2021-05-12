@@ -188,11 +188,12 @@ public class ActivityOtrasSolicitudes extends AppCompatActivity  {
         try {
             startActivityForResult(Intent.createChooser(pdfGaleria, "Selecciona un archivo pdf"), 0);
             mostrarToast("PDF SELECCIONADO");
-
+            txt_tituloDocumento.setText("DOCUMENTO CARGADO");
 
         } catch (ActivityNotFoundException ex) {
             // Potentially direct the user to the Market with a Dialog
         }
+
     }
 
     private void openGallery(){

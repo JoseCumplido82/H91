@@ -49,9 +49,6 @@ public class ActivityMensajeNotificaciones extends AppCompatActivity {
 
     }
 
-
-
-
     public void EnviarNotificacionEmpleado(View view) {
 
         String asunto=edt_asuntoSolicitud2.getText().toString();
@@ -72,8 +69,6 @@ public class ActivityMensajeNotificaciones extends AppCompatActivity {
                     intent.setType("message/rfc822");
 
                     startActivity(Intent.createChooser(intent, "Elige un cliente de correo"));
-
-
 
     }
 

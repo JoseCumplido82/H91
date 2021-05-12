@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Ausencias implements Serializable {
+    //ATRIBUTOS
     private int id;
     private int idSolicitante;
     private Date fecha_inicio;
@@ -12,9 +13,7 @@ public class Ausencias implements Serializable {
     private Date fecha_solicitud;
     private String motivo;
     private int idEstado;
-    //constructores
-
-
+    //CONSTRUCTORES
     public Ausencias(int id, int idSolicitante, Date fecha_inicio, String hora_inicio, int horas, Date fecha_solicitud, String motivo, int idEstado) {
         this.id = id;
         this.idSolicitante = idSolicitante;
@@ -25,7 +24,6 @@ public class Ausencias implements Serializable {
         this.motivo = motivo;
         this.idEstado = idEstado;
     }
-
     public Ausencias() {
         this.id = 0;
         this.idSolicitante = 0;
@@ -45,9 +43,7 @@ public class Ausencias implements Serializable {
         this.motivo=motivo;
         this.idEstado = 1;
     }
-    //getter y setter
-
-
+    //GETTER & SETTER
     public Date getFecha_inicio() {
         return fecha_inicio;
     }
@@ -119,8 +115,7 @@ public class Ausencias implements Serializable {
     public void setIdEstado(int idEstado) {
         this.idEstado = idEstado;
     }
-    //to string
-
+    //TO STRING
     @Override
     public String toString() {
         return "Ausencias{" +

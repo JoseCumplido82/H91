@@ -65,7 +65,6 @@ public class DepartamentoDB {
             return null;
         }
     }
-
     //-----------------------------------------------------------------
     public static ArrayList<Departamento> obtenerDepartamento(){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
@@ -120,7 +119,7 @@ public class DepartamentoDB {
             return false;
         }
     }
-
+//----------------------------------------------------------------------
     public static boolean actualizarDepartamentoTabla(Departamento d)
     {
         Connection conexion = BaseDB.conectarConBaseDeDatos();

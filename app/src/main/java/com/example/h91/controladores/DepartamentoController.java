@@ -38,7 +38,7 @@ public class DepartamentoController {
             return insercionOK;
         }
     }
-
+//-----------------------------------------------------------------------------
     public static ArrayList<Departamento> obtenerDepartamentos(){
         ArrayList<Departamento> departamentosDevueltos= null;
         FutureTask t = new FutureTask(new TareaObtenerDepartamentos());
@@ -61,7 +61,7 @@ public class DepartamentoController {
         }
         return departamentosDevueltos;
     }
-
+//-----------------------------------------------------------------------------
     public static boolean borrarDepartamento(Departamento d){
         FutureTask t = new FutureTask(new TareaBorrarDepartamento(d));
         ExecutorService es = Executors.newSingleThreadExecutor();
@@ -86,7 +86,7 @@ public class DepartamentoController {
             return borradoOK;
         }
     }
-
+//------------------------------------------------------------------------------
     public static boolean actualizarDepartamento(Departamento d){
         FutureTask t = new FutureTask(new TareaActualizarDepartamento(d));
         ExecutorService es = Executors.newSingleThreadExecutor();

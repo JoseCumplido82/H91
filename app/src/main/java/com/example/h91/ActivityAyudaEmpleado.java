@@ -25,8 +25,6 @@ public class ActivityAyudaEmpleado extends AppCompatActivity {
         txt_ayudaEmpleado=(TextView)findViewById(R.id.txt_ayudaEmpleado);
         txt_tituloAdyuda=(TextView)findViewById(R.id.txt_tituloAyuda);
         txt_textodeAyuda=(TextView)findViewById(R.id.txt_textodeAyuda);
-
-
         mensajeAyuda="El funcionamiento de la aplicacion es el siguiente: \n\n En el menu principal nos encontramos con una pantalla de bienvenida para el empleado" +
                 "dentro de esta pantalla de bienvenida, tenemos una serie de botones que usaremos para deplazarnos a cada una de las distintas opciones de las que dispone" +
                 " la aplicacion. Pasamos a detallar cada una de ellas: \n -Boton Nominas: \n Dentro de este boton, el usuario tiene la posibilidad de visualizar todas las nominas" +

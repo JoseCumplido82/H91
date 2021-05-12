@@ -43,8 +43,6 @@ public class ActivitySancionarEmpleado extends AppCompatActivity {
         sp_sancion.setAdapter(adapter);
         getIntent().getSerializableExtra("referenciaEmpleado");
         txt_dniEmpleadorecogido.setText((CharSequence) getIntent().getSerializableExtra("referenciaEmpleado"));
-
-
     }
 
     public void mostrarToast(String mensaje)

@@ -46,8 +46,6 @@ public class NuevoDepartamentoActivity extends AppCompatActivity implements Adap
             }
         }
     }
-
-
     public void insertarDepartamento(View view) {
         String nombred= String.valueOf(edt_nombred.getText());
         if(nombred.isEmpty())
@@ -88,8 +86,6 @@ public class NuevoDepartamentoActivity extends AppCompatActivity implements Adap
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-
     public void mostrarToast(boolean insercionOK)
     {
         if(insercionOK)

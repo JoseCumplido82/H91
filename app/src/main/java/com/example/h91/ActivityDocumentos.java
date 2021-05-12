@@ -19,7 +19,6 @@ public class ActivityDocumentos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_documentos);
 
-
         //boton abrir informacion
         Button bt_informacion=(Button) findViewById(R.id.bt_informacion);
         //url= "https://h91go.com/#conocenos/";
@@ -47,8 +46,6 @@ public class ActivityDocumentos extends AppCompatActivity {
             }
         });
 
-
-
         //boton mostrar documentos subidos
         Button bt_docusubidos = (Button) findViewById(R.id.bt_docusubidos);
         bt_docusubidos.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +55,6 @@ public class ActivityDocumentos extends AppCompatActivity {
                 startActivityForResult(intent6,0);
             }
         });
-
 
         //boton volver a anterior
         Button bt_volver01= (Button) findViewById(R.id.bt_volver01);

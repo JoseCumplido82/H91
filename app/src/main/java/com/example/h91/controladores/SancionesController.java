@@ -38,7 +38,7 @@ public class SancionesController {
             return insercionOK;
         }
     }
-
+//------------------------------------------------------------------
     public static ArrayList<Sanciones> obtenerSanciones(){
         ArrayList<Sanciones> sancionesDevueltas= null;
         FutureTask t= new FutureTask(new TareaObtenerSanciones());
@@ -61,7 +61,7 @@ public class SancionesController {
         }
         return  sancionesDevueltas;
     }
-
+//--------------------------------------------------------------------------
     public static  boolean borrarSanciones(Sanciones sanciones)
     {
         FutureTask t= new FutureTask(new TareaBorrarSanciones(sanciones));
@@ -87,7 +87,7 @@ public class SancionesController {
             return borradoOK;
         }
     }
-
+//-------------------------------------------------------------------------------
     public static boolean actualizarSanciones(Sanciones sanciones)
     {
         FutureTask t = new FutureTask(new TareaActualizarSanciones(sanciones));

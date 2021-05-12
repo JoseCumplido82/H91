@@ -42,7 +42,6 @@ public class AusenciasDB {
             pst.setDate(5, sqlFech2a);
             pst.setString(6, a.getMotivo());
             pst.setInt(7, a.getIdEstado());
-
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();
@@ -56,8 +55,6 @@ public class AusenciasDB {
             return false;
         }
     }
-
-
     //-----------------------------------------------------------------
     public static ArrayList<Ausencias> obtenerAusencia(){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
@@ -82,7 +79,6 @@ public class AusenciasDB {
                 int idEstado= resultado.getInt("idEstado");
                 Ausencias a= new Ausencias(id, idSolicitante, fecha_inicio, hora_inicio, horas, fecha_solicitud,motivo, idEstado);
                 ausenciaDevuelta.add(a);
-
             }
             resultado.close();
             sentencia.close();
@@ -101,7 +97,6 @@ public class AusenciasDB {
             return false;
         }
         try {
-            /////---------------------------------
             String ordenSQL = "select * from ausencias where idSolicitante like ?";
             PreparedStatement pst=conexion.prepareStatement(ordenSQL);
             pst.setInt(1, dniUser);
@@ -128,7 +123,6 @@ public class AusenciasDB {
             return false;
         }
     }
-
     //--------------------------------------------------------------------
     public static boolean borrarAusenciaTabla(Ausencias ausencias){
         Connection conexion = BaseDB.conectarConBaseDeDatos();
@@ -154,7 +148,7 @@ public class AusenciasDB {
             return false;
         }
     }
-
+//----------------------------------------------------------------------------
     public static boolean actualizarAusenciasTabla(Ausencias a)
     {
         Connection conexion = BaseDB.conectarConBaseDeDatos();

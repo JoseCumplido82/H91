@@ -74,9 +74,5 @@ public class ActivityOlvisteLaPass extends AppCompatActivity {
         Toast.makeText(this,encontrado,Toast.LENGTH_LONG).show();
     }
 
-    //private void mostrarToast(String encontrado) {
-
-      //  Toast.makeText(this,"CONTACTE CON RRHH PARA CONOCER SU NUEVA CONTRASEÑA",Toast.LENGTH_LONG).show();
-    //}
 
 }
