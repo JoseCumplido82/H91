@@ -22,8 +22,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_tramites"
-        android:layout_width="300dp"
-        android:layout_height="306dp"
+        android:layout_width="355dp"
+        android:layout_height="438dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/txt_misSolicitudes"
         app:layout_constraintStart_toStartOf="@+id/txt_misSolicitudes"

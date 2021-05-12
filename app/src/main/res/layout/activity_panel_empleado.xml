@@ -10,12 +10,11 @@
         android:id="@+id/bt_nominas"
         android:layout_width="260dp"
         android:layout_height="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/nominas"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/bt_notificaciones"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/bt_notificaciones"
         app:layout_constraintTop_toBottomOf="@+id/bt_notificaciones" />
 
@@ -23,13 +22,13 @@
         android:id="@+id/bt_cerrar"
         android:layout_width="160dp"
         android:layout_height="60dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/cerrar_sesion"
         app:backgroundTint="@color/cardview_dark_background"
-        app:layout_constraintEnd_toEndOf="@+id/bt_documentos"
-        app:layout_constraintStart_toStartOf="@+id/bt_documentos"
-        app:layout_constraintTop_toBottomOf="@+id/bt_documentos" />
+        app:layout_constraintEnd_toEndOf="@+id/bt_comoLlegar"
+        app:layout_constraintStart_toStartOf="@+id/bt_comoLlegar"
+        app:layout_constraintTop_toBottomOf="@+id/bt_comoLlegar" />
 
     <Button
         android:id="@+id/bt_documentos"
@@ -59,8 +58,8 @@
 
     <Button
         android:id="@+id/bt_notificaciones"
-        android:layout_width="260dp"
-        android:layout_height="70dp"
+        android:layout_width="238dp"
+        android:layout_height="26dp"
         android:layout_marginTop="20dp"
 
         android:gravity="center"
@@ -111,13 +110,13 @@
         android:id="@+id/txt_ayudaUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="76dp"
         android:text="¿Necesitas ayuda?"
         android:textColor="#C81818"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_cerrar"
         tools:ignore="HardcodedText" />
