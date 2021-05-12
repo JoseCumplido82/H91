@@ -69,7 +69,8 @@ public class MostrarDetalleNominas extends AppCompatActivity implements Serializ
     }
 
     public void DescargarNomina(View view) {
-    url= "http://empleados.h91go.com/php/descargar_nomina.php?archivo=y7Ggm1R5ioLEn5eroKucmFV0oY/A";
+    //url= "http://empleados.h91go.com/php/descargar_nomina.php?archivo=y7Ggm1R5ioLEn5eroKucmFV0oY/A";
+        url="https://asesorias.com/empresas/wp-content/uploads/2019/11/Modelo-oficial-n%C3%B3mina.pdf";
         Uri uri= Uri.parse(url);
         Intent intent= new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);

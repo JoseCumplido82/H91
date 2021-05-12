@@ -29,6 +29,10 @@ public class ActivitySancionarEmpleado extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sancionar_empleado);
         sp_sancion=(Spinner)findViewById(R.id.sp_sancion);

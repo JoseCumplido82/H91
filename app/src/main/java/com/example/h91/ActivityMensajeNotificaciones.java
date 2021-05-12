@@ -21,6 +21,10 @@ public class ActivityMensajeNotificaciones extends AppCompatActivity {
     TextView txt_dniUsuario=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensaje_notificaciones);
         edt_asuntoSolicitud2=(EditText) findViewById(R.id.edt_asuntoSolicitud2);
@@ -45,6 +49,9 @@ public class ActivityMensajeNotificaciones extends AppCompatActivity {
 
     }
 
+
+
+
     public void EnviarNotificacionEmpleado(View view) {
 
         String asunto=edt_asuntoSolicitud2.getText().toString();
@@ -64,9 +71,14 @@ public class ActivityMensajeNotificaciones extends AppCompatActivity {
 
                     intent.setType("message/rfc822");
 
-                    startActivity(Intent.createChooser(intent, "Elije un cliente de correo"));
+                    startActivity(Intent.createChooser(intent, "Elige un cliente de correo"));
 
 
 
+    }
+
+    public void volverAnotificicaciones(View view) {
+        Intent intent= new Intent(this, ActivityRRHH.class);
+        startActivity(intent);
     }
 }

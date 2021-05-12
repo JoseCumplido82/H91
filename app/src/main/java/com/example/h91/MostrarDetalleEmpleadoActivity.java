@@ -25,6 +25,10 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements
     Empleado empleado= new Empleado();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //para ocultar la barra de status
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_detalle_empleado);
         txt_detalle_nombree = findViewById(R.id.txt_detalle_nombree);

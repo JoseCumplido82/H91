@@ -110,6 +110,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="124dp"
         android:text="@string/volver11"
+        android:onClick="volverAnotificicaciones"
         app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintEnd_toStartOf="@+id/bt_cancelarNotificacion"
         app:layout_constraintStart_toEndOf="@+id/bt_enviarNotificacion"
