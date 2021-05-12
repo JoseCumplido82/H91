@@ -51,6 +51,16 @@ public class ActivityRRHH extends AppCompatActivity {
             }
         });
 
+        //boton para ir al perfil personal del empleado de RRHH
+        Button bt_perfilRRHH =(Button)findViewById(R.id.bt_perfilRRHH);
+        bt_perfilRRHH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(v.getContext(), ActivityPerfilEmpleado.class);
+                startActivityForResult(intent,0);
+            }
+        });
+
 
         //boton cerrar panel RRHH
         Button bt_cerrarSesionRRHH = (Button) findViewById(R.id.bt_cerrarSesionRRHH);

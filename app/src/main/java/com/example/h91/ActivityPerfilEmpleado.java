@@ -117,7 +117,7 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
     }
 
     private void mostrarToast(String encontrado) {
-        Toast.makeText(this,"logeado",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,encontrado,Toast.LENGTH_SHORT).show();
     }
 
     private boolean validarEmail(String email) {
@@ -167,9 +167,17 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                                 mostrarToast("EMPLEADO ACTUALIZADO CORRECTAMENTE");
                                 System.out.println("Empleado actualizado " + e.toString());
                                 finish();
-                                Intent intent= new Intent(ActivityPerfilEmpleado.this, PanelEmpleado.class);
+
+                                if(e.getIdDepartamento()==13){
+                                    Intent intent= new Intent(ActivityPerfilEmpleado.this, ActivityRRHH.class);
+                                    startActivity(intent);
+                                }else{
+                                    Intent intent1= new Intent(ActivityPerfilEmpleado.this, PanelEmpleado.class);
+                                    startActivity(intent1);
+                                }
+                                //Intent intent= new Intent(ActivityPerfilEmpleado.this, PanelEmpleado.class);
                                 //Intent intent= new Intent(ActivityPerfilEmpleado.this, MainActivity.class);
-                                startActivity(intent);
+                                //startActivity(intent);
                             }else {
                                 mostrarToast("EMPLEADO NO ACTUALIZADO ");
                                 System.out.println("Empleado no actualizado " + e.toString());
