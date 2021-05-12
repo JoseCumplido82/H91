@@ -42,46 +42,55 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 String usuario = nombreUsuario.getText().toString();
                 String password = edt_pass.getText().toString();
 
                 ConfiguracionDB.UsuarioActual = usuario;
                 ConfiguracionDB.PassActual = password;
 
+                try {
 
 
-                 empleado= EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    salt=ConfiguracionDB.saltFromString(empleado.getSalt());
-                }
+                    empleado = EmpleadoDB.buscarEmpleadoTabla(ConfiguracionDB.UsuarioActual);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        salt = ConfiguracionDB.saltFromString(empleado.getSalt());
+                    }
 
-                claveCifrada =ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual,salt);
-                boolean resultado = false;
-                System.out.println("clave generada con el pass recogido y salt" + claveCifrada);
-                resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, claveCifrada);
-                System.out.println("clave primera :" + claveCifrada);
-                if (resultado == true) {
-                    System.out.println(claveCifrada);
-                    ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, claveCifrada);
-                    System.out.println("imprimir despues del comprobar datos empleado: " + claveCifrada);
+                    claveCifrada = ConfiguracionDB.get_SHA_512_SecurePassword(ConfiguracionDB.PassActual, salt);
+                    boolean resultado = false;
+                    System.out.println("clave generada con el pass recogido y salt" + claveCifrada);
+                    resultado = EmpleadoController.comprobarUserActual(ConfiguracionDB.UsuarioActual, claveCifrada);
+                    System.out.println("clave primera :" + claveCifrada);
+                    if (resultado == true) {
+                        System.out.println(claveCifrada);
+                        ComprobarSiHayDatosEmpleado(ConfiguracionDB.UsuarioActual, claveCifrada);
+                        System.out.println("imprimir despues del comprobar datos empleado: " + claveCifrada);
                         mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                         Log.i("sql", "encontrado");
 
+                    } else {
+                        mostrarToast("USUARIO INCORRECTO");
+                        Log.i("sql", "no encontrado");
+                    }
 
-              //  }else if(ConfiguracionDB.UsuarioActual.equals("mar")){
-                //    String claveGenerada="";
-                 //   Intent intent= new Intent(v.getContext(), ActivityRRHH.class);
-                  //  startActivity(intent);
-                  //  mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
-                  //  Log.i("sql", "encontrado");
                 }
-
-                else {
-                    mostrarToast("USUARIO INCORRECTO");
-                    Log.i("sql", "no encontrado");
-                }
-
-            }
+            catch(Exception e){
+                    if(edt_pass.getText().toString().isEmpty()&&nombreUsuario.getText().toString().isEmpty()){
+                        nombreUsuario.setError("introduce nombre de usuario");
+                        edt_pass.setError("introduce contraseña");
+                        mostrarToast("DEBE COMPLETAR EL CAMPO USUARIO Y CONTRASEÑA");
+                    }
+                    else if (edt_pass.getText().toString().isEmpty()){
+                        edt_pass.setError("Introduce contraseña");
+                        mostrarToast("DEBE COMPLETAR EL CAMPO CONTRASEÑA");
+                    }else if (nombreUsuario.getText().toString().isEmpty()){
+                        nombreUsuario.setError("Introduce nombre de usuario");
+                        mostrarToast("DEBE COMPLETAR EL CAMPO USUARIO");
+                    }else {
+                    mostrarToast("USUARIO INCORRECTO");}
+                    System.out.println("introduce nombre y contraseña");
+            }}
         });
 
         //boton abrir informacion
