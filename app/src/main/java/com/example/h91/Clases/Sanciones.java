@@ -26,6 +26,7 @@ public class Sanciones implements Serializable {
         this.motivo = "";
         this.observacion = "";
     }
+
     //------GETTER Y SETTER----------------------------
     public int getId() {
         return id;

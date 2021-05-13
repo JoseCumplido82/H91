@@ -11,8 +11,11 @@ import android.widget.TextView;
 
 import com.example.h91.Clases.Empleado;
 import com.example.h91.Clases.EmpleadoViewHolder;
+import com.example.h91.Clases.Sanciones;
+import com.example.h91.modelos.SancionesDB;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements Serializable{
     TextView txt_detalle_nombree=null;
@@ -22,6 +25,7 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements
     TextView txt_detalleUsuarioe=null;
     TextView txt_detalleSancionese=null;
     String nombreDpt="";
+   // Sanciones sanciones=new Sanciones();
     Empleado empleado= new Empleado();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,17 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements
             txt_detalle_departamentoe.setText("DPTO. " + " " + empleado.getIdDepartamento() + " - " + nombreDpt);
             txt_detalle_Correoe.setText("Correo: " + empleado.getCorreo());
             txt_detalleUsuarioe.setText(empleado.getUsuario());
+           //ArrayList<Sanciones> SancionesObtenidas=SancionesDB.obtenerSanciones();
+           // Sanciones sanciones=new Sanciones();
+           // System.out.println(SancionesObtenidas);
+          //  if(!sanciones.getObservacion().isEmpty()) {
+            //    System.out.println("entra en el if de sanciones " + sanciones.getObservacion());
+             //   txt_detalleSancionese.setText("Empleado sancionado");
+            //}else{
+             //   txt_detalleSancionese.setText("No tiene sanciones");
+              //  System.out.println("entra en el else de sanciones " +sanciones.getObservacion());
+           // }
+
             Log.i("empleado", "se muestran el empleado " + empleado);
 
         }

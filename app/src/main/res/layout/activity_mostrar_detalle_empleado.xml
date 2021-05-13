@@ -35,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
+        android:gravity="center"
         android:text="@string/nombre_empleado"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -45,9 +46,10 @@
 
     <TextView
         android:id="@+id/txt_detalle_apellidoe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="345dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="@string/apellidos"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -58,9 +60,10 @@
 
     <TextView
         android:id="@+id/txt_detalle_departamentoe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="345dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="@string/departamento"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -70,9 +73,10 @@
 
     <TextView
         android:id="@+id/txt_detalleCorreoe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="345dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="@string/correo"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -85,6 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="@string/usuario"
         android:textColor="@android:color/black"
         android:textSize="24sp"
@@ -99,6 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="@string/sanciones"
         android:textColor="@color/black"
         android:textSize="24sp"
