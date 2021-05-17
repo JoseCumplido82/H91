@@ -7,6 +7,21 @@
     tools:context=".ActivityRRHH">
 
     <TextView
+        android:id="@+id/txt_ayudaUsuario3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="¿Necesitas ayuda?"
+        android:textColor="#C81818"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_cerrarSesionRRHH"
+        tools:ignore="HardcodedText" />
+
+    <TextView
         android:id="@+id/txt_Bienvenido2"
         android:layout_width="281dp"
         android:layout_height="30dp"
@@ -73,12 +88,12 @@
         android:id="@+id/bt_cambiarPassRRHH"
         android:layout_width="260dp"
         android:layout_height="70dp"
-        android:layout_marginTop="92dp"
-        android:text="@string/cambiar_contrase_a"
-        android:visibility="invisible"
+        android:layout_marginTop="116dp"
+        android:text="@string/como_llegar"
+        android:visibility="visible"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="@+id/bt_planificacionTiempo"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/bt_planificacionTiempo"
         app:layout_constraintTop_toBottomOf="@+id/bt_planificacionTiempo" />
 

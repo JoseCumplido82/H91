@@ -3,6 +3,7 @@ package com.example.h91;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -74,13 +75,32 @@ public class ActivityRRHH extends AppCompatActivity {
             }
         });
 
-        //boton cambiar contraseña RRHH
+        //boton como llegar a la oficina
         Button bt_cambiarPassRRHH =(Button) findViewById(R.id.bt_cambiarPassRRHH);
         bt_cambiarPassRRHH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(v.getContext(), ActivityCambiarPass.class);
-                startActivityForResult(intent,0);
+                String direccionMapa="Calle de Fuerteventura, 21, 28703 San Sebastián de los Reyes, Madrid";
+                Uri uri=Uri.parse("geo:0,0?q=" + direccionMapa);
+                Intent intent= new Intent(Intent.ACTION_VIEW, uri);
+                if (intent.resolveActivity(getPackageManager()) == null) {
+                    startActivity(intent);
+                    System.out.println("cargando mapas");
+                }
+                else {
+                    System.out.println("no se ha cargado el mapa");
+                }
+            }
+        });
+
+
+        //boton ayuda empleado
+        TextView txt_ayudaUsuario3= (TextView)findViewById(R.id.txt_ayudaUsuario3);
+        txt_ayudaUsuario3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ActivityRRHH.this, ActivityAyudaEmpleado.class);
+                startActivity(intent);
             }
         });
 
