@@ -14,7 +14,8 @@
         android:gravity="center"
         android:text="@string/planificacion_de_tiempo2"
         android:textColor="@color/cardview_dark_background"
-        android:textSize="24sp"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,6 +41,7 @@
         android:text="@string/volver"
         app:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="@+id/bt_verPlanificacion"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="@+id/bt_verPlanificacion"
         app:layout_constraintTop_toBottomOf="@+id/bt_verPlanificacion" />
 

@@ -54,7 +54,7 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/txt_detalle_nombree"
-        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/txt_detalle_nombree"
         app:layout_constraintTop_toBottomOf="@+id/txt_detalle_nombree" />
 

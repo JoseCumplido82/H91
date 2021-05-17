@@ -25,13 +25,13 @@ public class ConfiguracionDB {
 
     //PARA CONECTAR CON BBDD SERVIDOR EXTERNA RAIOLA
     //84.78.105.67 - ip publica equipo local
-    //public static final String HOSTDB = "217.182.121.210";
+    //public static final String HOSTDB = "95.62.58.186";
     //public static final String HOSTDB = "hidalgo91.com";
     //public static final String NOMBREDB = "hidalgoc_wpD";
     //public static final String USUARIODB = "hidalgoc_wpD";
     //public static final String CLAVEDB = "eE08092020**";
     //private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    // private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
+     //private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
     //public static final String PUERTOMYSQL = "2083";
     //public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
 

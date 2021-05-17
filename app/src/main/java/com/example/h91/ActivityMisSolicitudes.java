@@ -41,6 +41,7 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_solicitudes);
+
         boolean tramiteok= TramitesController.obtenerIDempleadoTramite(ConfiguracionDB.IDUsuarioActual);
         if (tramiteok){
             tramites = TramitesController.obtenerTramites(ConfiguracionDB.IDUsuarioActual);
@@ -48,7 +49,9 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
                 rv_tramites=(RecyclerView)findViewById(R.id.rv_tramites);
                 tramitesAdapterAdapter= new listaTramitesAdapter(this, tramites);
                 rv_tramites.setAdapter(tramitesAdapterAdapter);
+
                 rv_tramites.setLayoutManager(new LinearLayoutManager(this));
+                Log.i("tramites", "tramites recuperados");
             }else {
                 Log.i("tramites", "no pude recuperar los tramites");
                 System.out.println("no pude recuperar los tramites");
@@ -109,6 +112,7 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
                 rv_tramites.getAdapter().notifyItemInserted(tramites.size());
                 // Scroll to the bottom.
                 rv_tramites.smoothScrollToPosition(tramites.size());
+
             }
         }
     }

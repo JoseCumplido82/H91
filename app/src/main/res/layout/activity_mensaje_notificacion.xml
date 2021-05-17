@@ -15,6 +15,7 @@
         android:text="@string/a_adir_mensaje_notificacion"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"

@@ -25,11 +25,11 @@ public class TramitesViewHolder extends RecyclerView.ViewHolder implements View.
 
     public TramitesViewHolder(@NonNull View itemView, listaTramitesAdapter tcAdapter) {
         super(itemView);
-       // txt_detalleSolicitud= (TextView) itemView.findViewById(R.id.txt_detalleSolicitud);
+        txt_detalleSolicitud= (TextView) itemView.findViewById(R.id.txt_detalleSolicitud);
         txt_nombre_documento=(TextView)itemView.findViewById(R.id.txt_nombret);
         txt_asunto3=(TextView) itemView.findViewById(R.id.txt_asuntot);
-        //txt_comentario=(TextView)itemView.findViewById(R.id.txt_comentario);
-       // txt_fecha_solicitud=(TextView)itemView.findViewById(R.id.txt_fecha_solicitud);
+        txt_comentario=(TextView)itemView.findViewById(R.id.txt_comentario);
+        txt_fecha_solicitud=(TextView)itemView.findViewById(R.id.txt_fecha_solicitud);
         txt_idEstado=(TextView)itemView.findViewById(R.id.txt_idEstadoTramite);
         //bt_gestionar=(Button)itemView.findViewById(R.id.bt_gestionar);
         this.lcAdapter= tcAdapter;

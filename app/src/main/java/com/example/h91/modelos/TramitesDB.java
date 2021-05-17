@@ -194,7 +194,7 @@ public static boolean IDEmpleadoAusencia(int idEmpleado) {
         }
         //----------------------------
         try {
-            String ordensql = "UPDATE tramites SET idSolicitante=?, nombre_documento=?, asunto=?, comentario=?, fecha_solicitud=?, idEstado=? WHERE id=?";
+            String ordensql = "UPDATE tramites SET idSolicitante=?, nombre_documento=?, asunto=?, comentario=?, fecha_solicitud=?, idEstado=? WHERE (id=?);";
             PreparedStatement pst = conexion.prepareStatement(ordensql);
             pst.setInt(1, t.getIdSolicitante());
             pst.setString(2,t.getNombre_documento());
