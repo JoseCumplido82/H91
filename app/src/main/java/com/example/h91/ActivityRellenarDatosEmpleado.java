@@ -115,7 +115,7 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
     }
 
     private void mostrarToast(String encontrado) {
-        Toast.makeText(this,"logeado",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,encontrado,Toast.LENGTH_SHORT).show();
     }
 
     private boolean validarEmail(String email) {
