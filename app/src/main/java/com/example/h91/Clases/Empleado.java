@@ -228,10 +228,15 @@ public class Empleado implements Serializable {
         this.fecha_salida = fecha_salida;
     }
     //to string
+   // @Override
+   // public String toString2() {
+     //   return
+       //         "id=" + id + ", idDepartamento=" + idDepartamento + ", usuario='" + usuario + '\'' + ", pass='" + pass + '\'' + ", nombre='" + nombre + '\'' + ", apellido='" + apellido + '\'' + ", domicilio='" + domicilio + '\'' + ", correo='" + correo + '\'' + ", telefono='" + telefono + '\'' + ", fecha_incorporacion=" + fecha_incorporacion + '}';
+   // }
     @Override
-    public String toString() {
+    public String toString(){
         return
-                "id=" + id + ", idDepartamento=" + idDepartamento + ", usuario='" + usuario + '\'' + ", pass='" + pass + '\'' + ", nombre='" + nombre + '\'' + ", apellido='" + apellido + '\'' + ", domicilio='" + domicilio + '\'' + ", correo='" + correo + '\'' + ", telefono='" + telefono + '\'' + ", fecha_incorporacion=" + fecha_incorporacion + '}';
+                usuario + " -> " + nombre + " " + apellido;
     }
 
 
