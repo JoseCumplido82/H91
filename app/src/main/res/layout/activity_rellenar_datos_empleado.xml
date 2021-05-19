@@ -89,7 +89,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:maxLength="9"
-        android:text="@string/introduce_tu_telefono"
+        android:text="@string/telefono"
         app:layout_constraintEnd_toEndOf="@+id/edt_EmailEmpleado"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edt_EmailEmpleado"
