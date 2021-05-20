@@ -84,33 +84,46 @@ public class ActivityRellenarDatosEmpleado extends AppCompatActivity {
          }
          passCifrada=ConfiguracionDB.get_SHA_512_SecurePassword(pass1, salt);
          String textosalt= ConfiguracionDB.saltToString(salt);
-
-         if (edt_password1.getText().toString().equals(edt_password2.getText().toString()) && validarEmail(email)) {
-
-             empleado = new Empleado(empleado.getId(),empleado.getIdDepartamento(), dni, passCifrada, textosalt, nombre, apellidos, domicilio, email, telefono, empleado.getFecha_incorporacion());
-
-             Log.i("Datos del empleado", empleado.toString());
-             boolean actualidadook = EmpleadoController.actualizarEmpleado(empleado);
-             if (actualidadook) {
-                 mostrarToast("EMPLEADO ACTUALIZADO CORRECTAMENTE");
-                 System.out.println("Empleado actualizado " + empleado.toString());
-                // finish();
-                 Intent intent= new Intent(ActivityRellenarDatosEmpleado.this, MainActivity.class);
-                 startActivity(intent);
-             } else {
-                 mostrarToast("EMPLEADO NO ACTUALIZADO ");
-                 System.out.println("Empleado no actualizado " + empleado.toString());
+         try {
+             if (edt_password1.getText().toString().isEmpty()||edt_password2.getText().toString().isEmpty()){
+                 edt_password1.setError("introduce una contraseña");
+                 edt_password2.setError("introduce una contraseña");
              }
-            }
-         else {
-             if(!edt_password1.getText().toString().equals(edt_password2.getText().toString())){
-                 edt_password1.setError("las contraseñas no coinciden");
-                 edt_password2.setError("Las contraseñas no coinciden ");
-             }else {
-                 edt_EmailEmpleado.setError("direccion de correo no valida");
-             }
+             else{
 
+             if (edt_password1.getText().toString().equals(edt_password2.getText().toString()) && validarEmail(email)) {
+
+                 empleado = new Empleado(empleado.getId(),empleado.getIdDepartamento(), dni, passCifrada, textosalt, nombre, apellidos, domicilio, email, telefono, empleado.getFecha_incorporacion());
+
+                 Log.i("Datos del empleado", empleado.toString());
+                 boolean actualidadook = EmpleadoController.actualizarEmpleado(empleado);
+                 if (actualidadook) {
+                     mostrarToast("EMPLEADO ACTUALIZADO CORRECTAMENTE");
+                     System.out.println("Empleado actualizado " + empleado.toString());
+                     // finish();
+                     Intent intent= new Intent(ActivityRellenarDatosEmpleado.this, MainActivity.class);
+                     startActivity(intent);
+                 } else {
+                     mostrarToast("EMPLEADO NO ACTUALIZADO ");
+                     System.out.println("Empleado no actualizado " + empleado.toString());
+                 }
+             }
+             else {
+                 if(!edt_password1.getText().toString().equals(edt_password2.getText().toString())){
+                     edt_password1.setError("las contraseñas no coinciden");
+                     edt_password2.setError("Las contraseñas no coinciden ");
+                 }else {
+                     edt_EmailEmpleado.setError("direccion de correo no valida");
+                 }
+
+             }}
+         }catch (Exception e){
+             System.out.println("entra al catch al no añadirle contraseña");
          }
+
+
+
+
          }
     }
 
