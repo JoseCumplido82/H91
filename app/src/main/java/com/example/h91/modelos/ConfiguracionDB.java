@@ -25,25 +25,25 @@ public class ConfiguracionDB {
 
     //PARA CONECTAR CON BBDD SERVIDOR EXTERNA RAIOLA
     //84.78.105.67 - ip publica equipo local
-    public static final String HOSTDB = "217.182.121.210";
-    public static final String NOMBREDB = "hidalgoc_wpD";
-    public static final String USUARIODB = "hidalgoc_wpD";
-    public static final String CLAVEDB = "eE08092020**";
+    //public static final String HOSTDB = "217.182.121.210";
+    //public static final String NOMBREDB = "hidalgoc_wpD";
+    //public static final String USUARIODB = "hidalgoc_wpD";
+    //public static final String CLAVEDB = "eE08092020**";
 
-    private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
-    public static final String PUERTOMYSQL = "3306";
-    public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
+    //private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
+    //public static final String PUERTOMYSQL = "3306";
+    //public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
 
     //------------------------------------------------------------------------------------------------------
 
     //PARA CONECTAR CON BBDD SERVER INSTITUTO
-   // public static final String HOSTDB="infsalinas.sytes.net";
-   // public static final String NOMBREDB="empleados";
-   // public static final String USUARIODB="usuario";
-   // public static final String CLAVEDB="dam1234";
-   // private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
-   // public static final String PUERTOMYSQL="5306";
-   // public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
+    public static final String HOSTDB="infsalinas.sytes.net";
+    public static final String NOMBREDB="empleados";
+    public static final String USUARIODB="usuario";
+    public static final String CLAVEDB="dam1234";
+    private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
+    public static final String PUERTOMYSQL="5306";
+    public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
 
     //------------------------------------------------------------------------------------------------------
 
