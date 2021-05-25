@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println("imprimir despues del comprobar datos empleado: " + claveCifrada);
                         mostrarToast("USUARIO CORRECTO ->" + ConfiguracionDB.UsuarioActual);
                         Log.i("sql", "encontrado");
-
                     } else {
                         mostrarToast("USUARIO INCORRECTO");
                         Log.i("sql", "no encontrado");

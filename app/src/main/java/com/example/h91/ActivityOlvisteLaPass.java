@@ -36,6 +36,9 @@ public class ActivityOlvisteLaPass extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void RestablecerPassOlvidada(View view) {
         try {
+
+
+        try {
             if(edt_NombreUsuario.getText().toString().isEmpty()){
                 edt_NombreUsuario.setError("Introduce tu usuario");
                 mostrarToast("INTRODUCE TU USUARIO");
@@ -65,6 +68,9 @@ public class ActivityOlvisteLaPass extends AppCompatActivity {
             mostrarToast("USUARIO NO ENCONTRADO");
             System.out.println("entra en el catch");
             edt_NombreUsuario.setError("Introduce un usuario correcto");
+        }
+        }catch (Exception ex){
+            System.out.println("entra al primer try");
         }
 
     }

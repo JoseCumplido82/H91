@@ -58,6 +58,24 @@ public class MostrarDetalleEmpleadoActivity extends AppCompatActivity implements
                 nombreDpt="Marketplace";
             }else if(empleado.getIdDepartamento()==5){
                 nombreDpt="Logistica";
+            }else if(empleado.getIdDepartamento()==6){
+                nombreDpt="Tienda";
+            }else if(empleado.getIdDepartamento()==7){
+                nombreDpt="Limpieza";
+            }else if(empleado.getIdDepartamento()==8){
+                nombreDpt="Diseño";
+            }else if(empleado.getIdDepartamento()==9){
+                nombreDpt="IT";
+            }else if(empleado.getIdDepartamento()==10){
+                nombreDpt="Promart";
+            }else if(empleado.getIdDepartamento()==11){
+                nombreDpt="Calidad";
+            }else if(empleado.getIdDepartamento()==12){
+                nombreDpt="Producto";
+            }else if(empleado.getIdDepartamento()==13){
+                nombreDpt="RRHH";
+            }else if(empleado.getIdDepartamento()==18){
+                nombreDpt="Desarrollo";
             }
 
             txt_detalle_nombree.setText(empleado.getNombre());
