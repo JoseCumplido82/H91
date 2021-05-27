@@ -74,7 +74,7 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 if(direction == ItemTouchHelper.LEFT)
                 {
-                    mostrarToast("has eliminado el tramite");
+                    mostrarToast("Tramite eliminado");
                     Tramites t = tramites.get(viewHolder.getAdapterPosition());
                     TramitesController.borrarTramites(t);
                     tramites.remove(viewHolder.getAdapterPosition());
@@ -82,7 +82,7 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
                 }
                 if(direction == ItemTouchHelper.RIGHT)
                 {
-                    mostrarToast("ha pulsado derecha, tramite oculto, si quiere eliminar pulse izquierda");
+                    mostrarToast("Ha arrastrado hacia la derecha,el tramite se ha ocultado, si quiere eliminar arrastre hacia la izquierda");
                     tramites.remove(viewHolder.getAdapterPosition());
                     tramitesAdapterAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
 
@@ -126,6 +126,6 @@ public class ActivityMisSolicitudes extends AppCompatActivity {
     }
 
     private void mostrarToast(String texto) {
-        Toast.makeText(this,texto, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,texto, Toast.LENGTH_LONG).show();
     }
 }

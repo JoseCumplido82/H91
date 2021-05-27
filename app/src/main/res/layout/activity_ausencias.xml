@@ -116,8 +116,8 @@
 
     <EditText
         android:id="@+id/edt_motivoAusencia"
-        android:layout_width="279dp"
-        android:layout_height="54dp"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:autofillHints=""
         android:ems="10"
@@ -130,17 +130,17 @@
 
     <EditText
         android:id="@+id/edt_horasASolicitar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
         android:layout_marginTop="24dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="center"
         android:hint="@string/indica_las_horas_a_solicitar"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/edt_motivoAusencia"
         app:layout_constraintStart_toStartOf="@+id/edt_motivoAusencia"
-        app:layout_constraintTop_toBottomOf="@+id/edt_motivoAusencia"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_motivoAusencia" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

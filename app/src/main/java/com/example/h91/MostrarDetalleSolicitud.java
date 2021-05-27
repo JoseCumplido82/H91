@@ -32,7 +32,7 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
     Button bt_gestionar=null;
     TextView txt_idTramite=null;
     String nombreEstadoTramite="";
-    Tramites tramites=new Tramites();
+    Tramites tramites;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -108,7 +108,7 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
 
         System.out.println(tramites);
         if(actualizadoOK){
-
+            TramitesController.borrarTramites(tramites);
             mostrarToast("TRAMITE CANCELADO CORRECTAMENTE");
             System.out.println("TRAMITE CANCELADO CORRECTAMENTE");
             //TramitesController.borrarTramites(tramites);
@@ -116,7 +116,8 @@ public class MostrarDetalleSolicitud extends AppCompatActivity implements Serial
         }else {
            // mostrarToast("NO SE HA PODIDO CANCELAR LA SOLICITUD");
            // System.out.println("NO SE HA PODIDO CANCELAR LA SOLICITUD");
-            mostrarToast("TRAMITE CANCELADO CORRECTAMENTE");
+            TramitesController.borrarTramites(tramites);
+            mostrarToast("TRAMITE CANCELADO CORRECTAMENTE, SI DESEA ELIMINARLO DE LA LISTA ARRASTRE A LA IZQUIERDA EL TRAMITE ELEGIDO");
             System.out.println("TRAMITE NO CANCELADO CORRECTAMENTE ");
             //TramitesController.borrarTramites(tramites);
             finish();
