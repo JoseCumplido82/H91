@@ -51,6 +51,10 @@ public class Empleado implements Serializable {
         this.correo = correo;
         this.telefono = telefono;
     }
+    public Empleado(int id,String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
 
     public Empleado() {
         this.id = 0;

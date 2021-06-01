@@ -82,23 +82,35 @@ public class ActivityPerfilEmpleado extends AppCompatActivity {
                 txt_apellidos1.setText(apellido);
 
                     int departamentoNombre=e.getIdDepartamento();
-                       if(e.getIdDepartamento()==1){
-                           nombreDpt= "Compras";
-                       }else if(e.getIdDepartamento()==2){
-                           nombreDpt="Ventas";
-                       }else if(e.getIdDepartamento()==3){
-                           nombreDpt="Financiero";
-                       }else if(e.getIdDepartamento()==4){
-                           nombreDpt="Marketplace";
-                       }else if(e.getIdDepartamento()==5){
-                           nombreDpt="Logistica";
-                       }else if(e.getIdDepartamento()==13){
-                           nombreDpt="RRHH";
-                       }else if(e.getIdDepartamento()==18){
-                           nombreDpt="Desarrollo";
-                       }else if(e.getIdDepartamento()==19){
-                           nombreDpt="IT";
-                       }
+               if(e.getIdDepartamento()==1){
+                   nombreDpt= "Compras";
+               }else if(e.getIdDepartamento()==2){
+                   nombreDpt="Ventas";
+               }else if(e.getIdDepartamento()==3){
+                   nombreDpt="Financiero";
+               }else if(e.getIdDepartamento()==4){
+                   nombreDpt="Marketplace";
+               }else if(e.getIdDepartamento()==5){
+                   nombreDpt="Logistica";
+               }else if(e.getIdDepartamento()==6){
+                   nombreDpt="Tienda";
+               }else if(e.getIdDepartamento()==7){
+                   nombreDpt="Limpieza";
+               }else if(e.getIdDepartamento()==8){
+                   nombreDpt="Diseño";
+               }else if(e.getIdDepartamento()==9){
+                   nombreDpt="IT";
+               }else if(e.getIdDepartamento()==10){
+                   nombreDpt="Promart";
+               }else if(e.getIdDepartamento()==11){
+                   nombreDpt="Calidad";
+               }else if(e.getIdDepartamento()==12){
+                   nombreDpt="Producto";
+               }else if(e.getIdDepartamento()==13){
+                   nombreDpt="RRHH";
+               }else if(e.getIdDepartamento()==18){
+                   nombreDpt="Desarrollo";
+               }
                 txt_departamento1.setText(String.valueOf(departamentoNombre));
                 txt_nombredpo.setText(nombreDpt);
                 String correo= e.getCorreo();

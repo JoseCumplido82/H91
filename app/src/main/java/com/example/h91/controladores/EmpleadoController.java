@@ -10,7 +10,9 @@ import com.example.h91.tareas.TareaComprobarUser;
 import com.example.h91.tareas.TareaInsertarEmpleado;
 import com.example.h91.tareas.TareaMostrarEmpleados;
 import com.example.h91.tareas.TareaObtenerEmpleados;
+import com.example.h91.tareas.TareaObtenerEmpleadosDepartamento;
 import com.example.h91.tareas.TareaObtenerIDEmpleado;
+import com.example.h91.tareas.TareaObtenerSupervisores;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -45,6 +47,57 @@ public class EmpleadoController {
         }
         return empleadosDevueltos;
     }
+
+    public static ArrayList<Empleado> obtenerEmpleadosDepartamento()
+    {
+        ArrayList<Empleado> empleadosDevueltos =null;
+        FutureTask t = new FutureTask(new TareaObtenerEmpleadosDepartamento());
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(t);
+        try {
+            empleadosDevueltos = (ArrayList<Empleado>)t.get();
+            es.shutdown();
+            try {
+                if(!es.awaitTermination(800, TimeUnit.MILLISECONDS)){
+                    es.shutdownNow();
+                }
+            }catch (InterruptedException e){
+                es.shutdownNow();
+            }
+        }catch (ExecutionException e){
+            e.printStackTrace();
+
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        return empleadosDevueltos;
+    }
+
+    public static ArrayList<Empleado> obtenerSupervisores()
+    {
+        ArrayList<Empleado> empleadosDevueltos =null;
+        FutureTask t = new FutureTask(new TareaObtenerSupervisores());
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(t);
+        try {
+            empleadosDevueltos = (ArrayList<Empleado>)t.get();
+            es.shutdown();
+            try {
+                if(!es.awaitTermination(800, TimeUnit.MILLISECONDS)){
+                    es.shutdownNow();
+                }
+            }catch (InterruptedException e){
+                es.shutdownNow();
+            }
+        }catch (ExecutionException e){
+            e.printStackTrace();
+
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        return empleadosDevueltos;
+    }
+
     //---------------------------------------------------
     public static void MostrarEmpleados (TextView txt_empleados)
     {

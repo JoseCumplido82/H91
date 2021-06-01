@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityMostrarDetalleSupervisor">
+
+    <TextView
+        android:id="@+id/txt_detalle_departamentoe2"
+        android:layout_width="345dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/departamento"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_detalle_nombree3" />
+
+    <Button
+        android:id="@+id/bt_borrarEmpleado4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:onClick="EliminarEmpleado"
+        android:text="@string/eliminar_empleado"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toStartOf="@+id/bt_Sancionar3"
+        app:layout_constraintHorizontal_bias="0.613"
+        app:layout_constraintStart_toEndOf="@+id/bt_crearNotificacion4"
+        app:layout_constraintTop_toBottomOf="@+id/rv_empleados3" />
+
+    <Button
+        android:id="@+id/bt_Sancionar3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:onClick="CrearSancionEmpleado"
+        android:text="@string/sancionar"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.852"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_empleados3" />
+
+    <Button
+        android:id="@+id/bt_crearNotificacion4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:onClick="CrearNotificacionEmpleado"
+        android:text="@string/enviar_notificacion"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_empleados3" />
+
+    <TextView
+        android:id="@+id/txt_detalle_nombree3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/nombre_empleado"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_detalleUsuarioe3"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/txt_detalleUsuarioe3"
+        app:layout_constraintTop_toBottomOf="@+id/txt_detalleUsuarioe3" />
+
+    <TextView
+        android:id="@+id/txt_detalleUsuarioe3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/usuario"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView12"
+        app:layout_constraintStart_toStartOf="@+id/imageView12"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="149dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="@+id/txt_tituloDetalle3"
+        app:layout_constraintStart_toStartOf="@+id/txt_tituloDetalle3"
+        app:layout_constraintTop_toBottomOf="@+id/txt_tituloDetalle3"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_tituloDetalle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="DETALLE DEL SUPERVISOR"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_empleados3"
+        android:layout_width="280dp"
+        android:layout_height="148dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_detalle_nombree3"
+        app:layout_constraintStart_toStartOf="@+id/txt_detalle_nombree3"
+        tools:layout_editor_absoluteY="380dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="EMPLEADOS DEL DEPARTAMENTO"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="@+id/txt_detalle_nombree3"
+        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintStart_toStartOf="@+id/txt_detalle_nombree3"
+        app:layout_constraintTop_toBottomOf="@+id/txt_detalle_nombree3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

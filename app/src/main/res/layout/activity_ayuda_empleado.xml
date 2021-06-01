@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:padding="3dp"
                 android:textSize="18sp"
-                android:textStyle="bold|italic"
+                android:textStyle="italic"
                 tools:layout_editor_absoluteX="35dp"
                 tools:layout_editor_absoluteY="133dp" />
 

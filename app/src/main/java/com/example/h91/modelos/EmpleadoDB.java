@@ -55,7 +55,76 @@ public class EmpleadoDB {
             return null;
         }
     }
+    //---------------------------------------------------------------------
 
+    public static ArrayList<Empleado> obtenerEmpleadosDepartamento(){
+        Connection conexion= BaseDB.conectarConBaseDeDatos();
+        if(conexion ==null)
+        {
+            System.out.println("no se ha podido conectar con la base de datos");
+            return null;
+        }
+        ArrayList<Empleado> empleadosDevueltos = new ArrayList<Empleado>();
+        try{
+            Statement sentencia = conexion.createStatement();
+            String ordenSQL = "SELECT em.* FROM empleado em INNER JOIN departamento d on em.idDepartamento=d.id WHERE d.idResponsable=?;";
+            ResultSet resultado= sentencia.executeQuery(ordenSQL);
+            while (resultado.next())
+            {
+                int id= resultado.getInt("id");
+                int idDepartamento= resultado.getInt("idDepartamento");
+                String usuario= resultado.getString("usuario");
+                String pass= resultado.getString("pass");
+                String nombre= resultado.getString("nombre");
+                String apellido= resultado.getString("apellido");
+                String domicilio = resultado.getString("domicilio");
+                String correo = resultado.getString("correo");
+                String telefono = resultado.getString("telefono");
+                Date fecha_incorporacion = resultado.getDate("fecha_incorporacion");
+                Empleado empleado= new Empleado(id, idDepartamento, usuario, pass, nombre, apellido, domicilio, correo, telefono, fecha_incorporacion);
+                empleadosDevueltos.add(empleado);
+
+            }
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+            return empleadosDevueltos;
+        }catch (SQLException e){
+            Log.i("sql", "error sql");
+            return null;
+        }
+    }
+    //----------------------------------------------------------------------
+    public static ArrayList<Empleado> obtenerSupervisores(){
+        Connection conexion= BaseDB.conectarConBaseDeDatos();
+        if(conexion ==null)
+        {
+            System.out.println("no se ha podido conectar con la base de datos");
+            return null;
+        }
+        ArrayList<Empleado> empleadosDevueltos = new ArrayList<Empleado>();
+        try{
+            Statement sentencia = conexion.createStatement();
+            String ordenSQL = "SELECT d.idResponsable, em.nombre FROM empleado em INNER JOIN departamento d on em.id=d.idResponsable;";
+            //SELECT d.idResponsable, em.nombre, d.nombre FROM empleado em INNER JOIN departamento d on em.id=d.idResponsable;
+            ResultSet resultado= sentencia.executeQuery(ordenSQL);
+            while (resultado.next())
+            {
+                int id= resultado.getInt("idResponsable");
+                String nombre= resultado.getString("nombre");
+                Empleado empleado= new Empleado(id, nombre);
+                empleadosDevueltos.add(empleado);
+
+            }
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+            return empleadosDevueltos;
+        }catch (SQLException e){
+            Log.i("sql", "error sql");
+            return null;
+        }
+    }
     //----------------------------------------------------------------------
     public static boolean insertarEmpleadoTabla(Empleado empleado)
     {

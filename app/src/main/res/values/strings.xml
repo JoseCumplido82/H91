@@ -203,4 +203,5 @@
     <string name="te_mostramos_como_funciona_la_app">Te mostramos como funciona la App</string>
     <string name="su_contrase_a_ser_restablecida_comuniquese_con_rrhh_para_que_le_indiquen_la_nueva_contrase_a">Su contraseña será restablecida, comuniquese con RRHH para que le indiquen la nueva contraseña</string>
     <string name="id_tramite">id tramite</string>
+    <string name="lista_de_supervisores">LISTA DE SUPERVISORES</string>
 </resources>

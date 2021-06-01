@@ -23,7 +23,16 @@ public class ActivityGestionPlantilla extends AppCompatActivity {
         bt_verEmpleado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), ActivityVerEmpleados.class);
+                Intent intent = new Intent (v.getContext(), ActivityVerPlantilla.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+        //boton ver supervisores
+        Button bt_versupervisores= (Button)findViewById(R.id.bt_versupervisores);
+        bt_versupervisores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), ActivityVerPlantilla.class);
                 startActivityForResult(intent, 0);
             }
         });

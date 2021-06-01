@@ -26,7 +26,6 @@ public class ActivitySancionarEmpleado extends AppCompatActivity {
     TextView txt_dniEmpleadorecogido;
     String [] tipoSancion= null;
     ArrayAdapter<String> adapter=null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

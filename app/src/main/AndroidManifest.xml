@@ -2,16 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.h91">
 
-    //PERMISOS
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    //permiso de localizacion gps basa en tecnologia movil y wifi detallada
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.H91">
-        <activity android:name=".ActivityAyudaEmpleado"/>
+        <activity android:name=".ActivityMostrarDetalleSupervisor"></activity>
+        <activity android:name=".ActivityVerPlantilla" />
+        <activity android:name=".VerSupervisores" />
+        <activity android:name=".ActivityAyudaEmpleado" />
         <activity android:name=".ActivityOlvisteLaPass" />
         <activity android:name=".ActivityCambiarPass" />
         <activity android:name=".ActivityBorrarDepartamento" />
